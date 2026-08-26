@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+import os,base64
+p=r"D:/Code2026/tcg-embedding-service/doc/implementation-plan.md"
+with open(p,"r",encoding="utf-8") as f:
+    content=f.read()
+
+old1=base64.b64decode("IHwgMjAyNi0wOC0yNiB8IOS9v+eUqOmYv+mHjOS6kSBHUFUg6LWE5rqQIHwg5b6u6LCD6ZyA6KaBIEdQVSB8IOeUqOaItyB8CiAKIC0tLQ==").decode("utf-8")
+new1=base64.b64decode("IHwgMjAyNi0wOC0yNiB8IOS9v+eUqOmYv+mHjOS6kSBHUFUg6LWE5rqQIHwg5b6u6LCD6ZyA6KaBIEdQVSB8IOeUqOaItyB8CiB8IDIwMjYtMDgtMjYgfCBHaXRIdWIg5LuT5bqT5bu656uL77yIb3JpZ2luIOKGkiBzaHVpempzenR4MDIvdGNnLWVtYmVkZGluZy1zZXJ2aWNl77yJIHwg54mI5pys566h55CG77yM5pSv5oyB5Zue5ruaIHwg55So5oi3IHwKIHwgMjAyNi0wOC0yNiB8IOavj+asoSBUYXNrIOWujOaIkOWQjuaPkOS6pOW5tuaOqOmAgSBHaXRIdWIgfCDmlrnkvr/lh7rpl67popjml7blm57mu5rliLDnqLPlrprniYjmnKwgfCDnlKjmiLcgfAogCiAtLS0=").decode("utf-8")
+old2=base64.b64decode("IHwgMjAyNi0wOC0yNiB8IHYxLjAgfCDliJ3lp4vniYjmnKwgfCBDb2RleCB8CiAKIC0tLQ==").decode("utf-8")
+new2=base64.b64decode("IHwgMjAyNi0wOC0yNiB8IHYxLjAgfCDliJ3lp4vniYjmnKwgfCBDb2RleCB8CiB8IDIwMjYtMDgtMjYgfCB2MS4xIHwg5re75Yqg54mI5pys566h55CG6KeE6IyD77yIR2l0SHViIOS7k+W6kyArIOavj+asoSBUYXNrIOWQjuaPkOS6pOaOqOmAge+8iSB8IENvZGV4IHwKIAogLS0t").decode("utf-8")
+old3=base64.b64decode("5Lu75Yqh5a6M5oiQ5ZCO77yM5pu05paw5pys5paH5qGj5Lit55qE54q25oCB77yI5bCG4oCc5b6F5byA5aeL4oCd5pS55Li64oCc5bey5a6M5oiQ4oCd77yM5bm25aGr5YaZ5a6e6ZmF6ICX5pe25ZKM5a6M5oiQ5pel5pyf77yJ44CC").decode("utf-8")
+new3=base64.b64decode("5Lu75Yqh5a6M5oiQ5ZCO77yM5pu05paw5pys5paH5qGj5Lit55qE54q25oCB77yI5bCG4oCc5b6F5byA5aeL4oCd5pS55Li64oCc5bey5a6M5oiQ4oCd77yM5bm25aGr5YaZ5a6e6ZmF6ICX5pe25ZKM5a6M5oiQ5pel5pyf77yJ44CCCgoqKueJiOacrOeuoeeQhioq77ya5q+P5qyhIFRhc2sg5a6M5oiQ5ZCO77yM5b+F6aG7IGBnaXQgYWRkIC1BICYmIGdpdCBjb21taXQgLW0gImZlYXQ6IC4uLiIgJiYgZ2l0IHB1c2hg44CC5YW35L2T6KeE6IyD6KeBIFtBR0VOVFMubWRdKC9BR0VOVFMubWQpIOeahOKAnOeJiOacrOeuoeeQhuKAneeroOiKguOAgg==").decode("utf-8")
+
+content=content.replace(old1,new1,1)
+content=content.replace(old2,new2,1)
+content=content.replace(old3,new3,1)
+
+with open(p,"w",encoding="utf-8") as f:
+    f.write(content)
+print("Updated implementation-plan.md successfully")

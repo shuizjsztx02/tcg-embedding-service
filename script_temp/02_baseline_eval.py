@@ -13,6 +13,8 @@ import sys
 import numpy as np
 import torch
 from PIL import Image, ImageEnhance, ImageFilter
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from preprocess import orientation_candidates, to_model_input
@@ -45,6 +47,8 @@ def to_tensor(img):
 def embed_images(model, imgs, batch=16):
     feats = []
     for i in range(0, len(imgs), batch):
+        if i % (batch * 50) == 0:
+            print(f"  embedding {i}/{len(imgs)}", flush=True)
         x = torch.cat([to_tensor(im) for im in imgs[i:i + batch]])
         out = model(x)
         if out.dim() == 3:
@@ -62,11 +66,11 @@ def persp_coeffs(src_quad, out_size):
         [0, 0, 1, 0, 0, 0, 0, 0],
         [W, 0, 1, 0, 0, 0, -x1 * W, 0],
         [W, H, 1, 0, 0, 0, -x2 * W, -x2 * H],
-        [0, H, 1, 0, 0, 0, -x3 * H, 0],
+        [0, H, 1, 0, 0, 0, 0, -x3 * H],
         [0, 0, 0, 0, 0, 1, 0, 0],
         [0, 0, 0, W, 0, 1, -y1 * W, 0],
         [0, 0, 0, W, H, 1, -y2 * W, -y2 * H],
-        [0, 0, 0, 0, H, 1, -y3 * H, 0],
+        [0, 0, 0, 0, H, 1, 0, -y3 * H],
     ], dtype=np.float64)
     b = np.array([x0, x1, x2, x3, y0, y1, y2, y3], dtype=np.float64)
     return np.linalg.solve(A, b).tolist()
