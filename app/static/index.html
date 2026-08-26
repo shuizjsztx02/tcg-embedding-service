@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCG 卡牌匹配</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d28;
+    --surface2: #232738;
+    --border: #2e3348;
+    --text: #e1e4ed;
+    --text2: #8b8fa3;
+    --accent: #5b8def;
+    --green: #34d399;
+    --red: #f87171;
+    --radius: 8px;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg); color: var(--text); min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .container { width: 100%; max-width: 640px; padding: 24px 16px; }
+
+  header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  header h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+  .badge {
+    font-size: 11px; color: var(--text2); background: var(--surface2);
+    padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border);
+  }
+  .status-dot {
+    display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    margin-left: auto; background: var(--text2);
+  }
+  .status-dot.ok { background: var(--green); }
+  .status-dot.err { background: var(--red); }
+
+  .drop-zone {
+    border: 2px dashed var(--border); border-radius: var(--radius);
+    padding: 48px 24px; text-align: center; cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: var(--surface);
+  }
+  .drop-zone:hover, .drop-zone.drag-over { border-color: var(--accent); background: var(--surface2); }
+  .drop-zone .icon { font-size: 36px; margin-bottom: 12px; opacity: 0.6; }
+  .drop-zone p { color: var(--text2); font-size: 14px; }
+  .drop-zone .hint { font-size: 12px; color: var(--text2); margin-top: 8px; opacity: 0.5; }
+
+  .preview-area { display: none; margin-top: 16px; position: relative; }
+  .preview-area.show { display: block; }
+  .preview-area img {
+    width: 100%; max-height: 320px; object-fit: contain;
+    border-radius: var(--radius); background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .preview-actions {
+    display: flex; gap: 8px; margin-top: 8px; justify-content: flex-end;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--surface2); color: var(--text); font-size: 13px;
+    cursor: pointer; transition: background 0.15s;
+  }
+  .btn:hover { background: var(--border); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { opacity: 0.9; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn .spinner {
+    display: none; width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff;
+    border-radius: 50%; animation: spin 0.6s linear infinite;
+  }
+  .btn.loading .spinner { display: inline-block; }
+  .btn.loading .label { display: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .result-card { display: none; margin-top: 16px; }
+  .result-card.show { display: block; }
+  .result-card .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px; overflow: hidden;
+  }
+  .result-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+  }
+  .result-header .tag {
+    font-size: 12px; font-weight: 600; padding: 2px 10px;
+    border-radius: 4px; letter-spacing: 0.02em;
+  }
+  .tag.matched { background: rgba(52,211,153,0.15); color: var(--green); }
+  .tag.rejected { background: rgba(248,113,113,0.15); color: var(--red); }
+  .result-header .time { font-size: 12px; color: var(--text2); margin-left: auto; }
+
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .result-item {}
+  .result-item .label { font-size: 11px; color: var(--text2); margin-bottom: 2px; }
+  .result-item .value { font-size: 14px; font-weight: 500; font-family: monospace; }
+  .result-item .value.highlight { color: var(--accent); }
+  .result-item.full { grid-column: 1 / -1; }
+  .result-item .copy-btn {
+    font-size: 12px; color: var(--text2); cursor: pointer; margin-left: 8px;
+    background: none; border: none; padding: 2px 4px; border-radius: 3px;
+  }
+  .result-item .copy-btn:hover { background: var(--surface2); color: var(--text); }
+
+  .result-detail { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .result-detail .label { font-size: 11px; color: var(--text2); margin-bottom: 4px; }
+  .result-detail .value { font-size: 13px; font-family: monospace; color: var(--text2); }
+
+  .history { margin-top: 24px; }
+  .history h2 { font-size: 14px; font-weight: 500; color: var(--text2); margin-bottom: 8px; }
+  .history-list { display: flex; flex-direction: column; gap: 4px; }
+  .history-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 12px; background: var(--surface); border-radius: 6px;
+    font-size: 13px; cursor: pointer; transition: background 0.15s;
+  }
+  .history-item:hover { background: var(--surface2); }
+  .history-item .h-tag { font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 3px; }
+  .history-item .h-tag.matched { background: rgba(52,211,153,0.12); color: var(--green); }
+  .history-item .h-tag.rejected { background: rgba(248,113,113,0.12); color: var(--red); }
+  .history-item .h-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .history-item .h-score { font-family: monospace; color: var(--text2); font-size: 12px; }
+  .history-empty { color: var(--text2); font-size: 13px; text-align: center; padding: 16px; }
+
+  .spinner-full {
+    display: none; justify-content: center; align-items: center; padding: 32px;
+  }
+  .spinner-full.show { display: flex; }
+  .spinner-full .ring {
+    width: 24px; height: 24px; border: 3px solid var(--border);
+    border-top-color: var(--accent); border-radius: 50%; animation: spin 0.6s linear infinite;
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 16px 12px; }
+    .result-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>TCG 卡牌匹配</h1>
+    <span class="badge">v0.1</span>
+    <span class="status-dot" id="statusDot" title="服务器状态"></span>
+  </header>
+
+  <div class="drop-zone" id="dropZone">
+    <div class="icon">&#x1F4F7;</div>
+    <p>拖放卡牌图片到这里，或点击选择文件</p>
+    <div class="hint">支持 JPG / PNG，最大 10MB</div>
+    <input type="file" id="fileInput" accept="image/jpeg,image/png" hidden>
+  </div>
+
+  <div class="preview-area" id="previewArea">
+    <img id="previewImg" alt="预览">
+    <div class="preview-actions">
+      <button class="btn" id="clearBtn">&#x2716; 清除</button>
+      <button class="btn primary" id="matchBtn">
+        <span class="spinner"></span>
+        <span class="label">&#x1F50D; 匹配</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="spinner-full" id="loadingSpinner">
+    <div class="ring"></div>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div class="card">
+      <div class="result-header">
+        <span class="tag" id="resultTag"></span>
+        <span class="time" id="resultTime"></span>
+      </div>
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="label">卡牌 ID</div>
+          <div class="value highlight" id="resultCardId">
+            <button class="copy-btn" id="copyBtn" title="复制">&#x1F4CB;</button>
+          </div>
+        </div>
+        <div class="result-item">
+          <div class="label">分数</div>
+          <div class="value" id="resultScore"></div>
+        </div>
+        <div class="result-item">
+          <div class="label">分差 (margin)</div>
+          <div class="value" id="resultMargin"></div>
+        </div>
+        <div class="result-item">
+          <div class="label">Top-2</div>
+          <div class="value" id="resultTop2"></div>
+        </div>
+      </div>
+      <div class="result-detail">
+        <div class="label">原始响应</div>
+        <div class="value" id="resultRaw"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="history">
+    <h2>查询历史</h2>
+    <div class="history-list" id="historyList">
+      <div class="history-empty">暂无记录</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_BASE = '';
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const previewArea = document.getElementById('previewArea');
+const previewImg = document.getElementById('previewImg');
+const clearBtn = document.getElementById('clearBtn');
+const matchBtn = document.getElementById('matchBtn');
+const loadingSpinner = document.getElementById('loadingSpinner');
+const resultCard = document.getElementById('resultCard');
+const resultTag = document.getElementById('resultTag');
+const resultTime = document.getElementById('resultTime');
+const resultCardId = document.getElementById('resultCardId');
+const resultScore = document.getElementById('resultScore');
+const resultMargin = document.getElementById('resultMargin');
+const resultTop2 = document.getElementById('resultTop2');
+const resultRaw = document.getElementById('resultRaw');
+const copyBtn = document.getElementById('copyBtn');
+const statusDot = document.getElementById('statusDot');
+const historyList = document.getElementById('historyList');
+
+let currentFile = null;
+const MAX_HISTORY = 20;
+let history = loadHistory();
+
+function loadHistory() {
+  try {
+    return JSON.parse(localStorage.getItem('tcg_history') || '[]');
+  } catch { return []; }
+}
+
+function saveHistory() {
+  try {
+    localStorage.setItem('tcg_history', JSON.stringify(history.slice(0, MAX_HISTORY)));
+  } catch {}
+}
+
+function renderHistory() {
+  if (history.length === 0) {
+    historyList.innerHTML = '<div class="history-empty">暂无记录</div>';
+    return;
+  }
+  historyList.innerHTML = history.map((h, i) => {
+    const tag = h.status === 'matched' ? 'matched' : 'rejected';
+    const label = h.status === 'matched' ? 'MATCH' : 'REJECT';
+    const name = h.fileName || 'unknown';
+    const score = h.score != null ? h.score.toFixed(4) : '-';
+    return '<div class="history-item" onclick="replayHistory(' + i + ')">' +
+      '<span class="h-tag ' + tag + '">' + label + '</span>' +
+      '<span class="h-name">' + escapeHtml(name) + '</span>' +
+      '<span class="h-score">' + score + '</span>' +
+      '</div>';
+  }).join('');
+}
+
+function replayHistory(idx) {
+  const h = history[idx];
+  if (h && h.dataUrl) {
+    showPreview(h.dataUrl, h.fileName);
+    displayResult(h.response, h.duration);
+  }
+}
+
+function escapeHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function showPreview(dataUrl, fileName) {
+  previewImg.src = dataUrl;
+  previewArea.classList.add('show');
+  dropZone.style.display = 'none';
+  currentFile = { dataUrl, fileName };
+  resultCard.classList.remove('show');
+}
+
+function resetUpload() {
+  previewArea.classList.remove('show');
+  dropZone.style.display = '';
+  previewImg.src = '';
+  currentFile = null;
+  fileInput.value = '';
+  resultCard.classList.remove('show');
+}
+
+function displayResult(data, durationMs) {
+  const isMatched = data.status === 'matched';
+  resultTag.textContent = isMatched ? 'MATCH' : 'REJECT';
+  resultTag.className = 'tag ' + (isMatched ? 'matched' : 'rejected');
+  resultTime.textContent = (durationMs / 1000).toFixed(2) + 's';
+
+  const cardId = isMatched ? data.card_id : '-';
+  resultCardId.firstChild.textContent = cardId;
+  copyBtn.style.display = isMatched ? '' : 'none';
+
+  resultScore.textContent = data.score != null ? data.score.toFixed(4) : '-';
+  resultMargin.textContent = data.margin != null ? data.margin.toFixed(4) : '-';
+  resultTop2.textContent = data.top2_id ? data.top2_id + ' (' + (data.top2_score || 0).toFixed(4) + ')' : '-';
+
+  resultRaw.textContent = JSON.stringify(data, null, 2);
+  resultCard.classList.add('show');
+
+  // Add to history
+  if (currentFile) {
+    history.unshift({
+      fileName: currentFile.fileName,
+      dataUrl: currentFile.dataUrl,
+      status: data.status,
+      score: data.score,
+      response: data,
+      duration: durationMs,
+      timestamp: Date.now(),
+    });
+    saveHistory();
+    renderHistory();
+  }
+}
+
+async function doMatch() {
+  if (!currentFile) return;
+  matchBtn.classList.add('loading');
+  matchBtn.disabled = true;
+  loadingSpinner.classList.add('show');
+
+  // Convert dataUrl to blob
+  const resp = await fetch(currentFile.dataUrl);
+  const blob = await resp.blob();
+  const formData = new FormData();
+  formData.append('file', blob, currentFile.fileName || 'card.jpg');
+
+  const t0 = performance.now();
+  try {
+    const res = await fetch(API_BASE + '/v1/match', { method: 'POST', body: formData });
+    const dur = performance.now() - t0;
+    const data = await res.json();
+    displayResult(data, dur);
+  } catch (err) {
+    const dur = performance.now() - t0;
+    const data = { status: 'error', message: err.message };
+    displayResult(data, dur);
+  } finally {
+    matchBtn.classList.remove('loading');
+    matchBtn.disabled = false;
+    loadingSpinner.classList.remove('show');
+  }
+}
+
+async function checkHealth() {
+  try {
+    const res = await fetch(API_BASE + '/v1/health');
+    if (res.ok) {
+      statusDot.className = 'status-dot ok';
+      statusDot.title = 'Server OK';
+    } else {
+      statusDot.className = 'status-dot err';
+      statusDot.title = 'Server error';
+    }
+  } catch {
+    statusDot.className = 'status-dot err';
+    statusDot.title = 'Server unreachable';
+  }
+}
+
+// Events
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = (ev) => showPreview(ev.target.result, file.name);
+    reader.readAsDataURL(file);
+  }
+});
+
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (ev) => showPreview(ev.target.result, file.name);
+    reader.readAsDataURL(file);
+  }
+});
+
+clearBtn.addEventListener('click', resetUpload);
+matchBtn.addEventListener('click', doMatch);
+copyBtn.addEventListener('click', () => {
+  const id = resultCardId.firstChild.textContent;
+  navigator.clipboard.writeText(id).then(() => {
+    copyBtn.textContent = '\u2713';
+    setTimeout(() => { copyBtn.textContent = '\u{1F4CB}'; }, 1500);
+  });
+});
+
+// Init
+checkHealth();
+setInterval(checkHealth, 30000);
+renderHistory();
+</script>
+</body>
+</html>

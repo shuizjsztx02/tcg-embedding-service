@@ -1,8 +1,16 @@
-import os, sys, io, json, time, logging
+import os
+import sys
+import io
+import json
+import time
+import logging
+
 import numpy as np
 import torch
 import faiss
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from PIL import Image, ImageFile
 
@@ -80,6 +88,18 @@ def embed_single(model, img):
 # ---- FastAPI app ----
 app = FastAPI(title="TCG Card Matching Service", version="0.1.0")
 
+# CORS: allow same-origin and file:// requests for local testing
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+STATIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
+INDEX_HTML = os.path.join(STATIC_DIR, "index.html")
+
+
 @app.on_event("startup")
 async def startup():
     global model, faiss_index, index_ids, index_version
@@ -105,7 +125,7 @@ async def startup():
     version_path = os.path.join(index_dir, "version.txt")
     if os.path.exists(version_path):
         with open(version_path, "r", encoding="utf-8") as f:
-            index_version = f.read().strip()
+            index_version = f.readline().strip()
     else:
         index_version = "unknown"
 
@@ -113,6 +133,12 @@ async def startup():
         f"Index loaded: {faiss_index.ntotal} vectors, dim={d} "
         f"({time.time()-t0:.1f}s total)"
     )
+
+
+@app.get("/")
+async def root():
+    return FileResponse(INDEX_HTML, media_type="text/html")
+
 
 @app.get("/v1/health", response_model=HealthResponse)
 async def health():
@@ -122,6 +148,7 @@ async def health():
         embedding_dim=faiss_index.d if faiss_index is not None else 0,
         version=index_version,
     )
+
 
 @app.post("/v1/match", response_model=MatchResponse)
 async def match(file: UploadFile = File(...)):
