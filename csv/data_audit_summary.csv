@@ -1,0 +1,7 @@
+metric,value
+total,9434
+corrupt,1
+decode_fail,0
+portrait,8888
+landscape,546
+duplicate_sha1,118

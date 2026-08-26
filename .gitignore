@@ -1,0 +1,37 @@
+ # 图片数据
+ images/
+ 
+ # 索引文件
+ index/
+ 
+ # 模型权重
+ model/
+ *.pth
+ 
+ # CSV 数据文件
+ csv/*.csv
+ 
+ # Python 缓存
+ __pycache__/
+ *.pyc
+ *.pyo
+ 
+ # 系统文件
+ .DS_Store
+ Thumbs.db
+ 
+ # 环境
+ .env
+ .venv
+ venv/
+ 
+ # IDE
+ .vscode/
+ .idea/
+ 
+ # 日志
+ *.log
+ 
+ # 临时文件
+ tmp/
+ temp/

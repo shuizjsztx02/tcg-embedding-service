@@ -1,0 +1,24 @@
+ # TCG 卡牌视觉匹配服务 — 依赖清单
+ 
+ # 模型推理
+ torch>=2.0.0
+ 
+ # 向量检索
+ faiss-cpu>=1.7.0
+ 
+ # API 框架
+ fastapi>=0.100.0
+ uvicorn>=0.20.0
+ python-multipart>=0.0.6
+ 
+ # 数值计算
+ numpy>=1.24.0
+ 
+ # 图片处理
+ pillow>=10.0.0
+ opencv-python-headless>=4.8.0
+ 
+ # 训练（可选，GPU 环境）
+ # transformers>=4.30.0
+ # accelerate>=0.20.0
+ # wandb
