@@ -92,13 +92,6 @@ def augment(img, rng):
     if rng.random() < 0.6:
         img = img.rotate(rng.uniform(-4, 4), expand=False, fillcolor=(bg, bg, bg))
     if rng.random() < 0.35:  # glare streak
-        glare = Image.new("L", (w, h), 0)
-        band_w = rng.uniform(0.12, 0.3) * w
-        for x in range(w):
-            v = max(0, 1 - abs(x - w / 2) / band_w)
-            for_y = int(v * rng.randint(60, 120))
-            if for_y > 0:
-                pass
         # cheap diagonal band via rotated rectangle
         band = Image.new("L", (int(w * 1.5), int(h * 1.5)), 0)
         bw = int(rng.uniform(0.10, 0.25) * w)
