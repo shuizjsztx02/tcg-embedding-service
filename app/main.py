@@ -4,6 +4,7 @@ import io
 import json
 import time
 import logging
+import base64
 
 import numpy as np
 import torch
@@ -18,7 +19,8 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "script_temp"))
-from preprocess import orientation_candidates, to_model_input
+from preprocess import orientation_candidates, to_model_input, preprocess_query
+from preprocess_ocr import OCRPreprocessor
 from ppocr_v4_engine import PPOCRv4Engine
 
 # ---- Logging ----
@@ -71,6 +73,7 @@ class SearchResponse(BaseModel):
     status: str
     query_time_ms: float
     results: list[SearchResult]
+    preprocessed_image: str | None = None
 
 
 class OCRBlock(BaseModel):
@@ -85,6 +88,7 @@ class OCRResponse(BaseModel):
     total_blocks: int
     blocks: list[OCRBlock]
     full_text: str
+    preprocessed_image: str | None = None
 
 
 # ---- DINOv2 helpers ----
@@ -131,7 +135,7 @@ INDEX_HTML = os.path.join(STATIC_DIR, "index.html")
 @app.on_event("startup")
 async def startup():
     global model, faiss_index, index_ids, index_version
-    global ocr_engine
+    global ocr_engine, ocr_preprocessor
     t0 = time.time()
 
     log.info("Loading DINOv2 model...")
@@ -162,6 +166,10 @@ async def startup():
         f"Index loaded: {faiss_index.ntotal} vectors, dim={d} "
         f"({time.time()-t0:.1f}s total)"
     )
+
+    log.info("Loading OCR preprocessor...")
+    ocr_preprocessor = OCRPreprocessor(max_dim=1200)
+    log.info("OCR preprocessor loaded")
 
     log.info("Loading PP-OCRv4 engine...")
     ocr_engine = PPOCRv4Engine(threads=2)
@@ -201,6 +209,7 @@ async def match(file: UploadFile = File(...)):
             raise HTTPException(400, "Only image files are supported")
         img = Image.open(io.BytesIO(contents))
         img.load()
+        img = preprocess_query(img)
     except HTTPException:
         raise
     except Exception as e:
@@ -284,6 +293,7 @@ async def search(file: UploadFile = File(...)):
             raise HTTPException(400, "Only image files are supported")
         img = Image.open(io.BytesIO(contents))
         img.load()
+        img = preprocess_query(img)
     except HTTPException:
         raise
     except Exception as e:
@@ -293,6 +303,7 @@ async def search(file: UploadFile = File(...)):
     cands = list(orientation_candidates(img))
     best_score = -1.0
     best_feat = None
+    best_cand = None
 
     for cand in cands:
         inp = to_model_input(cand)
@@ -302,6 +313,12 @@ async def search(file: UploadFile = File(...)):
         if s0 > best_score:
             best_score = s0
             best_feat = feat
+            best_cand = cand
+
+    # Preprocessed image (best orientation candidate)
+    _buf = io.BytesIO()
+    best_cand.save(_buf, format='JPEG', quality=85)
+    preprocessed_b64 = base64.b64encode(_buf.getvalue()).decode()
 
     # Search with the best orientation
     scores, indices = faiss_index.search(best_feat.reshape(1, -1), 5)
@@ -320,6 +337,7 @@ async def search(file: UploadFile = File(...)):
         status="ok",
         query_time_ms=round(elapsed, 1),
         results=results,
+        preprocessed_image=preprocessed_b64,
     )
 
 
@@ -339,6 +357,7 @@ async def ocr(file: UploadFile = File(...)):
             raise HTTPException(400, "Only image files are supported")
         img = Image.open(io.BytesIO(contents))
         img.load()
+        img = preprocess_query(img)
     except HTTPException:
         raise
     except Exception as e:
@@ -355,7 +374,17 @@ async def ocr(file: UploadFile = File(...)):
     else:
         img_bgr = img_np
 
-    results, elapsed = ocr_engine.read(img_bgr)
+    # Preprocess for better OCR accuracy
+    img_pp = ocr_preprocessor.preprocess(img_bgr)
+
+    # Convert preprocessed image to base64 (BGR -> RGB -> JPEG)
+    _img_rgb = img_pp[:, :, ::-1]
+    _pil_img = Image.fromarray(_img_rgb)
+    _buf = io.BytesIO()
+    _pil_img.save(_buf, format='JPEG', quality=85)
+    preprocessed_b64 = base64.b64encode(_buf.getvalue()).decode()
+
+    results, elapsed = ocr_engine.read(img_pp)
 
     blocks = [
         OCRBlock(text=r.text, confidence=r.confidence, bbox=r.bbox)
@@ -370,4 +399,5 @@ async def ocr(file: UploadFile = File(...)):
         total_blocks=len(results),
         blocks=blocks,
         full_text=full_text,
+        preprocessed_image=preprocessed_b64,
     )

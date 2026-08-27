@@ -13,6 +13,8 @@ All functions accept and return uint8 arrays (BGR or grayscale).
 
 import cv2
 import numpy as np
+from preprocess import detect_card, perspective_correct
+
 
 
 class OCRPreprocessor:
@@ -79,6 +81,19 @@ class OCRPreprocessor:
         if grayscale:
             return self.to_grayscale(img)
         return img
+
+
+    def preprocess_with_detection(self, img: np.ndarray, **kw) -> np.ndarray:
+        """Detect card, perspective-correct, then run OCR preprocessing."""
+        from PIL import Image
+        # Convert BGR numpy to PIL RGB
+        pil_img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+        quad = detect_card(pil_img)
+        if quad is not None:
+            pil_img = perspective_correct(pil_img, quad)
+            # Convert back to BGR numpy
+            img = cv2.cvtColor(np.array(pil_img.convert("RGB")), cv2.COLOR_RGB2BGR)
+        return self.preprocess(img, **kw)
 
     def __call__(self, img: np.ndarray, **kw) -> np.ndarray:
         return self.preprocess(img, **kw)
