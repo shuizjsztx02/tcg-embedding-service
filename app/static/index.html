@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TCG 卡牌匹配</title>
+<title>TCG 卡牌搜索 - Top-5 / OCR</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -15,7 +15,7 @@
     --text2: #8b8fa3;
     --accent: #5b8def;
     --green: #34d399;
-    --red: #f87171;
+    --orange: #f59e0b;
     --radius: 8px;
   }
   body {
@@ -25,7 +25,7 @@
   }
   .container { width: 100%; max-width: 640px; padding: 24px 16px; }
 
-  header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
   header h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
   .badge {
     font-size: 11px; color: var(--text2); background: var(--surface2);
@@ -36,7 +36,23 @@
     margin-left: auto; background: var(--text2);
   }
   .status-dot.ok { background: var(--green); }
-  .status-dot.err { background: var(--red); }
+  .status-dot.err { background: #f87171; }
+
+  /* Tabs */
+  .tabs {
+    display: flex; gap: 4px; margin-bottom: 16px;
+    background: var(--surface); border-radius: var(--radius);
+    padding: 4px; border: 1px solid var(--border);
+  }
+  .tab {
+    flex: 1; text-align: center; padding: 8px 12px; border-radius: 6px;
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    color: var(--text2); transition: all 0.15s; border: none; background: none;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { background: var(--accent); color: #fff; }
+  .panel { display: none; }
+  .panel.active { display: block; }
 
   .drop-zone {
     border: 2px dashed var(--border); border-radius: var(--radius);
@@ -68,6 +84,8 @@
   .btn:hover { background: var(--border); }
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
   .btn.primary:hover { opacity: 0.9; }
+  .btn.ocr { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .btn.ocr:hover { opacity: 0.9; }
   .btn:disabled { opacity: 0.4; cursor: not-allowed; }
   .btn .spinner {
     display: none; width: 14px; height: 14px;
@@ -78,38 +96,93 @@
   .btn.loading .label { display: none; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .result-card { display: none; margin-top: 16px; }
-  .result-card.show { display: block; }
-  .result-card .card {
+  /* Search result */
+  .search-result { display: none; margin-top: 16px; }
+  .search-result.show { display: block; }
+  .search-result .card {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 16px; overflow: hidden;
   }
-  .result-header {
+  .search-header {
     display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
   }
-  .result-header .tag {
-    font-size: 12px; font-weight: 600; padding: 2px 10px;
-    border-radius: 4px; letter-spacing: 0.02em;
-  }
-  .tag.matched { background: rgba(52,211,153,0.15); color: var(--green); }
-  .tag.rejected { background: rgba(248,113,113,0.15); color: var(--red); }
-  .result-header .time { font-size: 12px; color: var(--text2); margin-left: auto; }
+  .search-header .label { font-size: 13px; font-weight: 600; color: var(--text); }
+  .search-header .time { font-size: 12px; color: var(--text2); margin-left: auto; }
 
-  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .result-item {}
-  .result-item .label { font-size: 11px; color: var(--text2); margin-bottom: 2px; }
-  .result-item .value { font-size: 14px; font-weight: 500; font-family: monospace; }
-  .result-item .value.highlight { color: var(--accent); }
-  .result-item.full { grid-column: 1 / -1; }
-  .result-item .copy-btn {
-    font-size: 12px; color: var(--text2); cursor: pointer; margin-left: 8px;
-    background: none; border: none; padding: 2px 4px; border-radius: 3px;
+  .top5-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .top5-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 6px; background: var(--surface2);
+    border: 1px solid transparent; transition: border-color 0.15s;
   }
-  .result-item .copy-btn:hover { background: var(--surface2); color: var(--text); }
+  .top5-item:first-child { border-color: rgba(91,141,239,0.4); }
+  .top5-rank { font-size: 12px; font-weight: 700; min-width: 20px; text-align: center; color: var(--text2); }
+  .top5-item:first-child .top5-rank { color: var(--accent); font-size: 14px; }
+  .top5-item img { width: 48px; height: 48px; object-fit: cover; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); flex-shrink: 0; }
+  .top5-id { font-family: monospace; font-size: 14px; font-weight: 500; flex: 1; }
+  .top5-score { font-family: monospace; font-size: 13px; color: var(--text2); }
+  .top5-bar-outer { width: 60px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .top5-bar-inner { height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.4s ease; }
+  .top5-item:first-child .top5-bar-inner { background: var(--green); }
+  .top5-empty { color: var(--text2); font-size: 13px; text-align: center; padding: 24px; }
 
   .result-detail { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
   .result-detail .label { font-size: 11px; color: var(--text2); margin-bottom: 4px; }
   .result-detail .value { font-size: 13px; font-family: monospace; color: var(--text2); }
+
+  /* OCR result */
+  .ocr-result { display: none; margin-top: 16px; }
+  .ocr-result.show { display: block; }
+  .ocr-result .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px; overflow: hidden;
+  }
+  .ocr-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+  }
+  .ocr-header .label { font-size: 13px; font-weight: 600; color: var(--text); }
+  .ocr-header .time { font-size: 12px; color: var(--text2); margin-left: auto; }
+
+  .ocr-image-wrap {
+    position: relative; display: inline-block; width: 100%;
+    margin-bottom: 12px;
+  }
+  .ocr-image-wrap img { width: 100%; border-radius: 4px; display: block; }
+  .ocr-image-wrap canvas {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+  }
+
+  .ocr-blocks { margin-bottom: 12px; }
+  .ocr-block-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 8px; border-radius: 4px; font-size: 13px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ocr-block-item:last-child { border-bottom: none; }
+  .ocr-block-num {
+    font-size: 11px; font-weight: 600; color: var(--text2);
+    min-width: 20px; text-align: center;
+  }
+  .ocr-block-text { flex: 1; font-family: monospace; font-size: 13px; }
+  .ocr-block-conf {
+    display: flex; align-items: center; gap: 6px; min-width: 80px;
+  }
+  .ocr-conf-bar-outer { width: 40px; height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .ocr-conf-bar-inner { height: 100%; border-radius: 3px; background: var(--green); transition: width 0.3s; }
+  .ocr-conf-text { font-size: 11px; color: var(--text2); min-width: 32px; text-align: right; }
+
+  .ocr-full-text { margin-top: 8px; }
+  .ocr-full-text label { font-size: 11px; color: var(--text2); display: block; margin-bottom: 4px; }
+  .ocr-full-text textarea {
+    width: 100%; min-height: 80px; padding: 8px; border-radius: 4px;
+    background: var(--bg); border: 1px solid var(--border);
+    color: var(--text); font-family: monospace; font-size: 13px; resize: vertical;
+  }
+
+  .ocr-raw { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .ocr-raw .label { font-size: 11px; color: var(--text2); margin-bottom: 4px; }
+  .ocr-raw .value { font-size: 13px; font-family: monospace; color: var(--text2); }
 
   .history { margin-top: 24px; }
   .history h2 { font-size: 14px; font-weight: 500; color: var(--text2); margin-bottom: 8px; }
@@ -120,9 +193,7 @@
     font-size: 13px; cursor: pointer; transition: background 0.15s;
   }
   .history-item:hover { background: var(--surface2); }
-  .history-item .h-tag { font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 3px; }
-  .history-item .h-tag.matched { background: rgba(52,211,153,0.12); color: var(--green); }
-  .history-item .h-tag.rejected { background: rgba(248,113,113,0.12); color: var(--red); }
+  .h-rank { font-size: 11px; font-weight: 600; color: var(--text2); min-width: 12px; }
   .history-item .h-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .history-item .h-score { font-family: monospace; color: var(--text2); font-size: 12px; }
   .history-empty { color: var(--text2); font-size: 13px; text-align: center; padding: 16px; }
@@ -138,69 +209,106 @@
 
   @media (max-width: 480px) {
     .container { padding: 16px 12px; }
-    .result-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <h1>TCG 卡牌匹配</h1>
+    <h1>TCG 卡牌搜索</h1>
     <span class="badge">v0.1</span>
     <span class="status-dot" id="statusDot" title="服务器状态"></span>
   </header>
 
-  <div class="drop-zone" id="dropZone">
-    <div class="icon">&#x1F4F7;</div>
-    <p>拖放卡牌图片到这里，或点击选择文件</p>
-    <div class="hint">支持 JPG / PNG，最大 10MB</div>
-    <input type="file" id="fileInput" accept="image/jpeg,image/png" hidden>
+  <div class="tabs" id="tabBar">
+    <button class="tab active" data-tab="search">搜索</button>
+    <button class="tab" data-tab="ocr">OCR 文字识别</button>
   </div>
 
-  <div class="preview-area" id="previewArea">
-    <img id="previewImg" alt="预览">
-    <div class="preview-actions">
-      <button class="btn" id="clearBtn">&#x2716; 清除</button>
-      <button class="btn primary" id="matchBtn">
-        <span class="spinner"></span>
-        <span class="label">&#x1F50D; 匹配</span>
-      </button>
+  <!-- Search Panel -->
+  <div class="panel active" id="panel-search">
+    <div class="drop-zone" id="dropZone">
+      <div class="icon">&#x1F4F7;</div>
+      <p>拖放卡牌图片到这里，或点击选择文件</p>
+      <div class="hint">支持 JPG / PNG，最大 10MB</div>
+      <input type="file" id="fileInput" accept="image/jpeg,image/png" hidden>
+    </div>
+
+    <div class="preview-area" id="previewArea">
+      <img id="previewImg" alt="预览">
+      <div class="preview-actions">
+        <button class="btn" id="clearBtn">&#x2716; 清除</button>
+        <button class="btn primary" id="searchBtn">
+          <span class="spinner"></span>
+          <span class="label">&#x1F50D; 搜索 Top-5</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="spinner-full" id="loadingSpinner">
+      <div class="ring"></div>
+    </div>
+
+    <div class="search-result" id="searchResult">
+      <div class="card">
+        <div class="search-header">
+          <span class="label">&#x1F50D; 搜索结果</span>
+          <span class="time" id="searchTime"></span>
+        </div>
+        <div class="top5-list" id="top5List">
+          <div class="top5-empty">无结果</div>
+        </div>
+        <div class="result-detail">
+          <div class="label">原始响应</div>
+          <div class="value" id="resultRaw"></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="spinner-full" id="loadingSpinner">
-    <div class="ring"></div>
-  </div>
+  <!-- OCR Panel -->
+  <div class="panel" id="panel-ocr">
+    <div class="drop-zone" id="ocrDropZone">
+      <div class="icon">&#x1F4DD;</div>
+      <p>拖放卡牌图片到这里，或点击选择文件</p>
+      <div class="hint">支持 JPG / PNG，最大 10MB</div>
+      <input type="file" id="ocrFileInput" accept="image/jpeg,image/png" hidden>
+    </div>
 
-  <div class="result-card" id="resultCard">
-    <div class="card">
-      <div class="result-header">
-        <span class="tag" id="resultTag"></span>
-        <span class="time" id="resultTime"></span>
+    <div class="preview-area" id="ocrPreviewArea">
+      <img id="ocrPreviewImg" alt="预览">
+      <div class="preview-actions">
+        <button class="btn" id="ocrClearBtn">&#x2716; 清除</button>
+        <button class="btn ocr" id="ocrBtn">
+          <span class="spinner"></span>
+          <span class="label">&#x1F50D; 识别文字</span>
+        </button>
       </div>
-      <div class="result-grid">
-        <div class="result-item">
-          <div class="label">卡牌 ID</div>
-          <div class="value highlight" id="resultCardId">
-            <button class="copy-btn" id="copyBtn" title="复制">&#x1F4CB;</button>
-          </div>
+    </div>
+
+    <div class="spinner-full" id="ocrLoadingSpinner">
+      <div class="ring"></div>
+    </div>
+
+    <div class="ocr-result" id="ocrResult">
+      <div class="card">
+        <div class="ocr-header">
+          <span class="label">&#x1F4DD; 识别结果</span>
+          <span class="time" id="ocrTime"></span>
         </div>
-        <div class="result-item">
-          <div class="label">分数</div>
-          <div class="value" id="resultScore"></div>
+        <div class="ocr-image-wrap" id="ocrImageWrap">
+          <img id="ocrResultImg" alt="OCR 结果">
+          <canvas id="ocrCanvas"></canvas>
         </div>
-        <div class="result-item">
-          <div class="label">分差 (margin)</div>
-          <div class="value" id="resultMargin"></div>
+        <div class="ocr-blocks" id="ocrBlocks"></div>
+        <div class="ocr-full-text">
+          <label>全文</label>
+          <textarea id="ocrFullText" readonly></textarea>
         </div>
-        <div class="result-item">
-          <div class="label">Top-2</div>
-          <div class="value" id="resultTop2"></div>
+        <div class="ocr-raw">
+          <div class="label">原始响应</div>
+          <div class="value" id="ocrRaw"></div>
         </div>
-      </div>
-      <div class="result-detail">
-        <div class="label">原始响应</div>
-        <div class="value" id="resultRaw"></div>
       </div>
     </div>
   </div>
@@ -214,80 +322,112 @@
 </div>
 
 <script>
-const API_BASE = '';
-const dropZone = document.getElementById('dropZone');
-const fileInput = document.getElementById('fileInput');
-const previewArea = document.getElementById('previewArea');
-const previewImg = document.getElementById('previewImg');
-const clearBtn = document.getElementById('clearBtn');
-const matchBtn = document.getElementById('matchBtn');
-const loadingSpinner = document.getElementById('loadingSpinner');
-const resultCard = document.getElementById('resultCard');
-const resultTag = document.getElementById('resultTag');
-const resultTime = document.getElementById('resultTime');
-const resultCardId = document.getElementById('resultCardId');
-const resultScore = document.getElementById('resultScore');
-const resultMargin = document.getElementById('resultMargin');
-const resultTop2 = document.getElementById('resultTop2');
-const resultRaw = document.getElementById('resultRaw');
-const copyBtn = document.getElementById('copyBtn');
-const statusDot = document.getElementById('statusDot');
-const historyList = document.getElementById('historyList');
+var API_BASE = '';
 
-let currentFile = null;
-const MAX_HISTORY = 20;
-let history = loadHistory();
+// ---- Shared ----
+var dropZone = document.getElementById('dropZone');
+var fileInput = document.getElementById('fileInput');
+var previewArea = document.getElementById('previewArea');
+var previewImg = document.getElementById('previewImg');
+var clearBtn = document.getElementById('clearBtn');
+var searchBtn = document.getElementById('searchBtn');
+var loadingSpinner = document.getElementById('loadingSpinner');
+var searchResult = document.getElementById('searchResult');
+var searchTime = document.getElementById('searchTime');
+var top5List = document.getElementById('top5List');
+var resultRaw = document.getElementById('resultRaw');
+var statusDot = document.getElementById('statusDot');
+var historyList = document.getElementById('historyList');
 
+// ---- OCR ----
+var ocrDropZone = document.getElementById('ocrDropZone');
+var ocrFileInput = document.getElementById('ocrFileInput');
+var ocrPreviewArea = document.getElementById('ocrPreviewArea');
+var ocrPreviewImg = document.getElementById('ocrPreviewImg');
+var ocrClearBtn = document.getElementById('ocrClearBtn');
+var ocrBtn = document.getElementById('ocrBtn');
+var ocrLoadingSpinner = document.getElementById('ocrLoadingSpinner');
+var ocrResult = document.getElementById('ocrResult');
+var ocrTime = document.getElementById('ocrTime');
+var ocrResultImg = document.getElementById('ocrResultImg');
+var ocrCanvas = document.getElementById('ocrCanvas');
+var ocrBlocks = document.getElementById('ocrBlocks');
+var ocrFullText = document.getElementById('ocrFullText');
+var ocrRaw = document.getElementById('ocrRaw');
+
+var currentFile = null;
+var ocrCurrentFile = null;
+var MAX_HISTORY = 20;
+var searchHistory = loadHistory();
+
+// ---- Tab switching ----
+var tabBar = document.getElementById('tabBar');
+tabBar.addEventListener('click', function(e) {
+  var btn = e.target.closest('.tab');
+  if (!btn) return;
+  var tab = btn.dataset.tab;
+  tabBar.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('panel-' + tab).classList.add('active');
+});
+
+// ---- History ----
 function loadHistory() {
   try {
-    return JSON.parse(localStorage.getItem('tcg_history') || '[]');
-  } catch { return []; }
+    var parsed = JSON.parse(localStorage.getItem('tcg_history') || '[]');
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (e) { return []; }
 }
 
 function saveHistory() {
   try {
-    localStorage.setItem('tcg_history', JSON.stringify(history.slice(0, MAX_HISTORY)));
-  } catch {}
+    localStorage.setItem('tcg_history', JSON.stringify(searchHistory.slice(0, MAX_HISTORY)));
+  } catch (e) {}
 }
 
 function renderHistory() {
-  if (history.length === 0) {
-    historyList.innerHTML = '<div class="history-empty">暂无记录</div>';
+  if (searchHistory.length === 0) {
+    historyList.innerHTML = '<div class="history-empty">\u6682\u65E0\u8BB0\u5F55</div>';
     return;
   }
-  historyList.innerHTML = history.map((h, i) => {
-    const tag = h.status === 'matched' ? 'matched' : 'rejected';
-    const label = h.status === 'matched' ? 'MATCH' : 'REJECT';
-    const name = h.fileName || 'unknown';
-    const score = h.score != null ? h.score.toFixed(4) : '-';
-    return '<div class="history-item" onclick="replayHistory(' + i + ')">' +
-      '<span class="h-tag ' + tag + '">' + label + '</span>' +
+  var html = '';
+  for (var i = 0; i < searchHistory.length; i++) {
+    var h = searchHistory[i];
+    var rank = h.top1 ? '#' + h.top1.rank : '#?';
+    var name = h.fileName || 'unknown';
+    var score = h.top1 ? h.top1.score.toFixed(4) : '-';
+    html += '<div class="history-item" onclick="replayHistory(' + i + ')">' +
+      '<span class="h-rank">' + rank + '</span>' +
       '<span class="h-name">' + escapeHtml(name) + '</span>' +
       '<span class="h-score">' + score + '</span>' +
       '</div>';
-  }).join('');
+  }
+  historyList.innerHTML = html;
 }
 
 function replayHistory(idx) {
-  const h = history[idx];
+  var h = searchHistory[idx];
   if (h && h.dataUrl) {
     showPreview(h.dataUrl, h.fileName);
-    displayResult(h.response, h.duration);
+    displaySearchResult(h.response, h.duration);
   }
 }
 
 function escapeHtml(s) {
-  const d = document.createElement('div');
+  if (typeof s !== 'string') return String(s);
+  var d = document.createElement('div');
   d.textContent = s;
   return d.innerHTML;
 }
 
+// ---- Search preview ----
 function showPreview(dataUrl, fileName) {
   previewImg.src = dataUrl;
   previewArea.classList.add('show');
   dropZone.style.display = 'none';
-  currentFile = { dataUrl, fileName };
-  resultCard.classList.remove('show');
+  currentFile = { dataUrl: dataUrl, fileName: fileName };
+  searchResult.classList.remove('show');
 }
 
 function resetUpload() {
@@ -296,74 +436,207 @@ function resetUpload() {
   previewImg.src = '';
   currentFile = null;
   fileInput.value = '';
-  resultCard.classList.remove('show');
+  searchResult.classList.remove('show');
 }
 
-function displayResult(data, durationMs) {
-  const isMatched = data.status === 'matched';
-  resultTag.textContent = isMatched ? 'MATCH' : 'REJECT';
-  resultTag.className = 'tag ' + (isMatched ? 'matched' : 'rejected');
-  resultTime.textContent = (durationMs / 1000).toFixed(2) + 's';
+// ---- OCR preview ----
+function ocrShowPreview(dataUrl, fileName) {
+  ocrPreviewImg.src = dataUrl;
+  ocrPreviewArea.classList.add('show');
+  ocrDropZone.style.display = 'none';
+  ocrCurrentFile = { dataUrl: dataUrl, fileName: fileName };
+  ocrResult.classList.remove('show');
+}
 
-  const cardId = isMatched ? data.card_id : '-';
-  resultCardId.firstChild.textContent = cardId;
-  copyBtn.style.display = isMatched ? '' : 'none';
+function ocrResetUpload() {
+  ocrPreviewArea.classList.remove('show');
+  ocrDropZone.style.display = '';
+  ocrPreviewImg.src = '';
+  ocrCurrentFile = null;
+  ocrFileInput.value = '';
+  ocrResult.classList.remove('show');
+}
 
-  resultScore.textContent = data.score != null ? data.score.toFixed(4) : '-';
-  resultMargin.textContent = data.margin != null ? data.margin.toFixed(4) : '-';
-  resultTop2.textContent = data.top2_id ? data.top2_id + ' (' + (data.top2_score || 0).toFixed(4) + ')' : '-';
+// ---- Search ----
+function displaySearchResult(data, durationMs) {
+  searchTime.textContent = (durationMs / 1000).toFixed(2) + 's';
+
+  var results = data.results || [];
+  if (results.length === 0) {
+    top5List.innerHTML = '<div class="top5-empty">\u65E0\u7ED3\u679C</div>';
+  } else {
+    var maxScore = results[0].score;
+    var html = '';
+    for (var k = 0; k < results.length; k++) {
+      var r = results[k];
+      var barPct = Math.min(100, (r.score / maxScore) * 100);
+      html += '<div class="top5-item">' +
+        '<span class="top5-rank">#' + r.rank + '</span>' +
+        '<img src="/v1/images/' + encodeURIComponent(r.card_id) + '" alt="' + escapeHtml(r.card_id) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
+        '<span class="top5-id">' + escapeHtml(r.card_id) + '</span>' +
+        '<span class="top5-score">' + r.score.toFixed(4) + '</span>' +
+        '<div class="top5-bar-outer"><div class="top5-bar-inner" style="width:' + barPct + '%"></div></div>' +
+        '</div>';
+    }
+    top5List.innerHTML = html;
+  }
 
   resultRaw.textContent = JSON.stringify(data, null, 2);
-  resultCard.classList.add('show');
+  searchResult.classList.add('show');
 
-  // Add to history
   if (currentFile) {
-    history.unshift({
+    searchHistory.unshift({
       fileName: currentFile.fileName,
       dataUrl: currentFile.dataUrl,
-      status: data.status,
-      score: data.score,
+      top1: results.length > 0 ? results[0] : null,
       response: data,
       duration: durationMs,
-      timestamp: Date.now(),
+      timestamp: Date.now()
     });
     saveHistory();
     renderHistory();
   }
 }
 
-async function doMatch() {
+async function doSearch() {
   if (!currentFile) return;
-  matchBtn.classList.add('loading');
-  matchBtn.disabled = true;
+  searchBtn.classList.add('loading');
+  searchBtn.disabled = true;
   loadingSpinner.classList.add('show');
+  searchResult.classList.remove('show');
 
-  // Convert dataUrl to blob
-  const resp = await fetch(currentFile.dataUrl);
-  const blob = await resp.blob();
-  const formData = new FormData();
+  var resp = await fetch(currentFile.dataUrl);
+  var blob = await resp.blob();
+  var formData = new FormData();
   formData.append('file', blob, currentFile.fileName || 'card.jpg');
 
-  const t0 = performance.now();
+  var t0 = performance.now();
   try {
-    const res = await fetch(API_BASE + '/v1/match', { method: 'POST', body: formData });
-    const dur = performance.now() - t0;
-    const data = await res.json();
-    displayResult(data, dur);
+    var res = await fetch(API_BASE + '/v1/search', { method: 'POST', body: formData });
+    var dur = performance.now() - t0;
+    var data = await res.json();
+    displaySearchResult(data, dur);
   } catch (err) {
-    const dur = performance.now() - t0;
-    const data = { status: 'error', message: err.message };
-    displayResult(data, dur);
+    var dur = performance.now() - t0;
+    displaySearchResult({ status: 'error', results: [], message: err.message }, dur);
   } finally {
-    matchBtn.classList.remove('loading');
-    matchBtn.disabled = false;
+    searchBtn.classList.remove('loading');
+    searchBtn.disabled = false;
     loadingSpinner.classList.remove('show');
   }
 }
 
+// ---- OCR ----
+function drawBboxes(imgEl, canvas, blocks) {
+  var rect = imgEl.getBoundingClientRect();
+  canvas.width = imgEl.naturalWidth;
+  canvas.height = imgEl.naturalHeight;
+  canvas.style.width = rect.width + 'px';
+  canvas.style.height = rect.height + 'px';
+
+  var ctx = canvas.getContext('2d');
+  var scaleX = imgEl.naturalWidth / rect.width;
+  var scaleY = imgEl.naturalHeight / rect.height;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  var colors = ['#5b8def','#34d399','#f59e0b','#f87171','#a78bfa','#ec4899','#14b8a6','#f97316'];
+  for (var i = 0; i < blocks.length; i++) {
+    var b = blocks[i];
+    var color = colors[i % colors.length];
+    var pts = b.bbox;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2 * scaleX;
+    ctx.beginPath();
+    ctx.moveTo(pts[0][0], pts[0][1]);
+    for (var j = 1; j < pts.length; j++) {
+      ctx.lineTo(pts[j][0], pts[j][1]);
+    }
+    ctx.closePath();
+    ctx.stroke();
+
+    // label
+    var cx = pts.reduce(function(s, p) { return s + p[0]; }, 0) / pts.length;
+    var cy = pts.reduce(function(s, p) { return s + p[1]; }, 0) / pts.length;
+    ctx.fillStyle = color;
+    ctx.font = 'bold ' + (14 * scaleX) + 'px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('#' + (i + 1), cx, cy);
+  }
+}
+
+function displayOcrResult(data, durationMs) {
+  ocrTime.textContent = (durationMs / 1000).toFixed(2) + 's';
+
+  var blocks = data.blocks || [];
+
+  // Show image with canvas overlay
+  if (ocrCurrentFile) {
+    ocrResultImg.src = ocrCurrentFile.dataUrl;
+    ocrResultImg.onload = function() {
+      drawBboxes(ocrResultImg, ocrCanvas, blocks);
+    };
+  }
+
+  // Block list
+  if (blocks.length === 0) {
+    ocrBlocks.innerHTML = '<div style="color:var(--text2);font-size:13px;padding:12px;text-align:center;">未识别到文字</div>';
+  } else {
+    var html = '';
+    for (var i = 0; i < blocks.length; i++) {
+      var b = blocks[i];
+      var confPct = Math.round(b.confidence * 100);
+      var colors = ['#5b8def','#34d399','#f59e0b','#f87171','#a78bfa','#ec4899','#14b8a6','#f97316'];
+      var barColor = confPct > 80 ? '#34d399' : (confPct > 50 ? '#f59e0b' : '#f87171');
+      html += '<div class="ocr-block-item">' +
+        '<span class="ocr-block-num" style="color:' + colors[i % colors.length] + '">#' + (i + 1) + '</span>' +
+        '<span class="ocr-block-text">' + escapeHtml(b.text) + '</span>' +
+        '<span class="ocr-block-conf">' +
+          '<div class="ocr-conf-bar-outer"><div class="ocr-conf-bar-inner" style="width:' + confPct + '%;background:' + barColor + '"></div></div>' +
+          '<span class="ocr-conf-text">' + confPct + '%</span>' +
+        '</span>' +
+        '</div>';
+    }
+    ocrBlocks.innerHTML = html;
+  }
+
+  ocrFullText.value = data.full_text || '';
+  ocrRaw.textContent = JSON.stringify(data, null, 2);
+  ocrResult.classList.add('show');
+}
+
+async function doOcr() {
+  if (!ocrCurrentFile) return;
+  ocrBtn.classList.add('loading');
+  ocrBtn.disabled = true;
+  ocrLoadingSpinner.classList.add('show');
+  ocrResult.classList.remove('show');
+
+  var resp = await fetch(ocrCurrentFile.dataUrl);
+  var blob = await resp.blob();
+  var formData = new FormData();
+  formData.append('file', blob, ocrCurrentFile.fileName || 'card.jpg');
+
+  var t0 = performance.now();
+  try {
+    var res = await fetch(API_BASE + '/v1/ocr', { method: 'POST', body: formData });
+    var dur = performance.now() - t0;
+    var data = await res.json();
+    displayOcrResult(data, dur);
+  } catch (err) {
+    var dur = performance.now() - t0;
+    displayOcrResult({ status: 'error', total_blocks: 0, blocks: [], full_text: '', message: err.message }, dur);
+  } finally {
+    ocrBtn.classList.remove('loading');
+    ocrBtn.disabled = false;
+    ocrLoadingSpinner.classList.remove('show');
+  }
+}
+
+// ---- Health check ----
 async function checkHealth() {
   try {
-    const res = await fetch(API_BASE + '/v1/health');
+    var res = await fetch(API_BASE + '/v1/health');
     if (res.ok) {
       statusDot.className = 'status-dot ok';
       statusDot.title = 'Server OK';
@@ -371,47 +644,67 @@ async function checkHealth() {
       statusDot.className = 'status-dot err';
       statusDot.title = 'Server error';
     }
-  } catch {
+  } catch (e) {
     statusDot.className = 'status-dot err';
     statusDot.title = 'Server unreachable';
   }
 }
 
-// Events
-dropZone.addEventListener('click', () => fileInput.click());
-dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
-dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
-dropZone.addEventListener('drop', (e) => {
+// ---- Events: Search ----
+dropZone.addEventListener('click', function() { fileInput.click(); });
+dropZone.addEventListener('dragover', function(e) { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', function() { dropZone.classList.remove('drag-over'); });
+dropZone.addEventListener('drop', function(e) {
   e.preventDefault();
   dropZone.classList.remove('drag-over');
-  const file = e.dataTransfer.files[0];
+  var file = e.dataTransfer.files[0];
   if (file && file.type.startsWith('image/')) {
-    const reader = new FileReader();
-    reader.onload = (ev) => showPreview(ev.target.result, file.name);
+    var reader = new FileReader();
+    reader.onload = function(ev) { showPreview(ev.target.result, file.name); };
     reader.readAsDataURL(file);
   }
 });
 
-fileInput.addEventListener('change', () => {
-  const file = fileInput.files[0];
+fileInput.addEventListener('change', function() {
+  var file = fileInput.files[0];
   if (file) {
-    const reader = new FileReader();
-    reader.onload = (ev) => showPreview(ev.target.result, file.name);
+    var reader = new FileReader();
+    reader.onload = function(ev) { showPreview(ev.target.result, file.name); };
     reader.readAsDataURL(file);
   }
 });
 
 clearBtn.addEventListener('click', resetUpload);
-matchBtn.addEventListener('click', doMatch);
-copyBtn.addEventListener('click', () => {
-  const id = resultCardId.firstChild.textContent;
-  navigator.clipboard.writeText(id).then(() => {
-    copyBtn.textContent = '\u2713';
-    setTimeout(() => { copyBtn.textContent = '\u{1F4CB}'; }, 1500);
-  });
+searchBtn.addEventListener('click', doSearch);
+
+// ---- Events: OCR ----
+ocrDropZone.addEventListener('click', function() { ocrFileInput.click(); });
+ocrDropZone.addEventListener('dragover', function(e) { e.preventDefault(); ocrDropZone.classList.add('drag-over'); });
+ocrDropZone.addEventListener('dragleave', function() { ocrDropZone.classList.remove('drag-over'); });
+ocrDropZone.addEventListener('drop', function(e) {
+  e.preventDefault();
+  ocrDropZone.classList.remove('drag-over');
+  var file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    var reader = new FileReader();
+    reader.onload = function(ev) { ocrShowPreview(ev.target.result, file.name); };
+    reader.readAsDataURL(file);
+  }
 });
 
-// Init
+ocrFileInput.addEventListener('change', function() {
+  var file = ocrFileInput.files[0];
+  if (file) {
+    var reader = new FileReader();
+    reader.onload = function(ev) { ocrShowPreview(ev.target.result, file.name); };
+    reader.readAsDataURL(file);
+  }
+});
+
+ocrClearBtn.addEventListener('click', ocrResetUpload);
+ocrBtn.addEventListener('click', doOcr);
+
+// ---- Init ----
 checkHealth();
 setInterval(checkHealth, 30000);
 renderHistory();

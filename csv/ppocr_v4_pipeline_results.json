@@ -1,0 +1,302 @@
+[
+  {
+    "image": "f52ee7479b6-20260722-22fecf_tcg_img_1784733452824.jpg",
+    "config": "Baseline: 原图 -> PP-OCRv4",
+    "preprocess_s": 0.0,
+    "ocr_s": 4.634,
+    "total_s": 4.634,
+    "under_2s": false,
+    "blocks": 23,
+    "texts": [
+      "-30",
+      "120",
+      "OBFEN",
+      "280",
+      "retreat",
+      "217/197",
+      "weakness",
+      "resistance",
+      "STAGE2",
+      "Pidgeotex"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-22fecf_tcg_img_1784733452824.jpg",
+    "config": "Optimized: 预处理 -> PP-OCRv4",
+    "preprocess_s": 0.124,
+    "ocr_s": 3.261,
+    "total_s": 3.385,
+    "under_2s": false,
+    "blocks": 20,
+    "texts": [
+      "120",
+      "-30",
+      "retreat.",
+      "weakness",
+      "m280",
+      "STAGE2",
+      "louyoa",
+      "Abillity",
+      "resistance",
+      "Blustery_Wind"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-22fecf_tcg_img_1784733452824.jpg",
+    "config": "Aggressive: 预处理 -> PP-OCRv4 (480)",
+    "preprocess_s": 0.045,
+    "ocr_s": 4.221,
+    "total_s": 4.266,
+    "under_2s": false,
+    "blocks": 20,
+    "texts": [
+      "-30",
+      "120",
+      "4x2",
+      "retreat.",
+      "weakness",
+      "resistance",
+      "STAGE",
+      "lun.lakuyoo",
+      "m280",
+      "Ability"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-478b76_tcg_img_1784733406733.jpg",
+    "config": "Baseline: 原图 -> PP-OCRv4",
+    "preprocess_s": 0.0,
+    "ocr_s": 3.887,
+    "total_s": 3.887,
+    "under_2s": false,
+    "blocks": 16,
+    "texts": [
+      "20",
+      "SFAEN",
+      "#60",
+      "retreat",
+      "Hold Still",
+      "Razor Fin",
+      "Horsea",
+      "BASIC",
+      "weakness",
+      "resistance"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-478b76_tcg_img_1784733406733.jpg",
+    "config": "Optimized: 预处理 -> PP-OCRv4",
+    "preprocess_s": 0.035,
+    "ocr_s": 2.416,
+    "total_s": 2.451,
+    "under_2s": false,
+    "blocks": 18,
+    "texts": [
+      "×2",
+      "\"60",
+      "SFAEN",
+      "retreat",
+      "me",
+      "Hold Still",
+      "BASIC",
+      "Horsea",
+      "Razor Fin",
+      "resistance"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-478b76_tcg_img_1784733406733.jpg",
+    "config": "Aggressive: 预处理 -> PP-OCRv4 (480)",
+    "preprocess_s": 0.042,
+    "ocr_s": 3.897,
+    "total_s": 3.939,
+    "under_2s": false,
+    "blocks": 12,
+    "texts": [
+      "SFAEN",
+      "60@",
+      "Hold Still",
+      "retreat",
+      "Horsea",
+      "BASIC",
+      "weakness",
+      "RazorFin",
+      "067/064",
+      "Heal 30 damage from this Pokemon."
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-6b06d9_tcg_img_1784681034847.jpg",
+    "config": "Baseline: 原图 -> PP-OCRv4",
+    "preprocess_s": 0.0,
+    "ocr_s": 3.295,
+    "total_s": 3.295,
+    "under_2s": false,
+    "blocks": 9,
+    "texts": [
+      "DARK",
+      "SDJ-001",
+      "74677422",
+      "1*Edition",
+      "[DRAGON]",
+      "CYES BDRA",
+      "1996 KAZUKI TAKAHASINI",
+      "ATK/2400 DEF/2000",
+      "Aferocious dragonwith a deadly attack"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-6b06d9_tcg_img_1784681034847.jpg",
+    "config": "Optimized: 预处理 -> PP-OCRv4",
+    "preprocess_s": 0.035,
+    "ocr_s": 1.725,
+    "total_s": 1.759,
+    "under_2s": true,
+    "blocks": 7,
+    "texts": [
+      "74677422",
+      "AHASII",
+      "1Edition",
+      "[DRAGON]",
+      "REn.YEs BDRAo",
+      "ATK/2400 DEF/2000",
+      "Aferocious dragon with a deadty attack"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-6b06d9_tcg_img_1784681034847.jpg",
+    "config": "Aggressive: 预处理 -> PP-OCRv4 (480)",
+    "preprocess_s": 0.041,
+    "ocr_s": 1.592,
+    "total_s": 1.633,
+    "under_2s": true,
+    "blocks": 5,
+    "texts": [
+      "74677422",
+      "1Edition",
+      "[DRAGON]",
+      "ATK/2400 DEF/2000",
+      "A ferocious dragon with a deadly attack."
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-6f2859_tcg_img_1784681052355.jpg",
+    "config": "Baseline: 原图 -> PP-OCRv4",
+    "preprocess_s": 0.0,
+    "ocr_s": 2.841,
+    "total_s": 2.841,
+    "under_2s": false,
+    "blocks": 8,
+    "texts": [
+      "SDY-007",
+      "06368038",
+      "[WARRIOR]",
+      "GAIA THE FIERCE KNIGHT",
+      "ATK/2300 DEF/2100",
+      "Q1996KAZUKI TAKAHASHI",
+      "battle-chargeisa force to bereckonedwith.",
+      "A knight whose horse travels faster than the wind. His"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-6f2859_tcg_img_1784681052355.jpg",
+    "config": "Optimized: 预处理 -> PP-OCRv4",
+    "preprocess_s": 0.039,
+    "ocr_s": 2.994,
+    "total_s": 3.033,
+    "under_2s": false,
+    "blocks": 8,
+    "texts": [
+      "06368038",
+      "SDY-007",
+      "[WARRIOR]",
+      "GAIA THE FIERCE KNIGHT",
+      "ATK/2300DEF/2100",
+      "O1996KAZUKITAKAHASHI",
+      "battle-chargeisaforce to bereckonedwith.",
+      "A knight whose horse travels faster than the wind.His"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-6f2859_tcg_img_1784681052355.jpg",
+    "config": "Aggressive: 预处理 -> PP-OCRv4 (480)",
+    "preprocess_s": 0.042,
+    "ocr_s": 4.517,
+    "total_s": 4.558,
+    "under_2s": false,
+    "blocks": 8,
+    "texts": [
+      "SDY-007",
+      "06368038",
+      "WARRIOR]",
+      "ATK/2300DEF/2100",
+      "O1996KAZUKI TAKAHASHI",
+      "GAIA THE FIERCE KNIGHT",
+      "battle-chargeisaforce to bereckonedwith.",
+      "A knight whose horse travels faster than the wind. His"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-8429dd_tcg_img_1784733651104.jpg",
+    "config": "Baseline: 原图 -> PP-OCRv4",
+    "preprocess_s": 0.0,
+    "ocr_s": 5.699,
+    "total_s": 5.699,
+    "under_2s": false,
+    "blocks": 27,
+    "texts": [
+      "180",
+      "×2",
+      "SCREN",
+      "110+",
+      "#260",
+      "retreat",
+      "Tera",
+      "Fulgurite",
+      "weakness",
+      "159/142"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-8429dd_tcg_img_1784733651104.jpg",
+    "config": "Optimized: 预处理 -> PP-OCRv4",
+    "preprocess_s": 0.037,
+    "ocr_s": 3.518,
+    "total_s": 3.555,
+    "under_2s": false,
+    "blocks": 23,
+    "texts": [
+      "180",
+      "110+",
+      "260",
+      "SCREW",
+      "retreat",
+      "159/142",
+      "weakness",
+      "STAGEI",
+      "resistance",
+      "Tera"
+    ]
+  },
+  {
+    "image": "f52ee7479b6-20260722-8429dd_tcg_img_1784733651104.jpg",
+    "config": "Aggressive: 预处理 -> PP-OCRv4 (480)",
+    "preprocess_s": 0.037,
+    "ocr_s": 2.955,
+    "total_s": 2.992,
+    "under_2s": false,
+    "blocks": 23,
+    "texts": [
+      "x2",
+      "10-",
+      "260",
+      "180",
+      "SCREN",
+      "Tera",
+      "weakness",
+      "159/142",
+      "yourc",
+      "Charged"
+    ]
+  }
+]
