@@ -96,18 +96,29 @@
   .btn.loading .label { display: none; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* Search result */
-  .search-result { display: none; margin-top: 16px; }
-  .search-result.show { display: block; }
-  .search-result .card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 16px; overflow: hidden;
-  }
-  .search-header {
-    display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
-  }
-  .search-header .label { font-size: 13px; font-weight: 600; color: var(--text); }
-  .search-header .time { font-size: 12px; color: var(--text2); margin-left: auto; }
+/* Search result */
+ .search-result { display: none; margin-top: 16px; }
+ .search-result.show { display: block; }
+ .search-result .card {
+   background: var(--surface); border: 1px solid var(--border);
+   border-radius: var(--radius); padding: 16px; overflow: hidden;
+ }
+ .search-header {
+   display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+ }
+ .search-header .label { font-size: 13px; font-weight: 600; color: var(--text); }
+ .search-header .time { font-size: 12px; color: var(--text2); margin-left: auto; }
+
+  .preprocess-result { display: none; margin-bottom: 12px; padding: 10px; background: var(--surface2); border-radius: 6px; }
+  .preprocess-result.show { display: block; }
+  .preprocess-header { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+  .preprocess-header .label { font-size: 11px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; }
+  .preprocess-result img { width: 100%; max-height: 180px; object-fit: contain; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); }
+  .preprocess-hint { font-size: 11px; color: var(--text2); margin-top: 4px; opacity: 0.6; }
+
+  .warnings-bar { display: none; margin-bottom: 12px; padding: 10px 12px; background: rgba(245,158,11,0.10); border: 1px solid rgba(245,158,11,0.45); border-radius: 6px; color: #fbbf24; font-size: 13px; }
+  .warnings-bar.show { display: block; }
+  .warnings-bar div { margin: 2px 0; }
 
   .top5-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
   .top5-item {
@@ -115,15 +126,21 @@
     padding: 10px 12px; border-radius: 6px; background: var(--surface2);
     border: 1px solid transparent; transition: border-color 0.15s;
   }
-  .top5-item:first-child { border-color: rgba(91,141,239,0.4); }
+  .top5-wrap:first-child .top5-item { border-color: rgba(91,141,239,0.4); }
   .top5-rank { font-size: 12px; font-weight: 700; min-width: 20px; text-align: center; color: var(--text2); }
-  .top5-item:first-child .top5-rank { color: var(--accent); font-size: 14px; }
-  .top5-item img { width: 48px; height: 48px; object-fit: cover; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); flex-shrink: 0; }
-  .top5-id { font-family: monospace; font-size: 14px; font-weight: 500; flex: 1; }
+  .top5-wrap:first-child .top5-rank { color: var(--accent); font-size: 14px; }
+  .top5-item img { width: 48px; height: 48px; object-fit: cover; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); flex-shrink: 0; cursor: zoom-in; }
+  .top5-info { flex: 1; min-width: 0; }
+  .top5-name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .top5-sub { font-family: monospace; font-size: 11px; color: var(--text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .top5-score { font-family: monospace; font-size: 13px; color: var(--text2); }
   .top5-bar-outer { width: 60px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
   .top5-bar-inner { height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.4s ease; }
-  .top5-item:first-child .top5-bar-inner { background: var(--green); }
+  .top5-wrap:first-child .top5-bar-inner { background: var(--green); }
+  .top5-json { padding: 0 12px 8px; }
+  .top5-json summary { font-size: 11px; color: var(--text2); cursor: pointer; user-select: none; }
+  .top5-json summary:hover { color: var(--accent); }
+  .top5-json pre { margin: 6px 0 0; padding: 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; font-size: 11px; line-height: 1.5; max-height: 240px; overflow: auto; white-space: pre-wrap; word-break: break-all; }
   .top5-empty { color: var(--text2); font-size: 13px; text-align: center; padding: 24px; }
 
   .result-detail { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
@@ -184,6 +201,26 @@
   .ocr-raw .label { font-size: 11px; color: var(--text2); margin-bottom: 4px; }
   .ocr-raw .value { font-size: 13px; font-family: monospace; color: var(--text2); }
 
+  /* OCR match */
+  .ocrmatch-result { display: none; margin-top: 16px; }
+  .ocrmatch-result.show { display: block; }
+  .ocrmatch-result .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px; overflow: hidden;
+  }
+  .ocrmatch-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+  }
+  .ocrmatch-header .label { font-size: 13px; font-weight: 600; color: var(--text); }
+  .ocrmatch-header .time { font-size: 12px; color: var(--text2); margin-left: auto; }
+  .ocrmatch-query {
+    margin-bottom: 12px; padding: 8px 10px; background: var(--surface2);
+    border-radius: 6px; font-family: monospace; font-size: 12px;
+    color: var(--text2); max-height: 100px; overflow: auto; white-space: pre-wrap;
+  }
+  .ocrmatch-query .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+  .ocrmatch-list:first-child .top5-item { border-color: rgba(245,158,11,0.4); }
+
   .history { margin-top: 24px; }
   .history h2 { font-size: 14px; font-weight: 500; color: var(--text2); margin-bottom: 8px; }
   .history-list { display: flex; flex-direction: column; gap: 4px; }
@@ -205,6 +242,23 @@
   .spinner-full .ring {
     width: 24px; height: 24px; border: 3px solid var(--border);
     border-top-color: var(--accent); border-radius: 50%; animation: spin 0.6s linear infinite;
+  }
+
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.88); cursor: zoom-out;
+    align-items: center; justify-content: center;
+  }
+  .lightbox.show { display: flex; }
+  .lightbox img {
+    max-width: 92vw; max-height: 88vh; border-radius: 8px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.7); background: var(--surface);
+  }
+  .lightbox .lb-id {
+    position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    font-family: monospace; font-size: 14px; color: var(--text);
+    background: var(--surface2); border: 1px solid var(--border);
+    padding: 4px 12px; border-radius: 6px;
   }
 
   @media (max-width: 480px) {
@@ -251,6 +305,14 @@
 
     <div class="search-result" id="searchResult">
       <div class="card">
+        <div class="warnings-bar" id="searchWarnings"></div>
+        <div class="preprocess-result" id="searchPreprocess">
+          <div class="preprocess-header">
+            <span class="label">&#x1F4F0; 预处理结果</span>
+          </div>
+          <img id="searchPreprocessImg" alt="预处理">
+          <div class="preprocess-hint">方向校正后 — 输入到 DINOv2 模型的图像</div>
+        </div>
         <div class="search-header">
           <span class="label">&#x1F50D; 搜索结果</span>
           <span class="time" id="searchTime"></span>
@@ -283,6 +345,10 @@
           <span class="spinner"></span>
           <span class="label">&#x1F50D; 识别文字</span>
         </button>
+        <button class="btn primary" id="ocrMatchBtn">
+          <span class="spinner"></span>
+          <span class="label">&#x1F9E9; 文字匹配 Top-5</span>
+        </button>
       </div>
     </div>
 
@@ -292,6 +358,14 @@
 
     <div class="ocr-result" id="ocrResult">
       <div class="card">
+        <div class="warnings-bar" id="ocrWarnings"></div>
+        <div class="preprocess-result" id="ocrPreprocess">
+          <div class="preprocess-header">
+            <span class="label">&#x1F4F0; 预处理结果</span>
+          </div>
+          <img id="ocrPreprocessImg" alt="预处理">
+          <div class="preprocess-hint">CLAHE 对比度增强 + 去噪 + 锐化 — 输入到 PP-OCRv4 模型</div>
+        </div>
         <div class="ocr-header">
           <span class="label">&#x1F4DD; 识别结果</span>
           <span class="time" id="ocrTime"></span>
@@ -311,6 +385,31 @@
         </div>
       </div>
     </div>
+
+    <div class="ocrmatch-result" id="ocrMatchResult">
+      <div class="card">
+        <div class="warnings-bar" id="ocrMatchWarnings"></div>
+        <div class="preprocess-result" id="ocrMatchPreprocess">
+          <div class="preprocess-header">
+            <span class="label">&#x1F4F0; 预处理结果</span>
+          </div>
+          <img id="ocrMatchPreprocessImg" alt="预处理">
+          <div class="preprocess-hint">CLAHE 增强 + PP-OCRv4 识别 → bge-small 向量匹配</div>
+        </div>
+        <div class="ocrmatch-header">
+          <span class="label">&#x1F9E9; 文字相似度匹配 Top-5</span>
+          <span class="time" id="ocrMatchTime"></span>
+        </div>
+        <div class="ocrmatch-query" id="ocrMatchQuery"></div>
+        <div class="top5-list ocrmatch-list" id="ocrMatchList">
+          <div class="top5-empty">无结果</div>
+        </div>
+        <div class="result-detail">
+          <div class="label">原始响应</div>
+          <div class="value" id="ocrMatchRaw"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="history">
@@ -319,6 +418,11 @@
       <div class="history-empty">暂无记录</div>
     </div>
   </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <div class="lb-id" id="lightboxId"></div>
+  <img id="lightboxImg" alt="放大查看">
 </div>
 
 <script>
@@ -354,6 +458,14 @@ var ocrCanvas = document.getElementById('ocrCanvas');
 var ocrBlocks = document.getElementById('ocrBlocks');
 var ocrFullText = document.getElementById('ocrFullText');
 var ocrRaw = document.getElementById('ocrRaw');
+
+// ---- OCR match ----
+var ocrMatchBtn = document.getElementById('ocrMatchBtn');
+var ocrMatchResult = document.getElementById('ocrMatchResult');
+var ocrMatchTime = document.getElementById('ocrMatchTime');
+var ocrMatchQuery = document.getElementById('ocrMatchQuery');
+var ocrMatchList = document.getElementById('ocrMatchList');
+var ocrMatchRaw = document.getElementById('ocrMatchRaw');
 
 var currentFile = null;
 var ocrCurrentFile = null;
@@ -421,6 +533,17 @@ function escapeHtml(s) {
   return d.innerHTML;
 }
 
+function renderWarnings(el, warnings) {
+  if (warnings && warnings.length) {
+    el.innerHTML = warnings.map(function(w) {
+      return '<div>⚠ ' + escapeHtml(w) + '</div>';
+    }).join('');
+    el.classList.add('show');
+  } else {
+    el.classList.remove('show');
+  }
+}
+
 // ---- Search preview ----
 function showPreview(dataUrl, fileName) {
   previewImg.src = dataUrl;
@@ -455,10 +578,21 @@ function ocrResetUpload() {
   ocrCurrentFile = null;
   ocrFileInput.value = '';
   ocrResult.classList.remove('show');
+  ocrMatchResult.classList.remove('show');
 }
 
 // ---- Search ----
 function displaySearchResult(data, durationMs) {
+  var preprocessEl = document.getElementById('searchPreprocess');
+  var preprocessImg = document.getElementById('searchPreprocessImg');
+  if (data.preprocessed_image) {
+    preprocessImg.src = 'data:image/jpeg;base64,' + data.preprocessed_image;
+    preprocessEl.classList.add('show');
+  } else {
+    preprocessEl.classList.remove('show');
+  }
+  renderWarnings(document.getElementById('searchWarnings'), data.warnings);
+
   searchTime.textContent = (durationMs / 1000).toFixed(2) + 's';
 
   var results = data.results || [];
@@ -470,12 +604,18 @@ function displaySearchResult(data, durationMs) {
     for (var k = 0; k < results.length; k++) {
       var r = results[k];
       var barPct = Math.min(100, (r.score / maxScore) * 100);
-      html += '<div class="top5-item">' +
+      html += '<div class="top5-wrap">' +
+        '<div class="top5-item">' +
         '<span class="top5-rank">#' + r.rank + '</span>' +
-        '<img src="/v1/images/' + encodeURIComponent(r.card_id) + '" alt="' + escapeHtml(r.card_id) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
-        '<span class="top5-id">' + escapeHtml(r.card_id) + '</span>' +
+        '<img src="/v1/images/' + encodeURIComponent(r.card_id) + '" alt="' + escapeHtml(r.card_id) + '" data-id="' + escapeHtml(r.card_id) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
+        '<div class="top5-info">' +
+        '<div class="top5-name">' + escapeHtml(r.product_name || r.card_id) + '</div>' +
+        '<div class="top5-sub">' + escapeHtml(r.card_id) + '</div>' +
+        '</div>' +
         '<span class="top5-score">' + r.score.toFixed(4) + '</span>' +
         '<div class="top5-bar-outer"><div class="top5-bar-inner" style="width:' + barPct + '%"></div></div>' +
+        '</div>' +
+        (r.product ? '<details class="top5-json"><summary>JSON 详情</summary><pre>' + escapeHtml(JSON.stringify(r.product, null, 2)) + '</pre></details>' : '') +
         '</div>';
     }
     top5List.innerHTML = html;
@@ -566,17 +706,29 @@ function drawBboxes(imgEl, canvas, blocks) {
 }
 
 function displayOcrResult(data, durationMs) {
+  var preprocessEl = document.getElementById('ocrPreprocess');
+  var preprocessImg = document.getElementById('ocrPreprocessImg');
+  if (data.preprocessed_image) {
+    preprocessImg.src = 'data:image/jpeg;base64,' + data.preprocessed_image;
+    preprocessEl.classList.add('show');
+  } else {
+    preprocessEl.classList.remove('show');
+  }
+  renderWarnings(document.getElementById('ocrWarnings'), data.warnings);
+
   ocrTime.textContent = (durationMs / 1000).toFixed(2) + 's';
 
   var blocks = data.blocks || [];
 
-  // Show image with canvas overlay
-  if (ocrCurrentFile) {
+  // Show preprocessed image as the base: bbox coordinates are in its space
+  if (data.preprocessed_image) {
+    ocrResultImg.src = 'data:image/jpeg;base64,' + data.preprocessed_image;
+  } else if (ocrCurrentFile) {
     ocrResultImg.src = ocrCurrentFile.dataUrl;
-    ocrResultImg.onload = function() {
-      drawBboxes(ocrResultImg, ocrCanvas, blocks);
-    };
   }
+  ocrResultImg.onload = function() {
+    drawBboxes(ocrResultImg, ocrCanvas, blocks);
+  };
 
   // Block list
   if (blocks.length === 0) {
@@ -632,6 +784,115 @@ async function doOcr() {
     ocrLoadingSpinner.classList.remove('show');
   }
 }
+
+// ---- OCR match: OCR text -> bge embedding -> product text-index top-5 ----
+function displayOcrMatchResult(data, durationMs) {
+  var preprocessEl = document.getElementById('ocrMatchPreprocess');
+  var preprocessImg = document.getElementById('ocrMatchPreprocessImg');
+  if (data.preprocessed_image) {
+    preprocessImg.src = 'data:image/jpeg;base64,' + data.preprocessed_image;
+    preprocessEl.classList.add('show');
+  } else {
+    preprocessEl.classList.remove('show');
+  }
+  renderWarnings(document.getElementById('ocrMatchWarnings'), data.warnings);
+
+  ocrMatchTime.textContent = (durationMs / 1000).toFixed(2) + 's';
+
+  ocrMatchQuery.innerHTML = '<span class="label">OCR 识别文字（用于匹配）</span>' + escapeHtml(data.query_text || '(空)');
+
+  var results = data.results || [];
+  if (results.length === 0) {
+    ocrMatchList.innerHTML = '<div class="top5-empty">无结果</div>';
+  } else {
+    var maxScore = results[0].score;
+    var html = '';
+    for (var k = 0; k < results.length; k++) {
+      var r = results[k];
+      var barPct = Math.min(100, (r.score / maxScore) * 100);
+      var imgId = r.product_id + '_200w';
+      var sub = [r.set_name, r.number, r.rarity].filter(Boolean).join(' · ');
+      html += '<div class="top5-wrap">' +
+        '<div class="top5-item">' +
+        '<span class="top5-rank">#' + r.rank + '</span>' +
+        (r.has_image
+          ? '<img src="/v1/images/' + encodeURIComponent(imgId) + '" alt="' + escapeHtml(imgId) + '" data-id="' + escapeHtml(imgId) + '" loading="lazy" onerror="this.style.display=\'none\'">'
+          : '<img src="" alt="无图片" style="display:none">') +
+        '<div class="top5-info">' +
+        '<div class="top5-name">' + escapeHtml(r.product_name || r.product_id) + '</div>' +
+        '<div class="top5-sub">' + escapeHtml(sub || r.product_id) + '</div>' +
+        '</div>' +
+        '<span class="top5-score">' + r.score.toFixed(4) + '</span>' +
+        '<div class="top5-bar-outer"><div class="top5-bar-inner" style="width:' + barPct + '%"></div></div>' +
+        '</div>' +
+        (r.product && Object.keys(r.product).length
+          ? '<details class="top5-json"><summary>JSON 详情</summary><pre>' + escapeHtml(JSON.stringify(r.product, null, 2)) + '</pre></details>'
+          : '') +
+        '</div>';
+    }
+    ocrMatchList.innerHTML = html;
+  }
+
+  ocrMatchRaw.textContent = JSON.stringify(data, null, 2);
+  ocrMatchResult.classList.add('show');
+}
+
+async function doOcrMatch() {
+  if (!ocrCurrentFile) return;
+  ocrMatchBtn.classList.add('loading');
+  ocrMatchBtn.disabled = true;
+  ocrLoadingSpinner.classList.add('show');
+  ocrMatchResult.classList.remove('show');
+
+  var resp = await fetch(ocrCurrentFile.dataUrl);
+  var blob = await resp.blob();
+  var formData = new FormData();
+  formData.append('file', blob, ocrCurrentFile.fileName || 'card.jpg');
+
+  var t0 = performance.now();
+  try {
+    var res = await fetch(API_BASE + '/v1/ocr-match', { method: 'POST', body: formData });
+    var dur = performance.now() - t0;
+    var data = await res.json();
+    displayOcrMatchResult(data, dur);
+  } catch (err) {
+    var dur = performance.now() - t0;
+    displayOcrMatchResult({ status: 'error', query_text: '', results: [], message: err.message }, dur);
+  } finally {
+    ocrMatchBtn.classList.remove('loading');
+    ocrMatchBtn.disabled = false;
+    ocrLoadingSpinner.classList.remove('show');
+  }
+}
+
+// ---- Lightbox: click a top-5 thumbnail to zoom ----
+var lightbox = document.getElementById('lightbox');
+var lightboxImg = document.getElementById('lightboxImg');
+var lightboxId = document.getElementById('lightboxId');
+
+function openLightbox(cardId) {
+  lightboxImg.src = '/v1/images/' + encodeURIComponent(cardId);
+  lightboxId.textContent = cardId;
+  lightbox.classList.add('show');
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('show');
+  lightboxImg.src = '';
+}
+
+top5List.addEventListener('click', function(e) {
+  var img = e.target.closest('.top5-item img');
+  if (img) openLightbox(img.getAttribute('data-id'));
+});
+ocrMatchList.addEventListener('click', function(e) {
+  var img = e.target.closest('.top5-item img');
+  if (img) openLightbox(img.getAttribute('data-id'));
+});
+lightbox.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
 
 // ---- Health check ----
 async function checkHealth() {
@@ -703,6 +964,7 @@ ocrFileInput.addEventListener('change', function() {
 
 ocrClearBtn.addEventListener('click', ocrResetUpload);
 ocrBtn.addEventListener('click', doOcr);
+ocrMatchBtn.addEventListener('click', doOcrMatch);
 
 // ---- Init ----
 checkHealth();

@@ -1,0 +1,5 @@
+build_time_s: 2273.0
+embedding_count: 28378
+embedding_dim: 768
+index_type: IndexFlatIP
+source: category_cards_search/03_Pokemon/images

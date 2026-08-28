@@ -1,0 +1,5 @@
+model: BAAI/bge-small-en-v1.5
+embedding_count: 29408
+embedding_dim: 384
+build_time_s: 398.0
+source: category_cards_search\03_Pokemon\products.jsonl

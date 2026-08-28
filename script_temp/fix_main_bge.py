@@ -1,0 +1,10 @@
+import os
+content = open("D:/Code2026/tcg-embedding-service/app/main.py", "r", encoding="utf-8").read()
+hub_path = os.path.expanduser("~/.cache/huggingface/hub")
+snap_dir = os.path.join(hub_path, "models--BAAI--bge-small-en-v1.5", "snapshots")
+snaps = os.listdir(snap_dir)
+local_path = os.path.join(snap_dir, snaps[0]).replace("\\", "/")
+content = content.replace('BGE_MODEL_NAME = "BAAI/bge-small-en-v1.5"', 'BGE_MODEL_NAME = "' + local_path + '"')
+content = content.replace('text_model = SentenceTransformer(BGE_MODEL_NAME, device="cpu")', 'text_model = SentenceTransformer(BGE_MODEL_NAME, device="cpu", model_kwargs={"low_cpu_mem_usage": True})')
+open("D:/Code2026/tcg-embedding-service/app/main.py", "w", encoding="utf-8").write(content)
+print("OK")
