@@ -35,3 +35,14 @@ venv/
 # 临时文件
 tmp/
 temp/
+
+
+# Large model files (regenerate or download)
+script_temp/bge_model/pytorch_model.bin
+script_temp/bge_model.bin
+pokemon-index/embeddings.npy
+text-index/embeddings.npy
+
+# Generated index files
+pokemon-index/embeddings.npy
+text-index/embeddings.npy
