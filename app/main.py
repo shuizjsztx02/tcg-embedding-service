@@ -80,6 +80,8 @@ class SearchResult(BaseModel):
     rank: int
     card_id: str
     score: float
+    product_name: str = ""
+    product: dict | None = None
 
 class SearchResponse(BaseModel):
     status: str
@@ -192,7 +194,7 @@ async def startup():
     log.info("Loading DINOv2 model...")
     model = load_model()
     log.info(f"Model loaded in {time.time()-t0:.1f}s")
-    index_dir = os.path.join(ROOT, "index")
+    index_dir = POKEMON_INDEX_DIR
     index_emb = np.load(os.path.join(index_dir, "embeddings.npy"))
     with open(os.path.join(index_dir, "ids.json"), "r", encoding="utf-8") as f:
         index_ids = json.load(f)
@@ -258,7 +260,6 @@ async def match(file: UploadFile = File(...)):
             raise HTTPException(400, "Only image files are supported")
         img = Image.open(io.BytesIO(contents))
         img.load()
-        img = preprocess_query(img)
     except HTTPException:
         raise
     except Exception as e:
@@ -304,7 +305,6 @@ async def search(file: UploadFile = File(...)):
             raise HTTPException(400, "Only image files are supported")
         img = Image.open(io.BytesIO(contents))
         img.load()
-        img = preprocess_query(img)
     except HTTPException:
         raise
     except Exception as e:
@@ -326,7 +326,16 @@ async def search(file: UploadFile = File(...)):
     results = []
     for k in range(5):
         card_id = index_ids[int(indices[0, k])]
-        results.append(SearchResult(rank=k + 1, card_id=card_id, score=round(float(scores[0, k]), 4)))
+        pid = card_id.removesuffix("_200w")
+        product = products.get(pid)
+        product_name = product.get("productName", card_id) if product else card_id
+        results.append(SearchResult(
+            rank=k + 1,
+            card_id=card_id,
+            score=round(float(scores[0, k]), 4),
+            product_name=product_name,
+            product=product,
+        ))
     log.info(f"SEARCH top1={results[0].card_id} score={results[0].score:.4f} ({elapsed:.0f}ms)")
     return SearchResponse(status="ok", query_time_ms=round(elapsed, 1), results=results, preprocessed_image=preprocessed_b64)
 
