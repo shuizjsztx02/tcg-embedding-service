@@ -1,4 +1,0 @@
-build_time_s: 943.7
-embedding_count: 9434
-embedding_dim: 768
-index_type: IndexFlatIP
