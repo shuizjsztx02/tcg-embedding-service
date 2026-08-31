@@ -43,6 +43,38 @@ script_temp/bge_model.bin
 pokemon-index/embeddings.npy
 text-index/embeddings.npy
 
+# Local datasets and generated results: never commit these files.
+test-images/
+test-images-v2/
+test-results*/
+category_cards_search/
+pokemon_cards/
+csv/
+pokemon-index/
+text-index/
+models/
+.easyocr_models/
+script_temp/bge_model/
+script_temp/ppocr_v4_models/
+script_temp/ppocr_v4_models_extracted/
+script_temp/_shot*.png
+script_temp/_test*.txt
+/_api_test*.json
+/ai-annotations.json
+/visual-annotations.jsonl*
+/search_raw.json
+/search_resp*.json
+/$null
+*.xlsx
+*.zip
+*.tar
+*.tar.gz
+*.csv
+*.jsonl
+*.jsonl.bak
+*.npy
+*.npz
+
 # Generated index files
 pokemon-index/embeddings.npy
 text-index/embeddings.npy
