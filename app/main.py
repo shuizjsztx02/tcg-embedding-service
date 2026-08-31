@@ -21,7 +21,8 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "script_temp"))
-from preprocess import orientation_candidates, to_model_input, preprocess_query, preprocess_for_ocr, preprocess_for_search
+from preprocess import to_model_input, preprocess_query, preprocess_for_ocr, preprocess_for_search
+from dino_search import search_image
 from preprocess_ocr import OCRPreprocessor
 from ppocr_v4_engine import PPOCRv4Engine
 
@@ -30,8 +31,6 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 log = logging.getLogger(__name__)
 
 # ---- Constants ----
-MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
-STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 MAX_FILE_SIZE = 10 * 1024 * 1024
 
 TAU = float(os.environ.get("MATCH_TAU", "0.775"))
@@ -75,6 +74,8 @@ class MatchResponse(BaseModel):
     margin: float | None = None
     top2_id: str | None = None
     top2_score: float | None = None
+    warnings: list[str] = []
+    preprocessing: dict | None = None
 
 class SearchResult(BaseModel):
     rank: int
@@ -89,6 +90,7 @@ class SearchResponse(BaseModel):
     results: list[SearchResult]
     preprocessed_image: str | None = None
     warnings: list[str] = []
+    preprocessing: dict | None = None
 
 class OCRBlock(BaseModel):
     text: str
@@ -132,21 +134,6 @@ def load_model():
         m = AutoModel.from_pretrained("facebook/dinov2-base")
     m.eval()
     return m
-
-def to_tensor(img):
-    arr = np.asarray(img, dtype=np.float32) / 255.0
-    arr = (arr - MEAN) / STD
-    return torch.from_numpy(arr.transpose(2, 0, 1)[None]).float()
-
-@torch.no_grad()
-def embed_single(model, img):
-    x = to_tensor(img)
-    out = model(x)
-    if out.dim() == 3:
-        out = out[:, 0]
-    f = out.numpy().astype(np.float32)
-    n = np.linalg.norm(f)
-    return f / n if n > 0 else f
 
 def run_ocr(img_pil):
     """Run OCR with 180-deg rotation retry fallback."""
@@ -264,21 +251,17 @@ async def match(file: UploadFile = File(...)):
         raise
     except Exception as e:
         raise HTTPException(400, f"Invalid image: {e}")
-    cands = list(orientation_candidates(img))
-    best_score = -1.0; best_idx = -1; best_top2_score = -1.0; best_top2_idx = -1
-    for cand in cands:
-        inp = to_model_input(cand)
-        feat = embed_single(model, inp)
-        scores, indices = faiss_index.search(feat.reshape(1, -1), 3)
-        s0 = float(scores[0, 0]); s1 = float(scores[0, 1])
-        if s0 > best_score:
-            best_score = s0; best_idx = int(indices[0, 0]); best_top2_score = s1; best_top2_idx = int(indices[0, 1])
-    top1_id = index_ids[best_idx]; top2_id = index_ids[best_top2_idx]; margin = best_score - best_top2_score
+    if model is None or faiss_index is None or faiss_index.ntotal < 2:
+        raise HTTPException(503, "DINO index is not ready for matching")
+    ranked, _, meta = search_image(img, model, faiss_index, index_ids)
+    top1_id = ranked[0]["card_id"]; top2_id = ranked[1]["card_id"]
+    best_score = ranked[0]["score"]; best_top2_score = ranked[1]["score"]
+    margin = best_score - best_top2_score
     if best_score >= TAU and margin >= MARGIN:
         log.info(f"MATCH {top1_id} score={best_score:.4f} margin={margin:.4f} ({time.time()-t0:.2f}s)")
-        return MatchResponse(status="matched", card_id=top1_id, score=round(best_score, 4), margin=round(margin, 4), top2_id=top2_id, top2_score=round(best_top2_score, 4))
+        return MatchResponse(status="matched", card_id=top1_id, score=round(best_score, 4), margin=round(margin, 4), top2_id=top2_id, top2_score=round(best_top2_score, 4), warnings=meta["warnings"], preprocessing=meta)
     log.info(f"REJECT score={best_score:.4f} margin={margin:.4f} ({time.time()-t0:.2f}s)")
-    return MatchResponse(status="rejected", score=round(best_score, 4), margin=round(margin, 4), top2_id=top2_id if best_score >= TAU else None, top2_score=round(best_top2_score, 4) if best_score >= TAU else None)
+    return MatchResponse(status="rejected", score=round(best_score, 4), margin=round(margin, 4), top2_id=top2_id if best_score >= TAU else None, top2_score=round(best_top2_score, 4) if best_score >= TAU else None, warnings=meta["warnings"], preprocessing=meta)
 
 @app.get("/v1/images/{card_id}")
 async def get_image(card_id: str):
@@ -309,35 +292,28 @@ async def search(file: UploadFile = File(...)):
         raise
     except Exception as e:
         raise HTTPException(400, f"Invalid image: {e}")
-    cands = list(orientation_candidates(img))
-    best_score = -1.0; best_feat = None; best_cand = None
-    for cand in cands:
-        inp = to_model_input(cand)
-        feat = embed_single(model, inp)
-        scores, indices = faiss_index.search(feat.reshape(1, -1), 5)
-        s0 = float(scores[0, 0])
-        if s0 > best_score:
-            best_score = s0; best_feat = feat; best_cand = cand
+    if model is None or faiss_index is None or faiss_index.ntotal == 0:
+        raise HTTPException(503, "DINO index is not ready for searching")
+    ranked, best_cand, meta = search_image(img, model, faiss_index, index_ids)
     _buf = io.BytesIO()
-    best_cand.save(_buf, format="JPEG", quality=85)
+    to_model_input(best_cand).save(_buf, format="JPEG", quality=95)
     preprocessed_b64 = base64.b64encode(_buf.getvalue()).decode()
-    scores, indices = faiss_index.search(best_feat.reshape(1, -1), 5)
     elapsed = (time.time() - t0) * 1000
     results = []
-    for k in range(5):
-        card_id = index_ids[int(indices[0, k])]
+    for k, row in enumerate(ranked):
+        card_id = row["card_id"]
         pid = card_id.removesuffix("_200w")
         product = products.get(pid)
         product_name = product.get("productName", card_id) if product else card_id
         results.append(SearchResult(
             rank=k + 1,
             card_id=card_id,
-            score=round(float(scores[0, k]), 4),
+            score=round(row["score"], 4),
             product_name=product_name,
             product=product,
         ))
     log.info(f"SEARCH top1={results[0].card_id} score={results[0].score:.4f} ({elapsed:.0f}ms)")
-    return SearchResponse(status="ok", query_time_ms=round(elapsed, 1), results=results, preprocessed_image=preprocessed_b64)
+    return SearchResponse(status="ok", query_time_ms=round(elapsed, 1), results=results, preprocessed_image=preprocessed_b64, warnings=meta["warnings"], preprocessing=meta)
 
 @app.post("/v1/ocr", response_model=OCRResponse)
 async def ocr(file: UploadFile = File(...)):

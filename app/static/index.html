@@ -311,7 +311,7 @@
             <span class="label">&#x1F4F0; 预处理结果</span>
           </div>
           <img id="searchPreprocessImg" alt="预处理">
-          <div class="preprocess-hint">方向校正后 — 输入到 DINOv2 模型的图像</div>
+          <div class="preprocess-hint" id="searchPreprocessHint">DINOv2 输入预览（168 × 224，归一化前）</div>
         </div>
         <div class="search-header">
           <span class="label">&#x1F50D; 搜索结果</span>
@@ -592,6 +592,15 @@ function displaySearchResult(data, durationMs) {
     preprocessEl.classList.remove('show');
   }
   renderWarnings(document.getElementById('searchWarnings'), data.warnings);
+  var prep = data.preprocessing;
+  var hint = 'DINOv2 输入预览（168 × 224，归一化前）';
+  if (prep && prep.selected) {
+    var sourceNames = {card: '卡牌透视校正', enhanced_card: '卡牌透视校正 + 轻度增强', original: '整图回退'};
+    hint += ' · ' + (sourceNames[prep.selected.source] || prep.selected.source);
+    hint += ' · 候选旋转 ' + prep.selected.rotation_degrees + '°';
+    hint += ' · 共 ' + prep.candidate_count + ' 个候选';
+  }
+  document.getElementById('searchPreprocessHint').textContent = hint;
 
   searchTime.textContent = (durationMs / 1000).toFixed(2) + 's';
 
