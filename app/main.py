@@ -21,9 +21,9 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "script_temp"))
-from preprocess import to_model_input, preprocess_query, preprocess_for_ocr, preprocess_for_search
+from preprocess import to_model_input, preprocess_for_search
 from dino_search import search_image
-from preprocess_ocr import OCRPreprocessor
+from ocr_pipeline import read_card
 from ppocr_v4_engine import PPOCRv4Engine
 
 # ---- Logging ----
@@ -39,9 +39,6 @@ MARGIN = float(os.environ.get("MATCH_MARGIN", "0.02"))
 # ---- BGE text embedding constants ----
 BGE_MODEL_NAME = "D:/Code2026/tcg-embedding-service/script_temp/bge_model"
 BGE_QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
-
-# ---- OCR retry config ----
-OCR_RETRY_CONF = {"min_blocks": 2, "retry_180": True}
 
 # ---- Pokemon data paths ----
 POKEMON_IMAGES_DIR = os.path.join(ROOT, "category_cards_search", "03_Pokemon", "images")
@@ -103,6 +100,8 @@ class OCRResponse(BaseModel):
     total_blocks: int
     blocks: list[OCRBlock]
     full_text: str
+    query_text: str = ""
+    preprocessing: dict | None = None
     preprocessed_image: str | None = None
     warnings: list[str] = []
 
@@ -119,6 +118,8 @@ class OcrMatchResult(BaseModel):
 
 class OcrMatchResponse(BaseModel):
     status: str
+    full_text: str = ""
+    preprocessing: dict | None = None
     query_text: str
     query_time_ms: float
     preprocessed_image: str | None = None
@@ -136,35 +137,16 @@ def load_model():
     return m
 
 def run_ocr(img_pil):
-    """Run OCR with 180-deg rotation retry fallback."""
-    warnings = []
-    img_np = np.array(img_pil)
-    if img_np.ndim == 2:
-        img_bgr = np.stack([img_np] * 3, axis=-1)
-    elif img_np.shape[2] == 4:
-        img_bgr = img_np[:, :, :3][:, :, ::-1]
-    elif img_np.shape[2] == 3:
-        img_bgr = img_np[:, :, ::-1]
-    else:
-        img_bgr = img_np
-    img_pp = ocr_preprocessor.preprocess(img_bgr)
-    results, elapsed = ocr_engine.read(img_pp)
-    full_text = "\n".join(r.text for r in results)
-    blocks = [{"text": r.text, "confidence": r.confidence, "bbox": r.bbox} for r in results]
-    if len(results) < OCR_RETRY_CONF["min_blocks"] and OCR_RETRY_CONF["retry_180"]:
-        from PIL import Image as PILImage
-        img_rot = PILImage.fromarray(img_bgr[:, :, ::-1]).rotate(180, expand=True)
-        img_rot_np = np.array(img_rot)[:, :, ::-1]
-        img_rot_pp = ocr_preprocessor.preprocess(img_rot_np)
-        results2, elapsed2 = ocr_engine.read(img_rot_pp)
-        if len(results2) > len(results):
-            results = results2; elapsed = elapsed2
-            full_text = "\n".join(r.text for r in results)
-            blocks = [{"text": r.text, "confidence": r.confidence, "bbox": r.bbox} for r in results]
-            warnings.append("Applied 180-deg rotation fallback for OCR")
-        else:
-            warnings.append("Low OCR text count, 180-deg rotation did not improve")
-    return blocks, full_text, elapsed, warnings
+    """Both OCR endpoints share geometry, orientation and quality selection."""
+    if ocr_engine is None:
+        raise HTTPException(503, "OCR engine is not ready")
+    return read_card(img_pil, ocr_engine)
+
+
+def ocr_preview(reading):
+    buffer = io.BytesIO()
+    reading.image.save(buffer, format="JPEG", quality=95)
+    return base64.b64encode(buffer.getvalue()).decode()
 
 # ---- FastAPI app ----
 app = FastAPI(title="TCG Card Matching Service", version="0.1.0")
@@ -175,7 +157,7 @@ INDEX_HTML = os.path.join(STATIC_DIR, "index.html")
 @app.on_event("startup")
 async def startup():
     global model, faiss_index, index_ids, index_version
-    global ocr_engine, ocr_preprocessor
+    global ocr_engine
     global text_model, text_index, text_ids, products
     t0 = time.time()
     log.info("Loading DINOv2 model...")
@@ -196,9 +178,6 @@ async def startup():
     else:
         index_version = "unknown"
     log.info(f"Gallery index loaded: {faiss_index.ntotal} vectors, dim={d} ({time.time()-t0:.1f}s total)")
-    log.info("Loading OCR preprocessor...")
-    ocr_preprocessor = OCRPreprocessor(max_dim=1200)
-    log.info("OCR preprocessor loaded")
     log.info("Loading PP-OCRv4 engine...")
     ocr_engine = PPOCRv4Engine(threads=2)
     log.info("PP-OCRv4 engine loaded")
@@ -328,18 +307,19 @@ async def ocr(file: UploadFile = File(...)):
             raise HTTPException(400, "Only image files are supported")
         img = Image.open(io.BytesIO(contents))
         img.load()
-        img = preprocess_query(img)
     except HTTPException:
         raise
     except Exception as e:
         raise HTTPException(400, f"Invalid image: {e}")
-    blocks, full_text, ocr_elapsed, warnings = run_ocr(img)
-    _buf = io.BytesIO()
-    img.save(_buf, format="JPEG", quality=85)
-    preprocessed_b64 = base64.b64encode(_buf.getvalue()).decode()
-    ocr_blocks = [OCRBlock(text=b["text"], confidence=b["confidence"], bbox=b["bbox"]) for b in blocks]
-    log.info(f"OCR {len(blocks)} blocks ({ocr_elapsed*1000:.0f}ms)")
-    return OCRResponse(status="ok", ocr_time_ms=round(ocr_elapsed * 1000, 1), total_blocks=len(blocks), blocks=ocr_blocks, full_text=full_text, preprocessed_image=preprocessed_b64, warnings=warnings)
+    reading = run_ocr(img)
+    log.info(f"OCR {len(reading.blocks)} blocks ({reading.elapsed*1000:.0f}ms)")
+    return OCRResponse(
+        status="ok", ocr_time_ms=round(reading.elapsed * 1000, 1),
+        total_blocks=len(reading.blocks), blocks=[OCRBlock(**b) for b in reading.blocks],
+        full_text=reading.full_text, query_text=reading.query_text,
+        preprocessed_image=ocr_preview(reading), warnings=reading.warnings,
+        preprocessing=reading.metadata,
+    )
 
 @app.post("/v1/ocr-match", response_model=OcrMatchResponse)
 async def ocr_match(file: UploadFile = File(...)):
@@ -358,14 +338,16 @@ async def ocr_match(file: UploadFile = File(...)):
         raise
     except Exception as e:
         raise HTTPException(400, f"Invalid image: {e}")
-    img_pp, _ = preprocess_for_ocr(img)
-    _buf = io.BytesIO()
-    img_pp.save(_buf, format="JPEG", quality=85)
-    preprocessed_b64 = base64.b64encode(_buf.getvalue()).decode()
-    blocks, full_text, ocr_elapsed, warnings = run_ocr(img_pp)
-    if not full_text.strip():
-        return OcrMatchResponse(status="ok", query_text="", query_time_ms=round((time.time() - t0) * 1000, 1), preprocessed_image=preprocessed_b64, warnings=["OCR returned no text"], results=[])
-    query_text = BGE_QUERY_PREFIX + full_text.strip()
+    reading = run_ocr(img)
+    preprocessed_b64 = ocr_preview(reading)
+    if not reading.query_text:
+        return OcrMatchResponse(
+            status="ok", query_text="", full_text=reading.full_text,
+            query_time_ms=round((time.time() - t0) * 1000, 1),
+            preprocessed_image=preprocessed_b64, warnings=reading.warnings,
+            preprocessing=reading.metadata, results=[],
+        )
+    query_text = BGE_QUERY_PREFIX + reading.query_text
     q_emb = text_model.encode(query_text, normalize_embeddings=True).astype(np.float32)
     scores, indices = text_index.search(q_emb.reshape(1, -1), 5)
     results = []
@@ -381,7 +363,11 @@ async def ocr_match(file: UploadFile = File(...)):
         results.append(OcrMatchResult(rank=k + 1, product_id=pid, product_name=prod_name, set_name=set_name, number=number, rarity=rarity, score=score, has_image=has_image, product=prod if prod else None))
     elapsed = (time.time() - t0) * 1000
     log.info(f"OCR-MATCH top1={results[0].product_id} score={results[0].score:.4f} ({elapsed:.0f}ms)")
-    return OcrMatchResponse(status="ok", query_text=full_text.strip(), query_time_ms=round(elapsed, 1), preprocessed_image=preprocessed_b64, warnings=warnings, results=results)
+    return OcrMatchResponse(
+        status="ok", query_text=reading.query_text, full_text=reading.full_text,
+        query_time_ms=round(elapsed, 1), preprocessed_image=preprocessed_b64,
+        warnings=reading.warnings, preprocessing=reading.metadata, results=results,
+    )
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8056)

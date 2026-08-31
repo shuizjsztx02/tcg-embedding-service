@@ -364,7 +364,7 @@
             <span class="label">&#x1F4F0; 预处理结果</span>
           </div>
           <img id="ocrPreprocessImg" alt="预处理">
-          <div class="preprocess-hint">CLAHE 对比度增强 + 去噪 + 锐化 — 输入到 PP-OCRv4 模型</div>
+          <div class="preprocess-hint" id="ocrPreprocessHint">方向比较后实际用于 OCR 的图像（文本框坐标与此图一致）</div>
         </div>
         <div class="ocr-header">
           <span class="label">&#x1F4DD; 识别结果</span>
@@ -394,7 +394,7 @@
             <span class="label">&#x1F4F0; 预处理结果</span>
           </div>
           <img id="ocrMatchPreprocessImg" alt="预处理">
-          <div class="preprocess-hint">CLAHE 增强 + PP-OCRv4 识别 → bge-small 向量匹配</div>
+          <div class="preprocess-hint" id="ocrMatchPreprocessHint">方向比较 → 按需轻度增强 → 可靠文字用于向量匹配</div>
         </div>
         <div class="ocrmatch-header">
           <span class="label">&#x1F9E9; 文字相似度匹配 Top-5</span>
@@ -714,6 +714,17 @@ function drawBboxes(imgEl, canvas, blocks) {
   }
 }
 
+function ocrPreprocessHint(data) {
+  var hint = '实际 OCR 输入 · 文本框与预览坐标一致';
+  var prep = data.preprocessing;
+  if (prep && prep.selected) {
+    hint += ' · ' + (prep.selected.source === 'card' ? '卡片透视校正' : '保留原图');
+    hint += ' · 候选旋转 ' + prep.selected.rotation + '°';
+    hint += prep.selected.enhanced ? ' · 轻度对比度增强' : ' · 保留原始色彩';
+  }
+  return hint;
+}
+
 function displayOcrResult(data, durationMs) {
   var preprocessEl = document.getElementById('ocrPreprocess');
   var preprocessImg = document.getElementById('ocrPreprocessImg');
@@ -724,6 +735,7 @@ function displayOcrResult(data, durationMs) {
     preprocessEl.classList.remove('show');
   }
   renderWarnings(document.getElementById('ocrWarnings'), data.warnings);
+  document.getElementById('ocrPreprocessHint').textContent = ocrPreprocessHint(data);
 
   ocrTime.textContent = (durationMs / 1000).toFixed(2) + 's';
 
@@ -805,10 +817,11 @@ function displayOcrMatchResult(data, durationMs) {
     preprocessEl.classList.remove('show');
   }
   renderWarnings(document.getElementById('ocrMatchWarnings'), data.warnings);
+  document.getElementById('ocrMatchPreprocessHint').textContent = ocrPreprocessHint(data);
 
   ocrMatchTime.textContent = (durationMs / 1000).toFixed(2) + 's';
 
-  ocrMatchQuery.innerHTML = '<span class="label">OCR 识别文字（用于匹配）</span>' + escapeHtml(data.query_text || '(空)');
+  ocrMatchQuery.innerHTML = '<span class="label">OCR 可靠文字（用于匹配，完整识别见原始响应）</span>' + escapeHtml(data.query_text || '(空)');
 
   var results = data.results || [];
   if (results.length === 0) {

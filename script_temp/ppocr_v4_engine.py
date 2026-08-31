@@ -123,7 +123,8 @@ class PPOCRv4Recognizer:
         for beg in range(0, n, self._batch_num):
             end = min(n, beg + self._batch_num)
             bi = indices[beg:end]
-            max_wh_ratio = max(w / max(h, 1) for h, w in (img_list[i].shape[:2] for i in bi))
+            max_wh_ratio = max(self._rec_img_shape[2] / self._rec_img_shape[1],
+                               max(width_list[i] for i in bi))
             norm_batch = np.concatenate([
                 self._resize_norm_img(img_list[i], max_wh_ratio)[np.newaxis, :] for i in bi
             ]).astype(np.float32)
@@ -131,7 +132,7 @@ class PPOCRv4Recognizer:
             out = self._session.run({"x": norm_batch})[0]
             total += time.perf_counter() - start
             for rno, one in enumerate(self._postprocess(out)):
-                rec_res[beg + rno] = one
+                rec_res[int(bi[rno])] = one
         return rec_res, total
 
     def _resize_norm_img(self, img, max_wh_ratio):
