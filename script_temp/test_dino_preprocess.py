@@ -1,14 +1,34 @@
 """Geometry regressions; no model downloads or production service required."""
 import unittest
+from unittest.mock import patch
 
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw
 
-from dino_preprocess import assess_quality, detect_card, enhance_card, order_points, perspective_correct, prepare_candidates
+import dino_preprocess
+from dino_preprocess import (_quad_score, assess_quality, detect_card, enhance_card,
+                             order_points, perspective_correct, prepare_candidates)
 
 
 class CardGeometryTests(unittest.TestCase):
+    def test_detector_prefers_complete_outer_border_over_nearby_inner_separator(self):
+        """A strong title separator must not crop away the card's top border."""
+        support = np.zeros((400, 300), np.uint8)
+        outer = np.array([[21, 17], [283, 18], [248, 394], [8, 360]], np.float32)
+        inner = np.array([[21, 31], [282, 30], [249, 391], [8, 363]], np.float32)
+        for quad in (outer, inner):
+            cv2.polylines(support, [quad.astype(np.int32)], True, 255, 5)
+        self.assertGreater(_quad_score(inner, support), _quad_score(outer, support))
+        fixture = np.zeros_like(support)
+        for quad in (outer, inner):
+            cv2.polylines(fixture, [quad.astype(np.int32)], True, 255, 1)
+        image = Image.fromarray(np.repeat(fixture[:, :, None], 3, axis=2))
+        with patch.object(dino_preprocess.cv2, "findContours", return_value=([], None)), \
+                patch.object(dino_preprocess, "_line_quads", return_value=iter((inner, outer))):
+            selected = detect_card(image)
+        self.assertLess(float(selected[:2, 1].mean()), 20)
+
     def test_retained_candidates_do_not_multiply_full_resolution_memory(self):
         candidates, _ = prepare_candidates(Image.new("RGB", (4000, 3000), "white"))
         self.assertLess(sum(im.width * im.height for im, _ in candidates), 1000000)

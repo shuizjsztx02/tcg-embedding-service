@@ -51,6 +51,35 @@ def _quad_score(quad, support):
     return area ** .5 * np.exp(-2 * abs(np.log(ratio / CARD_RATIO))) * np.mean(side_support)
 
 
+def _select_best_quad(scored, shape):
+    """Prefer a nearby enclosing border when its evidence is almost tied.
+
+    Internal title separators can share three card edges and score slightly
+    higher because their apparent ratio is closer to CARD_RATIO. Keep the
+    global score strict; only override it for a 2-15% larger enclosing quad
+    whose corners and score are both very close to the raw winner.
+    """
+    if not scored:
+        return None
+    best, best_score = max(scored, key=lambda item: item[1])
+    best_area = cv2.contourArea(best)
+    corner_limit = min(shape) * .06
+    outside_tolerance = min(shape) * .02
+    alternatives = [best]
+    for quad, score in scored:
+        area = cv2.contourArea(quad)
+        if not best_area * 1.02 <= area <= best_area * 1.15:
+            continue
+        if score < best_score * .99:
+            continue
+        if np.linalg.norm(quad - best, axis=1).max() > corner_limit:
+            continue
+        if all(cv2.pointPolygonTest(quad, tuple(map(float, point)), True) >= -outside_tolerance
+               for point in best):
+            alternatives.append(quad)
+    return max(alternatives, key=cv2.contourArea)
+
+
 def _line_quads(gray):
     """Join long, nearly parallel border segments when fingers break contours.
 
@@ -109,7 +138,7 @@ def detect_card(img):
         edge = cv2.Canny(blurred, low, high)
         masks.append(cv2.morphologyEx(edge, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8)))
         masks.append(cv2.dilate(edge, None, iterations=2))
-    best, best_score = None, -1
+    scored = []
     for mask in masks:
         contours, _ = cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
         for contour in sorted(contours, key=cv2.contourArea, reverse=True)[:80]:
@@ -123,12 +152,13 @@ def detect_card(img):
                     continue
                 quad = order_points(approx)
                 score = _quad_score(quad, support)
-                if score > best_score:
-                    best, best_score = quad, score
+                if score >= 0:
+                    scored.append((quad, score))
     for quad in _line_quads(gray):
         score = _quad_score(quad, support)
-        if score > best_score:
-            best, best_score = quad, score
+        if score >= 0:
+            scored.append((quad, score))
+    best = _select_best_quad(scored, (h, w))
     if best is None:
         return None
     return best * np.array([img.width / w, img.height / h], dtype=np.float32)
