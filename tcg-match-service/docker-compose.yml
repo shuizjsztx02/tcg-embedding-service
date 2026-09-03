@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  tcg-match:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tcg-match
+    ports:
+      - "8056:8056"
+    volumes:
+      # 品类数据目录（images + products.jsonl + indexes）
+      - ./data:/data:ro
+      # 模型目录（DINOv2 缓存 + BGE + PP-OCRv4）
+      - ./models:/models:ro
+    environment:
+      - USE_GPU=false
+      - DATA_DIR=/data
+      - MATCH_TAU=0.775
+      - MATCH_MARGIN=0.02
+      - TAU_HIGH=0.87
+      - TAU_LOW=0.75
+      - MARGIN_HIGH=0.02
+      - LLM_BASE_URL=http://host.docker.internal:15721
+      - LLM_CATEGORY_MODEL=qwen3.7-flash
+      - LLM_FALLBACK_MODEL=qwen3.7-flash
+      - LLM_TIMEOUT_S=30
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+    restart: unless-stopped
+
+  # GPU 版本（取消注释使用）
+  # tcg-match-gpu:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.gpu
+  #   container_name: tcg-match-gpu
+  #   runtime: nvidia
+  #   ports:
+  #     - "8057:8056"
+  #   volumes:
+  #     - ./data:/data:ro
+  #     - ./models:/models:ro
+  #   environment:
+  #     - USE_GPU=true
+  #     - DATA_DIR=/data
+  #     - MATCH_TAU=0.775
+  #     - MATCH_MARGIN=0.02
+  #     - TAU_HIGH=0.87
+  #     - TAU_LOW=0.75
+  #     - MARGIN_HIGH=0.02
+  #     - LLM_BASE_URL=http://host.docker.internal:15721
+  #     - LLM_CATEGORY_MODEL=qwen3.7-flash
+  #     - LLM_FALLBACK_MODEL=qwen3.7-flash
+  #     - LLM_TIMEOUT_S=30
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             count: 1
+  #             capabilities: [gpu]
+  #   restart: unless-stopped
+
+  # 索引构建（一次性运行）
+  build-index:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tcg-build-index
+    volumes:
+      - ./data:/data
+      - ./models:/models
+    environment:
+      - USE_GPU=false
+      - DATA_DIR=/data
+    command: ["python", "scripts/build_index.py", "--category", "all", "--type", "all"]
+    profiles:
+      - build

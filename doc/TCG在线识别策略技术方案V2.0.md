@@ -179,12 +179,11 @@ category_hint   用户手选的卡牌品类     (可选; 提供则跳过 LLM 品
 
 ### 4.2 S2 DINO 视觉匹配
 
-复用 `/v1/dino-match` 内部实现：
+复用 `/v1/dino-match` 内部实现（仅复用 `dino_service.embed`，**方向处理已由客户端预处理保证**，服务端只做单次 embed）：
 
 ```
 对每个候选品类:
-  方向候选 (竖图: 0°/180°, 横图: ±90°)
-  → DINOv2 embed (768-dim, L2 归一化)
+  DINOv2 embed (768-dim, L2 归一化) — 单次 embed，方向由客户端 `preprocess_query` 保证
   → faiss IndexFlatIP top-5
 取跨品类最高分的候选集:
   best_top1, scores[5], margin = score1 - score2

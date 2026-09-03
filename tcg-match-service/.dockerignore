@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# 环境
+.env
+.venv
+venv/
+
+# 数据（本地测试时挂载用）
+/data/
+
+# 模型（本地测试时挂载用）
+/models/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+
+# IDE
+.vscode/
+.idea/

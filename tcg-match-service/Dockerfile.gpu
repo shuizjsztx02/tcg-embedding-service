@@ -1,0 +1,35 @@
+# TCG Match Service — GPU 镜像
+FROM nvidia/cuda:12.2.0-cudnn8-devel-ubuntu22.04
+
+ENV PYTHONUNBUFFERED=1 \
+    USE_GPU=true \
+    DATA_DIR=/data \
+    MODEL_DIR=/models \
+    BGE_MODEL_PATH=/models/bge_model \
+    PPOCR_MODEL_DIR=/models/ppocr_models \
+    PORT=8056
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip python3-venv \
+    libgl1-mesa-glx libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN python3 -m venv /venv
+ENV PATH="/venv/bin:$PATH"
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app/ app/
+COPY scripts/ scripts/
+RUN mkdir -p /data /models
+
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+EXPOSE 8056
+
+ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
+CMD ["serve"]

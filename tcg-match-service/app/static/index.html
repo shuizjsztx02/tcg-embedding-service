@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCG 卡牌匹配服务</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d28;
+    --surface2: #232738;
+    --border: #2e3348;
+    --text: #e1e4ed;
+    --text2: #8b8fa3;
+    --accent: #5b8def;
+    --green: #34d399;
+    --orange: #f59e0b;
+    --radius: 8px;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg); color: var(--text); min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .container { width: 100%; max-width: 640px; padding: 24px 16px; }
+
+  header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+  header h1 { font-size: 20px; font-weight: 600; }
+  .badge { font-size: 11px; color: var(--text2); background: var(--surface2); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border); }
+  .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-left: auto; background: var(--text2); }
+  .status-dot.ok { background: var(--green); }
+  .status-dot.err { background: #f87171; }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 16px; background: var(--surface); border-radius: var(--radius); padding: 4px; border: 1px solid var(--border); }
+  .tab { flex: 1; text-align: center; padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--text2); transition: all 0.15s; border: none; background: none; }
+  .tab:hover { color: var(--text); }
+  .tab.active { background: var(--accent); color: #fff; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .controls { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .controls select {
+    padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--surface2); color: var(--text); font-size: 13px; cursor: pointer;
+    flex: 1; min-width: 120px;
+  }
+  .controls select:focus { outline: none; border-color: var(--accent); }
+
+  .drop-zone { border: 2px dashed var(--border); border-radius: var(--radius); padding: 48px 24px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--surface); }
+  .drop-zone:hover, .drop-zone.drag-over { border-color: var(--accent); background: var(--surface2); }
+  .drop-zone .icon { font-size: 36px; margin-bottom: 12px; opacity: 0.6; }
+  .drop-zone p { color: var(--text2); font-size: 14px; }
+  .drop-zone .hint { font-size: 12px; color: var(--text2); margin-top: 8px; opacity: 0.5; }
+
+  .preview-area { display: none; margin-top: 16px; position: relative; }
+  .preview-area.show { display: block; }
+  .preview-area img { width: 100%; max-height: 320px; object-fit: contain; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); }
+  .preview-actions { display: flex; gap: 8px; margin-top: 8px; justify-content: flex-end; }
+
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 13px; cursor: pointer; transition: background 0.15s; }
+  .btn:hover { background: var(--border); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { opacity: 0.9; }
+  .btn.ocr { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .btn.ocr:hover { opacity: 0.9; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn .spinner { display: none; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; }
+  .btn.loading .spinner { display: inline-block; }
+  .btn.loading .label { display: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .result-card { display: none; margin-top: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; overflow: hidden; }
+  .result-card.show { display: block; }
+  .result-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .result-header .label { font-size: 13px; font-weight: 600; }
+  .result-header .time { font-size: 12px; color: var(--text2); margin-left: auto; }
+
+  .warnings-bar { display: none; margin-bottom: 12px; padding: 10px 12px; background: rgba(245,158,11,0.10); border: 1px solid rgba(245,158,11,0.45); border-radius: 6px; color: #fbbf24; font-size: 13px; }
+  .warnings-bar.show { display: block; }
+
+  .top5-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .top5-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 6px; background: var(--surface2); border: 1px solid transparent; transition: border-color 0.15s; }
+  .top5-wrap:first-child .top5-item { border-color: rgba(91,141,239,0.4); }
+  .top5-rank { font-size: 12px; font-weight: 700; min-width: 20px; text-align: center; color: var(--text2); }
+  .top5-wrap:first-child .top5-rank { color: var(--accent); font-size: 14px; }
+  .top5-item img { width: 48px; height: 48px; object-fit: cover; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); flex-shrink: 0; cursor: zoom-in; }
+  .top5-info { flex: 1; min-width: 0; }
+  .top5-name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .top5-sub { font-size: 11px; color: var(--text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .top5-score { font-family: monospace; font-size: 13px; color: var(--text2); }
+  .top5-bar-outer { width: 60px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .top5-bar-inner { height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.4s ease; }
+  .top5-wrap:first-child .top5-bar-inner { background: var(--green); }
+  .top5-json { padding: 0 12px 8px; }
+  .top5-json summary { font-size: 11px; color: var(--text2); cursor: pointer; }
+  .top5-json pre { margin: 6px 0 0; padding: 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; font-size: 11px; line-height: 1.5; max-height: 240px; overflow: auto; white-space: pre-wrap; word-break: break-all; }
+  .top5-empty { color: var(--text2); font-size: 13px; text-align: center; padding: 24px; }
+
+  .result-raw { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .result-raw .label { font-size: 11px; color: var(--text2); margin-bottom: 4px; }
+  .result-raw .value { font-size: 13px; font-family: monospace; color: var(--text2); }
+
+  .ocr-query { margin-bottom: 12px; padding: 8px 10px; background: var(--surface2); border-radius: 6px; font-family: monospace; font-size: 12px; color: var(--text2); max-height: 100px; overflow: auto; white-space: pre-wrap; }
+  .ocr-query .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+
+  .spinner-full { display: none; justify-content: center; align-items: center; padding: 32px; }
+  .spinner-full.show { display: flex; }
+  .spinner-full .ring { width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.6s linear infinite; }
+
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.88); cursor: zoom-out; align-items: center; justify-content: center; }
+  .lightbox.show { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 8px; box-shadow: 0 12px 48px rgba(0,0,0,0.7); background: var(--surface); }
+  .lightbox .lb-id { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); font-family: monospace; font-size: 14px; color: var(--text); background: var(--surface2); border: 1px solid var(--border); padding: 4px 12px; border-radius: 6px; }
+
+  @media (max-width: 480px) { .container { padding: 16px 12px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>TCG 卡牌匹配服务</h1>
+    <span class="badge">v1.0</span>
+    <span class="status-dot" id="statusDot" title="服务器状态"></span>
+  </header>
+
+  <div class="tabs" id="tabBar">
+    <button class="tab active" data-tab="dino">DINO 视觉匹配</button>
+    <button class="tab" data-tab="ocr">OCR 文字匹配</button>
+  </div>
+
+  <!-- DINO Match Panel -->
+  <div class="panel active" id="panel-dino">
+    <div class="controls">
+      <select id="dinoCategory">
+        <option value="pokemon">Pokémon</option>
+        <option value="pokemon_japan">Pokémon Japan</option>
+        <option value="magic">Magic: The Gathering</option>
+        <option value="yugioh">Yu-Gi-Oh!</option>
+        <option value="onepiece">One Piece</option>
+        <option value="disney_lorcana">Disney Lorcana</option>
+        <option value="flesh_blood">Flesh and Blood</option>
+        <option value="dragon_ball">Dragon Ball Super</option>
+      </select>
+    </div>
+    <div class="drop-zone" id="dinoDropZone">
+      <div class="icon">&#x1F4F7;</div>
+      <p>拖放卡牌图片到这里，或点击选择文件</p>
+      <div class="hint">支持 JPG / PNG，最大 10MB</div>
+      <input type="file" id="dinoFileInput" accept="image/jpeg,image/png" hidden>
+    </div>
+    <div class="preview-area" id="dinoPreviewArea">
+      <img id="dinoPreviewImg" alt="预览">
+      <div class="preview-actions">
+        <button class="btn" id="dinoClearBtn">&#x2716; 清除</button>
+        <button class="btn primary" id="dinoSearchBtn">
+          <span class="spinner"></span>
+          <span class="label">&#x1F50D; DINO 匹配 Top-5</span>
+        </button>
+      </div>
+    </div>
+    <div class="spinner-full" id="dinoLoading"><div class="ring"></div></div>
+    <div class="result-card" id="dinoResult">
+      <div class="warnings-bar" id="dinoWarnings"></div>
+      <div class="result-header">
+        <span class="label">&#x1F50D; 匹配结果</span>
+        <span class="time" id="dinoTime"></span>
+      </div>
+      <div class="top5-list" id="dinoTop5List"><div class="top5-empty">无结果</div></div>
+      <div class="result-raw"><div class="label">原始响应</div><div class="value" id="dinoRaw"></div></div>
+    </div>
+  </div>
+
+  <!-- OCR Match Panel -->
+  <div class="panel" id="panel-ocr">
+    <div class="controls">
+      <select id="ocrCategory">
+        <option value="pokemon">Pokémon</option>
+        <option value="pokemon_japan">Pokémon Japan</option>
+        <option value="magic">Magic: The Gathering</option>
+        <option value="yugioh">Yu-Gi-Oh!</option>
+        <option value="onepiece">One Piece</option>
+        <option value="disney_lorcana">Disney Lorcana</option>
+        <option value="flesh_blood">Flesh and Blood</option>
+        <option value="dragon_ball">Dragon Ball Super</option>
+      </select>
+    </div>
+    <div class="drop-zone" id="ocrDropZone">
+      <div class="icon">&#x1F4DD;</div>
+      <p>拖放卡牌图片到这里，或点击选择文件</p>
+      <div class="hint">支持 JPG / PNG，最大 10MB</div>
+      <input type="file" id="ocrFileInput" accept="image/jpeg,image/png" hidden>
+    </div>
+    <div class="preview-area" id="ocrPreviewArea">
+      <img id="ocrPreviewImg" alt="预览">
+      <div class="preview-actions">
+        <button class="btn" id="ocrClearBtn">&#x2716; 清除</button>
+        <button class="btn ocr" id="ocrMatchBtn">
+          <span class="spinner"></span>
+          <span class="label">&#x1F9E9; OCR 文字匹配 Top-5</span>
+        </button>
+      </div>
+    </div>
+    <div class="spinner-full" id="ocrLoading"><div class="ring"></div></div>
+    <div class="result-card" id="ocrResult">
+      <div class="warnings-bar" id="ocrWarnings"></div>
+      <div class="result-header">
+        <span class="label">&#x1F9E9; OCR 文字匹配</span>
+        <span class="time" id="ocrTime"></span>
+      </div>
+      <div class="ocr-query" id="ocrQuery"></div>
+      <div class="top5-list" id="ocrTop5List"><div class="top5-empty">无结果</div></div>
+      <div class="result-raw"><div class="label">原始响应</div><div class="value" id="ocrRaw"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <div class="lb-id" id="lightboxId"></div>
+  <img id="lightboxImg" alt="放大查看">
+</div>
+
+<script>
+var API_BASE = '';
+
+// ---- Shared ----
+function escapeHtml(s) {
+  if (typeof s !== 'string') return String(s);
+  var d = document.createElement('div'); d.textContent = s; return d.innerHTML;
+}
+
+function renderWarnings(el, warnings) {
+  if (warnings && warnings.length) {
+    el.innerHTML = warnings.map(function(w) { return '<div>⚠ ' + escapeHtml(w) + '</div>'; }).join('');
+    el.classList.add('show');
+  } else { el.classList.remove('show'); }
+}
+
+// ---- Tab switching ----
+document.getElementById('tabBar').addEventListener('click', function(e) {
+  var btn = e.target.closest('.tab');
+  if (!btn) return;
+  var tab = btn.dataset.tab;
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('panel-' + tab).classList.add('active');
+});
+
+// ---- Lightbox ----
+var lightbox = document.getElementById('lightbox');
+var lightboxImg = document.getElementById('lightboxImg');
+var lightboxId = document.getElementById('lightboxId');
+
+function openLightbox(cardId) {
+  lightboxImg.src = '/v1/images/pokemon/' + encodeURIComponent(cardId);
+  lightboxId.textContent = cardId;
+  lightbox.classList.add('show');
+}
+
+function closeLightbox() { lightbox.classList.remove('show'); lightboxImg.src = ''; }
+lightbox.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+
+// ---- DINO Match ----
+var dinoState = { file: null };
+var ddz = document.getElementById('dinoDropZone');
+var dfi = document.getElementById('dinoFileInput');
+var dpa = document.getElementById('dinoPreviewArea');
+var dpi = document.getElementById('dinoPreviewImg');
+var dcb = document.getElementById('dinoClearBtn');
+var dsb = document.getElementById('dinoSearchBtn');
+var dlo = document.getElementById('dinoLoading');
+var dre = document.getElementById('dinoResult');
+var dcat = document.getElementById('dinoCategory');
+
+ddz.addEventListener('click', function() { dfi.click(); });
+ddz.addEventListener('dragover', function(e) { e.preventDefault(); ddz.classList.add('drag-over'); });
+ddz.addEventListener('dragleave', function() { ddz.classList.remove('drag-over'); });
+ddz.addEventListener('drop', function(e) {
+  e.preventDefault(); ddz.classList.remove('drag-over');
+  var file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    var reader = new FileReader();
+    reader.onload = function(ev) { showDinoPreview(ev.target.result, file.name); };
+    reader.readAsDataURL(file);
+  }
+});
+dfi.addEventListener('change', function() {
+  var file = dfi.files[0];
+  if (file) {
+    var reader = new FileReader();
+    reader.onload = function(ev) { showDinoPreview(ev.target.result, file.name); };
+    reader.readAsDataURL(file);
+  }
+});
+
+function showDinoPreview(dataUrl, fileName) {
+  dpi.src = dataUrl;
+  dpa.classList.add('show');
+  ddz.style.display = 'none';
+  dinoState.file = { dataUrl: dataUrl, fileName: fileName };
+  dre.classList.remove('show');
+}
+
+function resetDino() {
+  dpa.classList.remove('show');
+  ddz.style.display = '';
+  dpi.src = '';
+  dinoState.file = null;
+  dfi.value = '';
+  dre.classList.remove('show');
+}
+
+dcb.addEventListener('click', resetDino);
+
+function renderDinoResults(data, durationMs) {
+  renderWarnings(document.getElementById('dinoWarnings'), data.warnings);
+  document.getElementById('dinoTime').textContent = (durationMs / 1000).toFixed(2) + 's';
+
+  var results = data.results || [];
+  var list = document.getElementById('dinoTop5List');
+  if (results.length === 0) {
+    list.innerHTML = '<div class="top5-empty">无结果</div>';
+  } else {
+    var maxScore = results[0].score;
+    var html = '';
+    for (var k = 0; k < results.length; k++) {
+      var r = results[k];
+      var barPct = Math.min(100, (r.score / maxScore) * 100);
+      var imgSrc = '/v1/images/' + data.category + '/' + encodeURIComponent(r.card_id);
+      html += '<div class="top5-wrap"><div class="top5-item">' +
+        '<span class="top5-rank">#' + r.rank + '</span>' +
+        '<img src="' + imgSrc + '" alt="' + escapeHtml(r.card_id) + '" data-id="' + escapeHtml(r.card_id) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
+        '<div class="top5-info"><div class="top5-name">' + escapeHtml(r.product_name || r.card_id) + '</div>' +
+        '<div class="top5-sub">' + escapeHtml(r.card_id) + '</div></div>' +
+        '<span class="top5-score">' + r.score.toFixed(4) + '</span>' +
+        '<div class="top5-bar-outer"><div class="top5-bar-inner" style="width:' + barPct + '%"></div></div></div>' +
+        (r.product ? '<details class="top5-json"><summary>JSON 详情</summary><pre>' + escapeHtml(JSON.stringify(r.product, null, 2)) + '</pre></details>' : '') +
+        '</div>';
+    }
+    list.innerHTML = html;
+  }
+  document.getElementById('dinoRaw').textContent = JSON.stringify(data, null, 2);
+  dre.classList.add('show');
+}
+
+dsb.addEventListener('click', async function() {
+  if (!dinoState.file) return;
+  dsb.classList.add('loading'); dsb.disabled = true;
+  dlo.classList.add('show'); dre.classList.remove('show');
+
+  var resp = await fetch(dinoState.file.dataUrl);
+  var blob = await resp.blob();
+  var formData = new FormData();
+  formData.append('file', blob, dinoState.file.fileName || 'card.jpg');
+  formData.append('category', dcat.value);
+  formData.append('top_k', '5');
+
+  var t0 = performance.now();
+  try {
+    var res = await fetch(API_BASE + '/v1/dino-match', { method: 'POST', body: formData });
+    var dur = performance.now() - t0;
+    var data = await res.json();
+    renderDinoResults(data, dur);
+  } catch (err) {
+    var dur = performance.now() - t0;
+    renderDinoResults({ status: 'error', category: dcat.value, results: [], message: err.message }, dur);
+  } finally {
+    dsb.classList.remove('loading'); dsb.disabled = false;
+    dlo.classList.remove('show');
+  }
+});
+
+// Top-5 click => lightbox
+document.getElementById('dinoTop5List').addEventListener('click', function(e) {
+  var img = e.target.closest('.top5-item img');
+  if (img) {
+    var cat = dcat.value;
+    var id = img.getAttribute('data-id');
+    lightboxImg.src = '/v1/images/' + cat + '/' + encodeURIComponent(id);
+    lightboxId.textContent = id;
+    lightbox.classList.add('show');
+  }
+});
+
+// ---- OCR Match ----
+var ocrState = { file: null };
+var odz = document.getElementById('ocrDropZone');
+var ofi = document.getElementById('ocrFileInput');
+var opa = document.getElementById('ocrPreviewArea');
+var opi = document.getElementById('ocrPreviewImg');
+var ocb = document.getElementById('ocrClearBtn');
+var omb = document.getElementById('ocrMatchBtn');
+var olo = document.getElementById('ocrLoading');
+var ore = document.getElementById('ocrResult');
+var ocat = document.getElementById('ocrCategory');
+
+odz.addEventListener('click', function() { ofi.click(); });
+odz.addEventListener('dragover', function(e) { e.preventDefault(); odz.classList.add('drag-over'); });
+odz.addEventListener('dragleave', function() { odz.classList.remove('drag-over'); });
+odz.addEventListener('drop', function(e) {
+  e.preventDefault(); odz.classList.remove('drag-over');
+  var file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    var reader = new FileReader();
+    reader.onload = function(ev) { showOcrPreview(ev.target.result, file.name); };
+    reader.readAsDataURL(file);
+  }
+});
+ofi.addEventListener('change', function() {
+  var file = ofi.files[0];
+  if (file) {
+    var reader = new FileReader();
+    reader.onload = function(ev) { showOcrPreview(ev.target.result, file.name); };
+    reader.readAsDataURL(file);
+  }
+});
+
+function showOcrPreview(dataUrl, fileName) {
+  opi.src = dataUrl;
+  opa.classList.add('show');
+  odz.style.display = 'none';
+  ocrState.file = { dataUrl: dataUrl, fileName: fileName };
+  ore.classList.remove('show');
+}
+
+function resetOcr() {
+  opa.classList.remove('show');
+  odz.style.display = '';
+  opi.src = '';
+  ocrState.file = null;
+  ofi.value = '';
+  ore.classList.remove('show');
+}
+
+ocb.addEventListener('click', resetOcr);
+
+function renderOcrResults(data, durationMs) {
+  renderWarnings(document.getElementById('ocrWarnings'), data.warnings);
+  document.getElementById('ocrTime').textContent = (durationMs / 1000).toFixed(2) + 's';
+
+  var queryEl = document.getElementById('ocrQuery');
+  queryEl.innerHTML = '<span class="label">OCR 识别文字（用于匹配）</span>' + escapeHtml(data.query_text || '(空)');
+
+  var results = data.results || [];
+  var list = document.getElementById('ocrTop5List');
+  if (results.length === 0) {
+    list.innerHTML = '<div class="top5-empty">无结果</div>';
+  } else {
+    var maxScore = results[0].score;
+    var html = '';
+    for (var k = 0; k < results.length; k++) {
+      var r = results[k];
+      var barPct = Math.min(100, (r.score / maxScore) * 100);
+      var imgId = r.product_id + '_200w';
+      var sub = [r.set_name, r.number, r.rarity].filter(Boolean).join(' · ');
+      var imgSrc = '/v1/images/' + data.category + '/' + encodeURIComponent(imgId);
+      html += '<div class="top5-wrap"><div class="top5-item">' +
+        '<span class="top5-rank">#' + r.rank + '</span>' +
+        (r.has_image ? '<img src="' + imgSrc + '" alt="' + escapeHtml(imgId) + '" data-id="' + escapeHtml(imgId) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '<img src="" alt="" style="display:none">') +
+        '<div class="top5-info"><div class="top5-name">' + escapeHtml(r.product_name || r.product_id) + '</div>' +
+        '<div class="top5-sub">' + escapeHtml(sub || r.product_id) + '</div></div>' +
+        '<span class="top5-score">' + r.score.toFixed(4) + '</span>' +
+        '<div class="top5-bar-outer"><div class="top5-bar-inner" style="width:' + barPct + '%"></div></div></div>' +
+        (r.product && Object.keys(r.product).length ? '<details class="top5-json"><summary>JSON 详情</summary><pre>' + escapeHtml(JSON.stringify(r.product, null, 2)) + '</pre></details>' : '') +
+        '</div>';
+    }
+    list.innerHTML = html;
+  }
+  document.getElementById('ocrRaw').textContent = JSON.stringify(data, null, 2);
+  ore.classList.add('show');
+}
+
+omb.addEventListener('click', async function() {
+  if (!ocrState.file) return;
+  omb.classList.add('loading'); omb.disabled = true;
+  olo.classList.add('show'); ore.classList.remove('show');
+
+  var resp = await fetch(ocrState.file.dataUrl);
+  var blob = await resp.blob();
+  var formData = new FormData();
+  formData.append('file', blob, ocrState.file.fileName || 'card.jpg');
+  formData.append('category', ocat.value);
+  formData.append('top_k', '5');
+
+  var t0 = performance.now();
+  try {
+    var res = await fetch(API_BASE + '/v1/ocr-match', { method: 'POST', body: formData });
+    var dur = performance.now() - t0;
+    var data = await res.json();
+    renderOcrResults(data, dur);
+  } catch (err) {
+    var dur = performance.now() - t0;
+    renderOcrResults({ status: 'error', category: ocat.value, query_text: '', results: [], message: err.message }, dur);
+  } finally {
+    omb.classList.remove('loading'); omb.disabled = false;
+    olo.classList.remove('show');
+  }
+});
+
+// Top-5 click => lightbox
+document.getElementById('ocrTop5List').addEventListener('click', function(e) {
+  var img = e.target.closest('.top5-item img');
+  if (img) {
+    var cat = ocat.value;
+    var id = img.getAttribute('data-id');
+    lightboxImg.src = '/v1/images/' + cat + '/' + encodeURIComponent(id);
+    lightboxId.textContent = id;
+    lightbox.classList.add('show');
+  }
+});
+
+// ---- Health check ----
+var statusDot = document.getElementById('statusDot');
+async function checkHealth() {
+  try {
+    var res = await fetch(API_BASE + '/v1/health');
+    statusDot.className = 'status-dot ' + (res.ok ? 'ok' : 'err');
+  } catch (e) { statusDot.className = 'status-dot err'; }
+}
+checkHealth();
+setInterval(checkHealth, 30000);
+</script>
+</body>
+</html>
