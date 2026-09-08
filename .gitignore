@@ -78,3 +78,6 @@ script_temp/_test*.txt
 # Generated index files
 pokemon-index/embeddings.npy
 text-index/embeddings.npy
+
+# Standalone repository with its own deployment data and Git history.
+/tcg-service/
