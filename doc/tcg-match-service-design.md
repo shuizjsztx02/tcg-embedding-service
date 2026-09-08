@@ -1,6 +1,6 @@
 # TCG 单机双策略识别服务：技术方案
 
-日期：2026-09-05。状态：可审阅的设计基线；本次交付仅为文档，尚未实施或完成服务器验收。
+日期：2026-09-05；2026-09-08 补充数据、模型与更新约束。状态：可审阅的设计基线；本次交付仅为文档，尚未实施或完成服务器验收。
 
 配套执行文档：[分步骤实施计划](tcg-match-service-implementation-plan.md)。本方案取代根目录 `tcg-match-service-plan.md` 中与本次要求冲突的规划；原文件保留为历史输入。历史文档中的任务和操作命令不视为本次实施授权。
 
@@ -8,7 +8,7 @@
 
 同时提供串行补救与并行融合两个 API，技术上可行。并行版有机会纠正视觉高分误匹配，也会额外消耗 CPU，且可能被错误 OCR 干扰；准确率和延迟改善是需要验证的假设。
 
-生产采用 FastAPI + PostgreSQL/pgvector，单服务器、单 API 实例、默认 CPU-only。DINOv2 编码图片，本地 BGE 编码标准卡文本及客户端 OCR；两种向量分别建库检索，通过共同产品键融合结果。原始图片和 JSONL 保存在挂载的数据目录，数据库存规范化字段、原始 JSONB、价格数据和两种向量。FAISS 保留为离线精确检索基准。
+生产采用 FastAPI + PostgreSQL/pgvector，单服务器、单 API 实例、默认 CPU-only。DINOv2 编码图片，本地 BGE 编码标准卡文本及客户端 OCR；两种向量分别建库检索，通过全局唯一的 `productId` 融合结果。原始图片和 JSONL 按品类、版本原样保存在仓库根目录 `data/` 对应的容器挂载目录，数据库同时保存规范化字段、逐行原文、原始 JSONB、价格数据和两种向量。FAISS 保留为离线精确检索基准。
 
 首版包括：可复用导入命令、本地优先模型加载、全品类/单品类检索、两版识别 API、客户端 OCR 辅助重排、Dify GPT-5.5 兜底、卡牌查表及价格查询、离线对比与 CPU 压测。服务器 OCR、前置 LLM 品类判断、多实例、Redis、多级缓存、训练新模型和分布式向量库不在首版范围内。
 
@@ -24,7 +24,7 @@
 | OCR | `main.py` 启动 PP-OCR，`routes/ocr_match.py` 识别上传图片 | 从生产启动与依赖中移除，OCR 由客户端提供 |
 | DINO | demo 和服务调用 `dinov2_vitb14`；备用 `facebook/dinov2-base` | ViT-B/14、无 registers、768 维；它是特征提取器，不是 GroundingDINO 检测器 |
 | DINO 输出适配 | 当前直接对 `model(x)` 调用 `.dim()`，Transformers 的输出对象不支持此用法 | 显式适配 tensor / `last_hidden_state[:, 0]`，不盲目替换后端 |
-| BGE | 本地 README 标识 `bge-small-en-v1.5`；config hidden_size=384，CLS pooling，max_seq_length=512 | 以用户提供的整个 `script_temp/bge_model` 包为基线，并记录文件指纹 |
+| BGE | 本地 README 标识 `bge-small-en-v1.5`；config hidden_size=384，CLS pooling，max_seq_length=512 | 以用户手工放入仓库根目录 `models/bge_model` 的完整模型包为基线，并记录文件指纹 |
 | BGE 一致性 | 查询读本地包，构建脚本重新从网上加载模型 | 离线和在线使用同一加载器、tokenizer 与模型版本 |
 | ID | 样例 `productId=100009.0`；在线用 `str(productId)`，文本构建用 `str(int(productId))` | 修复 `100009.0` 与 `100009` 关联失败问题 |
 | 导入 | `scripts/build_index.py` 按品类重新加载模型、一次性收集数据；无版本发布和断点协议 | 流式、分批、可恢复、可复用 embedding |
@@ -74,7 +74,7 @@
 
 未知 category 返回 400，缺必填项返回 422，过大输入返回 413，服务未就绪/队列已满返回 503。内部召回 K 默认 50，最终最多 5 个候选；K 不向客户端开放，保证实验配置可追溯。
 
-两版统一返回现有 `status/decision_path/category/product_id/product/price/candidates/identity/confidence/scores/warnings/latency_ms`，新增 `request_id/strategy/dataset_version/model_version/decision_version/timings_ms`。候选必须包含 category 和 product_id；不假设 product_id 跨品类唯一。
+两版统一返回现有 `status/decision_path/category/product_id/product/price/candidates/identity/confidence/scores/warnings/latency_ms`，新增 `request_id/strategy/dataset_version/model_version/decision_version/timings_ms`。候选必须包含 category 和 product_id；数据导入必须验证 `productId` 在全部品类中全局唯一，数据库以其作为卡片主键。
 
 `confidence` 首版为 null；`scores` 单独携带 visual_cosine、text_cosine、fusion_score、margin、ocr_used 和冲突证据。规则门限不是概率；如后续引入概率校准，必须附校准版本及可靠性评估。`ocr_used` 表示实际使用 OCR 规则或文本证据，另用 `text_retrieval_used` 区分是否调用 BGE。
 
@@ -94,7 +94,7 @@
 
 请求进入时固定数据版本和品类范围；两路、LLM 查表、价格查询都使用该版本。未指定 category 时覆盖该版本全部品类，禁止先按预测品类缩小范围。结果中的 category 来自候选记录。
 
-视觉/文本各取前 K，另提取 OCR 的卡号、系列代码及名称线索。按 `(category_id, product_id)` 合并，最多 `2K + 5` 个候选；OCR 精确身份查表超过 5 个结果时标为歧义，不任取一个。
+视觉/文本各取前 K，另提取 OCR 的卡号、系列代码及名称线索。按 `product_id` 合并，最多 `2K + 5` 个候选；category_id 作为检索范围、展示和一致性校验字段，不参与卡片身份主键。OCR 精确身份查表超过 5 个结果时标为歧义，不任取一个。
 
 卡号仅做 Unicode NFKC、大小写和空白归一；保留斜杠、前缀和有意义的分隔符，例如 `12/100` 不等于 `12100`。数字文本可能是 HP、年份或攻击力；孤立数字不能成为排除候选的硬规则。只有卡号+系列等可互相验证的身份组合才标记明确冲突。图像完全相同但不同产品 ID、版本/语言/闪卡差异均保留为歧义候选。
 
@@ -157,7 +157,7 @@ PG+pgvector 可把卡信息、价格及向量置于同一事务体系；PG+FAISS
 
 ### 6.1 版本组织
 
-`public.dataset_releases` 保存 release UUID、schema_name、manifest_hash、model_fingerprint、状态和统计；`public.active_dataset` 为单行发布指针；`public.import_checkpoints` 保存各文件的哈希、字节偏移和已完成批次。
+`public.dataset_releases` 保存 release UUID、schema_name、manifest_hash、model_fingerprint、状态和统计；`public.active_dataset` 为单行发布指针；`public.import_checkpoints` 保存各文件的哈希、字节偏移和已完成批次。每次更新以一个或多个品类的完整 JSONL 快照为输入，新 release 继承未声明品类，并完整替换已声明品类。
 
 每个待发布数据版本写入独立 `ds_<uuidhex>` schema，验证完成后通过小事务切换指针；正在处理的请求继续使用进入时固定的旧 schema。版本发布后只读；首版保留当前和前一版本，清理使用显式运维命令、备份和无活跃请求检查，不自动删除原始文件。连接池查询必须使用注册表给出的 schema 并进行 SQL identifier 引用，不能把客户端字符串作为 SQL 标识符。
 
@@ -166,21 +166,23 @@ PG+pgvector 可把卡信息、价格及向量置于同一事务体系；PG+FAISS
 | 表 | 主键/主要字段 | 索引与职责 |
 |---|---|---|
 | categories | category_id、stable_code、display_name、source_mapping | stable_code 唯一，目录名只是路径 |
-| cards | (category_id, product_id)、name、set_id/name/code、number_norm、raw_json、source_hash、text_hash | 主键；(category_id,set_code,number_norm)；名称规范化索引 |
-| card_images | (category_id, product_id)、relative_path、sha256、width/height、orientation_policy、duplicate_group | FK cards；首版每卡一个明确的主标准图 |
-| visual_embeddings | (category_id, product_id)、embedding vector(768)、model_version、input_hash | FK cards；按 category_id LIST 分区、每分区 HNSW |
+| source_files | source_file_id、source_version、kind、category_id、relative_path、sha256、bytes | 文件级来源和完整性记录；同一 release 内相对路径唯一 |
+| cards | product_id、category_id、name、set_id/name/code、number_norm、raw_line、raw_json、source_file_id/line_no/line_sha256、source_hash、text_hash | `product_id` 全局主键；category_id 索引；(category_id,set_code,number_norm)；名称规范化索引 |
+| card_images | product_id、category_id、relative_path、sha256、width/height、orientation_policy、duplicate_group | product_id 主键并 FK cards；首版每卡一个明确的主标准图 |
+| visual_embeddings | (category_id, product_id)、embedding vector(768)、model_version、input_hash | FK cards；按 category_id LIST 分区、每分区 HNSW；联合键满足 PostgreSQL 分区约束，不改变 product_id 的全局身份 |
 | text_embeddings | (category_id, product_id)、embedding vector(384)、model_version、doc_version、input_hash | 同上，图片缺失不妨碍文本入库 |
-| price_snapshots | (category_id,product_id,captured_at,currency)、market/lowest/median 等、source_metadata | 保存产品 JSON 中的价格快照，不伪装为逐日历史 |
-| price_sales | (category_id,product_id,source_batch,row_no)、order_date、purchase_price、shipping_price、condition、variant、language、quantity、currency | (category_id,product_id,order_date)，保存成交明细和来源 |
-| price_coverage | (category_id,product_id,source_batch)、min_date、max_date、total_results、loaded_count、complete | 表示抓取覆盖范围和是否完整 |
+| price_source_records | (source_file_id,row_no)、product_id、category_id、raw_line、raw_json、line_sha256 | 完整保留价格 JSONL 每行原文和语义内容，并关联 cards |
+| price_snapshots | (product_id,captured_at,currency)、category_id、market/lowest/median 等、source_file_id/row_no | 保存产品 JSON 中的价格快照，不伪装为逐日历史 |
+| price_sales | (product_id,source_batch,row_no)、category_id、order_date、purchase_price、shipping_price、condition、variant、language、quantity、currency | (product_id,order_date)，保存成交明细和来源 |
+| price_coverage | (product_id,source_batch)、category_id、min_date、max_date、total_results、loaded_count、complete | 表示抓取覆盖范围和是否完整 |
 
-价格金额用 NUMERIC，时间用 TIMESTAMPTZ，ID 用 BIGINT；解析 JSON 时用 Decimal 校验 ID 必须是正整数，拒绝非整数和越界值，API 中输出 ID 字符串。raw_json 保留所有原始属性，但变动价格、SKU 品相清单不进入文本向量。
+价格金额用 NUMERIC，时间用 TIMESTAMPTZ，ID 用 BIGINT；解析 JSON 时用 Decimal 校验 ID 必须是正整数，拒绝非整数和越界值，API 中输出 ID 字符串。`productId` 在同一文件、同一品类和跨品类出现重复都必须在数据库写入前失败。raw_json 保留所有原始属性，但 JSONB 不保证键顺序、空白或数字词法形式，因此 cards 和 price_source_records 另存 UTF-8 `raw_line`、行号和行哈希；不可变原始文件及文件哈希是字节级权威来源。变动价格、SKU 品相清单不进入文本向量。
 
 图像文件名通过 manifest 规则映射 product_id；默认可支持 `{product_id}.jpg` / `{product_id}_200w.jpg`，多个文件同时匹配必须明确主图规则。横版真实设计与拍摄旋转不能混为一谈：manifest 指定 `preserve` 或 `portrait_rotate_cw`，保持离线/在线模型输入策略可追溯，不自动把所有横图旋转。
 
 ### 6.3 品类过滤与全品类检索
 
-按品类分区是为了让指定品类在对应分区内 ANN 检索，不采用全局 ANN 先取 50 再用 Python 筛品类。全品类查询在分区父表上按距离排序取全局 K，由 PostgreSQL 合并各分区候选；这不是一个跨分区的物理 HNSW 索引。用 EXPLAIN 验证实际计划、分区裁剪和返回数量，不假设数据库一定选择理想计划。
+原始 products/price JSONL 继续按品类分文件保存；数据库中的卡片属于同一个 release，视觉和文本向量表按品类物理分区。这样指定品类可在对应分区内 ANN 检索，同时未指定品类仍可从分区父表查询全库。不得为每个品类部署互不关联的数据库或服务，也不得先做全局 ANN Top-50 再用 Python 筛品类。全品类查询由 PostgreSQL 合并各分区候选；这不是一个跨分区的物理 HNSW 索引。用 EXPLAIN 验证实际计划、分区裁剪和返回数量，不假设数据库一定选择理想计划。
 
 初始 `m=16, ef_construction=64, ef_search=100`，以 Recall@50 和延迟调参。pgvector 的 ANN 附加过滤可能减少结果数，0.8+ 可采用 iterative scan；本方案仍对少结果/小品类提供同一范围精确检索回退。[过滤说明](https://github.com/pgvector/pgvector#filtering)
 
@@ -194,7 +196,7 @@ PG+pgvector 可把卡信息、价格及向量置于同一事务体系；PG+FAISS
 
 ## 7. 原始包与可复用导入协议
 
-用户把原始包解压到 `/data/raw/<source_version>/`；目录可以不同。自动发现器只提出映射，正式导入读 `manifest.json`：
+宿主机仓库根目录 `data/` 挂载为容器 `/data`。用户把某品类的完整 JSONL、图片和价格压缩包上传到 `/data/inbox/`；导入工具校验后解压/归档到不可变的 `/data/raw/<source_version>/`，禁止覆盖已有 source_version。目录可以不同。自动发现器只提出映射，正式导入读 `manifest.json`：
 
 ```json
 {
@@ -215,13 +217,13 @@ PG+pgvector 可把卡信息、价格及向量置于同一事务体系；PG+FAISS
 
 示例不是实际生产目录。非标准价格文件通过 manifest 显式指定 `format=sales_snapshot`、路径、window_start/window_end、captured_at、complete；禁止靠模糊文件名推断品类。稳定 category code 不因文件夹改名而变化。
 
-执行过程：discover → validate → stage cards/prices → encode changed inputs → build indexes → verify → publish。独立 CLI 存放 `tcg-match-service/script_temp/import_data.py`，各阶段可恢复，模型只加载一次。源码与临时脚本遵循仓库位置规则，运行结果放 `/data/imports/`，向量缓存放 `/data/index/`。
+运行时数据目录固定为：`/data/inbox/` 保存待导入压缩包，`/data/raw/` 保存不可变源版本，`/data/imports/` 保存校验/断点/报告，`/data/vector-cache/` 保存可复用向量，`/data/releases/` 保存发布清单。执行过程：discover → validate → stage cards/prices → encode changed inputs → build indexes → verify → publish。独立 CLI 存放 `tcg-match-service/script_temp/import_data.py`，各阶段可恢复，模型只加载一次。
 
-- 校验 UTF-8/JSON、ID、重复主键、类别映射、相对路径和源文件哈希；路径不得越出数据根。只逐批打开图片，不把全图库读进内存。
+- 校验 UTF-8/JSON、全局 productId 唯一性、类别映射、相对路径和源文件哈希；路径不得越出数据根。保留 products/price JSONL 的原文件、原始行、行号和哈希；只逐批打开图片，不把全图库读进内存。
 - 缺图/坏图记录 quarantine，基础信息仍可入库；向量禁止写零值占位。发布要求所有异常都有归因统计，不能默默跳过。
 - checkpoint 与批次事务一起提交；中断后从已确认位置续跑。源文件哈希改变不能按旧偏移续跑。
-- 对未变化的图片哈希/文本 hash 及相同模型指纹复用旧向量；只修改价格不重新推理。
-- `upsert` 默认保留输入中未出现的旧产品；`replace --scope <category...>` 才在新版本中移除指定范围缺失产品。范围外数据从旧版本继承，禁止残缺包误删全库。
+- 向量缓存键至少包含 modality、input_hash、model_fingerprint 和 preprocess/text-template 版本；条件完全一致才可复用。未变化卡从活动版本或缓存复用向量，新增或相关输入变化的卡才重新编码；只修改价格不重新推理。
+- 正式更新只接受 `replace-category --scope <category...>` 语义：manifest 声明的每个品类都是完整快照，新版本移除该品类输入中缺失的旧产品；未声明品类从活动版本继承。禁止把残缺文件标成完整快照，导入器不提供默认的逐条 upsert 发布路径。
 - 全量替换仍生成新版本；失败不影响 active_dataset。没有发布动作，服务继续查旧版本。
 - 图片路径绑定不可变 raw/source_version。原始包应写入新目录后发布，不能在旧请求仍使用时原地覆盖标准图。
 - 模型/文本模板/预处理变化需要新版本重建相关向量；CPU↔GPU 变化只有通过数值一致性回归才允许复用。
@@ -231,13 +233,13 @@ PG+pgvector 可把卡信息、价格及向量置于同一事务体系；PG+FAISS
 
 DINO 基线固定 `dinov2_vitb14`、输入 RGB resize `(168,224)`（W,H）、bicubic、ImageNet mean/std、CLS 768 维、L2 归一化。客户端负责几何预处理；服务做解码、EXIF 处理和模型张量转换，gallery/query 共用转换函数。[DINOv2 官方模型列表](https://github.com/facebookresearch/dinov2)
 
-优先提供与 demo 一致的 Torch Hub 包：本地源码目录、权重和 commit/hash 清单齐全；从本地创建架构 `pretrained=False` 后加载本地权重，不能本地源码仍隐式下载权重。仅在本地缺失且 `ALLOW_MODEL_DOWNLOAD=true` 时下载同一固定版本到可写缓存，完成后加载。文件存在但损坏/指纹错误时明确失败，不静默换模型。
+模型由用户手工放入宿主机仓库根目录 `models/`，Compose 只读挂载为 `/models`。DINO 包固定读取 `/models/dinov2`，BGE 包固定读取 `/models/bge_model`；两者都必须包含加载所需文件和 commit/hash 清单。生产配置固定 `ALLOW_MODEL_DOWNLOAD=false`，从本地创建架构 `pretrained=False` 后加载本地权重，不得隐式联网。文件缺失、损坏或指纹错误时明确失败，不静默下载或换模型。
 
 若交付包选用 HF 的 `facebook/dinov2-base`，由显式 backend 配置加载，统一适配 CLS 输出，并对照 demo 小样本校验；不把 Torch Hub 权重直接当 HF 目录，也不把相同维度当数值等价。HF 后端启用前完成相同输入的余弦及 top-K 回归，失败则重建并重新校准。
 
-BGE 挂载 `/models/bge_model`，文档编码不加查询指令，OCR 查询加现有 prefix；正文按名称、卡号、系列、类型、描述/技能的确定顺序生成，去 HTML，列表稳定展开，保留关键身份字段，超出 512 tokens 时截断尾部。模板是跨品类通用字段加少量明确字段映射，不沿用只有宝可梦 HP/攻击的文本布局。
+BGE 固定加载 `/models/bge_model`，文档编码不加查询指令，OCR 查询加现有 prefix；正文按名称、卡号、系列、类型、描述/技能的确定顺序生成，去 HTML，列表稳定展开，保留关键身份字段，超出 512 tokens 时截断尾部。模板是跨品类通用字段加少量明确字段映射，不沿用只有宝可梦 HP/攻击的文本布局。
 
-生产为一台主机上的 API 和 PostgreSQL 两个容器，不代表两个 API 实例；Uvicorn workers=1。`DEVICE=cpu` 默认，`cuda` 必须有可用 GPU，否则启动报配置错误；兼容已有 USE_GPU 参数并明确映射。模型文件只读挂载 `/models`，下载缓存单独可写挂载 `/model-cache`。GPU 使用独立镜像/Compose override 切换相同代码；CPU 镜像使用 CPU torch 依赖，不安装 PaddleOCR。
+生产为一台主机上的 API 和 PostgreSQL 两个容器，不代表两个 API 实例；Uvicorn workers=1。`DEVICE=cpu` 默认，`cuda` 必须有可用 GPU，否则启动报配置错误；兼容已有 USE_GPU 参数并明确映射。Compose 位于 `tcg-match-service/`，因此宿主机映射固定写为 `../models:/models:ro` 和 `../data:/data`；API 使用只读数据挂载，独立 importer job 使用可写数据挂载。GPU 使用独立镜像/Compose override 切换相同代码；CPU 镜像使用 CPU torch 依赖，不安装 PaddleOCR。
 
 并发由有界请求队列和共享 CPU 工作池控制。起始最多 2 个识别请求、2 个模型作业并发，每模型同时最多 1 次调用；DINO/BGE 可在不同线程执行。torch intra-op 起始 2、interop 1，并协调 BLAS/OMP 线程限制；这是试验初值，不能在请求处理中反复修改全局线程数。同步模型与数据库工作不阻塞 ASGI 事件循环。每条并发 SQL 使用自己的连接，池上限起始 6。
 

@@ -4,7 +4,7 @@
 
 **目标：** 将现有 FastAPI + FAISS demo 改造成 PostgreSQL/pgvector 单机服务，完整实现串行 OCR 文字向量补救 API 和并行融合 API，并用同一数据、规则与评测证明其准确率、延迟和资源差异。
 
-**架构：** 一个 FastAPI 实例共享 DINOv2 ViT-B/14、BGE-small-en-v1.5、版本化 PostgreSQL/pgvector repository 和 Dify client。serial 执行视觉直通，否则 OCR 文本召回重排，再必要时 LLM；fusion 在 OCR 可用时并发执行两路召回并进行加权 RRF。原始数据按 manifest 导入不可变 dataset release，通过 active pointer 发布。
+**架构：** 一个 FastAPI 实例共享 DINOv2 ViT-B/14、BGE-small-en-v1.5、版本化 PostgreSQL/pgvector repository 和 Dify client。serial 执行视觉直通，否则 OCR 文本召回重排，再必要时 LLM；fusion 在 OCR 可用时并发执行两路召回并进行加权 RRF。原始数据按品类完整快照导入不可变 dataset release，通过 active pointer 发布；未变化向量按输入和模型指纹复用。
 
 **技术栈：** Python 3.11、FastAPI、Pydantic、PyTorch CPU/CUDA、sentence-transformers、PostgreSQL、pgvector、psycopg 3、HTTPX、pytest、Docker Compose。
 
@@ -14,11 +14,15 @@
 
 - 生产默认 CPU-only、单服务器、单 API 实例和一个 Uvicorn worker；GPU 由显式配置切换相同业务代码。
 - 正式数据约 36 万行，目录名不是接口；导入只依赖已校验的 `manifest.json` 相对路径。
+- 更新输入是某个品类的完整 products/price JSONL 快照；发布语义固定为按声明品类全量替换，未声明品类继承活动版本，不提供默认逐条 upsert 发布路径。
+- `productId` 是全部品类全局唯一的卡片主键；导入写库前必须验证同文件、同品类和跨品类无重复。
+- products/price JSONL 原文件不可变保存；数据库同时保存逐行原文、原始 JSONB、行号和哈希，规范化列仅用于查询，不能代替原始内容。
 - 图片必填；`ocr_text`、`ocr_lang`、`category` 可选；服务端不运行 OCR，也不先调用 LLM 判品类。
-- DINO 固定 `dinov2_vitb14`、768 维；BGE 固定用户本地包、384 维。模型、预处理、文本模板均带指纹。
+- DINO 固定 `dinov2_vitb14`、768 维；BGE 固定用户本地包、384 维。宿主机 `../models` 只读挂载为 `/models`，固定从 `/models/dinov2` 和 `/models/bge_model` 加载；生产禁止下载模型。模型、预处理、文本模板均带指纹。
 - serial 的低视觉置信请求在 OCR 可用时必须先做 BGE 召回和重排，再决定是否调用 Dify。
 - fusion 在 OCR 可用时必须等待两路召回再决策，不因视觉高分提前结束。
 - 指定品类只检索该品类；未指定品类做全库向量召回。
+- 原始文件按品类保存，数据库逻辑上是一个 release，视觉/文本向量表按 category_id 物理分区；不得拆成互不关联的品类数据库或服务。
 - RRF 用于排序，不当作概率；未校准 profile 时禁用自动 matched。
 - 原始图片、JSONL、价格、向量、模型、缓存和生成报告不得提交 Git；提交前只暂存本任务源码、配置、测试和文档。
 - 每项 Task 完成后运行所列验证、检查暂存区、独立 commit 并 push；若外部环境门槛未满足，停止在该 Task 的发布/联调步骤并保留已验证的本地成果。
@@ -46,6 +50,8 @@
 | `tcg-match-service/app/routes/catalog.py` | categories、price、ready 路由 |
 | `tcg-match-service/db/migrations/*.sql` | public 控制表和 release schema 模板 |
 | `tcg-match-service/script_temp/import_data.py` | discover/validate/stage/encode/index/verify/publish CLI |
+| 根目录 `models/` | 用户手工上传的 DINO/BGE 模型包；只读挂载，不提交 Git |
+| 根目录 `data/` | inbox、不可变 raw、导入断点/报告、向量缓存和 release 清单；不提交 Git |
 | `tcg-match-service/script_temp/evaluate_strategies.py` | paired 离线对比和门限校准 |
 | `tcg-match-service/script_temp/benchmark_cpu.py` | CPU 并发、延迟、CPU/RSS 压测 |
 | `tcg-match-service/tests/` | 不依赖真实模型/数据的单元和集成测试；真实依赖测试显式标记 |
@@ -80,6 +86,11 @@ def test_cpu_is_default_and_model_download_is_opt_in(monkeypatch):
     assert s.device == "cpu"
     assert s.allow_model_download is False
 
+def test_container_model_paths_are_fixed():
+    s = Settings.from_env()
+    assert s.dino_model_path == Path("/models/dinov2")
+    assert s.bge_model_path == Path("/models/bge_model")
+
 def test_cuda_configuration_fails_when_runtime_has_no_cuda(monkeypatch):
     monkeypatch.setenv("DEVICE", "cuda")
     with pytest.raises(ConfigError, match="CUDA requested"):
@@ -100,7 +111,7 @@ def test_recognize_contract_accepts_optional_client_ocr(client, jpeg_bytes, path
     assert {"strategy", "dataset_version", "model_version", "decision_version"} <= body.keys()
 ```
 
-还需测试：10 MiB+1 返回 413、非法图片返回 400、未知品类返回 400、category/category_hint 冲突返回 400、缺少图片返回 422、全空白 OCR 不执行文本检索。
+还需测试：10 MiB+1 返回 413、非法图片返回 400、未知品类返回 400、category/category_hint 冲突返回 400、缺少图片返回 422、全空白 OCR 不执行文本检索。生产配置必须拒绝 `ALLOW_MODEL_DOWNLOAD=true`，模型路径不得退回网络标识符。
 
 - [ ] **步骤 3： Run focused tests and observe failure**
 
@@ -173,11 +184,11 @@ class CatalogRepository(Protocol):
     def lookup_identity(self, scope: SearchScope, identity: Identity, limit: int) -> list[Candidate]: ...
 ```
 
-断言每个候选都包含 category 和规范化 product_id；品类范围不会泄漏；没有活动版本时抛出 RepositoryNotReady；同一请求内不重新计算已固定的 schema。
+断言每个候选都包含 category 和规范化 product_id；相同 product_id 在不同品类的测试数据必须在写入 cards 前触发全局唯一约束；品类范围不会泄漏；没有活动版本时抛出 RepositoryNotReady；同一请求内不重新计算已固定的 schema。
 
 - [ ] **步骤 2： Write PG integration tests**
 
-在临时 release schema 中创建两个品类和一组已知的三维测试向量。断言品类检索只返回该品类；全局检索返回真正的跨品类最近邻；品类检索的 `EXPLAIN` 包含分区裁剪/索引扫描；切换版本不影响已经固定的 `DatasetRef`。
+在临时 release schema 中创建两个品类和一组已知的三维测试向量。断言 cards 的 product_id 是全局主键，跨品类重复失败；品类检索只返回该品类；全局检索返回真正的跨品类最近邻；向量表按 category_id 分区且品类检索的 `EXPLAIN` 包含分区裁剪/索引扫描；切换版本不影响已经固定的 `DatasetRef`。另用含不同空白、键顺序和 `100009.0` 词法的内联 JSONL，证明 source_files、raw_line、raw_json、行号和行哈希均可追溯，raw_line 与输入逐行一致。
 
 - [ ] **步骤 3： Run tests and observe failure**
 
@@ -187,7 +198,7 @@ class CatalogRepository(Protocol):
 
 - [ ] **步骤 4： Add control and release DDL**
 
-DDL 必须启用 vector 扩展、创建控制表，并按技术方案生成每个版本的业务表。迁移接口接收服务端生成的 UUID，并安全引用 schema 名称。核心向量 DDL：
+DDL 必须启用 vector 扩展、创建控制表，并按技术方案生成每个版本的业务表。cards 不分区，以 `product_id bigint PRIMARY KEY` 强制全局唯一，并保存 category_id、raw_line、raw_json、source_file_id、line_no 和 line_sha256；source_files 保存源版本、相对路径及文件哈希，price_source_records 保存价格 JSONL 逐行原文和 JSONB。迁移接口接收服务端生成的 UUID，并安全引用 schema 名称。核心向量 DDL：
 
 ```sql
 CREATE TABLE visual_embeddings (
@@ -200,7 +211,7 @@ CREATE TABLE visual_embeddings (
 ) PARTITION BY LIST (category_id);
 ```
 
-各品类的数据加载完成后，才为其创建分区和 HNSW 余弦索引。文本使用 vector(384)。为 cards 增加身份索引和外键校验。版本状态为 PREPARING、VERIFIED、ACTIVE、RETIRED、FAILED；只有 VERIFIED 状态可以发布。
+向量表因 PostgreSQL 分区唯一约束保留 `(category_id, product_id)` 联合主键，并通过外键/一致性约束指向 cards；这不改变 product_id 的全局卡片身份。各品类的数据加载完成后，才为其创建分区和 HNSW 余弦索引。文本使用 vector(384)。为 cards 增加 category、身份索引和外键校验。版本状态为 PREPARING、VERIFIED、ACTIVE、RETIRED、FAILED；只有 VERIFIED 状态可以发布。
 
 - [ ] **步骤 5： Implement PG repository with safe release pinning**
 
@@ -251,7 +262,7 @@ def test_backend_outputs_become_normalized_cls(output):
     np.testing.assert_allclose(np.linalg.norm(v, axis=1), 1.0)
 ```
 
-还需测试：本地模型缺失且禁用下载时失败；本地模型缺失且允许下载时只调用一次固定版本加载器；模型文件哈希影响指纹；维度错误时失败；查询不会误用文档编码路径。
+还需测试：固定的 `/models/dinov2` 或 `/models/bge_model` 缺失时启动失败且网络加载器调用次数为零；模型文件哈希影响指纹；维度错误时失败；查询不会误用文档编码路径。开发环境若保留显式下载能力，也不得进入生产镜像或生产配置路径。
 
 - [ ] **步骤 2： Write deterministic preprocessing/text tests**
 
@@ -265,9 +276,9 @@ def test_backend_outputs_become_normalized_cls(output):
 
 - [ ] **步骤 4： Implement explicit DINO backends and BGE bundle**
 
-支持 `DINO_BACKEND=torch_hub|huggingface`；本地源码+权重或 HF 目录必须完整。优先加载本地模型。只有本地路径不存在且 `ALLOW_MODEL_DOWNLOAD=true` 时才访问网络，并把固定 revision 写入指纹。Torch tensor 直接映射，HF 输出取 `last_hidden_state[:,0]`。强制校验 eval/no_grad、设备、维度、float32 和 L2 归一化。
+支持 `DINO_BACKEND=torch_hub|huggingface`；本地源码+权重或 HF 目录必须完整。生产固定读取 `/models/dinov2`，并拒绝 `ALLOW_MODEL_DOWNLOAD=true`；不得因文件缺失、损坏或指纹错误访问网络。Torch tensor 直接映射，HF 输出取 `last_hidden_state[:,0]`。强制校验 eval/no_grad、设备、维度、float32 和 L2 归一化。
 
-从 `BGE_MODEL_PATH` 加载一次 BGE，校验 manifest、pooling、最大序列长度和维度；导入器和 API 复用同一对象。索引脚本中不得在线调用 `SentenceTransformer("BAAI/...")`。
+从固定的 `/models/bge_model` 加载一次 BGE，校验 manifest、pooling、最大序列长度和维度；导入器和 API 复用同一对象。索引脚本中不得在线调用 `SentenceTransformer("BAAI/...")`。
 
 - [ ] **步骤 5： Implement shared transforms and model package smoke command**
 
@@ -313,7 +324,7 @@ def is_query_eligible(text: str | None, lang: str | None) -> Eligibility: ...
 
 - [ ] **步骤 1： Write manifest and path-security tests**
 
-生成改过名称的临时品类目录。断言发现阶段只提出产品/图片路径，不擅自确定稳定品类身份；通过校验的 manifest 只能解析到数据根目录的子路径；`../`、符号链接越界、重复 category code/source ID、非整数 product ID 和主图歧义均在写数据库前失败。
+生成改过名称的临时品类目录。断言发现阶段只提出产品/图片路径，不擅自确定稳定品类身份；通过校验的 manifest 只能解析到数据根目录的子路径；`../`、符号链接越界、重复 category code/source ID、非整数 product ID、同文件/跨品类重复 product ID 和主图歧义均在写数据库前失败。manifest 必须显式声明每个输入品类是完整快照，不能选择逐条 upsert 发布语义。
 
 - [ ] **步骤 2： Write idempotence, resume and reuse tests**
 
@@ -325,12 +336,18 @@ def test_low_price_only_release_reuses_embeddings(importer, old_release, price_m
     assert importer.bge.calls == 0
     assert new.visual_count == old_release.visual_count
 
+def test_complete_category_snapshot_removes_only_missing_products(importer, active_release, pokemon_snapshot):
+    new = importer.prepare(pokemon_snapshot, base_release=active_release, mode="replace-category")
+    importer.run_to_verified(new)
+    assert new.product_ids("pokemon") == pokemon_snapshot.product_ids
+    assert new.product_ids("magic") == active_release.product_ids("magic")
+
 def test_source_hash_change_invalidates_checkpoint(importer, changed_source):
     with pytest.raises(SourceChangedError):
         importer.resume(changed_source)
 ```
 
-还需断言：记录和 checkpoint 在同一事务提交；损坏图片进入隔离清单且不写零向量；replace 范围只删除明确声明的品类；失败版本不修改活动指针；发布已验证版本时原子更新指针。
+还需断言：products/price 的 raw_line 与输入逐行一致，raw_json 语义一致，行号/行哈希/文件哈希可追溯；记录和 checkpoint 在同一事务提交；损坏图片进入隔离清单且不写零向量；replace-category 只完整替换明确声明的品类，未声明品类原样继承；失败版本不修改活动指针；发布已验证版本时原子更新指针。
 
 - [ ] **步骤 3： Write price snapshot tests**
 
@@ -344,18 +361,18 @@ def test_source_hash_change_invalidates_checkpoint(importer, changed_source):
 
 - [ ] **步骤 5： Implement streaming import pipeline**
 
-每次读取一行 JSONL 和一个有界图片批次；使用 Decimal 校验 ID，并用 COPY/批量写入。保存 sha256 和模板哈希。只有输入哈希、模型指纹、转换/模板版本全部一致时才复用向量。每条命令中每个模型只加载一次。持久化隔离详情和精确计数，但不保存原始密钥。
+每次读取一行 JSONL 和一个有界图片批次；使用 Decimal 校验 ID，并在任何数据库写入前完成全局 productId 唯一性检查。用 COPY/批量写入规范化列、raw_line、raw_json、source_file_id、line_no 和 line_sha256，保存源文件 sha256 和模板哈希。向量缓存键为 modality + input_hash + model_fingerprint + preprocess/text-template version；全部一致才从活动版本或 `/data/vector-cache/` 复用，否则只编码新增或变化输入。每条命令中每个模型只加载一次。持久化隔离详情和精确计数，但不保存原始密钥。
 
 - [ ] **步骤 6： Implement CLI and dry-run report**
 
 ```powershell
-python script_temp/import_data.py discover --data-root D:\incoming\release --output D:\incoming\manifest.draft.json
-python script_temp/import_data.py validate --manifest D:\incoming\manifest.json --report D:\incoming\validation.json
-python script_temp/import_data.py prepare --manifest D:\incoming\manifest.json --mode replace --scope magic,pokemon
+python script_temp/import_data.py discover --data-root /data/inbox/release-20260908 --output /data/imports/release-20260908/manifest.draft.json
+python script_temp/import_data.py validate --manifest /data/imports/release-20260908/manifest.json --report /data/imports/release-20260908/validation.json
+python script_temp/import_data.py prepare --manifest /data/imports/release-20260908/manifest.json --mode replace-category --scope pokemon
 python script_temp/import_data.py status --release-id <printed-release-id>
 ```
 
-命令打印生成的 release ID；运维人员将该精确值传给后续 `encode/build-index/verify/publish` 命令。`publish` 拒绝发布非 VERIFIED 状态的版本。`rollback --to-release <id>` 只能指向仍被保留的 VERIFIED/RETIRED 版本。
+命令打印生成的 release ID；运维人员将该精确值传给后续 `encode/build-index/verify/publish` 命令。discover/validate 接受 `/data/inbox/` 中的压缩包，但只有通过校验的内容才能进入不可变 `/data/raw/<source_version>/`；已存在 source_version 不得覆盖。`publish` 拒绝发布非 VERIFIED 状态的版本。`rollback --to-release <id>` 只能指向仍被保留的 VERIFIED/RETIRED 版本。
 
 - [ ] **步骤 7： Run tests and a 1,000-card sample rehearsal**
 
@@ -390,14 +407,14 @@ python script_temp/import_data.py status --release-id <printed-release-id>
 - [ ] **步骤 2： Write RRF tests**
 
 ```python
-def test_rrf_merges_by_category_and_product_id():
+def test_rrf_merges_modalities_by_global_product_id():
     got = rank_rrf(visual=[c("pokemon","42",1,.91)],
-                   text=[c("magic","42",1,.88), c("pokemon","42",2,.80)],
+                   text=[c("pokemon","42",1,.88), c("magic","43",2,.80)],
                    visual_weight=.7, text_weight=.3, c=60)
-    assert [(x.category, x.product_id) for x in got] == [("pokemon","42"),("magic","42")]
+    assert [(x.category, x.product_id) for x in got] == [("pokemon","42"),("magic","43")]
 ```
 
-断言缺失模态贡献为零且剩余权重重新归一化；原始分数保留；允许只有文本证据的候选；同分顺序稳定；RRF 分数绝不复制到 confidence。
+断言同一 product_id 的视觉/文本候选合并为一项；若同一 product_id 携带不同 category 则作为数据完整性故障拒绝；缺失模态贡献为零且剩余权重重新归一化；原始分数保留；允许只有文本证据的候选；同分顺序稳定；RRF 分数绝不复制到 confidence。
 
 - [ ] **步骤 3： Write decision tests**
 
@@ -583,6 +600,7 @@ return fallback_then_lookup(ctx, visual, text if executed else [])
 - 新建： `tcg-match-service/docker-compose.gpu.yml`
 - 修改： `tcg-match-service/entrypoint.sh`
 - 修改： `tcg-match-service/requirements.txt`
+- 修改： `.gitignore`
 - 新建： `tcg-match-service/app/routes/catalog.py`
 - 修改： `tcg-match-service/app/main.py`
 - 新建： `tcg-match-service/tests/test_readiness.py`
@@ -599,11 +617,11 @@ return fallback_then_lookup(ctx, visual, text if executed else [])
 
 - [ ] **步骤 2： Update dependencies and container startup**
 
-固定兼容的主/次版本范围，CPU 镜像使用 CPU PyTorch 安装源。增加 psycopg/pgvector/httpx，移除 Paddle/OCR 依赖。入口脚本先执行迁移再启动服务，绝不自动构建 36 万条索引。增加显式导入 profile/命令。在可写挂载允许的情况下使用非 root 用户运行服务。
+固定兼容的主/次版本范围，CPU 镜像使用 CPU PyTorch 安装源。增加 psycopg/pgvector/httpx，移除 Paddle/OCR 依赖。入口脚本先执行迁移再启动服务，绝不自动构建 36 万条索引。增加显式 importer profile/命令。在可写挂载允许的情况下使用非 root 用户运行服务。生产镜像设置 `ALLOW_MODEL_DOWNLOAD=false`，模型目录缺失或不完整时 readiness 失败，不触发联网下载。
 
 - [ ] **步骤 3： Add Postgres/pgvector and durable volumes**
 
-使用固定的 `pgvector/pgvector:pg16` 镜像标签，并在实施时解析到测试过的 patch/digest。PGDATA 存在命名卷；原始数据以 `/data:ro` 挂载，模型以 `/models:ro` 挂载，模型缓存和导入报告使用独立可写挂载。API 等待数据库健康和活动版本就绪，不使用固定 sleep。不得内置默认生产密码；`.env.example` 只包含变量名和安全的本地示例。
+使用固定的 `pgvector/pgvector:pg16` 镜像标签，并在实施时解析到测试过的 patch/digest。PGDATA 存在命名卷。Compose 文件位于 `tcg-match-service/`，API 必须使用 `../models:/models:ro` 和 `../data:/data:ro`；独立 importer profile 使用相同 `../models:/models:ro`，但将 `../data:/data` 可写挂载。初始化并记录宿主机根目录 `data/inbox`、`data/raw`、`data/imports`、`data/vector-cache`、`data/releases` 的职责；现有根目录 `models/dinov2` 和 `models/bge_model` 由用户手工维护。`.gitignore` 必须忽略整个 `data/` 和 `models/` 的运行内容。API 等待数据库健康和活动版本就绪，不使用固定 sleep。不得内置默认生产密码；`.env.example` 只包含变量名和安全的本地示例。
 
 - [ ] **步骤 4： Implement routes and wire lifespan**
 
@@ -620,11 +638,11 @@ docker compose up -d postgres tcg-match
 docker compose ps
 ```
 
-验证 `/v1/health` 返回 200；`/v1/ready` 报告正确状态；迁移具有幂等性；重启保留活动版本；进程只有一个 worker；镜像不包含 Paddle 包；本地模型完整时，阻断模型网络访问仍能启动服务。
+验证 `/v1/health` 返回 200；`/v1/ready` 报告正确状态；迁移具有幂等性；重启保留活动版本；进程只有一个 worker；镜像不包含 Paddle 包；`docker compose config` 展开的宿主机绑定准确指向仓库根目录 models/data，API 数据挂载只读且 importer 数据挂载可写；本地模型完整时，阻断模型网络访问仍能启动服务，缺少任一模型时明确未就绪。
 
 - [ ] **步骤 6： Update runbooks with exact operator workflows**
 
-记录首次安装、模型上传校验、manifest/导入阶段、版本发布/回滚、CPU/GPU 选择、数据库备份/恢复、数据/版本保留、两个 API 的 curl 示例、Dify 降级行为、日志/指标字段和故障排查。命令必须与已实现 CLI 的 `--help` 输出一致。
+记录首次安装、宿主机 data 目录初始化、DINO/BGE 手工上传到根目录 models 的路径和校验、完整品类压缩包上传到 data/inbox、manifest/replace-category 导入阶段、版本发布/回滚、CPU/GPU 选择、数据库备份/恢复、数据/版本保留、两个 API 的 curl 示例、Dify 降级行为、日志/指标字段和故障排查。明确禁止覆盖 data/raw 中已有 source_version。命令必须与已实现 CLI 的 `--help` 输出一致。
 
 - [ ] **步骤 7： Commit and push 任务 9**
 
@@ -706,11 +724,11 @@ A 阶段固定同一个决策 profile，测量调度和可用证据。B 阶段�
 
 - [ ] **步骤 2： Validate the formal raw package**
 
-运行 discover，在 manifest 中人工绑定稳定 category code，然后运行 validate。检查重复项、缺失/损坏图片、非法 ID、未知币种和不完整价格窗口。遇到无法解释的失败时停止发布；保留报告并显式修复数据源或 manifest。
+把某品类完整压缩包放入 `/data/inbox/`，运行 discover，在 manifest 中人工绑定稳定 category code 并声明完整快照，然后运行 validate。检查同文件/跨品类 productId 重复、缺失/损坏图片、非法 ID、未知币种和不完整价格窗口；抽样核对 products/price 的 raw_line、raw_json、行号与哈希。遇到无法解释的失败时停止发布；保留报告并显式修复数据源或 manifest。
 
 - [ ] **步骤 3： Import to a new release with checkpoints**
 
-使用打印出的准确 release ID 运行 prepare → encode → build-index → verify。在安全测试点中断一次并恢复，以证明断点能力。观察模型只加载一次、内存受限、模型加载没有线上 API 流量，并在满足条件时复用未变化向量。
+使用 `replace-category` 和打印出的准确 release ID 运行 prepare → encode → build-index → verify。在安全测试点中断一次并恢复，以证明断点能力。核对声明品类完全替换、未声明品类继承、缺失旧卡只从新版目标品类移除；观察模型只加载一次、内存受限、模型加载没有线上 API 流量，并在输入/模型/处理版本均一致时复用未变化向量。
 
 - [ ] **步骤 4： Verify database and retrieval integrity**
 
@@ -755,6 +773,8 @@ A 阶段固定同一个决策 profile，测量调度和可用证据。B 阶段�
 - 自动测试实际证明低视觉+可用 OCR 的 serial 调用顺序为 DINO → BGE/文字召回 → 决策 → 必要时 Dify。
 - fusion 有 OCR 时双路并发，无 OCR 与 serial 语义一致，并发受界、降级可观测。
 - 正式数据包可校验、断点导入、版本发布、回滚；36 万物理行的有效/重复/缺图统计来自报告。
+- `productId` 全局主键约束生效；完整品类快照只替换声明品类，原始 JSONL、逐行原文/JSONB 和来源哈希均可追溯。
+- 数据更新仅重算新增或相关输入发生变化的向量，价格单独变化时 DINO/BGE 调用数为零。
 - CPU 镜像完全离线加载已上传模型，DINO/BGE 的在线与离线处理一致；GPU override 通过 smoke test 后可用。
 - pgvector 的品类/全局检索经过 exact 对照；价格查询保留来源、币种、窗口和系列维度。
 - 真实照片 held-out 报告同时给出精度、覆盖率、纠错/损伤、错误接受和资源/延迟；95% 目标有明确分母，未达标时如实保留 serial/fusion 实验结果。
