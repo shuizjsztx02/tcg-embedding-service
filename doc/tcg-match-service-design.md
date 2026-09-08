@@ -8,7 +8,7 @@
 
 同时提供串行补救与并行融合两个 API，技术上可行。并行版有机会纠正视觉高分误匹配，也会额外消耗 CPU，且可能被错误 OCR 干扰；准确率和延迟改善是需要验证的假设。
 
-生产采用 FastAPI + PostgreSQL/pgvector，单服务器、单 API 实例、默认 CPU-only。DINOv2 编码图片，本地 BGE 编码标准卡文本及客户端 OCR；两种向量分别建库检索，通过全局唯一的 `productId` 融合结果。原始图片和 JSONL 按品类、版本原样保存在仓库根目录 `data/` 对应的容器挂载目录，数据库同时保存规范化字段、逐行原文、原始 JSONB、价格数据和两种向量。FAISS 保留为离线精确检索基准。
+生产采用 FastAPI + PostgreSQL/pgvector，单服务器、单 API 实例、默认 CPU-only。DINOv2 编码图片，本地 BGE 编码标准卡文本及客户端 OCR；两种向量分别建库检索，通过全局唯一的 `productId` 融合结果。原始图片和 JSONL 按品类、版本原样保存在部署根目录 `tcg-service/data/` 对应的容器挂载目录，数据库同时保存规范化字段、逐行原文、原始 JSONB、价格数据和两种向量。FAISS 保留为离线精确检索基准。
 
 首版包括：可复用导入命令、本地优先模型加载、全品类/单品类检索、两版识别 API、客户端 OCR 辅助重排、Dify GPT-5.5 兜底、卡牌查表及价格查询、离线对比与 CPU 压测。服务器 OCR、前置 LLM 品类判断、多实例、Redis、多级缓存、训练新模型和分布式向量库不在首版范围内。
 
@@ -24,7 +24,7 @@
 | OCR | `main.py` 启动 PP-OCR，`routes/ocr_match.py` 识别上传图片 | 从生产启动与依赖中移除，OCR 由客户端提供 |
 | DINO | demo 和服务调用 `dinov2_vitb14`；备用 `facebook/dinov2-base` | ViT-B/14、无 registers、768 维；它是特征提取器，不是 GroundingDINO 检测器 |
 | DINO 输出适配 | 当前直接对 `model(x)` 调用 `.dim()`，Transformers 的输出对象不支持此用法 | 显式适配 tensor / `last_hidden_state[:, 0]`，不盲目替换后端 |
-| BGE | 本地 README 标识 `bge-small-en-v1.5`；config hidden_size=384，CLS pooling，max_seq_length=512 | 以用户手工放入仓库根目录 `models/bge_model` 的完整模型包为基线，并记录文件指纹 |
+| BGE | 本地 README 标识 `bge-small-en-v1.5`；config hidden_size=384，CLS pooling，max_seq_length=512 | 以用户手工放入部署目录 `tcg-service/models/bge_model` 的完整模型包为基线，并记录文件指纹 |
 | BGE 一致性 | 查询读本地包，构建脚本重新从网上加载模型 | 离线和在线使用同一加载器、tokenizer 与模型版本 |
 | ID | 样例 `productId=100009.0`；在线用 `str(productId)`，文本构建用 `str(int(productId))` | 修复 `100009.0` 与 `100009` 关联失败问题 |
 | 导入 | `scripts/build_index.py` 按品类重新加载模型、一次性收集数据；无版本发布和断点协议 | 流式、分批、可恢复、可复用 embedding |
@@ -196,7 +196,23 @@ PG+pgvector 可把卡信息、价格及向量置于同一事务体系；PG+FAISS
 
 ## 7. 原始包与可复用导入协议
 
-宿主机仓库根目录 `data/` 挂载为容器 `/data`。用户把某品类的完整 JSONL、图片和价格压缩包上传到 `/data/inbox/`；导入工具校验后解压/归档到不可变的 `/data/raw/<source_version>/`，禁止覆盖已有 source_version。目录可以不同。自动发现器只提出映射，正式导入读 `manifest.json`：
+宿主机部署根目录固定为 `tcg-service/`，其中 `tcg-service/data/` 挂载为容器 `/data`，`tcg-service/models/` 挂载为容器 `/models`：
+
+```text
+tcg-service/
+├── models/
+│   ├── dinov2/
+│   └── bge_model/
+├── data/
+│   ├── inbox/
+│   ├── raw/
+│   ├── imports/
+│   ├── vector-cache/
+│   └── releases/
+└── tcg-match-service/
+```
+
+用户把某品类的完整 JSONL、图片和价格压缩包上传到 `/data/inbox/`；导入工具校验后解压/归档到不可变的 `/data/raw/<source_version>/`，禁止覆盖已有 source_version。目录可以不同。自动发现器只提出映射，正式导入读 `manifest.json`：
 
 ```json
 {
@@ -233,13 +249,13 @@ PG+pgvector 可把卡信息、价格及向量置于同一事务体系；PG+FAISS
 
 DINO 基线固定 `dinov2_vitb14`、输入 RGB resize `(168,224)`（W,H）、bicubic、ImageNet mean/std、CLS 768 维、L2 归一化。客户端负责几何预处理；服务做解码、EXIF 处理和模型张量转换，gallery/query 共用转换函数。[DINOv2 官方模型列表](https://github.com/facebookresearch/dinov2)
 
-模型由用户手工放入宿主机仓库根目录 `models/`，Compose 只读挂载为 `/models`。DINO 包固定读取 `/models/dinov2`，BGE 包固定读取 `/models/bge_model`；两者都必须包含加载所需文件和 commit/hash 清单。生产配置固定 `ALLOW_MODEL_DOWNLOAD=false`，从本地创建架构 `pretrained=False` 后加载本地权重，不得隐式联网。文件缺失、损坏或指纹错误时明确失败，不静默下载或换模型。
+模型由用户手工放入宿主机部署目录 `tcg-service/models/`，Compose 只读挂载为 `/models`。DINO 包固定读取 `/models/dinov2`，BGE 包固定读取 `/models/bge_model`；两者都必须包含加载所需文件和 commit/hash 清单。生产配置固定 `ALLOW_MODEL_DOWNLOAD=false`，从本地创建架构 `pretrained=False` 后加载本地权重，不得隐式联网。文件缺失、损坏或指纹错误时明确失败，不静默下载或换模型。
 
 若交付包选用 HF 的 `facebook/dinov2-base`，由显式 backend 配置加载，统一适配 CLS 输出，并对照 demo 小样本校验；不把 Torch Hub 权重直接当 HF 目录，也不把相同维度当数值等价。HF 后端启用前完成相同输入的余弦及 top-K 回归，失败则重建并重新校准。
 
 BGE 固定加载 `/models/bge_model`，文档编码不加查询指令，OCR 查询加现有 prefix；正文按名称、卡号、系列、类型、描述/技能的确定顺序生成，去 HTML，列表稳定展开，保留关键身份字段，超出 512 tokens 时截断尾部。模板是跨品类通用字段加少量明确字段映射，不沿用只有宝可梦 HP/攻击的文本布局。
 
-生产为一台主机上的 API 和 PostgreSQL 两个容器，不代表两个 API 实例；Uvicorn workers=1。`DEVICE=cpu` 默认，`cuda` 必须有可用 GPU，否则启动报配置错误；兼容已有 USE_GPU 参数并明确映射。Compose 位于 `tcg-match-service/`，因此宿主机映射固定写为 `../models:/models:ro` 和 `../data:/data`；API 使用只读数据挂载，独立 importer job 使用可写数据挂载。GPU 使用独立镜像/Compose override 切换相同代码；CPU 镜像使用 CPU torch 依赖，不安装 PaddleOCR。
+生产为一台主机上的 API 和 PostgreSQL 两个容器，不代表两个 API 实例；Uvicorn workers=1。`DEVICE=cpu` 默认，`cuda` 必须有可用 GPU，否则启动报配置错误；兼容已有 USE_GPU 参数并明确映射。Compose 位于 `tcg-service/tcg-match-service/`，因此宿主机映射固定写为 `../models:/models:ro` 和 `../data:/data`；API 使用只读数据挂载，独立 importer job 使用可写数据挂载。GPU 使用独立镜像/Compose override 切换相同代码；CPU 镜像使用 CPU torch 依赖，不安装 PaddleOCR。
 
 并发由有界请求队列和共享 CPU 工作池控制。起始最多 2 个识别请求、2 个模型作业并发，每模型同时最多 1 次调用；DINO/BGE 可在不同线程执行。torch intra-op 起始 2、interop 1，并协调 BLAS/OMP 线程限制；这是试验初值，不能在请求处理中反复修改全局线程数。同步模型与数据库工作不阻塞 ASGI 事件循环。每条并发 SQL 使用自己的连接，池上限起始 6。
 

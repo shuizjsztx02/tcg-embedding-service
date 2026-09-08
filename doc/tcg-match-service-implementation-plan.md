@@ -50,8 +50,8 @@
 | `tcg-match-service/app/routes/catalog.py` | categories、price、ready 路由 |
 | `tcg-match-service/db/migrations/*.sql` | public 控制表和 release schema 模板 |
 | `tcg-match-service/script_temp/import_data.py` | discover/validate/stage/encode/index/verify/publish CLI |
-| 根目录 `models/` | 用户手工上传的 DINO/BGE 模型包；只读挂载，不提交 Git |
-| 根目录 `data/` | inbox、不可变 raw、导入断点/报告、向量缓存和 release 清单；不提交 Git |
+| 部署根目录 `tcg-service/models/` | 用户手工上传的 DINO/BGE 模型包；只读挂载，不提交 Git |
+| 部署根目录 `tcg-service/data/` | inbox、不可变 raw、导入断点/报告、向量缓存和 release 清单；不提交 Git |
 | `tcg-match-service/script_temp/evaluate_strategies.py` | paired 离线对比和门限校准 |
 | `tcg-match-service/script_temp/benchmark_cpu.py` | CPU 并发、延迟、CPU/RSS 压测 |
 | `tcg-match-service/tests/` | 不依赖真实模型/数据的单元和集成测试；真实依赖测试显式标记 |
@@ -621,7 +621,7 @@ return fallback_then_lookup(ctx, visual, text if executed else [])
 
 - [ ] **步骤 3： Add Postgres/pgvector and durable volumes**
 
-使用固定的 `pgvector/pgvector:pg16` 镜像标签，并在实施时解析到测试过的 patch/digest。PGDATA 存在命名卷。Compose 文件位于 `tcg-match-service/`，API 必须使用 `../models:/models:ro` 和 `../data:/data:ro`；独立 importer profile 使用相同 `../models:/models:ro`，但将 `../data:/data` 可写挂载。初始化并记录宿主机根目录 `data/inbox`、`data/raw`、`data/imports`、`data/vector-cache`、`data/releases` 的职责；现有根目录 `models/dinov2` 和 `models/bge_model` 由用户手工维护。`.gitignore` 必须忽略整个 `data/` 和 `models/` 的运行内容。API 等待数据库健康和活动版本就绪，不使用固定 sleep。不得内置默认生产密码；`.env.example` 只包含变量名和安全的本地示例。
+使用固定的 `pgvector/pgvector:pg16` 镜像标签，并在实施时解析到测试过的 patch/digest。PGDATA 存在命名卷。宿主机部署根目录固定为 `tcg-service/`，Compose 文件位于 `tcg-service/tcg-match-service/`，因此 API 必须使用 `../models:/models:ro` 和 `../data:/data:ro`；独立 importer profile 使用相同 `../models:/models:ro`，但将 `../data:/data` 可写挂载。初始化并记录 `tcg-service/data/inbox`、`tcg-service/data/raw`、`tcg-service/data/imports`、`tcg-service/data/vector-cache`、`tcg-service/data/releases` 的职责；`tcg-service/models/dinov2` 和 `tcg-service/models/bge_model` 由用户手工维护。`.gitignore` 必须忽略整个 `data/` 和 `models/` 的运行内容。API 等待数据库健康和活动版本就绪，不使用固定 sleep。不得内置默认生产密码；`.env.example` 只包含变量名和安全的本地示例。
 
 - [ ] **步骤 4： Implement routes and wire lifespan**
 
