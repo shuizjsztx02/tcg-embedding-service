@@ -135,7 +135,16 @@ URL 必须放在单引号中，否则 shell 会将 `&` 解释为后台命令分�
     {"price": {"raw": "$2.29", "extracted": 2.29}, "soldDate": "2026-08-10"},
     {"price": {"raw": "$2.29", "extracted": 2.29}, "soldDate": "2026-08-11"},
     {"price": {"raw": "$2.29", "extracted": 2.29}, "soldDate": "2026-08-12"}
-  ]
+  ],
+  "monitor": {
+    "visual_rank": 1,
+    "visual_score": 1.0,
+    "text_rank": null,
+    "text_score": null,
+    "dataSource": "visual",
+    "confidence": null,
+    "strategy": "serial"
+  }
 }
 ```
 
@@ -168,6 +177,37 @@ URL 必须放在单引号中，否则 shell 会将 `&` 解释为后台命令分�
 
 多币种数据不应直接混合成单一数值趋势；如果数据源未保留币种，后端应对该结果保守返回 `[]`。
 
+### 5.3 `monitor` 字段
+
+`monitor` 用于观测最终结果采用了哪些证据以及实际执行策略，不作为商品业务信息展示。无论是否匹配成功，HTTP 200 响应都必须返回该对象；没有对应证据的排名、分数和置信度返回 `null`，不得用 `0` 代替缺失值。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `visual_rank` | integer or null | 最终 `productId` 在 DINOv2 视觉召回结果中的名次，从 1 开始。没有最终商品或该商品未进入视觉候选时为 `null`。 |
+| `visual_score` | number or null | 最终商品的 DINOv2 原始视觉相似度。它是模型相似度而不是概率；不得复制到 `confidence`。 |
+| `text_rank` | integer or null | 最终商品在 OCR/BGE 文本召回结果中的名次，从 1 开始。未执行文本召回或未进入文本候选时为 `null`。 |
+| `text_score` | number or null | 最终商品的 OCR/BGE 原始文本相似度。仅解析卡号等规则但未执行 BGE 召回时为 `null`。 |
+| `dataSource` | string enum | 最终业务结论实际使用的证据来源，枚举规则见下表。它描述“用了什么证据”，不描述 serial/fusion 调度方式。 |
+| `confidence` | number or null | 最终决策经过校准后的置信度，范围为 `[0,1]`。未上线概率校准或本次路径无法生成可比较置信度时必须为 `null`。 |
+| `strategy` | string enum | 实际执行策略：`serial` 或 `fusion`。兼容路由 `/v2/recognize` 返回 `serial`。 |
+
+#### `dataSource` 完整枚举
+
+组合值按 `visual_text_llm` 的固定顺序命名，不得生成 `text_visual`、`llm_visual` 等同义值。
+
+| 枚举值 | 适用情况 | 典型路径 |
+| --- | --- | --- |
+| `visual` | 最终结果只依据视觉检索接受。 | DINOv2 top-1 分数和 margin 达到直出门限；serial 高置信直出。 |
+| `text` | 最终结果只依据客户端 OCR 文本、卡号/系列规则或文本召回接受。 | OCR 身份唯一命中，或文本 top-1 达到接受规则；保留给允许文本独立决策的实现。 |
+| `visual_text` | 视觉和文本证据共同支持同一结果，未使用 LLM 决策。 | serial 的低视觉置信文本补救命中；fusion 合并 DINOv2 与 BGE 后接受。 |
+| `llm` | 最终身份或未入库结论只由 LLM 产生，没有可用于最终决策的视觉/文本候选。 | LLM 识别后唯一查表命中，或返回 `NOT_IN_DATABASE`。 |
+| `visual_llm` | LLM 基于视觉候选完成确认或消歧，未使用有效文本证据。 | 无 OCR 时视觉候选不确定，LLM 选择/确认候选。 |
+| `text_llm` | LLM 基于 OCR/文本候选完成确认或消歧，视觉证据未参与最终结论。 | 文本候选有效但视觉候选不可用或未支持最终商品。 |
+| `visual_text_llm` | 视觉、文本和 LLM 三类证据均参与最终结论。 | fusion 两路仍有歧义，再由 LLM 在候选中确认；serial 文本补救后仍需 LLM。 |
+| `none` | 没有形成可采用的识别证据。 | `NO_MATCH`、`AMBIGUOUS`、`NOT_A_CARD`，或识别流程未得到候选。 |
+
+`dataSource` 以“最终决策实际依赖”为准，而不是以“模块是否运行过”为准。例如 fusion 请求虽然同时执行了视觉和文本召回，但文本结果未支持最终商品且最终按视觉规则接受时，应返回 `visual`，不能因为策略名是 fusion 就返回 `visual_text`。LLM 仅执行了格式整理、没有影响商品选择时，也不得在来源中增加 `llm`。
+
 ## 6. 未命中与错误处理
 
 业务不命中不等于 HTTP 请求失败：服务返回 HTTP 200，并将 `text.state` 设为 `false`。调用方应以 `state` 判断是否展示卡牌结果。
@@ -175,8 +215,8 @@ URL 必须放在单引号中，否则 shell 会将 `&` 解释为后台命令分�
 | 情形 | HTTP | `text.stateErrorReason` | 调用方处理 |
 | --- | --- | --- | --- |
 | 已确认匹配 | 200 | `""` | 使用 `text` 和 `priceTrend`。 |
-| 证据不足或候选歧义 | 200 | `AMBIGUOUS` 或 `NO_MATCH` | 提示用户补拍清晰图片或补充文字。 |
-| 图片不是卡牌 | 200 | `NOT_A_CARD` | 提示重新上传单张 TCG 卡牌图片。 |
+| 证据不足或候选歧义 | 200 | `AMBIGUOUS` 或 `NO_MATCH` | 提示用户补拍清晰图片或补充文字；`monitor.dataSource=none`。 |
+| 图片不是卡牌 | 200 | `NOT_A_CARD` | 提示重新上传单张 TCG 卡牌图片；`monitor.dataSource=none`。 |
 | 识别出身份但库中无该商品 | 200 | `NOT_IN_DATABASE` | 可展示身份字段，但不应展示为已命中库内商品。 |
 | 缺失图片字段 | 422 | 不适用 | 修正请求后重试。 |
 | 非法图片、图片过大、URL/路径不可读 | 400 或 413 | 不适用 | 修正输入后重试。 |
@@ -191,4 +231,5 @@ URL 必须放在单引号中，否则 shell 会将 `&` 解释为后台命令分�
 2. 将 `text` 转发为 `ocr_text`，校验 `confidence` 并将其与 OCR 证据一起传递。
 3. 将第 3.3 节的展示枚举转为内部品类代码，不向内部检索层传入展示文案。
 4. 将现有 `RecognizeResponse`中的品牌、商品、价格数据映射为第 5 节的 `text` 和 `priceTrend`。数据不存在时保持空值约定，不伪造字段。
-5. 所有成功响应保证存在 `text` 和 `priceTrend`；不命中则使用 `state=false` 而不使用 HTTP 500。
+5. 根据候选的视觉/文本排名和分数、LLM 是否真正参与决策以及实际策略，组装 `monitor`；`confidence` 未校准前保持 `null`。
+6. 所有 HTTP 200 响应保证存在 `text`、`priceTrend` 和 `monitor`；不命中则使用 `state=false` 而不使用 HTTP 500。
