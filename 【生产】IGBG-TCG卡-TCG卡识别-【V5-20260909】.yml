@@ -71,11 +71,11 @@ workflow:
         isInLoop: false
         sourceType: llm
         targetType: if-else
-      id: 1775632235934-source-1790000000001-target
+      id: 1775632235934-source-1779675246339-target
       selected: false
       source: '1775632235934'
       sourceHandle: source
-      target: '1790000000001'
+      target: '1779675246339'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -83,11 +83,24 @@ workflow:
         isInIteration: false
         isInLoop: false
         sourceType: if-else
-        targetType: code
-      id: 1790000000001-true-1790000000002-target
+        targetType: llm
+      id: 1790000000001-true-1785100000001-target
       selected: false
       source: '1790000000001'
       sourceHandle: 'true'
+      target: '1785100000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1785100000001-source-1790000000002-target
+      selected: false
+      source: '1785100000001'
+      sourceHandle: source
       target: '1790000000002'
       targetHandle: target
       type: custom
@@ -109,12 +122,12 @@ workflow:
         isInIteration: false
         isInLoop: false
         sourceType: if-else
-        targetType: if-else
-      id: 1790000000001-false-1779675246339-target
+        targetType: llm
+      id: 1790000000001-false-1775632235934-target
       selected: false
       source: '1790000000001'
       sourceHandle: 'false'
-      target: '1779675246339'
+      target: '1775632235934'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -157,10 +170,10 @@ workflow:
         isInLoop: false
         sourceType: llm
         targetType: if-else
-      id: 17798545532800-source-1790000000001-target
+      id: 17798545532800-source-1779675246339-target
       source: '17798545532800'
       sourceHandle: source
-      target: '1790000000001'
+      target: '1779675246339'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -213,11 +226,11 @@ workflow:
     - data:
         isInLoop: false
         sourceType: start
-        targetType: llm
-      id: 1775632234711-source-1775632235934-target
+        targetType: if-else
+      id: 1775632234711-source-1790000000001-target
       source: '1775632234711'
       sourceHandle: source
-      target: '1775632235934'
+      target: '1790000000001'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -258,6 +271,38 @@ workflow:
           required: false
           type: text-input
           variable: intent
+        - default: ''
+          hint: Backend-classified category hint.
+          label: category
+          options: []
+          placeholder: ''
+          required: false
+          type: text-input
+          variable: category
+        - default: ''
+          hint: OCR or caller-provided multiline text.
+          label: text
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: text
+        - default: ''
+          hint: JSON string containing retrieval candidates.
+          label: candidates
+          options: []
+          placeholder: '[]'
+          required: false
+          type: paragraph
+          variable: candidates
+        - default: ''
+          hint: JSON string containing field source information.
+          label: fieldSources
+          options: []
+          placeholder: '{}'
+          required: false
+          type: paragraph
+          variable: fieldSources
       height: 134
       id: '1775632234711'
       position:
@@ -385,8 +430,20 @@ workflow:
             \ set `setCodeRaw` to an empty string.\n\n---\n\n# Rules\n- Visual extraction\
             \ first; reasonable TCG-knowledge inference allowed; no fabrication\n\
             - If state=false: output ONLY state, stateErrorReason, isSportsCard\n\
-            - Runtime intent is {{#1775632234711.intent#}}. For `classify`, prioritize state, stateErrorReason, isSportsCard, and cardIp. For `recognize_enrich`, include priceTrend as three indicative USD points when state=true.
+            - This node is used only for `recognize_enrich`. Include priceTrend as three indicative USD points when state=true.
             - Output JSON only per schema; no markdown"
+        - id: 1790000000004-enrich-context
+          role: user
+          text: |-
+            Backend category hint: {{#1775632234711.category#}}
+            OCR/caller text:
+            {{#1775632234711.text#}}
+            Retrieval candidates JSON:
+            {{#1775632234711.candidates#}}
+            Existing field sources JSON:
+            {{#1775632234711.fieldSources#}}
+
+            Use these values only as supporting context. Prefer visible image evidence for card identity. Fill missing response fields and produce the requested indicative priceTrend; do not overwrite or reinterpret PG source precedence.
         selected: false
         structured_output:
           schema:
@@ -409,6 +466,7 @@ workflow:
                 - Disney Lorcana
                 - Flesh and Blood
                 - 'Dragon Ball Super: Masters'
+                - ''
                 type: string
               cardName:
                 type: string
@@ -470,6 +528,23 @@ workflow:
               priceTrend:
                 description: For recognize_enrich only, generate a three-point indicative USD price curve. Each point must contain price.raw, price.extracted, and soldDate (YYYY-MM-DD). Return an empty array when state is false.
                 items:
+                  properties:
+                    price:
+                      properties:
+                        extracted:
+                          type: number
+                        raw:
+                          type: string
+                      required:
+                      - raw
+                      - extracted
+                      type: object
+                    soldDate:
+                      pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}$
+                      type: string
+                  required:
+                  - price
+                  - soldDate
                   type: object
                 type: array
               marketValuationTrend:
@@ -529,11 +604,11 @@ workflow:
       height: 123
       id: '1775632235934'
       position:
-        x: 528.5321680797322
-        y: -9.908518737118754
+        x: 827.3971373591285
+        y: 126.71236828006224
       positionAbsolute:
-        x: 528.5321680797322
-        y: -9.908518737118754
+        x: 827.3971373591285
+        y: 126.71236828006224
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -552,10 +627,10 @@ workflow:
       height: 88
       id: '1775632429183'
       position:
-        x: 1913.6140315735822
+        x: 2176.0
         y: 126.71236828006224
       positionAbsolute:
-        x: 1913.6140315735822
+        x: 2176.0
         y: 126.71236828006224
       selected: false
       sourcePosition: right
@@ -654,8 +729,9 @@ workflow:
               result['marketValuationAvg'] = round(llm_value * 0.7 + raw_reference * 0.3, 2)
 
 
-          def main(source1=None, source1_fallback=None, priceTrend=None, **kwargs):
+          def main(source1=None, source1_fallback=None, **kwargs):
               result = dict(_pick_dict(source1, source1_fallback))
+              priceTrend = result.get('priceTrend') if isinstance(result.get('priceTrend'), list) else []
               state = _to_bool(result.get('state', True))
               if not state:
                   return {
@@ -687,19 +763,13 @@ workflow:
           - card
           value_type: object
           variable: source1
-        - value_selector:
-          - '1775632235934'
-          - structured_output
-          - priceTrend
-          value_type: array[object]
-          variable: priceTrend
       height: 79
       id: '1778001001006'
       position:
-        x: 1638.1688175164961
+        x: 1905.0
         y: 126.71236828006224
       positionAbsolute:
-        x: 1638.1688175164961
+        x: 1905.0
         y: 126.71236828006224
       selected: false
       sourcePosition: right
@@ -726,11 +796,11 @@ workflow:
       height: 147
       id: '1779675246339'
       position:
-        x: 827.3971373591285
-        y: -9.908518737118754
+        x: 1098.2914726419285
+        y: 126.71236828006224
       positionAbsolute:
-        x: 827.3971373591285
-        y: -9.908518737118754
+        x: 1098.2914726419285
+        y: 126.71236828006224
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -749,10 +819,10 @@ workflow:
       height: 88
       id: '1779675314108'
       position:
-        x: 1370.801955782409
+        x: 1638.1688175164961
         y: -22.124147840067934
       positionAbsolute:
-        x: 1370.801955782409
+        x: 1638.1688175164961
         y: -22.124147840067934
       selected: false
       sourcePosition: right
@@ -796,10 +866,10 @@ workflow:
       height: 51
       id: '1779676454987'
       position:
-        x: 1098.2914726419285
+        x: 1370.801955782409
         y: -22.124147840067934
       positionAbsolute:
-        x: 1098.2914726419285
+        x: 1370.801955782409
         y: -22.124147840067934
       selected: false
       sourcePosition: right
@@ -921,6 +991,18 @@ workflow:
             \ first; reasonable TCG-knowledge inference allowed; no fabrication\n\
             - If state=false: output ONLY state, stateErrorReason, isSportsCard\n\
             - Output JSON only per schema; no markdown"
+        - id: 1790000000005-enrich-fallback-context
+          role: user
+          text: |-
+            Backend category hint: {{#1775632234711.category#}}
+            OCR/caller text:
+            {{#1775632234711.text#}}
+            Retrieval candidates JSON:
+            {{#1775632234711.candidates#}}
+            Existing field sources JSON:
+            {{#1775632234711.fieldSources#}}
+
+            Use these values only as supporting context. Prefer visible image evidence for card identity. Fill missing response fields and produce three indicative USD priceTrend points; do not overwrite or reinterpret PG source precedence.
         selected: false
         structured_output:
           schema:
@@ -1001,6 +1083,28 @@ workflow:
                   relevant information, estimate its average market price in USD.
                   Output only a numeric value
                 type: number
+              priceTrend:
+                description: For recognize_enrich, generate a three-point indicative USD price curve. Each point must contain price.raw, price.extracted, and soldDate (YYYY-MM-DD).
+                items:
+                  properties:
+                    price:
+                      properties:
+                        extracted:
+                          type: number
+                        raw:
+                          type: string
+                      required:
+                      - raw
+                      - extracted
+                      type: object
+                    soldDate:
+                      pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}$
+                      type: string
+                  required:
+                  - price
+                  - soldDate
+                  type: object
+                type: array
               marketValuationTrend:
                 description: 'Recent market price trend inferred from the identified
                   card and known recent market behavior. Allowed values: up, down.'
@@ -1058,11 +1162,11 @@ workflow:
       height: 123
       id: '17798545532800'
       position:
-        x: 528.5321680797322
-        y: 150.03306463114006
+        x: 827.3971373591285
+        y: 300.0
       positionAbsolute:
-        x: 528.5321680797322
-        y: 150.03306463114006
+        x: 827.3971373591285
+        y: 300.0
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1455,10 +1559,10 @@ workflow:
       height: 111
       id: '1778001001010'
       position:
-        x: 1370.801955782409
+        x: 1638.1688175164961
         y: 126.71236828006224
       positionAbsolute:
-        x: 1370.801955782409
+        x: 1638.1688175164961
         y: 126.71236828006224
       selected: false
       sourcePosition: right
@@ -1633,10 +1737,10 @@ workflow:
       height: 111
       id: '1780000000001'
       position:
-        x: 1098.2914726419285
+        x: 1370.801955782409
         y: 126.71236828006224
       positionAbsolute:
-        x: 1098.2914726419285
+        x: 1370.801955782409
         y: 126.71236828006224
       selected: false
       sourcePosition: right
@@ -1659,29 +1763,44 @@ workflow:
         - id: 2f859da7-0b44-42a8-a6d1-1f91040bf001
           role: system
           text: |-
-            You are a fast TCG card search-key extractor.
-            Inspect the uploaded card image and return exactly three fields:
-            - cardName: the visible card name, preserving printed spelling.
-            - setName: the most specific set/series identifier visible on the card; otherwise use the visible set name.
-            - cardNumber: the printed collector/card number, preserving separators such as / and -.
-            Use an empty string for any unreadable field. Do not estimate prices and do not add commentary.
+            You are a fast TCG image classifier. Inspect only the uploaded image and return exactly four fields.
+
+            state: true only when the image is a valid card from one of the supported TCG IPs; otherwise false.
+            stateErrorReason: empty when state=true; otherwise a concise machine-readable reason such as NOT_A_CARD, SPORTS_CARD, or UNSUPPORTED_TCG.
+            isSportsCard: true only for sports trading cards.
+            cardIp: when state=true, exactly one of Pokémon, Pokémon Japan, Magic, Yu-Gi-Oh!, One Piece, Disney Lorcana, Flesh and Blood, Dragon Ball Super: Masters; otherwise an empty string.
+
+            Pokémon Japan is only for Japanese-language Pokémon cards. Return JSON matching the schema and no commentary. Do not identify card name, set, price, grading, or collection advice.
         selected: false
         structured_output:
           schema:
             properties:
-              cardName:
+              cardIp:
+                enum:
+                - Pokémon
+                - Pokémon Japan
+                - Magic
+                - Yu-Gi-Oh!
+                - One Piece
+                - Disney Lorcana
+                - Flesh and Blood
+                - 'Dragon Ball Super: Masters'
+                - ''
                 type: string
-              cardNumber:
-                type: string
-              setName:
+              isSportsCard:
+                type: boolean
+              state:
+                type: boolean
+              stateErrorReason:
                 type: string
             required:
-            - cardName
-            - setName
-            - cardNumber
+            - state
+            - stateErrorReason
+            - isSportsCard
+            - cardIp
             type: object
         structured_output_enabled: true
-        title: 快速识别卡片信息
+        title: 快速判断卡牌类型
         type: llm
         vision:
           configs:
@@ -1693,190 +1812,11 @@ workflow:
       height: 123
       id: '1785100000001'
       position:
-        x: 528.5321680797322
-        y: -190.0
-      positionAbsolute:
-        x: 528.5321680797322
-        y: -190.0
-      selected: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 242
-    - data:
-        code: |-
-          import json
-          import re
-          import ssl
-          from datetime import datetime, timezone
-          from urllib.error import HTTPError, URLError
-          from urllib.parse import urlencode
-          from urllib.request import Request, urlopen
-
-          API_URL = ""
-          SETS_URL = ""
-          LEGACY_API_KEY = ""
-
-
-          def _clean(value):
-              return str(value or "").strip()
-
-
-          def _request_json(url):
-              request = Request(
-                  url,
-                  headers={
-                      "Accept": "application/json",
-                      "User-Agent": "BallStarCard-Dify/1.0",
-                      "x-api-key": LEGACY_API_KEY,
-                  },
-                  method="GET",
-              )
-              try:
-                  with urlopen(request, timeout=15) as response:
-                      body = response.read().decode("utf-8")
-              except URLError as exc:
-                  error_text = str(exc).upper()
-                  if (
-                      "CERTIFICATE_VERIFY_FAILED" not in error_text
-                      and "UNABLE TO GET LOCAL ISSUER CERTIFICATE" not in error_text
-                  ):
-                      raise
-                  context = ssl.create_default_context()
-                  context.check_hostname = True
-                  context.verify_mode = ssl.CERT_REQUIRED
-                  with urlopen(request, timeout=15, context=context) as response:
-                      body = response.read().decode("utf-8")
-              return json.loads(body)
-
-
-          def _normalized(value):
-              return re.sub(r"[^a-z0-9]+", "", _clean(value).lower())
-
-
-          def _resolve_set_id(set_name):
-              query = _clean(set_name)
-              if not query:
-                  return ""
-              payload = _request_json(SETS_URL + "?" + urlencode({"q": query}))
-              target = _normalized(query)
-              candidates = [item for item in payload.get("data") or [] if isinstance(item, dict)]
-              for item in candidates:
-                  if _normalized(item.get("name")) == target or _normalized(item.get("id")) == target:
-                      return _clean(item.get("id"))
-              return _clean(candidates[0].get("id")) if len(candidates) == 1 else ""
-
-
-          def _price_trend(payload):
-              for card in payload.get("data") or []:
-                  if not isinstance(card, dict):
-                      continue
-                  for variant in card.get("variants") or []:
-                      if not isinstance(variant, dict):
-                          continue
-                      by_date = {}
-                      for point in variant.get("priceHistory") or []:
-                          if not isinstance(point, dict):
-                              continue
-                          try:
-                              price = round(float(point.get("p")), 2)
-                              sold_date = datetime.fromtimestamp(
-                                  float(point.get("t")), timezone.utc
-                              ).date().isoformat()
-                          except (TypeError, ValueError, OverflowError, OSError):
-                              continue
-                          by_date[sold_date] = {
-                              "price": {
-                                  "raw": "${:.2f}".format(price),
-                                  "extracted": price,
-                              },
-                              "soldDate": sold_date,
-                          }
-                      if by_date:
-                          trend = [by_date[key] for key in sorted(by_date)]
-                          if len(trend) <= 69:
-                              return trend
-                          last_index = len(trend) - 1
-                          return [trend[round(index * last_index / 68)] for index in range(69)]
-              return []
-
-
-          def main(cardName="", setName="", cardNumber="", **kwargs):
-              # This disconnected legacy node must never make an external price request.
-              return {"priceTrend": []}
-              try:
-                  params = {
-                      "q": _clean(cardName),
-                      "set": _resolve_set_id(setName),
-                      "number": _clean(cardNumber),
-                      "condition": "NM",
-                      "priceHistoryDuration": "30d",
-                      "limit": 20,
-                  }
-                  params = {key: value for key, value in params.items() if value != ""}
-                  payload = _request_json(API_URL + "?" + urlencode(params))
-                  return {"priceTrend": _price_trend(payload)}
-              except (HTTPError, URLError, TimeoutError, OSError, ValueError, json.JSONDecodeError):
-                  return {"priceTrend": []}
-        code_language: python3
-        desc: 已停用的价格曲线兼容节点；价格曲线由主 LLM 输出
-        outputs:
-          priceTrend:
-            children: null
-            type: array[object]
-        selected: false
-        title: 已停用价格兼容节点
-        type: code
-        variables:
-        - value_selector:
-          - '1785100000001'
-          - structured_output
-          - cardName
-          value_type: string
-          variable: cardName
-        - value_selector:
-          - '1785100000001'
-          - structured_output
-          - setName
-          value_type: string
-          variable: setName
-        - value_selector:
-          - '1785100000001'
-          - structured_output
-          - cardNumber
-          value_type: string
-          variable: cardNumber
-      height: 139
-      id: '1785100000002'
-      position:
         x: 827.3971373591285
-        y: -190.0
+        y: -260.0
       positionAbsolute:
         x: 827.3971373591285
-        y: -190.0
-      selected: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 242
-    - data:
-        outputs:
-        - value_selector:
-          - '1785100000002'
-          - priceTrend
-          value_type: array[object]
-          variable: priceTrend
-        selected: false
-        title: 输出价格曲线
-        type: end
-      height: 88
-      id: '1785100000003'
-      position:
-        x: 1098.2914726419285
-        y: -190.0
-      positionAbsolute:
-        x: 1098.2914726419285
-        y: -190.0
+        y: -260.0
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1901,11 +1841,11 @@ workflow:
       height: 147
       id: '1790000000001'
       position:
-        x: 827.3971373591285
-        y: -260.0
+        x: 528.5321680797322
+        y: -30.908518737118754
       positionAbsolute:
-        x: 827.3971373591285
-        y: -260.0
+        x: 528.5321680797322
+        y: -30.908518737118754
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1941,25 +1881,25 @@ workflow:
         type: code
         variables:
         - value_selector:
-          - '1775632235934'
+          - '1785100000001'
           - structured_output
           - state
           value_type: boolean
           variable: state
         - value_selector:
-          - '1775632235934'
+          - '1785100000001'
           - structured_output
           - stateErrorReason
           value_type: string
           variable: stateErrorReason
         - value_selector:
-          - '1775632235934'
+          - '1785100000001'
           - structured_output
           - isSportsCard
           value_type: boolean
           variable: isSportsCard
         - value_selector:
-          - '1775632235934'
+          - '1785100000001'
           - structured_output
           - cardIp
           value_type: string
