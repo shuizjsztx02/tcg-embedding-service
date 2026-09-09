@@ -1,6 +1,6 @@
 # TCG 识别服务：后端集成接口说明
 
-文档版本：v1.1
+文档版本：v1.2
 更新日期：2026-09-09
 
 ## 1. 目的和范围
@@ -82,7 +82,7 @@
 2. 在确定的品类范围内执行 serial 或 fusion 匹配。
 3. 在需要时完成候选消歧，并补充评级和收藏建议。
 
-内部预检不可用时返回 HTTP 503。商品已经可靠确定但内容补全失败时不推翻匹配，只将对应扩展字段置空；商品身份必须依赖内容识别才能确定时，失败返回 `AMBIGUOUS` 或 `NO_MATCH`。
+内部预检不可用时返回 HTTP 503。商品已经可靠确定但内容补全失败时不推翻匹配，只将对应扩展字段置空并在 monitor 记录 warning；商品身份必须依赖内容识别才能确定时，失败返回 `monitor.status_match=candidates` 或 `unrecognized`。
 
 ## 4. 调用示例
 
@@ -151,9 +151,55 @@ URL 必须放在单引号中，否则 shell 会将 `&` 解释为后台命令分�
     "visual_score": 1.0,
     "text_rank": null,
     "text_score": null,
+    "fusion_score": null,
+    "margin": 0.18,
+    "ocr_used": false,
+    "text_retrieval_used": false,
+    "input_text_confidence": 0.96,
+    "candidate_count": 5,
     "dataSource": "visual",
     "confidence": null,
-    "strategy": "serial"
+    "strategy": "serial",
+    "status_match": "matched",
+    "price_source": "pg_sales",
+    "field_sources": {
+      "state": "dify_classify",
+      "stateErrorReason": "dify_classify",
+      "isSportsCard": "dify_classify",
+      "cardIp": "dify_classify",
+      "seriesName": "pg",
+      "cardName": "pg",
+      "cardNumber": "pg",
+      "language": "dify_enrich",
+      "year": "pg_derived",
+      "artist": "dify_enrich",
+      "gradingAgency": "dify_enrich",
+      "gradingStatus": "dify_enrich",
+      "gradingValue": "dify_enrich",
+      "rarity": "pg",
+      "collectionAdviceTag": "dify_enrich",
+      "collectionAdviceText": "dify_enrich",
+      "marketValuationTrend": "pg_derived",
+      "marketValuationAvg": "pg",
+      "productId": "pg",
+      "link": "none",
+      "thumbnail": "none"
+    },
+    "llm_enrich_status": "succeeded",
+    "warnings": [],
+    "request_id": "d14171a7-c3d8-4835-a8d8-3be585590e35",
+    "dataset_version": "c685f480-ca25-4121-8145-d70a3aa02ffd",
+    "model_version": "13e8cd27a36b8d6f373809f4bf2ab7e59c2e1a48d0645c30717b15335bc65460",
+    "workflow_version": "tcg-v3-20260824",
+    "decision_version": "c583c8ffbfac2777621bf7192feb2c2478afdc20fb48f58ff284aac9c4c2b508",
+    "latency_ms": 1420.5,
+    "timings_ms": {
+      "classify": 420.1,
+      "visual": 155.3,
+      "text": 0.0,
+      "database": 18.7,
+      "enrich": 801.2
+    }
   }
 }
 ```
@@ -162,34 +208,65 @@ URL 必须放在单引号中，否则 shell 会将 `&` 解释为后台命令分�
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
-| `state` | boolean | `true` 代表已找到可返回的卡牌结果；`false` 代表未确认卡牌身份。 |
-| `stateErrorReason` | string | `state=false` 时的稳定错误原因代码，例如 `NO_MATCH`、`AMBIGUOUS`、`NOT_A_CARD`、`SPORTS_CARD`、`NOT_IN_DATABASE`。成功时为空字符串。 |
+| `state` | boolean | 前置 Dify 对图片内容有效性的判断。`true` 表示是八种支持 IP 中的有效 TCG；它不表示已经命中 PG，库内匹配结果见 `monitor.status_match`。 |
+| `stateErrorReason` | string | 只说明 `state=false` 的内容拒绝原因，例如 `NOT_A_TCG_CARD`、`SPORTS_CARD`、`UNSUPPORTED_CARD_IP`。不得承载 `matched/candidates/recognized_no_db/unrecognized` 等数据库匹配状态。成功时为空字符串。 |
 | `isSportsCard` | boolean | 服务自动预检结果。为 `true` 时停止 TCG 匹配，并令 `state=false`。 |
 | `cardIp` | string | 服务自动判断的规范品类名称，与第 3.3 节枚举值一致；非 TCG/体育卡拒绝结果可为空字符串。 |
-| `seriesName`、`cardName`、`cardNumber`、`language`、`year`、`artist`、`rarity` | string | PG 商品数据优先；PG 缺失时才允许使用图片内容识别值。无法确认时返回 `""`。 |
+| `seriesName`、`cardName`、`cardNumber`、`language`、`year`、`artist`、`rarity` | string | 按第 5.2 节逐字段合并：语义一致且有效的 PG 字段优先，缺失时使用后置 Dify LLM 结果。仍无法确认时返回 `""`。 |
 | `gradingAgency`、`gradingStatus` | string | 从图片内容识别的卡牌评级信息。未知时返回 `""`。 |
 | `gradingValue` | number or null | 从图片内容识别的评级分数。未知时返回 `null`。 |
 | `collectionAdviceTag`、`collectionAdviceText` | string | 服务内容补全阶段生成的收藏建议；补全失败时返回 `""`，不影响已经可靠确定的商品匹配。 |
-| `marketValuationTrend` | string | 根据最终采用的同币种 `priceTrend` 计算：`up`、`down`、`flat` 或 `unknown`；数据不足时为 `unknown`。 |
-| `marketValuationAvg` | number or null | 直接采信命中商品 PG `raw_json.marketPrice`；例如商品数据为 `marketPrice: 5.6` 时返回 `5.6`。无该字段时返回 `null`，不得使用 LLM 估值覆盖。 |
-| `productId` | number or string or null | 商品主键。数据源 ID 为非整数时可保留为字符串，不丢失精度。 |
-| `link`、`thumbnail` | string | 商品页和缩略图 URL。无值时为空字符串。 |
+| `marketValuationTrend` | string | 根据最终采用的 `priceTrend` 计算：`up`、`down`、`flat` 或 `unknown`；数据不足时可采用 Dify LLM 值，否则为 `unknown`。 |
+| `marketValuationAvg` | number or null | 命中商品且 PG `raw_json.marketPrice` 有效时直接使用；例如 `marketPrice: 5.6` 返回 `5.6`。该字段缺失或无效时才使用 Dify LLM 估值。 |
+| `productId` | number or string or null | 仅返回已在 PG 复核命中的商品主键；`recognized_no_db` 不得由 LLM 编造 productId。 |
+| `link`、`thumbnail` | string | 优先使用 PG 中可构造、可访问的数据；缺失时允许使用 Dify 返回值，但必须通过 HTTPS、域名白名单和格式校验，否则返回空字符串。 |
 
-### 5.2 `priceTrend` 字段
+### 5.2 PG 字段与目标 `text` 字段映射
 
-`priceTrend` 有两个内部来源，调用方无需指定：优先使用后续导入 PG 的 prices 成交数据；PG 没有该商品的可用成交明细时，服务可通过内部内容补全工作流的价格查询分支回退获取。两个来源不得混合，均无数据时返回空数组 `[]`。
+字段合并按单个字段执行，而不是“命中 PG 后整个对象都只用 PG”。PG 值只有在非空、类型正确且与目标字段语义一致时才具有优先级；PG 缺失、空值或语义不一致时，使用 `intent=recognize_enrich` 的 LLM 结果兜底。LLM 不得覆盖已有的有效 PG 值，每个最终字段来源写入 `monitor.field_sources`。
+
+以下映射基于当前商品 JSON 示例：
+
+| 目标字段 | PG 可用字段 | 采用规则 | PG 不可用时 |
+| --- | --- | --- | --- |
+| `state` | 无 | 使用前置 Dify `classify.state`，它表示是否为支持的有效 TCG，不表示是否命中数据库。 | 不再进行第二套判断。 |
+| `stateErrorReason` | 无 | 使用前置 Dify 原因并归一为稳定代码；匹配状态禁止写入此字段。 | 系统调用失败使用 HTTP 503，不伪造业务原因。 |
+| `isSportsCard` | 无 | 使用前置 Dify `classify.isSportsCard`。 | 无兜底；前置输出非法视为 503。 |
+| `cardIp` | `categories.display_name/code`；`raw_json.productLineName` 仅用于核对 | 数据集品类能精确映射八种枚举时可确认 Dify 结果。`productLineName=Pokemon` 不能区分 `Pokémon` 与 `Pokémon Japan`，不得单独覆盖。 | 使用前置 Dify `cardIp`。 |
+| `seriesName` | `raw_json.setName` | 含义一致，直接采用；`setCode` 只用于校验/消歧，不替代完整系列名。 | Dify 根据图片、OCR、`setCode` 和候选上下文补齐。 |
+| `cardName` | `raw_json.productName` | 优先采用。仅当末尾严格等于 ` - {customAttributes.number}` 时移除该编号后缀，例如 `Drakloak - 248/217` → `Drakloak`。 | Dify 补齐。`productUrlName` 只能作辅助，不直接作为展示名。 |
+| `cardNumber` | `raw_json.customAttributes.number` | 含义一致，保留斜杠和前缀后直接采用。规范化列 `number_norm` 只用于检索，不替代展示值。 | Dify 补齐。 |
+| `language` | 当前商品 JSON 无可靠商品级字段 | `price_sales.language` 是成交记录属性，不代表卡牌标准语言，禁止回填。若内部品类明确为 `pokemon_japan`，可派生 `Japanese`。 | Dify 从卡面文字/评级标签识别。 |
+| `year` | `raw_json.customAttributes.releaseDate` | 日期合法时取 UTC 年份，例如 `2026-01-30T00:00:00Z` → `2026`，来源记为 `pg_derived`。 | Dify 补齐。 |
+| `artist` | 当前示例无对应字段 | `description/flavorText` 不等于画师，不能代替。 | Dify 仅从图片中可见 artist/illustrator 字样提取；不确定时为空。 |
+| `gradingAgency`、`gradingStatus`、`gradingValue` | 无 | 这些是本次上传图片的封装/评级状态，不是商品目录固有属性。 | 始终由 Dify 从图片识别；无法确认时返回空值/null。 |
+| `rarity` | `raw_json.rarityName`；次选 `raw_json.customAttributes.rarityDbName` | 优先采用 `rarityName`；为空时采用 `rarityDbName`。两者冲突时记录 warning 并以 `rarityName` 为准。 | Dify 补齐。 |
+| `collectionAdviceTag`、`collectionAdviceText` | 无 | 商品目录没有同义字段。 | 始终由 Dify 生成。 |
+| `marketValuationTrend` | PG `price_sales` 序列 | PG 有足够同币种成交数据时由服务端确定性计算，不直接读取 `lowestPrice` 等快照字段。 | 先根据 LLM 生成的 `priceTrend` 计算；仍不足时使用 Dify 给出的趋势或 `unknown`。 |
+| `marketValuationAvg` | `raw_json.marketPrice` | 有效非负数时直接采用。`lowestPrice`、`lowestPriceWithShipping` 和 `score` 含义不同，禁止替代。 | Dify LLM 估值兜底，并在字段来源中标记。 |
+| `productId` | `raw_json.productId` / `cards.product_id` | 只有视觉、文本或 LLM 身份经过 PG 查表唯一命中时返回。 | 返回 `null`，不得由 LLM 猜测。 |
+| `link` | `productLineUrlName/setUrlName/productUrlName` 仅为 URL slug | 只有配置了官方基础域名和固定 URL 模板时才可确定性拼接。 | Dify 可返回候选 URL，但必须校验 HTTPS 与域名白名单；失败返回 `""`。 |
+| `thumbnail` | `card_images.relative_path` 或商品 JSON 中未来增加的缩略图字段 | 通过已配置的静态资源基础地址生成，不能把服务器文件路径直接暴露给调用方。 | Dify 返回值必须通过 HTTPS 与域名白名单；失败返回 `""`。 |
+
+以下 PG 字段虽然可保留或传给 Dify 作上下文，但不能直接映射到当前 `text`：`shippingCategoryId`、`productTypeId`、`sealed`、`lowestPriceWithShipping`、`lowestPrice`、`totalListings`、`sellerListable`、`maxFulfillableQuantity`、攻击/HP/弱点/抗性等 `customAttributes`。特别是商品 JSON 的 `score` 不是 DINO/BGE 匹配分数，禁止写入 `monitor.visual_score`、`text_score` 或 `confidence`。
+
+### 5.3 `priceTrend` 字段
+
+`priceTrend` 有两个内部来源，调用方无需指定：优先使用后续导入 PG 的 prices 成交数据；PG 没有该商品的可用成交明细时，由后置 Dify 工作流中的 LLM 生成价格曲线。不得调用 JustTCG 或其它外部价格 API，两个来源不得混合；两者均无有效结果时返回空数组 `[]`。
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
-| `priceTrend[].price.raw` | string | PG 来源由 `purchasePrice` 按币种格式化，例如 `$2.29`；回退来源保留并校验价格服务的原始价格文本。 |
-| `priceTrend[].price.extracted` | number or null | PG 来源直接取纯成交价 `purchasePrice`；回退来源取可验证的纯成交价。均不包含运费；无法解析时为 `null`。 |
-| `priceTrend[].soldDate` | string | PG 来源将 `orderDate` 转为 UTC 日期；回退来源使用其成交日期。统一格式为 `YYYY-MM-DD`。 |
+| `priceTrend[].price.raw` | string | PG 来源由 `purchasePrice` 按币种格式化，例如 `$2.29`；LLM 来源由生成的美元数值统一格式化。 |
+| `priceTrend[].price.extracted` | number or null | PG 来源直接取纯成交价 `purchasePrice`，不包含 `shippingPrice`；LLM 来源取其生成并通过校验的非负有限数值。 |
+| `priceTrend[].soldDate` | string | PG 来源将 `orderDate` 转为 UTC 日期；LLM 来源使用其生成并通过校验的日期。统一格式为 `YYYY-MM-DD`。 |
 
-PG 来源按完整 `orderDate` 升序排序，同一天的多笔成交全部保留，不按日期去重；其中 `price.extracted=purchasePrice`，不包含 `shippingPrice`。回退价格源必须转换成相同的 `price.raw/price.extracted/soldDate` schema，并通过数值、日期和币种校验。`shippingPrice`、`condition`、`variant`、`language` 和 `quantity` 原样保存在 PG 成交明细中，当前响应暂不输出。多币种数据不应直接混合成单一数值趋势；如果数据源未保留币种，后端应对该结果保守返回 `[]`。
+PG 来源按完整 `orderDate` 升序排序，同一天的多笔成交全部保留，不按日期去重；其中 `price.extracted=purchasePrice`，不包含 `shippingPrice`。`shippingPrice`、`condition`、`variant`、`language` 和 `quantity` 原样保存在 PG 成交明细中，当前响应暂不输出。多币种数据不直接混合成单一趋势；PG 数据缺少可确认币种时视为不可用并进入 LLM 兜底。
 
-### 5.3 `monitor` 字段
+LLM 价格曲线只允许在商品身份已经唯一确认时生成，即 `status_match=matched` 或 `recognized_no_db`；候选歧义和无法识别时必须返回 `[]`。生成结果必须转换成相同 schema，并校验美元金额为有限非负数、日期合法且不晚于请求日期、数组不超过 100 个点，随后按日期升序排序。它是模型估计，不是已验证的真实成交记录，因此必须同时返回 `monitor.price_source=llm_generated` 和 warning `PRICE_TREND_LLM_GENERATED`；任何一个点不合法时拒绝整条 LLM 曲线并返回 `[]`，不能与 PG 数据拼接或用 JustTCG 补救。
 
-`monitor` 用于观测最终结果采用了哪些证据以及调用方请求的策略，不作为商品业务信息展示。无论是否匹配成功，HTTP 200 响应都必须返回该对象；没有对应证据的排名、分数和置信度返回 `null`，不得用 `0` 代替缺失值。
+### 5.4 `monitor` 字段
+
+`monitor` 用于观测最终结果采用了哪些证据以及调用方请求的策略，不作为商品业务信息展示。无论是否匹配成功，HTTP 200 响应都必须返回该对象及下表中的稳定字段；没有对应证据的排名、分数和置信度返回 `null`，不得用 `0` 代替缺失值。
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
@@ -197,9 +274,51 @@ PG 来源按完整 `orderDate` 升序排序，同一天的多笔成交全部保�
 | `visual_score` | number or null | 最终商品的 DINOv2 原始视觉相似度。它是模型相似度而不是概率；不得复制到 `confidence`。 |
 | `text_rank` | integer or null | 最终商品在 OCR/BGE 文本召回结果中的名次，从 1 开始。未执行文本召回或未进入文本候选时为 `null`。 |
 | `text_score` | number or null | 最终商品的 OCR/BGE 原始文本相似度。仅解析卡号等规则但未执行 BGE 召回时为 `null`。 |
+| `fusion_score` | number or null | fusion/RRF 重排后的内部分数；未执行融合或最终商品未进入融合候选时为 `null`。它不是概率。 |
+| `margin` | number or null | 最终决策使用的 top-1 与 top-2 分差；没有可比较的第二候选时为 `null`。 |
+| `ocr_used` | boolean | 客户端 `text` 是否实际参与规则判断或身份提取。 |
+| `text_retrieval_used` | boolean | 是否实际执行 BGE 文本向量召回；与仅解析卡号等轻量规则区分。 |
+| `input_text_confidence` | number or null | 原样记录并校验后的入参 `confidence`，不等于输出决策 `confidence`。 |
+| `candidate_count` | integer | 最终决策阶段保留的候选数量。 |
 | `dataSource` | string enum | 最终业务结论实际使用的证据来源，枚举规则见下表。它描述“用了什么证据”，不描述 serial/fusion 调度方式。 |
 | `confidence` | number or null | 最终决策经过校准后的置信度，范围为 `[0,1]`。未上线概率校准或本次路径无法生成可比较置信度时必须为 `null`。 |
 | `strategy` | string enum | 调用方请求的策略：`serial` 或 `fusion`。fusion 在无可用文字时可复用视觉路径，但仍返回 `fusion`；兼容路由 `/v2/recognize` 返回 `serial`。 |
+| `status_match` | string enum | 数据库匹配状态，取代截图中原先占用顶层 `status` 的语义；完整枚举见下表。 |
+| `price_source` | string enum | `pg_sales`、`llm_generated` 或 `none`。它独立于商品身份 `dataSource`。 |
+| `field_sources` | object | `text` 中每个业务字段的最终来源。值只能为 `pg`、`pg_derived`、`dify_classify`、`dify_enrich`、`llm_generated`、`system` 或 `none`。 |
+| `llm_enrich_status` | string enum | 后置工作流状态：`succeeded`、`failed` 或 `skipped`。失败原因写入 `warnings`。 |
+| `warnings` | string[] | 可降级问题和数据冲突代码，例如 `PRICE_TREND_LLM_GENERATED`、`PG_RARITY_CONFLICT`、`DIFY_ENRICH_FAILED`。 |
+| `request_id` | string | 本次请求的唯一追踪 ID。 |
+| `dataset_version`、`model_version`、`workflow_version`、`decision_version` | string or null | 数据、向量模型、Dify 工作流和决策规则版本，用于复现结果。 |
+| `latency_ms` | number | 服务端总耗时。 |
+| `timings_ms` | object | `classify/visual/text/database/enrich` 等阶段耗时；未执行阶段返回 `0.0`。 |
+
+#### 来源监控枚举
+
+| 字段 | 枚举值 | 含义 |
+| --- | --- | --- |
+| `price_source` | `pg_sales` | `priceTrend` 来自 PG 逐笔成交数据，`price.extracted` 为 `purchasePrice`。 |
+| `price_source` | `llm_generated` | PG 无可用成交数据，曲线由 Dify LLM 估计生成；必须同时带 `PRICE_TREND_LLM_GENERATED` warning。 |
+| `price_source` | `none` | 没有返回有效价格曲线。 |
+| `field_sources.*` | `pg` | 直接采用 PG 原始或规范化字段。 |
+| `field_sources.*` | `pg_derived` | 由 PG 字段按确定性规则派生，例如由 `releaseDate` 取年份。 |
+| `field_sources.*` | `dify_classify` | 来自前置图片有效性/IP 分类分支。 |
+| `field_sources.*` | `dify_enrich` | 来自后置 Dify 的字段识别或内容补全。 |
+| `field_sources.*` | `llm_generated` | 来自后置 LLM 的市场估值/趋势生成，不是 PG 事实。 |
+| `field_sources.*` | `system` | 由服务固定规则或请求上下文生成。 |
+| `field_sources.*` | `none` | 最终字段为空且没有可采用来源。 |
+
+#### `status_match` 完整枚举
+
+顶层不得再使用 `status` 表达下列匹配结论；目标业务响应不输出顶层 `status`。如果网关统一包装必须保留顶层 `status`，它只能表示 HTTP/网关处理状态，不能取下列值。
+
+| 枚举值 | 含义 |
+| --- | --- |
+| `matched` | 已确定且命中 PG 记录，`text.productId` 不为空。 |
+| `candidates` | 存在多个候选或证据不足，不自动报成命中，`text.productId` 为 `null`。 |
+| `recognized_no_db` | LLM 提取了足够身份，但在限定品类内查询 PG 无命中；允许展示 LLM 身份字段，`text.productId` 为 `null`。 |
+| `unrecognized` | 无足够身份或候选；保留可降级 warning，`text.productId` 为 `null`。 |
+| `not_a_card` | 前置 Dify 明确判断为非支持 TCG 或体育卡；低向量相似度本身不能产生此状态。 |
 
 #### `dataSource` 完整枚举
 
@@ -210,30 +329,31 @@ PG 来源按完整 `orderDate` 升序排序，同一天的多笔成交全部保�
 | `visual` | 最终结果只依据视觉检索接受。 | DINOv2 top-1 分数和 margin 达到直出门限；serial 高置信直出。 |
 | `text` | 最终结果只依据客户端 OCR 文本、卡号/系列规则或文本召回接受。 | OCR 身份唯一命中，或文本 top-1 达到接受规则；保留给允许文本独立决策的实现。 |
 | `visual_text` | 视觉和文本证据共同支持同一结果，未使用 LLM 决策。 | serial 的低视觉置信文本补救命中；fusion 合并 DINOv2 与 BGE 后接受。 |
-| `llm` | 最终身份或未入库结论只由 LLM 产生，没有可用于最终决策的视觉/文本候选。 | LLM 识别后唯一查表命中，或返回 `NOT_IN_DATABASE`。 |
+| `llm` | 最终身份或未入库结论只由 LLM 产生，没有可用于最终决策的视觉/文本候选。 | LLM 识别后唯一查表命中，或形成 `recognized_no_db` 结论。 |
 | `visual_llm` | LLM 基于视觉候选完成确认或消歧，未使用有效文本证据。 | 无 OCR 时视觉候选不确定，LLM 选择/确认候选。 |
 | `text_llm` | LLM 基于 OCR/文本候选完成确认或消歧，视觉证据未参与最终结论。 | 文本候选有效但视觉候选不可用或未支持最终商品。 |
 | `visual_text_llm` | 视觉、文本和 LLM 三类证据均参与最终结论。 | fusion 两路仍有歧义，再由 LLM 在候选中确认；serial 文本补救后仍需 LLM。 |
-| `none` | 没有形成可采用的识别证据。 | `NO_MATCH`、`AMBIGUOUS`、`NOT_A_CARD`，或识别流程未得到候选。 |
+| `none` | 没有形成可采用的商品身份。 | `status_match` 为 `unrecognized` 或 `not_a_card`，或识别流程未得到候选。 |
 
 `dataSource` 以“最终商品身份实际依赖”为准，而不是以“模块是否运行过”为准。内部前置分类只确定图片有效性和检索范围，不计入商品身份来源；后置内容补全只生成评级/收藏建议且没有改变商品选择时也不计入 `llm`。例如自动分类后由 DINOv2 高分直出并补充收藏建议，仍返回 `visual`。只有 LLM 实际确认或改变 `productId` 时才使用带 `_llm` 的枚举。
 
 ## 6. 未命中与错误处理
 
-业务不命中不等于 HTTP 请求失败：服务返回 HTTP 200，并将 `text.state` 设为 `false`。调用方应以 `state` 判断是否展示卡牌结果。
+业务不命中不等于 HTTP 请求失败。`text.state` 只表达图片是否为支持的有效 TCG；调用方以 `monitor.status_match` 判断是否命中 PG、是否展示候选或是否仅展示 LLM 识别身份。例如有效 TCG 没有库内命中时，仍可返回 `text.state=true` 和 `monitor.status_match=recognized_no_db`。
 
-| 情形 | HTTP | `text.stateErrorReason` | 调用方处理 |
-| --- | --- | --- | --- |
-| 已确认匹配 | 200 | `""` | 使用 `text` 和 `priceTrend`。 |
-| 证据不足或候选歧义 | 200 | `AMBIGUOUS` 或 `NO_MATCH` | 提示用户补拍清晰图片或补充文字；`monitor.dataSource=none`。 |
-| 图片不是卡牌 | 200 | `NOT_A_CARD` | 提示重新上传单张 TCG 卡牌图片；`monitor.dataSource=none`。 |
-| 图片是体育卡 | 200 | `SPORTS_CARD` | 当前服务不进入 TCG 匹配；`monitor.dataSource=none`。 |
-| 识别出身份但库中无该商品 | 200 | `NOT_IN_DATABASE` | 可展示身份字段，但不应展示为已命中库内商品。 |
-| 缺失图片字段 | 422 | 不适用 | 修正请求后重试。 |
-| 非法图片、图片过大、URL/路径不可读 | 400 或 413 | 不适用 | 修正输入后重试。 |
-| `category` 非法、与自动识别品类冲突，或 `confidence` 超出范围 | 400 | 不适用 | 修正参数后重试。 |
-| 自动预检超时/失败、输出非法或无法得到合法 `cardIp` | 503 | 不适用 | 按退避策略重试；禁止静默进入全品类匹配。 |
-| 模型、数据库未就绪、队列满 | 503 | 不适用 | 按退避重试策略重试。 |
+| 情形 | HTTP | `text.state` | `text.stateErrorReason` | `monitor.status_match` | 调用方处理 |
+| --- | --- | --- | --- | --- | --- |
+| 已确认命中 PG | 200 | `true` | `""` | `matched` | 使用 `text` 和 `priceTrend`。 |
+| 有效 TCG，但候选歧义 | 200 | `true` | `""` | `candidates` | 提示用户补拍清晰图片或补充文字。 |
+| 有效 TCG，LLM 已识别但 PG 无记录 | 200 | `true` | `""` | `recognized_no_db` | 可展示 LLM 身份字段，但不得展示为库内商品。 |
+| 有效 TCG，但没有足够身份或候选 | 200 | `true` | `""` | `unrecognized` | 提示重新拍摄；查看 `monitor.warnings`。 |
+| 图片不是支持的 TCG | 200 | `false` | `NOT_A_TCG_CARD` 或 `UNSUPPORTED_CARD_IP` | `not_a_card` | 提示重新上传支持的 TCG 卡牌。 |
+| 图片是体育卡 | 200 | `false` | `SPORTS_CARD` | `not_a_card` | 当前服务不进入 TCG 匹配。 |
+| 缺失图片字段 | 422 | 不适用 | 不适用 | 不适用 | 修正请求后重试。 |
+| 非法图片、图片过大、URL/路径不可读 | 400 或 413 | 不适用 | 不适用 | 不适用 | 修正输入后重试。 |
+| `category` 非法、与自动识别品类冲突，或 `confidence` 超出范围 | 400 | 不适用 | 不适用 | 不适用 | 修正参数后重试。 |
+| 自动预检超时/失败、输出非法或无法得到合法 `cardIp` | 503 | 不适用 | 不适用 | 不适用 | 按退避策略重试；禁止静默进入全品类匹配。 |
+| 模型、数据库未就绪、队列满 | 503 | 不适用 | 不适用 | 不适用 | 按退避重试策略重试。 |
 
 ## 7. 内部实现适配清单
 
@@ -241,10 +361,11 @@ PG 来源按完整 `orderDate` 升序排序，同一天的多笔成交全部保�
 
 1. 暴露同名 `image` 的文件上传和 URL/白名单路径两种输入，在取得图片后复用现有解码、大小和帧数校验。
 2. 将 `text` 转发为内部 `ocr_text`，校验 `confidence` 并将其与 OCR 证据一起传递；外部首版不再依赖 category 入参。
-3. 改造同一个 Dify Workflow：新增必填 `intent`，提供 `classify` 与 `recognize_enrich` 两个条件分支和各自的结构化输出；JustTCG 价格查询只能位于后置分支，且仅在 PG 无可用 `priceTrend` 时执行。
+3. 改造同一个 Dify Workflow：新增必填 `intent`，提供 `classify` 与 `recognize_enrich` 两个条件分支和各自的结构化输出；移除/禁用 JustTCG 分支，PG 无价格曲线时由后置 LLM 直接生成。
 4. 在任何 DINO/BGE 检索前调用 `intent=classify`，严格验证四字段，并将合法 `cardIp` 映射为内部 category；系统故障与业务拒绝使用不同 HTTP 语义。
 5. 修复 serial/fusion 决策与 Dify 查表：只有 LLM 真正参与商品身份确认时才将 `llm` 写入 `dataSource`。
-6. 命中后从 PG 取得商品 `raw_json.marketPrice`、商品字段和成交明细；`marketValuationAvg` 直接使用 `marketPrice`，`priceTrend` 优先使用 `purchasePrice/orderDate`，PG 无可用明细时才允许后置工作流回退。
-7. 调用 `intent=recognize_enrich` 生成评级和收藏建议，并以 PG 数据覆盖商品、价格等权威事实字段。
-8. 根据候选的视觉/文本排名和分数、LLM 是否真正参与决策以及请求策略组装 `monitor`；`confidence` 未校准前保持 `null`。
-9. 所有 HTTP 200 响应保证存在 `text`、`priceTrend` 和 `monitor`；不命中则使用 `state=false` 而不使用 HTTP 500。
+6. 命中后从 PG 取得商品原始 JSON、`marketPrice` 和成交明细，按第 5.2 节逐字段合并；有效 PG 字段优先，缺失字段才使用 LLM。
+7. 调用 `intent=recognize_enrich` 生成缺失身份字段、评级、收藏建议和必要的 LLM 价格曲线；PG `priceTrend` 存在时不得生成或混入 LLM 曲线。
+8. 根据候选排名/分数、身份决策证据、请求策略、匹配状态、价格来源和逐字段来源组装 `monitor`；`confidence` 未校准前保持 `null`。
+9. 将现有识别 `status` 迁移到 `monitor.status_match`；目标业务响应不再用顶层 `status` 表达匹配结果。
+10. 所有 HTTP 200 响应保证存在 `text`、`priceTrend` 和 `monitor`；有效 TCG 未命中时通过 `status_match` 表达，不把 `text.state` 错误改成 `false`。
