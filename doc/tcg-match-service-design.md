@@ -1,8 +1,8 @@
 # TCG 单机双策略识别服务：技术方案
 
-日期：2026-09-05；2026-09-08 补充数据、模型与更新约束。状态：可审阅的设计基线；本次交付仅为文档，尚未实施或完成服务器验收。
+日期：2026-09-05；2026-09-08 补充数据、模型与更新约束；2026-09-09 增加 Dify 双 intent、业务响应与成交价口径。状态：可审阅的设计基线；尚未完成本次变更的代码实施或服务器验收。
 
-配套执行文档：[分步骤实施计划](tcg-match-service-implementation-plan.md)。本方案取代根目录 `tcg-match-service-plan.md` 中与本次要求冲突的规划；原文件保留为历史输入。历史文档中的任务和操作命令不视为本次实施授权。
+现有[分步骤实施计划](tcg-match-service-implementation-plan.md)尚未同步本次 Dify 双 intent 变更，将在本设计确认后更新。本方案取代根目录 `tcg-match-service-plan.md` 中与本次要求冲突的规划；原文件保留为历史输入。历史文档中的任务和操作命令不视为本次实施授权。
 
 ## 1. 结论与范围
 
@@ -10,7 +10,7 @@
 
 生产采用 FastAPI + PostgreSQL/pgvector，单服务器、单 API 实例、默认 CPU-only。DINOv2 编码图片，本地 BGE 编码标准卡文本及客户端 OCR；两种向量分别建库检索，通过全局唯一的 `productId` 融合结果。原始图片和 JSONL 按品类、版本原样保存在部署根目录 `tcg-service/data/` 对应的容器挂载目录，数据库同时保存规范化字段、逐行原文、原始 JSONB、价格数据和两种向量。FAISS 保留为离线精确检索基准。
 
-首版包括：可复用导入命令、本地优先模型加载、全品类/单品类检索、两版识别 API、客户端 OCR 辅助重排、Dify GPT-5.5 兜底、卡牌查表及价格查询、离线对比与 CPU 压测。服务器 OCR、前置 LLM 品类判断、多实例、Redis、多级缓存、训练新模型和分布式向量库不在首版范围内。
+首版包括：可复用导入命令、本地优先模型加载、两版识别 API、客户端 OCR 辅助重排、前置 Dify 卡牌/品类判断、后置 Dify 消歧与内容增强、卡牌查表及价格查询、离线对比与 CPU 压测。外部接口继续保留可选 category，首版调用方预计不传；服务使用同一个 Dify GPT-5.5 Workflow，通过 `intent=classify` 和 `intent=recognize_enrich` 每请求最多执行两次，这些 intent 对外不可见。服务器 OCR、多实例、Redis、多级缓存、训练新模型和分布式向量库不在首版范围内。
 
 ## 2. 已核实事实与实际缺口
 
@@ -20,7 +20,7 @@
 |---|---|---|
 | 框架和向量库 | `app/main.py` 为 FastAPI；`services/index_service.py` 从 NPY 加载 FAISS IndexFlatIP | 复用 API 组织方式，改由 PG 保存业务和向量数据 |
 | 串行链路 | `routes/recognize.py` 为品类 LLM → DINO → 高分返回/LLM；OCR 入参没有参与匹配 | 补齐图像 → OCR 文本召回重排 → LLM 查表 |
-| 品类 | 缺少合法 `category_hint` 会调用 LLM | 未指定品类时直接全库；未知品类报错，不猜测或自动扩类 |
+| 品类 | 当前 API 接受可选内部 `category/category_hint`，缺省时可全库检索 | 外部 category 继续可选；匹配前强制执行 Dify `intent=classify`，缺省时采用其 `cardIp`，传入时进行一致性校验，再用内部 category 限定检索 |
 | OCR | `main.py` 启动 PP-OCR，`routes/ocr_match.py` 识别上传图片 | 从生产启动与依赖中移除，OCR 由客户端提供 |
 | DINO | demo 和服务调用 `dinov2_vitb14`；备用 `facebook/dinov2-base` | ViT-B/14、无 registers、768 维；它是特征提取器，不是 GroundingDINO 检测器 |
 | DINO 输出适配 | 当前直接对 `model(x)` 调用 `.dim()`，Transformers 的输出对象不支持此用法 | 显式适配 tensor / `last_hidden_state[:, 0]`，不盲目替换后端 |
@@ -29,7 +29,7 @@
 | ID | 样例 `productId=100009.0`；在线用 `str(productId)`，文本构建用 `str(int(productId))` | 修复 `100009.0` 与 `100009` 关联失败问题 |
 | 导入 | `scripts/build_index.py` 按品类重新加载模型、一次性收集数据；无版本发布和断点协议 | 流式、分批、可恢复、可复用 embedding |
 | 启动 | `entrypoint.sh` 启动前自动建索引，忽略传入的构建命令；在线挂载 `/data:ro` | 启动只加载已发布数据；导入使用独立一次性命令 |
-| LLM | 当前调用 Anthropic 风格 `/v1/messages`，默认 qwen 配置 | 换为 Dify 工作流调用，模型在 Dify 中固定 GPT-5.5 |
+| LLM | 当前 Dify client 只读取卡号/系列，orchestrator 调用后丢弃结果；参考 Workflow 尚无 intent 分支 | 同一个已发布 Workflow 增加 `classify/recognize_enrich` 两个 intent；服务严格校验输出和查表，不采信 LLM 价格 |
 | 当前数据 | 47 个 products.jsonl，逐行计数 364,136，合计 745,649,639 字节 | 这是物理行数，不代表去重后的有效卡数或图片数 |
 | 价格样例 | `prices/03_Pokemon.jsonl` 每行一个产品及 sales 数组 | 按价格数据单独建模，不塞进 embedding 文本 |
 
@@ -39,11 +39,13 @@
 
 | 维度 | serial：串行补救 | fusion：并行融合 |
 |---|---|---|
-| 开始 | 图片编码/召回 | 有可用 OCR 时图片、文本两路一起调度 |
+| 共同前置 | Dify `intent=classify`，验证卡牌有效性并确定 category | 与 serial 相同；前置分类不计入商品身份 `dataSource` |
+| 开始 | 在分类确定的 category 内执行图片编码/召回 | 分类完成后，有可用 OCR 时图片、文本两路一起调度 |
 | 图片可信 | 可直接命中，省掉 BGE | 等两路完成后联合判断 |
 | 图片低分 | 有 OCR 才执行文本补救 | 已有两路候选可重排 |
 | 高分但认错 | 可能提前结束；轻量卡号冲突规则可拦截部分情况 | OCR 有机会纠错，也可能干扰原本正确的结果 |
-| 无 OCR | 视觉 → 必要时 LLM | 同一视觉 → 必要时 LLM，结果语义一致 |
+| 无 OCR | 视觉 → 必要时执行 `intent=recognize_enrich` 消歧/补全 | 同一视觉路径；响应 strategy 仍表示请求的是 fusion |
+| 匹配后 | 执行 `intent=recognize_enrich` 生成评级/收藏建议，PG 字段覆盖 LLM 事实字段 | 与 serial 相同 |
 | 计算开销 | 文本推理次数较少 | 可用 OCR 请求基本都会进行文本推理 |
 | 适用目标 | 成本/吞吐优先的基线 | 召回与纠错效果的实验版本 |
 
@@ -64,17 +66,17 @@
 | `GET /v1/cards/{category}/{product_id}/prices` | 价格曲线，日期、语言、版本、品相筛选 |
 | `GET /v1/images/{category}/{card_id}` | 兼容图片读取；从 DB 取映射路径 |
 
-三个识别入口采用相同 multipart 参数：
+三个识别入口采用相同 multipart 参数；新业务只使用两个显式策略入口，`/v2/recognize` 仅保留兼容：
 
-- `file`：必填，客户端已裁切、透视矫正、方向校正的单卡图；最大 10 MiB、解码后最大 20MP，拒绝动画/多帧和损坏图。
-- `ocr_text`：可选，空白等于未传；最大 8,192 字符。客户端 OCR 不可信，不能成为系统指令。
-- `category`：可选，注册的稳定品类代码；空值表示全品类。合法但不匹配时仍只查该品类，不静默搜索其它品类。
-- `ocr_lang`：可选语言提示，不作为强制品类过滤条件。
-- `category_hint`：兼容旧参数；与 category 同传且不同返回 400；旧别名不再表示“允许 LLM 改写的建议”。
+- `image`：必填，可为 multipart 二进制文件、HTTPS URL 或服务器白名单根目录内的绝对路径；最终统一解码为单张图片。最大 10 MiB、解码后最大 20MP，拒绝动画/多帧和损坏图。URL 必须限制协议、地址、重定向、超时和下载字节以防 SSRF；路径必须 resolve 后验证仍位于白名单内。
+- `text`：可选，空白等于未传；最大 8,192 字符。客户端 OCR 不可信，不能成为系统指令。
+- `confidence`：可选，客户端 OCR 可信度，范围 `[0,1]`；内部命名为 `ocr_confidence`，不得与最终决策置信度混用。
+- `category`：可选展示枚举。首版调用方不传时由服务自动判断；传入时仍执行前置分类，两者不一致返回 400。category 不能绕过图片有效性检查或覆盖分类结果。
+- `category_hint/ocr_lang`：只作为旧接口兼容字段存在，不出现在新业务文档中。
 
-未知 category 返回 400，缺必填项返回 422，过大输入返回 413，服务未就绪/队列已满返回 503。内部召回 K 默认 50，最终最多 5 个候选；K 不向客户端开放，保证实验配置可追溯。
+缺必填项返回 422，非法/不可读图片返回 400，过大输入返回 413，服务未就绪/队列已满返回 503。前置 Dify 超时、工作流失败、输出 schema 错误或非法 `cardIp` 也返回 503，禁止静默进入全品类检索。内部召回 K 默认 50，最终最多 5 个候选；K 不向客户端开放，保证实验配置可追溯。
 
-两版统一返回现有 `status/decision_path/category/product_id/product/price/candidates/identity/confidence/scores/warnings/latency_ms`，新增 `request_id/strategy/dataset_version/model_version/decision_version/timings_ms`。候选必须包含 category 和 product_id；数据导入必须验证 `productId` 在全部品类中全局唯一，数据库以其作为卡片主键。
+对外响应统一为 `text + priceTrend + monitor`；内部仍可保留 `status/decision_path/category/product_id/candidates/warnings/request_id/dataset_version/model_version/decision_version/timings_ms` 供日志和诊断。`text.marketValuationAvg` 直接使用命中商品 `raw_json.marketPrice`；`priceTrend` 优先使用 PG 成交明细的 `purchasePrice/orderDate`，PG 无可用明细时才使用后置工作流的 JustTCG 价格回退，两个来源不得混合；`monitor` 保存命中商品在视觉/文本召回中的排名、分数、商品身份来源和请求策略。
 
 `confidence` 首版为 null；`scores` 单独携带 visual_cosine、text_cosine、fusion_score、margin、ocr_used 和冲突证据。规则门限不是概率；如后续引入概率校准，必须附校准版本及可靠性评估。`ocr_used` 表示实际使用 OCR 规则或文本证据，另用 `text_retrieval_used` 区分是否调用 BGE。
 
@@ -86,13 +88,13 @@
 | unrecognized | 无足够身份或候选；LLM 失败可以返回此状态并附 warning |
 | not_a_card | 仅有明确的兜底识别依据时返回；低向量相似度本身不能证明不是卡 |
 
-基础设施故障用 HTTP 503；LLM 故障是可降级故障，保留检索候选。匹配 ID 有而业务记录缺失属于数据完整性故障，禁止返回 matched。
+基础设施故障用 HTTP 503。前置分类是必需依赖，失败不可降级；后置增强在商品已可靠匹配时允许降级为空评级/收藏建议并记录 warning，只有商品必须依赖 LLM 消歧时才影响业务结果。匹配 ID 有而业务记录缺失属于数据完整性故障，禁止返回 matched。
 
 ## 5. 共同候选与决策逻辑
 
 ### 5.1 召回范围与证据
 
-请求进入时固定数据版本和品类范围；两路、LLM 查表、价格查询都使用该版本。未指定 category 时覆盖该版本全部品类，禁止先按预测品类缩小范围。结果中的 category 来自候选记录。
+请求进入时先固定数据版本，再调用 Dify `intent=classify`。只有 `state=true`、`isSportsCard=false` 且 `cardIp` 命中八种规范枚举时才继续；外部 category 缺省时采用该 `cardIp`，已传时必须一致，否则返回 400。服务随后映射内部 category，DINO、BGE、身份查表、商品和价格查询全程使用该版本与 category。前置工作流故障或非法品类返回 503，不静默扩大到全库。内部运维/评测仍可保留显式全库能力，但不属于首版外部请求路径。
 
 视觉/文本各取前 K，另提取 OCR 的卡号、系列代码及名称线索。按 `product_id` 合并，最多 `2K + 5` 个候选；category_id 作为检索范围、展示和一致性校验字段，不参与卡片身份主键。OCR 精确身份查表超过 5 个结果时标为歧义，不任取一个。
 
@@ -127,24 +129,31 @@ RRF 用于排名，不用于把第一名包装成高置信结果。保留原始�
 ### 5.4 serial 流程
 
 ```text
-输入校验与固定数据范围 → DINO 编码/召回
+输入校验与固定数据版本
+  → Dify(intent=classify) → 业务拒绝直接返回 / 故障返回 503 / 合法 cardIp 固定 category
+  → DINO 编码/召回
   → 视觉接受规则通过（可含轻量 OCR 身份冲突拦截）→ matched
   → 否则：有可用 OCR → BGE 编码/召回 + OCR 身份查表 → 合并重排
       → 接受规则通过 → matched
-      → 否则 → LLM 识别 + 查表 → matched / candidates / recognized_no_db
-  → 无可用 OCR：跳过 BGE，按必要性进入同一 LLM 兜底
+      → 否则 → Dify(intent=recognize_enrich) 消歧 + 严格查表
+  → 无可用 OCR：跳过 BGE，必要时执行同一后置 intent 消歧
+  → 已有可靠商品时仍执行后置 intent 补充评级/收藏建议
+  → PG 权威字段覆盖 LLM → 组装 text / priceTrend / monitor
 ```
 
-高视觉分支不启动 BGE；轻量 OCR 字段解析不等于调用 OCR 模型或文本 embedding。无校准 profile 时不提前自动命中。
+高视觉分支不启动 BGE；轻量 OCR 字段解析不等于调用 OCR 模型或文本 embedding。无校准 profile 时不提前自动命中。后置 intent 失败不能推翻已经可靠确定的视觉/文本匹配，只清空 Dify 专属字段并记录 warning。
 
 ### 5.5 fusion 流程
 
 ```text
-输入校验与固定数据范围
+输入校验与固定数据版本
+  → Dify(intent=classify) → 业务拒绝直接返回 / 故障返回 503 / 合法 cardIp 固定 category
   → 有可用 OCR：并发调度 DINO 编码/召回 与 BGE 编码/召回
   → OCR 不适合 BGE：视觉召回 + 可用身份规则
   → 合并候选 → 加权 RRF → 共同接受规则
-  → 仍不确定：同一 LLM 识别 + 查表
+  → 仍不确定：Dify(intent=recognize_enrich) 消歧 + 严格查表
+  → 已有可靠商品时执行同一后置 intent 补充评级/收藏建议
+  → PG 权威字段覆盖 LLM → 组装 text / priceTrend / monitor
 ```
 
 有可用文本时不得先看到视觉高分就提前返回，否则实验没有检验融合纠错。文本路失败时退为视觉规则，记录降级，候选不丢失。视觉编码/主检索不可用视为核心故障并返回 503。无 OCR 时复用 serial 的视觉分支，除 strategy 和计时外结果应相同。
@@ -173,7 +182,7 @@ PG+pgvector 可把卡信息、价格及向量置于同一事务体系；PG+FAISS
 | text_embeddings | (category_id, product_id)、embedding vector(384)、model_version、doc_version、input_hash | 同上，图片缺失不妨碍文本入库 |
 | price_source_records | (source_file_id,row_no)、product_id、category_id、raw_line、raw_json、line_sha256 | 完整保留价格 JSONL 每行原文和语义内容，并关联 cards |
 | price_snapshots | (product_id,captured_at,currency)、category_id、market/lowest/median 等、source_file_id/row_no | 保存产品 JSON 中的价格快照，不伪装为逐日历史 |
-| price_sales | (product_id,source_batch,row_no)、category_id、order_date、purchase_price、shipping_price、condition、variant、language、quantity、currency | (product_id,order_date)，保存成交明细和来源 |
+| price_sales | (product_id,source_batch,row_no)、category_id、order_date、purchase_price、shipping_price、condition、variant、language、quantity、currency | 按 product_id/order_date 查询，保存成交明细和来源 |
 | price_coverage | (product_id,source_batch)、category_id、min_date、max_date、total_results、loaded_count、complete | 表示抓取覆盖范围和是否完整 |
 
 价格金额用 NUMERIC，时间用 TIMESTAMPTZ，ID 用 BIGINT；解析 JSON 时用 Decimal 校验 ID 必须是正整数，拒绝非整数和越界值，API 中输出 ID 字符串。`productId` 在同一文件、同一品类和跨品类出现重复都必须在数据库写入前失败。raw_json 保留所有原始属性，但 JSONB 不保证键顺序、空白或数字词法形式，因此 cards 和 price_source_records 另存 UTF-8 `raw_line`、行号和行哈希；不可变原始文件及文件哈希是字节级权威来源。变动价格、SKU 品相清单不进入文本向量。
@@ -182,17 +191,19 @@ PG+pgvector 可把卡信息、价格及向量置于同一事务体系；PG+FAISS
 
 ### 6.3 品类过滤与全品类检索
 
-原始 products/price JSONL 继续按品类分文件保存；数据库中的卡片属于同一个 release，视觉和文本向量表按品类物理分区。这样指定品类可在对应分区内 ANN 检索，同时未指定品类仍可从分区父表查询全库。不得为每个品类部署互不关联的数据库或服务，也不得先做全局 ANN Top-50 再用 Python 筛品类。全品类查询由 PostgreSQL 合并各分区候选；这不是一个跨分区的物理 HNSW 索引。用 EXPLAIN 验证实际计划、分区裁剪和返回数量，不假设数据库一定选择理想计划。
+原始 products/price JSONL 继续按品类分文件保存；数据库中的卡片属于同一个 release，视觉和文本向量表按品类物理分区。外部识别请求必须先把 Dify `cardIp` 映射为内部 category，再在对应分区内 ANN 检索，不得先做全局 ANN Top-50 再用 Python 筛品类。分区父表的全库检索只保留给内部运维、离线评测和故障诊断，不是前置分类失败时的线上降级路径。不得为每个品类部署互不关联的数据库或服务；用 EXPLAIN 验证实际计划、分区裁剪和返回数量，不假设数据库一定选择理想计划。
 
 初始 `m=16, ef_construction=64, ef_search=100`，以 Recall@50 和延迟调参。pgvector 的 ANN 附加过滤可能减少结果数，0.8+ 可采用 iterative scan；本方案仍对少结果/小品类提供同一范围精确检索回退。[过滤说明](https://github.com/pgvector/pgvector#filtering)
 
 ### 6.4 价格导入与曲线
 
-当前 sales 样例没有稳定成交 ID。同一交易字段哈希不能证明是同一笔交易，不能简单按价格+时间去重，避免抹掉真实重复成交。首版按“产品+来源时间窗快照”替换对应窗内明细，保留数组中的重复行及 row_no；同一文件/版本重复导入幂等。
+当前 sales 样例为每个商品一条对象，包含 `productId/totalResults/count/minDate/maxDate/sales[]`；每条 sale 包含 `orderDate/purchasePrice/shippingPrice/condition/variant/language/quantity/listingType/title`，但没有稳定成交 ID。同一交易字段哈希不能证明是同一笔交易，不能简单按价格+时间去重，避免抹掉真实重复成交。首版按“产品+来源批次+数组 row_no”保存，原样保留同日同价重复行；同一文件/版本重复导入幂等。
 
-替换前要求 manifest 声明数据代表该时间窗的快照，并记录抓取完整性。只有完整窗口允许覆盖旧明细；不完整抓取保留原始批次和 coverage，不更新正式曲线表。当前样例 `totalResults` 与 `count` 不相等，不能声称完整历史。将来拿到成交唯一 ID 后才可切到逐笔 upsert。
+manifest 记录来源批次、抓取时间窗和币种。`count < totalResults` 时将 coverage 标记为不完整，但仍可保存并返回本批次实际提供的 sale；不得将其宣传为完整历史。不同批次重叠时不能仅凭价格和时间擅自去重，将来拿到稳定成交 ID 后才切到逐笔 upsert。
 
-曲线端点按 UTC 日聚合 `SUM(purchase_price*quantity)/SUM(quantity)`，必须按 currency、condition、variant、language 分系列；运费单独返回，不默认混入价格。可筛单系列，未筛时返回多系列；无成交日不补零。金额/currency 缺失的记录不得默认填 USD 后参与聚合，币种由来源 manifest 明确给定。真实价格表与截图若不同，在导入适配任务核对，不改识别核心。
+识别响应的 `priceTrend` 不做按日聚合：每条 sale 输出一个点，`price.extracted` 直接取纯成交价 `purchasePrice`，`price.raw` 按 manifest 币种格式化，`soldDate` 取 `orderDate` 转 UTC 后的 `YYYY-MM-DD`；`shippingPrice` 不计入价格。同一天多笔成交全部保留，按完整 `orderDate` 升序排序后再去除时间部分。`condition/variant/language/quantity/shippingPrice` 保存在 PG，当前业务响应不输出。商品 `raw_json.marketPrice` 直接映射为 `text.marketValuationAvg`，不得由 Dify 估值覆盖；市场趋势按最终采用的同币种成交序列计算，数据不足返回 `unknown`。
+
+`priceTrend` 的来源优先级固定为：PG `price_sales` > 后置 `recognize_enrich` 分支中的 JustTCG 查询 > 空数组。PG 只要存在通过币种、金额和日期校验的可用成交明细，就不得再请求或拼接 JustTCG 数据；只有 PG 无可用明细时才允许工作流回退。回退结果必须转换为相同的 `price.raw/price.extracted/soldDate` 结构并通过同样校验，不与 PG 数据混合。
 
 ## 7. 原始包与可复用导入协议
 
@@ -263,17 +274,37 @@ BGE 固定加载 `/models/bge_model`，文档编码不加查询指令，OCR 查�
 
 36 万条双向量的 float32 元素约 1.545 GiB；这不包括表、HNSW、JSON、价格、WAL 和双版本。采购参考起点为 8 vCPU / 32 GiB RAM / SSD，尚未获得目标服务器配置，不能承诺 8 GiB 容器限制足够。磁盘按实测图片体积 + 至少两个 DB 版本 + WAL/备份余量计算。全量导入先跑 1,000 张采样实测再估计，时间公式为图片数/实测吞吐+文本编码+写库/建索引，不承诺几小时完成。
 
-## 9. Dify GPT-5.5 兜底与查表
+## 9. Dify GPT-5.5 双 intent 工作流
 
-两个策略共用一个已发布 Dify Workflow。网关传入图片、OCR、限定品类范围、候选摘要；Dify 只输出身份/候选选择依据，价格及库内 ID 的真实性由服务端验证。GPT-5.5 在 Dify 模型节点配置，工作流 API 请求不通过随意增加 model 字段选择模型。
+两个策略共用一个已发布 Dify Workflow，同一识别请求最多执行两次。Workflow 开始节点增加必填字符串 `intent`，紧接条件分支，只允许 `classify` 和 `recognize_enrich`；未知 intent 直接输出 schema 错误，不默认进入任一昂贵分支。GPT-5.5 在 Dify 模型节点配置，工作流 API 请求不通过随意增加 model 字段选择模型。
 
-网关使用 `DIFY_BASE_URL`（包含 `/v1`）、`DIFY_API_KEY`、工作流版本标记。流程为 `/files/upload` 获取文件 id，再 `/workflows/run`；上传和运行的 user 必须一致。使用 `inputs.card_images` 数组型图片输入，绑定实际发布工作流参数；候选 JSON 作为普通字符串字段传递。只在 `data.status=succeeded` 时解析 `data.outputs.result`。[上传文件](https://docs.dify.ai/en/api-reference/files/upload-file)、[运行工作流](https://docs.dify.ai/en/api-reference/workflow-runs/run-workflow)
+第一次在任何向量检索前调用 `intent=classify`，只传图片，只输出 `{state,stateErrorReason,isSportsCard,cardIp}`。`state=true` 时 error reason 必须为空，且非体育卡必须给出八种规范 `cardIp` 之一。正常的 `state=false` 或 `isSportsCard=true` 是 HTTP 200 业务拒绝；上传失败、超时、429、工作流失败、JSON/schema 错误或非法 cardIp 是必需依赖故障，返回 HTTP 503，禁止静默全库检索。
 
-输出 result 的业务契约：`is_card:bool|null, card_name:str|null, set_name:str|null, set_code:str|null, card_number:str|null, category:str|null, language:str|null, selected_product_id:str|null`。拒绝未知类型、非白名单品类和无库中记录的指定 ID；selected_product_id 只是建议，仍需身份核对。OCR、卡片文字和外部产品描述统一当不可信资料，不能让它们覆盖任务规则。
+第二次在候选需要消歧或商品已经匹配后调用 `intent=recognize_enrich`。输入包括图片、可选 OCR/置信度、前置 cardIp、候选摘要、已命中商品 JSON、`marketPrice` 和 PG `priceTrend` 摘要；输出可以包含候选选择、卡面/评级识别、`collectionAdviceTag`、`collectionAdviceText`，以及 PG 无可用成交明细时的 JustTCG 回退价格。如果向量结果已可靠确定商品，第二次调用只补全内容且不得改变 productId；如果商品依赖 LLM 才能确定，服务端必须在前置 category 范围内按候选或卡号+系列查表复核。
 
-服务端按 category/set/number/name 的规范化索引查表，唯一且身份证据充分才能 matched；仅名称模糊匹配或一个卡号均返回候选。指定品类请求始终限定该范围；全库请求可把 LLM 提供的已注册品类作为兜底查表证据，不影响之前的全库向量召回。
+`classify` 分支不得访问价格 API。`recognize_enrich` 只有在输入明确表明 PG 无可用 `priceTrend` 时，才可调用参考工作流已有的 JustTCG 价格分支；PG 已提供可用成交明细时必须跳过该查询。JustTCG 只作为 `priceTrend` 的回退来源，不得覆盖 PG `marketPrice`、`marketValuationAvg` 或商品身份，也不得和 PG 成交明细混合。服务端以 PG 商品 `raw_json`、`marketPrice` 和成交明细为权威；PG 的商品名称、系列、卡号、语言、年份、画师、稀有度、productId、链接和缩略图覆盖 LLM 同名字段。评级和收藏建议由第二次 Dify 提供。OCR、候选、卡片文字和外部产品描述统一视为不可信资料，不能让它们覆盖工作流规则。
 
-默认每请求只发起一次工作流执行，超时不盲目重发计费调用；连接失败、429、schema 错误均记录原因并降级为原候选。没有 Dify 配置可运行检索开发环境，readiness 标记 llm_degraded；上线全功能验收必须用目标工作流做真实样例联调。密钥只在服务器环境/secret 中配置。
+网关使用 `DIFY_BASE_URL`（包含 `/v1`）、`DIFY_API_KEY` 和工作流版本标记。流程为 `/files/upload` 获取 file id，再分别调用 `/workflows/run`；同一次请求的上传和两次运行使用同一 user 和同一已上传图片，避免重复上传。只在 `data.status=succeeded` 时解析 `data.outputs.result`，两个 intent 分别使用严格 Pydantic schema。[上传文件](https://docs.dify.ai/en/api-reference/files/upload-file)、[运行工作流](https://docs.dify.ai/en/api-reference/workflow-runs/run-workflow)
+
+第二次调用失败时按商品身份是否已经可靠确定降级：已确定则返回 PG 商品和价格，Dify 专属字段置空并记录 warning；未确定则保留候选并返回 `AMBIGUOUS/NO_MATCH`。PG 无价格且 JustTCG 回退失败时只返回空 `priceTrend`，不能推翻已有商品匹配。单次 intent 调用不盲目自动重发，避免重复计费；总 deadline 必须为两次调用、模型和数据库预留明确预算。开发环境可以以 Dify mock 运行测试，但生产 readiness 必须把 Dify classify 能力视为必需项。Dify 与价格服务密钥只在 secret/environment 中配置；生产分支禁止关闭 TLS 证书校验，参考 YML 中的占位密钥和不安全证书回退不得沿用。
+
+`monitor.dataSource` 只表示最终商品身份来源。前置 classify 必然调用但不计入 `llm`；后置调用仅生成评级/收藏建议时也不计入。只有第二次调用实际确认或改变 productId 时才使用 `llm/visual_llm/text_llm/visual_text_llm`。
+
+### 9.1 实现改动位置
+
+对外路由和字段名不新增 `intent`；内部改动集中在下列位置，实施时按现有职责做最小调整：
+
+| 位置 | 需要调整的内容 |
+|---|---|
+| `app/main.py` | 保留 `/v2/recognize/serial`、`/v2/recognize/fusion` 和兼容别名；完成 `image/text/category/confidence` 输入适配、图片来源校验，以及 classify 故障的 HTTP 503 映射。 |
+| `app/models/schemas.py` | 增加严格的 classify/enrich 内部 schema，并把对外响应调整为稳定的 `text + priceTrend + monitor`；不把内部 intent 暴露到请求模型。 |
+| `app/services/dify_service.py` | 将现有单一 `recognize()` 拆为一次图片上传和两次按 intent 运行；复用 file id，分别校验输出，并区分必需的 classify 故障与可降级的 enrich 故障。 |
+| `app/matching/orchestrator.py` | 调整为“classify → category 限域 → serial/fusion 匹配 → PG 查表/价格 → enrich → 权威字段覆盖 → 组装响应”，并按最终商品身份依赖计算 `dataSource`。 |
+| `app/repositories/catalog.py`、`app/repositories/pg_catalog.py` | 增加商品详情、`marketPrice`、逐笔 `price_sales` 和价格覆盖信息查询；`priceTrend` 返回纯 `purchasePrice`。 |
+| `app/importing/prices.py`、新增数据库 migration | 在不破坏现有价格快照的前提下导入 sales 明细和 coverage；以来源批次和数组行号保证幂等并保留真实重复成交。 |
+| `app/config.py`、`app/bootstrap.py` | 增加 Dify 工作流版本、超时和图片白名单等配置；生产环境缺少 classify 所需配置时 readiness 不通过。 |
+| 参考 Dify Workflow YML | 开始节点增加内部 `intent` 并分出 `classify`、`recognize_enrich`；价格查询仅允许出现在后置分支，移除不安全 TLS 回退和明文/占位密钥。 |
+| `tests/` | 覆盖接口字段不变、两种策略、两次 intent 顺序、分类业务拒绝/系统故障、PG 权威覆盖、`purchasePrice` 映射、JustTCG 回退不混合及 `dataSource` 全枚举。 |
 
 ## 10. 公平对比与验收
 
@@ -292,7 +323,7 @@ BGE 固定加载 `/models/bge_model`，文档编码不加查询指令，OCR 查�
 | 资源与耗时 | 无 LLM/含 LLM 的 p50/p95/p99、队列时间、CPU 秒/请求、RSS、QPS、BGE/LLM 调用比例 |
 | 导入 | 幂等、断点恢复、价格单独更新不编码、模型不匹配拒绝、发布/回滚可追溯 |
 
-离线精度对比可保存共用 LLM 响应，按图片/OCR/范围/实际候选输入/工作流版本完整 key 缓存；输入不同不能错误共用。实时端到端延迟试验独立运行，不混入回放缓存。线上不自动为一个请求调用两次 LLM；评测由调用方明确请求两个接口。
+离线精度对比可保存共用 LLM 响应，按 intent、图片/OCR/范围/实际候选输入/工作流版本完整 key 缓存；输入不同不能错误共用。实时端到端延迟试验独立运行，不混入回放缓存。线上每个有效 TCG 请求正常执行前置 classify 和后置 recognize_enrich 两次工作流运行；上传图片应在同一请求内复用，监控必须分别记录两次调用耗时、状态和失败原因。
 
 fusion 能在预先约定的资源预算内，保持同等自动精度并增加覆盖率/纠错收益才考虑成为默认；若未证明收益，仍保留两个 API，旧别名继续 serial。目标机参数和验收标签不足时只能称“可运行”，不能称“已达到 95%”。
 
@@ -305,8 +336,8 @@ fusion 能在预先约定的资源预算内，保持同等自动精度并增加�
 | U1 | 完整数据离线上传，约 36 万 | 正式包路径/品类映射/图片主图规则/有效行统计 | T1/T3，用户提供包，开发产 manifest 校验结果 |
 | U2 | CPU-only 单机，GPU 预留 | CPU 型号、核数、RAM、SSD 空间和业务并发/延迟要求 | T9/T10，用户提供主机信息后压测 |
 | U3 | 本地 BGE 与 demo DINO | 上线模型包完整文件、哈希、DINO backend 与断网加载结果 | T2，开发核对，用户上传服务器 |
-| U4 | GPT-5.5 经 Dify Workflow | API 地址/密钥、已发布参数、图片变量、Vision 能力和真实输出 | T6，用户提供部署环境，开发联调；密钥不写文档 |
-| U5 | 本地 sales 样例存在 | 正式价格格式、币种、时间窗完整性；截图未收到 | T3，用户提供样例/来源声明；不完整数据只作原始保留 |
+| U4 | GPT-5.5 经同一个 Dify Workflow 两次调用，内部 intent 为 classify/recognize_enrich | 改造后的已发布参数、两个分支结构化输出、Vision 能力和真实输出 | T6，开发按参考 YML 改造并联调；密钥不写文档 |
+| U5 | 已核对 sales 样例含 purchasePrice/shippingPrice/orderDate，响应取纯 purchasePrice | 正式数据币种、批次重叠和时间窗覆盖程度 | T3，导入报告记录 coverage；不完整批次不得宣称完整历史 |
 | U6 | 两 API 公平比较 | 按品类/语言覆盖的真实照片标注、可接受精度/覆盖率和延迟 | T10，用户标注/确认业务目标，开发统计 |
 | U7 | 本地规范为英语 BGE | 非英语 OCR 在正式数据上的实际贡献 | T10 分层评估；首版保持保守禁用密集文本强证据 |
 
