@@ -303,6 +303,15 @@ workflow:
           required: false
           type: paragraph
           variable: fieldSources
+        - default: ''
+          hint: UTC date supplied by API, YYYY-MM-DD.
+          label: currentDate
+          max_length: 10
+          options: []
+          placeholder: YYYY-MM-DD
+          required: false
+          type: text-input
+          variable: currentDate
       height: 134
       id: '1775632234711'
       position:
@@ -430,7 +439,7 @@ workflow:
             \ set `setCodeRaw` to an empty string.\n\n---\n\n# Rules\n- Visual extraction\
             \ first; reasonable TCG-knowledge inference allowed; no fabrication\n\
             - If state=false: output ONLY state, stateErrorReason, isSportsCard\n\
-            - This node is used only for `recognize_enrich`. Include priceTrend as three indicative USD points when state=true.
+            - This node is used only for `recognize_enrich`. When state=true, priceTrend must contain 10 to 30 indicative USD points within the supplied 30-day window.
             - Output JSON only per schema; no markdown"
         - id: 1790000000004-enrich-context
           role: user
@@ -442,8 +451,10 @@ workflow:
             {{#1775632234711.candidates#}}
             Existing field sources JSON:
             {{#1775632234711.fieldSources#}}
+            Current UTC date: {{#1775632234711.currentDate#}}
+            Price window: from 29 calendar days before currentDate through currentDate, inclusive.
 
-            Use these values only as supporting context. Prefer visible image evidence for card identity. Fill missing response fields and produce the requested indicative priceTrend; do not overwrite or reinterpret PG source precedence.
+            Use these values only as supporting context. Prefer visible image evidence for card identity. Fill missing response fields and produce 10 to 30 priceTrend points with unique soldDate values, ordered oldest to newest, and every soldDate inside the stated window; do not overwrite or reinterpret PG source precedence.
         selected: false
         structured_output:
           schema:
@@ -526,7 +537,7 @@ workflow:
                   Output only a numeric value
                 type: number
               priceTrend:
-                description: For recognize_enrich only, generate a three-point indicative USD price curve. Each point must contain price.raw, price.extracted, and soldDate (YYYY-MM-DD). Return an empty array when state is false.
+                description: For recognize_enrich only, generate 10 to 30 indicative USD price points within the supplied inclusive 30-day window, with unique dates ordered oldest to newest. Each point must contain price.raw, price.extracted, and soldDate (YYYY-MM-DD). Return an empty array when state is false.
                 items:
                   properties:
                     price:
@@ -546,6 +557,8 @@ workflow:
                   - price
                   - soldDate
                   type: object
+                maxItems: 30
+                minItems: 10
                 type: array
               marketValuationTrend:
                 description: 'Recent market price trend inferred from the identified
@@ -990,6 +1003,7 @@ workflow:
             \ set `setCodeRaw` to an empty string.\n\n---\n\n# Rules\n- Visual extraction\
             \ first; reasonable TCG-knowledge inference allowed; no fabrication\n\
             - If state=false: output ONLY state, stateErrorReason, isSportsCard\n\
+            - When state=true, return 10 to 30 priceTrend points within the supplied 30-day window, with unique dates ordered oldest to newest.
             - Output JSON only per schema; no markdown"
         - id: 1790000000005-enrich-fallback-context
           role: user
@@ -1001,8 +1015,10 @@ workflow:
             {{#1775632234711.candidates#}}
             Existing field sources JSON:
             {{#1775632234711.fieldSources#}}
+            Current UTC date: {{#1775632234711.currentDate#}}
+            Price window: from 29 calendar days before currentDate through currentDate, inclusive.
 
-            Use these values only as supporting context. Prefer visible image evidence for card identity. Fill missing response fields and produce three indicative USD priceTrend points; do not overwrite or reinterpret PG source precedence.
+            Use these values only as supporting context. Prefer visible image evidence for card identity. Fill missing response fields and produce 10 to 30 priceTrend points with unique soldDate values, ordered oldest to newest, and every soldDate inside the stated window; do not overwrite or reinterpret PG source precedence.
         selected: false
         structured_output:
           schema:
@@ -1084,7 +1100,7 @@ workflow:
                   Output only a numeric value
                 type: number
               priceTrend:
-                description: For recognize_enrich, generate a three-point indicative USD price curve. Each point must contain price.raw, price.extracted, and soldDate (YYYY-MM-DD).
+                description: For recognize_enrich, generate 10 to 30 indicative USD price points within the supplied inclusive 30-day window, with unique dates ordered oldest to newest. Each point must contain price.raw, price.extracted, and soldDate (YYYY-MM-DD).
                 items:
                   properties:
                     price:
@@ -1104,6 +1120,8 @@ workflow:
                   - price
                   - soldDate
                   type: object
+                maxItems: 30
+                minItems: 10
                 type: array
               marketValuationTrend:
                 description: 'Recent market price trend inferred from the identified
