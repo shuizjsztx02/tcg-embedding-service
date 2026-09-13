@@ -1771,7 +1771,7 @@ workflow:
           variable_selector: []
         model:
           completion_params:
-            max_tokens: 300
+            max_tokens: 500
             reasoning_effort: none
             verbosity: low
           mode: chat
@@ -1781,14 +1781,18 @@ workflow:
         - id: 2f859da7-0b44-42a8-a6d1-1f91040bf001
           role: system
           text: |-
-            You are a fast TCG image classifier. Inspect only the uploaded image and return exactly four fields.
+            You are a fast TCG image classifier. Inspect only the uploaded image and return exactly eight fields.
 
             state: true only when the image is a valid card from one of the supported TCG IPs; otherwise false.
             stateErrorReason: empty when state=true; otherwise a concise machine-readable reason such as NOT_A_CARD, SPORTS_CARD, or UNSUPPORTED_TCG.
             isSportsCard: true only for sports trading cards.
             cardIp: when state=true, exactly one of Pokémon, Pokémon Japan, Magic, Yu-Gi-Oh!, One Piece, Disney Lorcana, Flesh and Blood, Dragon Ball Super: Masters; otherwise an empty string.
+            gradingAgency: RAW when ungraded; otherwise the visible grading company, such as PSA, BGS, SGC, CGC, or HGA. Return an empty string when state=false.
+            gradingStatus: RAW when ungraded, GRADED when the card is visibly inside a grading slab, and an empty string when state=false.
+            gradingValue: null unless gradingStatus=GRADED; otherwise the visible numeric grade from 0 to 10.
+            marketValuationTrend: for a valid non-Pokémon card, infer exactly up/down/stable from the identified IP, visible card information, grading, and known recent market behavior. Return an empty string for Pokémon, Pokémon Japan, or state=false.
 
-            Pokémon Japan is only for Japanese-language Pokémon cards. Return JSON matching the schema and no commentary. Do not identify card name, set, price, grading, or collection advice.
+            Pokémon Japan is only for Japanese-language Pokémon cards. Return JSON matching the schema and no commentary. Do not identify card name, set, exact price, or collection advice.
         selected: false
         structured_output:
           schema:
@@ -1805,8 +1809,27 @@ workflow:
                 - 'Dragon Ball Super: Masters'
                 - ''
                 type: string
+              gradingAgency:
+                type: string
+              gradingStatus:
+                enum:
+                - GRADED
+                - RAW
+                - ''
+                type: string
+              gradingValue:
+                type:
+                - number
+                - 'null'
               isSportsCard:
                 type: boolean
+              marketValuationTrend:
+                enum:
+                - up
+                - down
+                - stable
+                - ''
+                type: string
               state:
                 type: boolean
               stateErrorReason:
@@ -1816,13 +1839,17 @@ workflow:
             - stateErrorReason
             - isSportsCard
             - cardIp
+            - gradingAgency
+            - gradingStatus
+            - gradingValue
+            - marketValuationTrend
             type: object
         structured_output_enabled: true
         title: 快速判断卡牌类型
         type: llm
         vision:
           configs:
-            detail: low
+            detail: high
             variable_selector:
             - '1775632234711'
             - image
@@ -1879,17 +1906,30 @@ workflow:
               return bool(value)
 
 
-          def main(state=None, stateErrorReason=None, isSportsCard=None, cardIp=None, **kwargs):
+          def _to_number(value):
+              try:
+                  return float(value) if value is not None else None
+              except (TypeError, ValueError):
+                  return None
+
+
+          def main(state=None, stateErrorReason=None, isSportsCard=None, cardIp=None,
+                   gradingAgency=None, gradingStatus=None, gradingValue=None,
+                   marketValuationTrend=None, **kwargs):
               return {
                   'result': {
                       'state': _to_bool(state),
                       'stateErrorReason': str(stateErrorReason or '').strip(),
                       'isSportsCard': _to_bool(isSportsCard),
                       'cardIp': str(cardIp or '').strip(),
+                      'gradingAgency': str(gradingAgency or '').strip(),
+                      'gradingStatus': str(gradingStatus or '').strip(),
+                      'gradingValue': _to_number(gradingValue),
+                      'marketValuationTrend': str(marketValuationTrend or '').strip().lower(),
                   }
               }
         code_language: python3
-        desc: classify 意图仅返回分类契约中的四个字段
+        desc: classify 意图返回门禁、品类、评级和非宝可梦价格趋势
         outputs:
           result:
             children: null
@@ -1922,6 +1962,30 @@ workflow:
           - cardIp
           value_type: string
           variable: cardIp
+        - value_selector:
+          - '1785100000001'
+          - structured_output
+          - gradingAgency
+          value_type: string
+          variable: gradingAgency
+        - value_selector:
+          - '1785100000001'
+          - structured_output
+          - gradingStatus
+          value_type: string
+          variable: gradingStatus
+        - value_selector:
+          - '1785100000001'
+          - structured_output
+          - gradingValue
+          value_type: number
+          variable: gradingValue
+        - value_selector:
+          - '1785100000001'
+          - structured_output
+          - marketValuationTrend
+          value_type: string
+          variable: marketValuationTrend
       height: 96
       id: '1790000000002'
       position:
