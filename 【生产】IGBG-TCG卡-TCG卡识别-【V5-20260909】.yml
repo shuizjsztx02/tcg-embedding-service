@@ -1790,7 +1790,7 @@ workflow:
             gradingAgency: RAW when ungraded; otherwise the visible grading company, such as PSA, BGS, SGC, CGC, or HGA. Return an empty string when state=false.
             gradingStatus: RAW when ungraded, GRADED when the card is visibly inside a grading slab, and an empty string when state=false.
             gradingValue: null unless gradingStatus=GRADED; otherwise the visible numeric grade from 0 to 10.
-            marketValuationTrend: for a valid non-Pokémon card, infer exactly up/down/stable from the identified IP, visible card information, grading, and known recent market behavior. Return an empty string for Pokémon, Pokémon Japan, or state=false.
+            marketValuationTrend: when cardIp is Pokémon, return an empty string. For any of the other seven supported categories, including Pokémon Japan, infer exactly up/down/stable from the identified IP, visible card information, grading, and known recent market behavior. Return an empty string when state=false.
 
             Pokémon Japan is only for Japanese-language Pokémon cards. Return JSON matching the schema and no commentary. Do not identify card name, set, exact price, or collection advice.
         selected: false
