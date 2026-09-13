@@ -263,7 +263,7 @@ workflow:
           required: false
           type: text-input
           variable: vestId
-        - default: recognize_enrich
+        - default: classify
           hint: Internal backend routing variable. Do not expose to end users.
           label: intent
           options: []
