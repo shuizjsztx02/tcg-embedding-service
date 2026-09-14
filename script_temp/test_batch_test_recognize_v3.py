@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -12,6 +13,7 @@ from script_temp.batch_test_recognize_v3 import (
     build_cases,
     call_recognize,
     load_completed_filenames,
+    parse_args,
     summarize_records,
 )
 
@@ -33,7 +35,25 @@ class FakeResponse:
         }
 
 
+class JsonResponse:
+    status_code = 200
+    ok = True
+    text = ""
+
+    def __init__(self, payload: dict) -> None:
+        self.payload = payload
+
+    def json(self) -> dict:
+        return self.payload
+
+
 class BatchRecognizeV3Tests(unittest.TestCase):
+    def test_cli_defaults_to_local_deployed_recognize_service(self) -> None:
+        with patch.object(sys, "argv", ["batch_test_recognize_v3.py"]):
+            args = parse_args()
+
+        self.assertEqual(args.base_url, "http://127.0.0.1:8003")
+
     def test_build_cases_requires_exact_one_to_one_filename_mapping(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             image_dir = Path(tmp)
@@ -81,6 +101,62 @@ class BatchRecognizeV3Tests(unittest.TestCase):
         self.assertEqual(record["status_match"], "matched")
         self.assertEqual(record["product_id"], "123")
         self.assertEqual(record["raw_response"]["monitor"]["strategy"], "serial")
+
+    def test_call_recognize_polls_async_job_and_preserves_final_api_response(self) -> None:
+        submitted = {"jobId": "job-123", "status": "queued"}
+        running = {"jobId": "job-123", "status": "running"}
+        succeeded = {
+            "jobId": "job-123",
+            "status": "succeeded",
+            "result": {
+                "text": {"state": True, "productId": "987", "cardName": "Mew ex"},
+                "priceTrend": [{"soldDate": "2026-09-01", "price": {"raw": 2.5}}],
+                "monitor": {"status_match": "matched", "strategy": "serial", "latency_ms": 321},
+            },
+        }
+        poll_responses = iter([running, succeeded])
+        requested_urls: list[str] = []
+
+        def fake_post(url, **kwargs):
+            requested_urls.append(url)
+            return JsonResponse(submitted)
+
+        def fake_get(url, **kwargs):
+            requested_urls.append(url)
+            return JsonResponse(next(poll_responses))
+
+        with tempfile.TemporaryDirectory() as tmp:
+            image_path = Path(tmp) / "card.jpg"
+            image_path.write_bytes(b"jpeg-bytes")
+            try:
+                record = call_recognize(
+                    "http://server:8003",
+                    image_path,
+                    "Mew ex 151/165",
+                    timeout=45,
+                    job_timeout=60,
+                    poll_interval=0,
+                    post=fake_post,
+                    get=fake_get,
+                    sleep=lambda _: None,
+                )
+            except TypeError as exc:
+                self.fail(f"async polling arguments are unsupported: {exc}")
+
+        self.assertEqual(
+            requested_urls,
+            [
+                "http://server:8003/v2/recognize",
+                "http://server:8003/v2/recognize/jobs/job-123",
+                "http://server:8003/v2/recognize/jobs/job-123",
+            ],
+        )
+        self.assertEqual(record["job_id"], "job-123")
+        self.assertEqual(record["job_status"], "succeeded")
+        self.assertEqual(record["product_id"], "987")
+        self.assertEqual(record["submit_response"], submitted)
+        self.assertEqual(record["raw_response"], succeeded)
+        self.assertEqual(record["raw_response"]["result"]["priceTrend"][0]["price"]["raw"], 2.5)
 
     def test_load_completed_filenames_ignores_truncated_jsonl_line(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

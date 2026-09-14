@@ -21,7 +21,7 @@ import requests
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_BASE_URL = "http://172.31.12.82:8003"
+DEFAULT_BASE_URL = "http://127.0.0.1:8003"
 DEFAULT_IMAGES_DIR = PROJECT_ROOT / "test-images-v3"
 DEFAULT_OCR_XLSX = PROJECT_ROOT / "OCR识别结果.xlsx"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "test-results-recognize-v3"
@@ -95,12 +95,33 @@ def _response_error(response: Any) -> str:
     return f"HTTP {response.status_code}: {str(body)[:500]}"
 
 
+def _add_result_fields(record: dict[str, Any], payload: dict[str, Any]) -> dict[str, Any]:
+    text_result = payload.get("text")
+    monitor = payload.get("monitor")
+    text_result = text_result if isinstance(text_result, dict) else {}
+    monitor = monitor if isinstance(monitor, dict) else {}
+    record.update(
+        status_match=monitor.get("status_match", ""),
+        strategy=monitor.get("strategy", ""),
+        service_latency_ms=monitor.get("latency_ms"),
+        product_id=text_result.get("productId"),
+        card_name=text_result.get("cardName", ""),
+        card_ip=text_result.get("cardIp", ""),
+        data_source=monitor.get("dataSource", ""),
+    )
+    return record
+
+
 def call_recognize(
     base_url: str,
     image_path: Path,
     text: str,
     timeout: float,
+    job_timeout: float = 300.0,
+    poll_interval: float = 0.8,
     post: Callable[..., Any] = requests.post,
+    get: Callable[..., Any] = requests.get,
+    sleep: Callable[[float], None] = time.sleep,
 ) -> dict[str, Any]:
     """Call the compatibility endpoint once with the image and the supplied OCR text."""
     mime_type = mimetypes.guess_type(image_path.name)[0] or "image/jpeg"
@@ -140,22 +161,69 @@ def call_recognize(
     except ValueError:
         record["error"] = "invalid JSON response"
         return record
+    if not isinstance(payload, dict):
+        record["error"] = "invalid JSON response shape"
+        return record
 
-    text_result = payload.get("text") if isinstance(payload, dict) else {}
-    monitor = payload.get("monitor") if isinstance(payload, dict) else {}
-    text_result = text_result if isinstance(text_result, dict) else {}
-    monitor = monitor if isinstance(monitor, dict) else {}
-    record.update(
-        status_match=monitor.get("status_match", ""),
-        strategy=monitor.get("strategy", ""),
-        service_latency_ms=monitor.get("latency_ms"),
-        product_id=text_result.get("productId"),
-        card_name=text_result.get("cardName", ""),
-        card_ip=text_result.get("cardIp", ""),
-        data_source=monitor.get("dataSource", ""),
-        raw_response=payload,
-    )
-    return record
+    record["submit_response"] = payload
+    job_id = payload.get("jobId")
+    if not job_id:
+        record["raw_response"] = payload
+        return _add_result_fields(record, payload)
+
+    job_url = f"{base_url.rstrip('/')}/v2/recognize/jobs/{job_id}"
+    deadline = started + job_timeout
+    poll_count = 0
+    while True:
+        if time.perf_counter() >= deadline:
+            record.update(
+                elapsed_ms=round((time.perf_counter() - started) * 1000, 1),
+                job_id=job_id,
+                job_status="timeout",
+                poll_count=poll_count,
+                error=f"job timed out after {job_timeout} seconds",
+            )
+            return record
+        sleep(poll_interval)
+        poll_count += 1
+        try:
+            job_response = get(job_url, timeout=timeout)
+        except requests.RequestException as exc:
+            record.update(
+                elapsed_ms=round((time.perf_counter() - started) * 1000, 1),
+                job_id=job_id,
+                job_status="poll_failed",
+                poll_count=poll_count,
+                error=f"job poll failed: {exc}",
+            )
+            return record
+        record["elapsed_ms"] = round((time.perf_counter() - started) * 1000, 1)
+        record["job_id"] = job_id
+        record["poll_count"] = poll_count
+        if not job_response.ok:
+            record["error"] = _response_error(job_response)
+            return record
+        try:
+            job_payload = job_response.json()
+        except ValueError:
+            record["error"] = "invalid JSON job response"
+            return record
+        if not isinstance(job_payload, dict):
+            record["error"] = "invalid JSON job response shape"
+            return record
+        record["raw_response"] = job_payload
+        job_status = str(job_payload.get("status", ""))
+        record["job_status"] = job_status
+        if job_status in {"queued", "running"}:
+            continue
+        if job_status != "succeeded":
+            record["error"] = f"job finished with status: {job_status or 'unknown'}"
+            return record
+        result = job_payload.get("result")
+        if not isinstance(result, dict):
+            record["error"] = "job succeeded without object result"
+            return record
+        return _add_result_fields(record, result)
 
 
 def process_case(case: RecognizeCase, base_url: str, timeout: float) -> dict[str, Any]:
