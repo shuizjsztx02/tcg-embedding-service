@@ -318,6 +318,21 @@ def load_records(results_path: Path) -> list[dict[str, Any]]:
     return records
 
 
+def latest_records_by_filename(records: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    latest: dict[str, dict[str, Any]] = {}
+    for record in records:
+        filename = record.get("filename")
+        if filename:
+            latest[filename] = record
+    return latest
+
+
+def select_retry_cases(
+    cases: Iterable[RecognizeCase], latest_records: dict[str, dict[str, Any]]
+) -> list[RecognizeCase]:
+    return [case for case in cases if latest_records.get(case.filename, {}).get("error")]
+
+
 def write_csv(records: Iterable[dict[str, Any]], csv_path: Path) -> None:
     columns = [
         "filename", "http_status", "http_ok", "elapsed_ms", "service_latency_ms",
@@ -347,6 +362,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--timeout", type=float, default=180.0, help="per-request timeout in seconds")
     parser.add_argument("--limit", type=int, help="test only the first N sorted images")
     parser.add_argument("--resume", action="store_true", help="skip filenames already present in JSONL output")
+    parser.add_argument("--retry-errors", action="store_true", help="retry only filenames whose latest JSONL record has an error")
     parser.add_argument("--overwrite", action="store_true", help="replace an existing JSONL output")
     parser.add_argument("--skip-health-check", action="store_true")
     args = parser.parse_args()
@@ -356,8 +372,8 @@ def parse_args() -> argparse.Namespace:
         parser.error("--timeout must be positive")
     if args.limit is not None and args.limit < 1:
         parser.error("--limit must be at least 1")
-    if args.resume and args.overwrite:
-        parser.error("--resume and --overwrite cannot be used together")
+    if sum((args.resume, args.retry_errors, args.overwrite)) > 1:
+        parser.error("--resume, --retry-errors, and --overwrite cannot be combined")
     return args
 
 
@@ -375,13 +391,21 @@ def main() -> int:
         cases = cases[:args.limit]
     args.output.mkdir(parents=True, exist_ok=True)
     results_path = args.output / "recognize_results.jsonl"
-    if results_path.exists() and not args.resume and not args.overwrite:
-        raise SystemExit(f"results already exist: {results_path}; use --resume or --overwrite")
+    if results_path.exists() and not (args.resume or args.retry_errors or args.overwrite):
+        raise SystemExit(f"results already exist: {results_path}; use --resume, --retry-errors, or --overwrite")
+    if args.retry_errors and not results_path.is_file():
+        raise SystemExit(f"cannot retry errors because results do not exist: {results_path}")
     if args.overwrite:
         results_path.write_text("", encoding="utf-8")
 
-    completed = load_completed_filenames(results_path) if args.resume else set()
-    pending = [case for case in cases if case.filename not in completed]
+    existing_records = load_records(results_path)
+    latest_records = latest_records_by_filename(existing_records)
+    if args.retry_errors:
+        pending = select_retry_cases(cases, latest_records)
+    elif args.resume:
+        pending = [case for case in cases if case.filename not in latest_records]
+    else:
+        pending = cases
     config = {
         "base_url": args.base_url,
         "endpoint": f"{args.base_url.rstrip('/')}/v2/recognize",
@@ -391,6 +415,7 @@ def main() -> int:
         "timeout": args.timeout,
         "selected_images": len(cases),
         "pending_images": len(pending),
+        "retry_errors": args.retry_errors,
         "created_at": datetime.now().isoformat(timespec="seconds"),
     }
     (args.output / "config.json").write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -405,7 +430,7 @@ def main() -> int:
             if index % 25 == 0 or index == len(pending):
                 print(f"  {index}/{len(pending)} complete", flush=True)
 
-    records = load_records(results_path)
+    records = list(latest_records_by_filename(load_records(results_path)).values())
     summary = summarize_records(records, expected_total=len(cases))
     summary["run_duration_seconds"] = round(time.perf_counter() - started, 1)
     (args.output / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")

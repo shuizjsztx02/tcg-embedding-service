@@ -13,7 +13,9 @@ from script_temp.batch_test_recognize_v3 import (
     build_cases,
     call_recognize,
     load_completed_filenames,
+    latest_records_by_filename,
     parse_args,
+    select_retry_cases,
     summarize_records,
 )
 
@@ -73,6 +75,24 @@ class BatchRecognizeV3Tests(unittest.TestCase):
 
             with self.assertRaisesRegex(ValueError, "mapping mismatch"):
                 build_cases([("a.jpg", "one", 1)], image_dir)
+
+    def test_select_retry_cases_uses_only_each_filename_latest_failed_attempt(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            image_dir = Path(tmp)
+            (image_dir / "a.jpg").write_bytes(b"a")
+            (image_dir / "b.jpg").write_bytes(b"b")
+            cases = build_cases([("a.jpg", "A", 1), ("b.jpg", "B", 1)], image_dir)
+            attempts = [
+                {"filename": "a.jpg", "error": "connection refused"},
+                {"filename": "a.jpg", "error": None, "job_status": "succeeded"},
+                {"filename": "b.jpg", "error": "connection reset"},
+            ]
+
+            latest = latest_records_by_filename(attempts)
+            retry_cases = select_retry_cases(cases, latest)
+
+        self.assertEqual(list(latest), ["a.jpg", "b.jpg"])
+        self.assertEqual([case.filename for case in retry_cases], ["b.jpg"])
 
     def test_call_recognize_posts_image_and_text_to_compatibility_endpoint(self) -> None:
         captured: dict = {}
