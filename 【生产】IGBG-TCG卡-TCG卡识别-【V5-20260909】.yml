@@ -1781,7 +1781,7 @@ workflow:
         - id: 2f859da7-0b44-42a8-a6d1-1f91040bf001
           role: system
           text: |-
-            You are a fast TCG image classifier. Inspect only the uploaded image and return exactly eight fields.
+            You are a fast TCG image classifier. Inspect only the uploaded image and return exactly twelve fields.
 
             state: true only when the image is a valid card from one of the supported TCG IPs; otherwise false.
             stateErrorReason: empty when state=true; otherwise a concise machine-readable reason such as NOT_A_CARD, SPORTS_CARD, or UNSUPPORTED_TCG.
@@ -1790,13 +1790,22 @@ workflow:
             gradingAgency: RAW when ungraded; otherwise the visible grading company, such as PSA, BGS, SGC, CGC, or HGA. Return an empty string when state=false.
             gradingStatus: RAW when ungraded, GRADED when the card is visibly inside a grading slab, and an empty string when state=false.
             gradingValue: null unless gradingStatus=GRADED; otherwise the visible numeric grade from 0 to 10.
-            marketValuationTrend: when cardIp is Pokémon, return an empty string. For any of the other seven supported categories, including Pokémon Japan, infer exactly up/down/stable from the identified IP, visible card information, grading, and known recent market behavior. Return an empty string when state=false.
+            For cardIp=Pokémon, return empty strings for language, artist, collectionAdviceTag, collectionAdviceText, and marketValuationTrend. Those values come from the Pokémon enrichment table after matching.
+            For any of the other seven supported categories, including Pokémon Japan, when state=true generate all five fields below from the identified card image. These values are used only after the backend confirms a productId match:
+            language: exactly one of English, Japanese, Simplified Chinese, Traditional Chinese, Korean, French, German, Italian, Spanish, Portuguese, Other. Use Other when the card language is not identifiable.
+            artist: the visibly printed illustrator or artist credit; return an empty string when absent or unreadable. Do not infer from artwork style or external knowledge.
+            collectionAdviceTag: exactly one of Long Hold, Short Trade, Sentimental, Rookie, Limited, Set Collection.
+            collectionAdviceText: concise English collecting advice, 120 characters or fewer.
+            marketValuationTrend: exactly up/down/stable, inferred from the identified card, grading, and known recent market behavior.
+            When state=false, return empty strings for all five fields.
 
-            Pokémon Japan is only for Japanese-language Pokémon cards. Return JSON matching the schema and no commentary. Do not identify card name, set, exact price, or collection advice.
+            Pokémon Japan is only for Japanese-language Pokémon cards. Return JSON matching the schema and no commentary. Do not identify card name, set, or exact price.
         selected: false
         structured_output:
           schema:
             properties:
+              artist:
+                type: string
               cardIp:
                 enum:
                 - Pokémon
@@ -1808,6 +1817,18 @@ workflow:
                 - Flesh and Blood
                 - 'Dragon Ball Super: Masters'
                 - ''
+                type: string
+              collectionAdviceTag:
+                enum:
+                - Long Hold
+                - Short Trade
+                - Sentimental
+                - Rookie
+                - Limited
+                - Set Collection
+                - ''
+                type: string
+              collectionAdviceText:
                 type: string
               gradingAgency:
                 type: string
@@ -1823,6 +1844,21 @@ workflow:
                 - 'null'
               isSportsCard:
                 type: boolean
+              language:
+                enum:
+                - English
+                - Japanese
+                - Simplified Chinese
+                - Traditional Chinese
+                - Korean
+                - French
+                - German
+                - Italian
+                - Spanish
+                - Portuguese
+                - Other
+                - ''
+                type: string
               marketValuationTrend:
                 enum:
                 - up
@@ -1843,6 +1879,10 @@ workflow:
             - gradingStatus
             - gradingValue
             - marketValuationTrend
+            - language
+            - artist
+            - collectionAdviceTag
+            - collectionAdviceText
             type: object
         structured_output_enabled: true
         title: 快速判断卡牌类型
@@ -1915,7 +1955,8 @@ workflow:
 
           def main(state=None, stateErrorReason=None, isSportsCard=None, cardIp=None,
                    gradingAgency=None, gradingStatus=None, gradingValue=None,
-                   marketValuationTrend=None, **kwargs):
+                   marketValuationTrend=None, language=None, artist=None,
+                   collectionAdviceTag=None, collectionAdviceText=None, **kwargs):
               return {
                   'result': {
                       'state': _to_bool(state),
@@ -1926,10 +1967,14 @@ workflow:
                       'gradingStatus': str(gradingStatus or '').strip(),
                       'gradingValue': _to_number(gradingValue),
                       'marketValuationTrend': str(marketValuationTrend or '').strip().lower(),
+                      'language': str(language or '').strip(),
+                      'artist': str(artist or '').strip(),
+                      'collectionAdviceTag': str(collectionAdviceTag or '').strip(),
+                      'collectionAdviceText': str(collectionAdviceText or '').strip(),
                   }
               }
         code_language: python3
-        desc: classify 意图返回门禁、品类、评级和非宝可梦价格趋势
+        desc: classify 意图返回门禁、品类、评级和非Pokemon实时enrichment字段
         outputs:
           result:
             children: null
@@ -1986,6 +2031,30 @@ workflow:
           - marketValuationTrend
           value_type: string
           variable: marketValuationTrend
+        - value_selector:
+          - '1785100000001'
+          - structured_output
+          - language
+          value_type: string
+          variable: language
+        - value_selector:
+          - '1785100000001'
+          - structured_output
+          - artist
+          value_type: string
+          variable: artist
+        - value_selector:
+          - '1785100000001'
+          - structured_output
+          - collectionAdviceTag
+          value_type: string
+          variable: collectionAdviceTag
+        - value_selector:
+          - '1785100000001'
+          - structured_output
+          - collectionAdviceText
+          value_type: string
+          variable: collectionAdviceText
       height: 96
       id: '1790000000002'
       position:
