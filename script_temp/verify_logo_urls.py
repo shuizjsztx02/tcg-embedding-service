@@ -43,7 +43,8 @@ def main() -> None:
     stat = defaultdict(Counter)
     dead = []
     for (line, name, url, source), (u, code, ctype) in zip(items, res):
-        ok = code == 200 and ctype.startswith(("image/", "text/xml", "application/xml"))
+        ok = code == 200 and ctype.startswith(("image/", "text/xml", "application/xml",
+                                              "binary/octet-stream"))
         stat[source][("ok" if ok else "bad")] += 1
         if not ok:
             dead.append((source, line, name, url, code, ctype))

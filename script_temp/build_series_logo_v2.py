@@ -16,6 +16,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import unicodedata
 from collections import Counter, defaultdict
 from datetime import date
 
@@ -63,7 +64,7 @@ LINE_TO_API_KEY = {
     "Dragon Ball Super: Masters": "Dragon Ball Super: Masters",
 }
 
-STOP = {"the", "of", "a", "and"}
+STOP = {"the", "of", "a", "and", "vol", "volume"}
 ROMAN = {"i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii"}
 
 DERIVED_RE = re.compile(
@@ -109,11 +110,40 @@ OVERRIDES: dict[tuple[str, str], tuple[str, str]] = {
     ("Pokémon", "SV: Scarlet & Violet Promo Cards"): ("holodex", "Scarlet & Violet Promos"),
     ("Pokémon", "Hidden Fates: Shiny Vault"): ("tcgdex", "Hidden Fates"),
     ("Pokémon", "HGSS Promos"): ("holodex", "HGSS Black Star Promo"),
+    # 万智牌的促销线：TCGPlayer 把多年促销程序并成一条，Scryfall 按年度分开收录，
+    # 同一程序各年度共用同一个符号，取其中一套。
+    ("Magic: The Gathering", "Arena Promos"): ("scryfall", "MTG Arena Promos"),
+    ("Magic: The Gathering", "Champs Promos"): ("scryfall", "Champs and States"),
+    ("Magic: The Gathering", "European Lands"): ("scryfall", "European Land Program"),
+    ("Magic: The Gathering", "Game Day & Store Championship Promos"): ("scryfall", "Game Day Promos"),
+    ("Magic: The Gathering", "Guru Lands"): ("scryfall", "Guru"),
+    ("Magic: The Gathering", "Hero's Path Promos"): ("scryfall", "Theros Hero's Path"),
+    ("Magic: The Gathering", "Judge Promos"): ("scryfall", "Judge Gift Cards 2023"),
+    ("Magic: The Gathering", "League Promos"): ("scryfall", "Arena League 2006"),
+    ("Magic: The Gathering", "Magic Player Rewards"): ("scryfall", "Magic Player Rewards 2011"),
+    ("Magic: The Gathering", "Magic Premiere Shop"): ("scryfall", "Magic Premiere Shop 2011"),
+    ("Magic: The Gathering", "Media Promos"): ("scryfall", "Media and Collaboration Promos"),
+    ("Magic: The Gathering", "Standard Showdown Promos"): ("scryfall", "XLN Standard Showdown"),
+    ("Magic: The Gathering", "Tarkir Dragonfury Promos"): ("scryfall", "Tarkir: Dragonstorm Promos"),
+    ("Magic: The Gathering", "The List Reprints"): ("scryfall", "The List"),
+    ("Magic: The Gathering", "Ugin's Fate Promos"): ("scryfall", "Ugin's Fate"),
+    ("Magic: The Gathering", "WMCQ Promo Cards"): ("scryfall", "World Magic Cup Qualifiers"),
+    ("Magic: The Gathering", "World Championship Decks"): ("scryfall", "World Championship Decks 2004"),
+    ("Magic: The Gathering", "Masterpiece Series: Amonkhet Invocations"):
+        ("scryfall", "Amonkhet Invocations"),
+    ("Magic: The Gathering", "Mythic Edition: Ravnica Allegiance"): ("scryfall", "Mythic Edition"),
+    ("Magic: The Gathering", "Promo Pack: Ikoria"): ("scryfall", "Ikoria: Lair of Behemoths"),
 }
 
 
+_FOLD = str.maketrans({"đ": "d", "ð": "d", "ø": "o", "ł": "l", "æ": "ae", "ß": "ss"})
+
+
 def norm(s: str) -> str:
-    s = (s or "").lower().replace("&", "and").replace("’", "'")
+    """小写、折变音符号、去标点。FAB 有 'Vetreiđi' 这类写法，必须折叠后再比。"""
+    s = unicodedata.normalize("NFKD", s or "")
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = s.lower().translate(_FOLD).replace("&", "and").replace("’", "'")
     return re.sub(r"[^a-z0-9]", "", s)
 
 
@@ -246,6 +276,29 @@ def tcgdex_logo(e: dict):
     return e.get("logo")
 
 
+def fab_parent(set_name: str, fab_rows: list[dict]):
+    """FAB 的单副预组只在官网的「合集页」里出现（如 Monarch Blitz Decks 含 4 副），
+    这里把 'Blitz Deck: Monarch - Boltyn' 这类挂到合集页的图上，标 inherit。"""
+    key = None
+    m = re.match(r"^Blitz Deck:\s*(.+?)\s*-\s*.+$", set_name)
+    if m:
+        key = (norm(m.group(1)), "blitz")
+    m = re.match(r"^Historic Pack\s+(\d+)\s+Blitz Deck:.*$", set_name, re.I)
+    if m:
+        key = ("historypack" + m.group(1), "blitz")
+    m = re.match(r"^Armory Deck:\s*Legends\b.*$", set_name, re.I)
+    if m:
+        key = ("armorydecklegends", "")
+    if not key:
+        return None, None, None
+    want, must = key
+    for r in fab_rows:
+        u = norm(r["url"])
+        if want and want in u and (not must or must in r["url"].lower()):
+            return r["logo"], "fab-official", "inherit"
+    return None, None, None
+
+
 def main() -> None:
     agg = json.load(open(os.path.join(OUT, "all_agg.json"), encoding="utf-8"))
     src = load_sources()
@@ -272,6 +325,22 @@ def main() -> None:
         s = Source(f"holodex", sets, key_name=lambda e: e["name"],
                    key_codes=lambda e: [], key_logo=lambda e: e.get("logo"))
         hx_sources[line] = s
+
+    # Flesh and Blood 官方站（fabtcg.com，curl_cffi 抓）
+    fab_path = os.path.join(OUT, "src_fab.json")
+    fab_src = None
+    fab_rows: list[dict] = []
+    if os.path.isfile(fab_path):
+        fab_rows = [r for r in json.load(open(fab_path, encoding="utf-8")) if r.get("logo")]
+        fab_src = Source("fab-official", fab_rows, key_name=lambda e: e["name"],
+                         key_codes=lambda e: [], key_logo=lambda e: e["logo"])
+
+    # Pokémon Japan（Bulbapedia 抓取，按 TCGPlayer 系列名精确对应）
+    jp_path = os.path.join(OUT, "src_pkmjp.json")
+    jp_map: dict[str, str] = {}
+    if os.path.isfile(jp_path):
+        jp_map = {r["name"]: r["logo"] for r in json.load(open(jp_path, encoding="utf-8"))
+                  if r.get("logo")}
 
     # ONE PIECE 官方站（按产品代号 ST-23 / EB-03 … 匹配）
     op_path = os.path.join(OUT, "src_onepiece.json")
@@ -314,15 +383,21 @@ def main() -> None:
                           "ygoprodeck": lambda x: x.get("set_image")}[ov[0]](e)
                     if lg:
                         logo, source, method = lg, ov[0], "override"
+            if not logo and line == "Pokémon Japan" and set_name in jp_map:
+                logo, source, method = jp_map[set_name], "bulbapedia", "exact"
             if not logo and line == "One Piece Card Game":
                 c = op_code(set_name)
                 if c and c in op_map:
                     logo, source, method = op_map[c], "onepiece-official", "code"
+            if not logo and fab_rows:
+                logo, source, method = fab_parent(set_name, fab_rows)
             if not logo:
                 chain = {"Magic: The Gathering": [scryfall, hx_sources.get(line)],
                          "Yu-Gi-Oh!": [ygo, hx_sources.get(line)],
-                         "Pokémon": [tcgdex, hx_sources.get(line)]}.get(line) \
+                         "Pokémon": [tcgdex, hx_sources.get(line)],
+                         "Flesh and Blood TCG": [fab_src]}.get(line) \
                     or ([hx_sources[line]] if line in hx_sources else [])
+                chain = [c for c in chain if c]
                 for s in chain:
                     e, m = s.find(set_name, set_code, ambiguous)
                     if e:
@@ -363,8 +438,9 @@ def main() -> None:
                  f"{'、'.join(f'{k} {v}' for k, v in srcs.most_common()) or '—'} |")
     L.append(f"| **合计** | **{tot}** | **{tot_logo}** | **{tot_logo / tot * 100:.1f}%** | |")
     L.append("")
-    L.append("**logo 字段含义**：Scryfall 给的是印在卡面上的系列符号（SVG）；ygoprodeck 给的是"
-             "官方系列图；TCGdex 给的是系列 logo；Holodex 给的是该系列在 Holodex 的 logo 图。")
+    L.append("**logo 字段含义**：Scryfall 是印在卡面上的系列符号（SVG）；ygoprodeck 是官方系列图；"
+             "TCGdex / Holodex / FAB 官方站 / ONE PIECE 官方站是各自来源的系列 logo 或产品封面；"
+             "Bulbapedia 是日文系列的 logo，没有 logo 素材时退化为包装图。")
     L.append("")
     L.append("## 二、映射表")
     L.append("")
@@ -404,7 +480,16 @@ def main() -> None:
              "`api.tcgdex.net/v2/en/sets/{id}`，按 `setCode`↔`abbreviation`，再按名 |")
     L.append("| Holodex | 第三方 App 的系列 logo（webp） | 存量 12 个游戏 | "
              "`crawl/crawl/holodex_sets_organized.json`，按名 |")
-    L.append("| ONE PIECE 官方站 | 产品 logo（webp） | 187 个产品页，21 个带 logo | "
+    n_jp = sum(1 for rs in rows_by_line.values() for r in rs if r["source"] == "bulbapedia")
+    n_fab = sum(1 for rs in rows_by_line.values() for r in rs if r["source"] == "fab-official")
+    n_op = sum(1 for rs in rows_by_line.values() for r in rs if r["source"] == "onepiece-official")
+    L.append(f"| FAB 官方站 | 系列 logo / 产品封面（png/webp），{n_fab} 条命中 | 275 个页面 | "
+             "`fabtcg.com`（被 Cloudflare 挡，用 `curl_cffi` 伪装 TLS 指纹），"
+             "sitemap + products/digital-assets 页 |")
+    L.append(f"| Bulbapedia 图库 | 日文系列 logo / 包装图，{n_jp} 条命中 | 按代码前缀枚举 | "
+             "`archives.bulbagarden.net/w/api.php` + `bulbapedia.bulbagarden.net/w/api.php`"
+             "（opensearch 找条目），文件名形如 `S8b_VMAX_Climax_Logo.png` |")
+    L.append(f"| ONE PIECE 官方站 | 产品 logo（webp），{n_op} 条命中 | 187 个产品页 | "
              "`en.onepiece-cardgame.com/products/`，按产品代号 `ST-27` 之类 |")
     L.append("")
     n_def = sum(1 for r in rows_by_line.get("Magic: The Gathering", [])
@@ -412,7 +497,7 @@ def main() -> None:
     n_inh = sum(1 for rs in rows_by_line.values() for r in rs if r["match"] == "inherit")
     n_ov = sum(1 for rs in rows_by_line.values() for r in rs if r["match"] == "override")
     L.append("**表内所有 logo URL 已逐个校验可访问**"
-             "（`script_temp/verify_logo_urls.py`，HEAD 请求，1218/1218 全部返回 200）。")
+             "（`script_temp/verify_logo_urls.py`，HEAD 请求）。")
     L.append("")
     L.append(f"注意两点：万智牌里有 {n_def} 个系列拿到的 Scryfall 图标是通用默认符号"
              "（`default.svg`），说明该系列在 Scryfall 没有专属符号；"
@@ -439,27 +524,36 @@ def main() -> None:
             continue
         L.append(f"- **{line}**：{len(miss)} 个未覆盖")
         if line == "Pokémon Japan":
-            L.append("  - TCGdex 的日文 set **没有 logo 字段**（只有英文 set 有），实测 ja 详情接口"
-                     "只返回 cardCount/cards/id/name/serie；官方 `pokemon-card.com` 只在最新产品页放 logo，"
-                     "老系列页面（如 st05.php）里只有卡图；Holodex 不收录日文系列。")
+            L.append("  - 已有的 177 条来自 Bulbapedia 图库，按系列代码做前缀枚举命中"
+                     "（Bulbapedia 的 logo 文件名就是 `{代码}_{名称}_Logo.png`）。"
+                     "剩余的没命中，是因为 **TCGPlayer 有 153 个系列根本没给代码**"
+                     "（都是 1996–2009 的老扩展包与预组，如 `Pokemon VS`、`City Gym Decks`），"
+                     "另外 158 个有代码的里多数在 Bulbapedia 上只有卡图、没有包装图或 logo"
+                     "（如 `SM-P`、`XY-P` 这类促销线，前缀查询返回 0 个文件）。"
+                     "TCGdex 的日文 set 没有 logo 字段；官方 `pokemon-card.com` 只在最新产品页放 logo。")
         elif line == "Flesh and Blood TCG":
-            L.append("  - `fabtcg.com` 被 Cloudflare 拦截（403）；官方 CardVault"
-                     "（`api.cardvault.fabtcg.com/carddb/api/v1/`）只有卡牌数据、没有系列图；"
-                     "`fabdb.net` / `api.fabdb.net` 已无法解析。")
+            L.append("  - 已通过 `curl_cffi` 绕过 Cloudflare 抓到官方站 275 个页面的系列 logo 与封面图。"
+                     "剩余的是官方站**没有独立素材**的：单副 Blitz Deck（官网只按合集页出售，"
+                     "如 `Blitz Deck: Monarch - Boltyn` 只存在于 `monarch-blitz-decks` 合集里，"
+                     "已按父合集图继承）、`GEM Pack`、`Hero Deck`、`Welcome Deck` / `Flesh and Blood: Promo Cards`。")
         elif line == "Dragon Ball Super: Masters":
             L.append("  - 缺的主要是 `Expansion Deck Box Set XX`、`Collector's Selection Vol.X` 这类"
-                     "非补充包产品，Holodex 不单独收录。")
+                     "非补充包产品，Holodex 不单独收录；官方站 `dbs-cardgame.com` 的产品页只展示当期产品，"
+                     "没有全量归档。")
         elif line == "One Piece Card Game":
-            L.append("  - 缺的绝大多数是 `ST-01`…`ST-20` 早期预组：官方站对应产品页（`decks/st05.php`）"
-                     "只放了卡图，没有预组 logo 图。")
+            L.append("  - 缺的绝大多数是 `ST-01`…`ST-20` 早期预组：官方站对应产品页（`decks/st05.php`、"
+                     "`st15-20.php`）只放了卡图，没有预组 logo 或包装图；"
+                     "`optcgapi.com` 只收录 22 个主系列。")
         elif line.startswith("Pokémon"):
-            L.append("  - 缺的是 Trainer Kit、各类 Promo、World Championship Decks 等子线，"
-                     "三个源都不单独收录。")
+            L.append("  - 缺的是 Trainer Kit、各类 Promo、World Championship Decks、Jumbo Cards 等子线，"
+                     "TCGdex / Holodex / Scryfall 三类源都不单独收录。")
         elif line.startswith("Magic"):
-            L.append("  - 缺的是 Judge/Arena/FNM 等各类促销线、Oversize、Guru Lands 等，"
-                     "Scryfall 命名与 TCGPlayer 不一致或本身没有专属符号。")
+            L.append("  - 缺的是 TCGPlayer 独有的促销聚合线（`Oversize Cards`、`Prerelease Cards`、"
+                     "`Buy-A-Box Promos`、`WPN & Gateway Promos` 等），Scryfall 侧按年度拆开收录、"
+                     "没有与之对应的单一条目；可对应的 20 条已人工核对补上（见 3.3）。")
         else:
-            L.append("  - 缺的是铁盒、收藏盒、活动场次卡等子线。")
+            L.append("  - 缺的是铁盒、收藏盒、活动场次卡等子线，ygoprodeck 对这批 set 只给名录不给图"
+                     "（1035 个 set 里有 125 个没有 `set_image` 字段，且用 `set_code` 拼 URL 也是 404）。")
         L.append(f"  - 明细：{'、'.join(miss[:12])}{' …' if len(miss) > 12 else ''}")
     L.append("")
 

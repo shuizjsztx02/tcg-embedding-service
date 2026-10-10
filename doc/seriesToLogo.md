@@ -10,16 +10,16 @@
 | 品线 | 系列数 | 有 logo | 覆盖率 | logo 来源 |
 |------|--------|---------|--------|-----------|
 | Pokémon | 216 | 187 | 87% | tcgdex 132、holodex 55 |
-| Pokémon Japan | 455 | 0 | 0% | — |
-| Magic: The Gathering | 445 | 401 | 90% | scryfall 391、holodex 10 |
+| Pokémon Japan | 455 | 177 | 39% | bulbapedia 177 |
+| Magic: The Gathering | 445 | 421 | 95% | scryfall 411、holodex 10 |
 | Yu-Gi-Oh! | 613 | 514 | 84% | ygoprodeck 512、holodex 2 |
 | One Piece Card Game | 85 | 42 | 49% | holodex 35、onepiece-official 7 |
 | Disney Lorcana | 20 | 15 | 75% | holodex 15 |
-| Flesh and Blood TCG | 105 | 0 | 0% | — |
+| Flesh and Blood TCG | 105 | 88 | 84% | fab-official 88 |
 | Dragon Ball Super: Masters | 100 | 59 | 59% | holodex 59 |
-| **合计** | **2039** | **1218** | **59.7%** | |
+| **合计** | **2039** | **1503** | **73.7%** | |
 
-**logo 字段含义**：Scryfall 给的是印在卡面上的系列符号（SVG）；ygoprodeck 给的是官方系列图；TCGdex 给的是系列 logo；Holodex 给的是该系列在 Holodex 的 logo 图。
+**logo 字段含义**：Scryfall 是印在卡面上的系列符号（SVG）；ygoprodeck 是官方系列图；TCGdex / Holodex / FAB 官方站 / ONE PIECE 官方站是各自来源的系列 logo 或产品封面；Bulbapedia 是日文系列的 logo，没有 logo 素材时退化为包装图。
 
 ## 二、映射表
 
@@ -244,7 +244,7 @@
 | Pokémon | XY Trainer Kit: Sylveon & Noivern |  | 0 / 61 | — |
 | Pokémon | e-Reader Sample Cards |  | 1 / 1 | — |
 
-### Pokémon Japan（455 个系列，0 个有 logo）
+### Pokémon Japan（455 个系列，177 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
@@ -264,26 +264,26 @@
 | Pokémon Japan | BKR: Reshiram-EX Battle Strength Deck |  | 18 / 18 | — |
 | Pokémon Japan | BKW: White Kyurem-EX Battle Strength Deck |  | 18 / 18 | — |
 | Pokémon Japan | BKZ: Zekrom-EX Battle Strength Deck |  | 18 / 18 | — |
-| Pokémon Japan | BREAK Starter Pack |  | 77 / 77 | — |
+| Pokémon Japan | BREAK Starter Pack | https://archives.bulbagarden.net/media/upload/8/8b/20th_Anniversary_logo.png | 77 / 77 | bulbapedia |
 | Pokémon Japan | BW-P Promotional cards |  | 250 / 250 | — |
-| Pokémon Japan | BW1: Black Collection |  | 56 / 56 | — |
-| Pokémon Japan | BW1: White Collection |  | 55 / 55 | — |
-| Pokémon Japan | BW2: Red Collection |  | 71 / 72 | — |
-| Pokémon Japan | BW3: Hail Blizzard |  | 57 / 57 | — |
-| Pokémon Japan | BW3: Psycho Drive |  | 57 / 57 | — |
-| Pokémon Japan | BW4: Dark Rush |  | 76 / 76 | — |
-| Pokémon Japan | BW5: Dragon Blade |  | 55 / 55 | — |
-| Pokémon Japan | BW5: Dragon Blast |  | 55 / 55 | — |
-| Pokémon Japan | BW6: Cold Flare |  | 65 / 65 | — |
-| Pokémon Japan | BW6: Freeze Bolt |  | 65 / 65 | — |
-| Pokémon Japan | BW7: Plasma Gale |  | 79 / 79 | — |
-| Pokémon Japan | BW8: Spiral Force |  | 58 / 58 | — |
-| Pokémon Japan | BW8: Thunder Knuckle |  | 58 / 58 | — |
-| Pokémon Japan | BW9: Megalo Cannon |  | 86 / 86 | — |
-| Pokémon Japan | BW: Extra Regulation Box |  | 48 / 48 | — |
+| Pokémon Japan | BW1: Black Collection | https://archives.bulbagarden.net/media/upload/1/1e/BW1_Black_Collection_Box.jpg | 56 / 56 | bulbapedia |
+| Pokémon Japan | BW1: White Collection | https://archives.bulbagarden.net/media/upload/3/34/BW1_White_Collection_Box.jpg | 55 / 55 | bulbapedia |
+| Pokémon Japan | BW2: Red Collection | https://archives.bulbagarden.net/media/upload/1/1e/BW2_Red_Collection_Box.jpg | 71 / 72 | bulbapedia |
+| Pokémon Japan | BW3: Hail Blizzard | https://archives.bulbagarden.net/media/upload/3/35/BW3_Hail_Blizzard_Box.jpg | 57 / 57 | bulbapedia |
+| Pokémon Japan | BW3: Psycho Drive | https://archives.bulbagarden.net/media/upload/0/0f/BW3_Psycho_Drive_Box.jpg | 57 / 57 | bulbapedia |
+| Pokémon Japan | BW4: Dark Rush | https://archives.bulbagarden.net/media/upload/4/48/BW4_Dark_Rush_Box.jpg | 76 / 76 | bulbapedia |
+| Pokémon Japan | BW5: Dragon Blade | https://archives.bulbagarden.net/media/upload/b/bb/BW5_Dragon_Blade_Box.jpg | 55 / 55 | bulbapedia |
+| Pokémon Japan | BW5: Dragon Blast | https://archives.bulbagarden.net/media/upload/0/0c/BW5_Dragon_Blast_Box.jpg | 55 / 55 | bulbapedia |
+| Pokémon Japan | BW6: Cold Flare | https://archives.bulbagarden.net/media/upload/9/90/BW6_Cold_Flare_Box.jpg | 65 / 65 | bulbapedia |
+| Pokémon Japan | BW6: Freeze Bolt | https://archives.bulbagarden.net/media/upload/e/e7/BW6_Freeze_Bolt_Box.jpg | 65 / 65 | bulbapedia |
+| Pokémon Japan | BW7: Plasma Gale | https://archives.bulbagarden.net/media/upload/0/07/BW7_Plasma_Gale_Box.jpg | 79 / 79 | bulbapedia |
+| Pokémon Japan | BW8: Spiral Force | https://archives.bulbagarden.net/media/upload/6/63/BW8_Spiral_Force_Box.jpg | 58 / 58 | bulbapedia |
+| Pokémon Japan | BW8: Thunder Knuckle | https://archives.bulbagarden.net/media/upload/b/b2/BW8_Thunder_Knuckle_Box.jpg | 58 / 58 | bulbapedia |
+| Pokémon Japan | BW9: Megalo Cannon | https://archives.bulbagarden.net/media/upload/3/3d/BW9_Megalo_Cannon_Box.jpg | 86 / 86 | bulbapedia |
+| Pokémon Japan | BW: Extra Regulation Box | https://archives.bulbagarden.net/media/upload/5/57/Extra_Regulation_Box.jpg | 48 / 48 | bulbapedia |
 | Pokémon Japan | Base Expansion Pack |  | 131 / 131 | — |
-| Pokémon Japan | Bastiodon the Defender Half Deck |  | 14 / 14 | — |
-| Pokémon Japan | Battle Academy |  | 74 / 74 | — |
+| Pokémon Japan | Bastiodon the Defender Half Deck | https://archives.bulbagarden.net/media/upload/1/1c/DP2_Logo_EN.png | 14 / 14 | bulbapedia |
+| Pokémon Japan | Battle Academy | https://archives.bulbagarden.net/media/upload/thumb/7/76/Pokemon_TCG_Battle_Academy_Logo.png/600px-Pokemon_TCG_Battle_Academy_Logo.png | 74 / 74 | bulbapedia |
 | Pokémon Japan | Battle Gift Set: Thundurus vs Tornadus |  | 20 / 20 | — |
 | Pokémon Japan | Battle Road |  | 22 / 22 | — |
 | Pokémon Japan | Battle Starter Deck (Blastoise) |  | 0 / 10 | — |
@@ -293,13 +293,13 @@
 | Pokémon Japan | Battle Theme Deck: Victini |  | 21 / 21 | — |
 | Pokémon Japan | Black Deck Kit |  | 20 / 20 | — |
 | Pokémon Japan | Blastoise + Kyurem-EX Combo Deck |  | 0 / 18 | — |
-| Pokémon Japan | CP1: Magma Gang vs Aqua Gang: Double Crisis |  | 34 / 34 | — |
-| Pokémon Japan | CP2: Legendary Shine Collection |  | 27 / 27 | — |
-| Pokémon Japan | CP3: PokeKyun Collection |  | 32 / 32 | — |
-| Pokémon Japan | CP4: Premium Champion Pack |  | 140 / 140 | — |
-| Pokémon Japan | CP5: Mythical & Legendary Dream Shine Collection |  | 0 / 38 | — |
-| Pokémon Japan | CP6: Expansion Pack 20th Anniversary |  | 103 / 103 | — |
-| Pokémon Japan | CS1: Journey Partners Collection Sheet |  | 9 / 9 | — |
+| Pokémon Japan | CP1: Magma Gang vs Aqua Gang: Double Crisis | https://archives.bulbagarden.net/media/upload/f/f0/CP1_Logo.png | 34 / 34 | bulbapedia |
+| Pokémon Japan | CP2: Legendary Shine Collection | https://archives.bulbagarden.net/media/upload/d/d6/CP2_Legendary_Shine_Collection_pack_1.jpg | 27 / 27 | bulbapedia |
+| Pokémon Japan | CP3: PokeKyun Collection | https://archives.bulbagarden.net/media/upload/9/92/CP3_Pok%C3%A9Kyun_Collection_pack.jpg | 32 / 32 | bulbapedia |
+| Pokémon Japan | CP4: Premium Champion Pack | https://archives.bulbagarden.net/media/upload/a/a3/CP4_Premium_Champion_Pack_pack.jpg | 140 / 140 | bulbapedia |
+| Pokémon Japan | CP5: Mythical & Legendary Dream Shine Collection | https://archives.bulbagarden.net/media/upload/9/90/CP5_Mythical_Legendary_Dream_Shine_Collection_pack.jpg | 0 / 38 | bulbapedia |
+| Pokémon Japan | CP6: Expansion Pack 20th Anniversary | https://archives.bulbagarden.net/media/upload/6/61/CP6_Expansion_Pack_20th_Anniversary_Box.jpg | 103 / 103 | bulbapedia |
+| Pokémon Japan | CS1: Journey Partners Collection Sheet | https://archives.bulbagarden.net/media/upload/7/79/CS1.5_logo.png | 9 / 9 | bulbapedia |
 | Pokémon Japan | Challenge from the Darkness |  | 99 / 99 | — |
 | Pokémon Japan | Champion Road |  | 2 / 6 | — |
 | Pokémon Japan | City Gym Decks |  | 124 / 124 | — |
@@ -307,13 +307,13 @@
 | Pokémon Japan | CoroCoro Promotional Cards |  | 51 / 51 | — |
 | Pokémon Japan | Crossing the Ruins... |  | 0 / 57 | — |
 | Pokémon Japan | DP-P Promotional cards |  | 126 / 127 | — |
-| Pokémon Japan | DP1: Space-Time Creation |  | 121 / 121 | — |
-| Pokémon Japan | DP2: Secret of the Lakes |  | 123 / 123 | — |
-| Pokémon Japan | DP3: Shining Darkness |  | 119 / 119 | — |
-| Pokémon Japan | DP4: Dawn Dash |  | 65 / 65 | — |
-| Pokémon Japan | DP4: Moonlit Pursuit |  | 70 / 70 | — |
-| Pokémon Japan | DP5: Cry from the Mysterious |  | 65 / 65 | — |
-| Pokémon Japan | DP5: Temple of Anger |  | 65 / 65 | — |
+| Pokémon Japan | DP1: Space-Time Creation | https://archives.bulbagarden.net/media/upload/0/00/DP1_Logo_BR.png | 121 / 121 | bulbapedia |
+| Pokémon Japan | DP2: Secret of the Lakes | https://archives.bulbagarden.net/media/upload/1/1c/DP2_Logo_EN.png | 123 / 123 | bulbapedia |
+| Pokémon Japan | DP3: Shining Darkness | https://archives.bulbagarden.net/media/upload/8/81/DP3_Logo_BR.png | 119 / 119 | bulbapedia |
+| Pokémon Japan | DP4: Dawn Dash | https://archives.bulbagarden.net/media/upload/c/cc/DP4_Logo_EN.png | 65 / 65 | bulbapedia |
+| Pokémon Japan | DP4: Moonlit Pursuit | https://archives.bulbagarden.net/media/upload/c/cc/DP4_Logo_EN.png | 70 / 70 | bulbapedia |
+| Pokémon Japan | DP5: Cry from the Mysterious | https://archives.bulbagarden.net/media/upload/d/de/DP5_Logo_EN.png | 65 / 65 | bulbapedia |
+| Pokémon Japan | DP5: Temple of Anger | https://archives.bulbagarden.net/media/upload/d/de/DP5_Logo_EN.png | 65 / 65 | bulbapedia |
 | Pokémon Japan | DPt Gift Box (Chimchar) |  | 0 / 13 | — |
 | Pokémon Japan | DPt Gift Box (Pikachu) |  | 0 / 10 | — |
 | Pokémon Japan | DPt Gift Box (Piplup) |  | 0 / 12 | — |
@@ -322,14 +322,14 @@
 | Pokémon Japan | Darkness, and to Light... |  | 0 / 113 | — |
 | Pokémon Japan | Deoxys Constructed Starter Deck |  | 16 / 16 | — |
 | Pokémon Japan | Dialga LV.X Constructed Standard Deck |  | 0 / 18 | — |
-| Pokémon Japan | Dragon Selection |  | 20 / 20 | — |
-| Pokémon Japan | EX Battle Boost |  | 186 / 187 | — |
+| Pokémon Japan | Dragon Selection | https://archives.bulbagarden.net/media/upload/b/b6/DS_Dragon_Selection_pack.jpg | 20 / 20 | bulbapedia |
+| Pokémon Japan | EX Battle Boost | https://archives.bulbagarden.net/media/upload/b/b2/EBB_EX_Battle_Boost_Box.jpg | 186 / 187 | bulbapedia |
 | Pokémon Japan | Earth's Groudon ex Constructed Starter Deck |  | 0 / 16 | — |
 | Pokémon Japan | Elementary School Competition |  | 4 / 4 | — |
 | Pokémon Japan | Emerald Gift Box (Deoxys) |  | 0 / 19 | — |
 | Pokémon Japan | Emerald Gift Box (Rayquaza) |  | 0 / 19 | — |
-| Pokémon Japan | Entry Pack |  | 12 / 28 | — |
-| Pokémon Japan | Entry Pack '08 |  | 24 / 42 | — |
+| Pokémon Japan | Entry Pack | https://archives.bulbagarden.net/media/upload/0/00/DP1_Logo_BR.png | 12 / 28 | bulbapedia |
+| Pokémon Japan | Entry Pack '08 | https://archives.bulbagarden.net/media/upload/3/3c/DP-DS-box.png | 24 / 42 | bulbapedia |
 | Pokémon Japan | Entry Pack DPt (Dialga) |  | 3 / 13 | — |
 | Pokémon Japan | Entry Pack DPt (Giratina) |  | 5 / 13 | — |
 | Pokémon Japan | Entry Pack DPt (Palkia) |  | 6 / 13 | — |
@@ -356,11 +356,11 @@
 | Pokémon Japan | Gold, Silver, to a New World... |  | 0 / 96 | — |
 | Pokémon Japan | Golden Sky, Silvery Ocean |  | 106 / 106 | — |
 | Pokémon Japan | Grass Quick Construction Pack |  | 15 / 15 | — |
-| Pokémon Japan | Gym Challenge |  | 21 / 21 | — |
+| Pokémon Japan | Gym Challenge | https://archives.bulbagarden.net/media/upload/thumb/e/e0/Gym_Challenge_Logo.png/600px-Gym_Challenge_Logo.png | 21 / 21 | bulbapedia |
 | Pokémon Japan | HS: Beginning Set |  | 0 / 1 | — |
 | Pokémon Japan | HSP: Beginning Set Pikachu Version |  | 0 / 1 | — |
 | Pokémon Japan | HSZ: National Beginning Set |  | 0 / 34 | — |
-| Pokémon Japan | Heatran vs Regigigas Deck Kit |  | 23 / 23 | — |
+| Pokémon Japan | Heatran vs Regigigas Deck Kit | https://archives.bulbagarden.net/media/upload/d/de/DP5_Logo_EN.png | 23 / 23 | bulbapedia |
 | Pokémon Japan | Holon Phantom |  | 52 / 52 | — |
 | Pokémon Japan | Holon Research Tower |  | 74 / 86 | — |
 | Pokémon Japan | Holon Research Tower Fire Quarter Deck |  | 15 / 15 | — |
@@ -382,28 +382,28 @@
 | Pokémon Japan | L-P: Legends Promos |  | 79 / 79 | — |
 | Pokémon Japan | L1: HeartGold Collection |  | 143 / 141 | — |
 | Pokémon Japan | L1: SoulSilver Collection |  | 141 / 141 | — |
-| Pokémon Japan | L2: Revival Legends |  | 160 / 161 | — |
-| Pokémon Japan | L2: Steelix Constructed Standard Deck |  | 19 / 19 | — |
-| Pokémon Japan | L2: Tyranitar Constructed Standard Deck |  | 19 / 19 | — |
-| Pokémon Japan | L3: Clash at the Summit |  | 161 / 161 | — |
+| Pokémon Japan | L2: Revival Legends | https://archives.bulbagarden.net/media/upload/6/64/L2_Logo.png | 160 / 161 | bulbapedia |
+| Pokémon Japan | L2: Steelix Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/6/64/L2_Logo.png | 19 / 19 | bulbapedia |
+| Pokémon Japan | L2: Tyranitar Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/6/64/L2_Logo.png | 19 / 19 | bulbapedia |
+| Pokémon Japan | L3: Clash at the Summit | https://archives.bulbagarden.net/media/upload/5/59/L3_Logo.png | 161 / 161 | bulbapedia |
 | Pokémon Japan | LEGEND Era Unnumbered Energies |  | 0 / 8 | — |
-| Pokémon Japan | LL: Lost Link |  | 40 / 40 | — |
+| Pokémon Japan | LL: Lost Link | https://archives.bulbagarden.net/media/upload/0/03/LL_Lost_Link_pack.jpg | 40 / 40 | bulbapedia |
 | Pokémon Japan | Leaders' Stadium |  | 0 / 96 | — |
-| Pokémon Japan | Leafeon vs Metagross Expert Deck (Leafeon) |  | 15 / 15 | — |
-| Pokémon Japan | Leafeon vs Metagross Expert Deck (Metagross) |  | 14 / 14 | — |
+| Pokémon Japan | Leafeon vs Metagross Expert Deck (Leafeon) | https://archives.bulbagarden.net/media/upload/6/62/E-Reader_logo.png | 15 / 15 | bulbapedia |
+| Pokémon Japan | Leafeon vs Metagross Expert Deck (Metagross) | https://archives.bulbagarden.net/media/upload/6/62/E-Reader_logo.png | 14 / 14 | bulbapedia |
 | Pokémon Japan | Lightning Quick Construction Pack |  | 15 / 15 | — |
-| Pokémon Japan | M Master Deck Build Box Power Style |  | 58 / 58 | — |
-| Pokémon Japan | M Master Deck Build Box Speed Style |  | 57 / 57 | — |
+| Pokémon Japan | M Master Deck Build Box Power Style | https://archives.bulbagarden.net/media/upload/thumb/3/31/M_Master_Deck_Build_Box_Power_Style.jpg/600px-M_Master_Deck_Build_Box_Power_Style.jpg | 58 / 58 | bulbapedia |
+| Pokémon Japan | M Master Deck Build Box Speed Style | https://archives.bulbagarden.net/media/upload/thumb/8/87/M_Master_Deck_Build_Box_Speed_Style.jpg/600px-M_Master_Deck_Build_Box_Speed_Style.jpg | 57 / 57 | bulbapedia |
 | Pokémon Japan | M-P Promotional Cards |  | 60 / 67 | — |
-| Pokémon Japan | M2: Inferno X |  | 116 / 116 | — |
-| Pokémon Japan | M2a: High Class Pack: MEGA Dream ex |  | 485 / 486 | — |
-| Pokémon Japan | M3: Nihil Zero |  | 117 / 117 | — |
-| Pokémon Japan | M4: Ninja Spinner |  | 120 / 120 | — |
-| Pokémon Japan | M5: Abyss Eye |  | 118 / 118 | — |
-| Pokémon Japan | M6: Storm Emeralda |  | 116 / 116 | — |
+| Pokémon Japan | M2: Inferno X | https://archives.bulbagarden.net/media/upload/e/e0/M2_Inferno_X_pack.png | 116 / 116 | bulbapedia |
+| Pokémon Japan | M2a: High Class Pack: MEGA Dream ex | https://archives.bulbagarden.net/media/upload/2/28/M2a_Logo_JP.png | 485 / 486 | bulbapedia |
+| Pokémon Japan | M3: Nihil Zero | https://archives.bulbagarden.net/media/upload/9/92/M3_Nihil_Zero_pack.png | 117 / 117 | bulbapedia |
+| Pokémon Japan | M4: Ninja Spinner | https://archives.bulbagarden.net/media/upload/5/5b/M4_Ninja_Spinner_pack.png | 120 / 120 | bulbapedia |
+| Pokémon Japan | M5: Abyss Eye | https://archives.bulbagarden.net/media/upload/4/4a/M5_Abyss_Eye_pack.png | 118 / 118 | bulbapedia |
+| Pokémon Japan | M6: Storm Emeralda | https://archives.bulbagarden.net/media/upload/4/4f/M6_Storm_Emeralda_pack.png | 116 / 116 | bulbapedia |
 | Pokémon Japan | M6a: MEGA Expansion 30th Celebration |  | 0 / 176 | — |
-| Pokémon Japan | MBD: MEGA Starter Set Mega Diancie ex |  | 22 / 22 | — |
-| Pokémon Japan | MBG: MEGA Starter Set Mega Gengar ex |  | 22 / 22 | — |
+| Pokémon Japan | MBD: MEGA Starter Set Mega Diancie ex | https://archives.bulbagarden.net/media/upload/9/91/MEGA_Starter_Set_Mega_Diancie_ex_box.jpg | 22 / 22 | bulbapedia |
+| Pokémon Japan | MBG: MEGA Starter Set Mega Gengar ex | https://archives.bulbagarden.net/media/upload/f/f6/MEGA_Starter_Set_Mega_Gengar_ex_box.jpg | 22 / 22 | bulbapedia |
 | Pokémon Japan | MEE: Starter Set ex Eevee ex |  | 20 / 20 | — |
 | Pokémon Japan | MEM: Starter Set ex Meowscarada ex |  | 18 / 18 | — |
 | Pokémon Japan | MEZ: Starter Set ex Zoroark ex |  | 20 / 20 | — |
@@ -411,8 +411,8 @@
 | Pokémon Japan | MP1: Start Deck 100 Battle Collection CoroCiao Version |  | 23 / 23 | — |
 | Pokémon Japan | Magma Deck Kit |  | 33 / 33 | — |
 | Pokémon Japan | Magma VS Aqua: Two Ambitions |  | 80 / 80 | — |
-| Pokémon Japan | Magmortar vs Electivire Deck Kit |  | 26 / 26 | — |
-| Pokémon Japan | Master Deck Build Box EX |  | 46 / 46 | — |
+| Pokémon Japan | Magmortar vs Electivire Deck Kit | https://archives.bulbagarden.net/media/upload/c/cc/DP4_Logo_EN.png | 26 / 26 | bulbapedia |
+| Pokémon Japan | Master Deck Build Box EX | https://archives.bulbagarden.net/media/upload/thumb/a/a9/MasterDeckBuildBoxEX.jpg/600px-MasterDeckBuildBoxEX.jpg | 46 / 46 | bulbapedia |
 | Pokémon Japan | Master Kit (Bulbasaur) |  | 0 / 9 | — |
 | Pokémon Japan | Master Kit (Side Deck) |  | 0 / 10 | — |
 | Pokémon Japan | Master Kit (Torchic) |  | 0 / 11 | — |
@@ -428,10 +428,10 @@
 | Pokémon Japan | Mirage Forest |  | 86 / 86 | — |
 | Pokémon Japan | Mirage's Mew Constructed Starter Deck |  | 0 / 17 | — |
 | Pokémon Japan | Movie Commemoration Random Pack |  | 22 / 22 | — |
-| Pokémon Japan | Movie Commemoration VS Pack |  | 11 / 19 | — |
-| Pokémon Japan | Movie Commemoration VS Pack: Aura's Lucario |  | 16 / 20 | — |
-| Pokémon Japan | Movie Commemoration VS Pack: Sea's Manaphy |  | 12 / 19 | — |
-| Pokémon Japan | Movie Commemoration VS Pack: Sky-Splitting Deoxys |  | 20 / 20 | — |
+| Pokémon Japan | Movie Commemoration VS Pack | https://archives.bulbagarden.net/media/upload/4/49/Lucario_Movie_Commemoration_VS_Pack.jpg | 11 / 19 | bulbapedia |
+| Pokémon Japan | Movie Commemoration VS Pack: Aura's Lucario | https://archives.bulbagarden.net/media/upload/4/49/Lucario_Movie_Commemoration_VS_Pack.jpg | 16 / 20 | bulbapedia |
+| Pokémon Japan | Movie Commemoration VS Pack: Sea's Manaphy | https://archives.bulbagarden.net/media/upload/5/56/Manaphy_Movie_Commemoration_VS_Pack.jpg | 12 / 19 | bulbapedia |
+| Pokémon Japan | Movie Commemoration VS Pack: Sky-Splitting Deoxys | https://archives.bulbagarden.net/media/upload/6/6f/Deoxys_Movie_Commemoration_VS_Pack.jpg | 20 / 20 | bulbapedia |
 | Pokémon Japan | Mudkip Constructed Starter Deck |  | 20 / 20 | — |
 | Pokémon Japan | Mysterious Mountains |  | 91 / 91 | — |
 | Pokémon Japan | Mystery of the Fossils |  | 48 / 48 | — |
@@ -468,141 +468,141 @@
 | Pokémon Japan | PtS: Shaymin LV.X Collection Pack |  | 0 / 12 | — |
 | Pokémon Japan | Quick Starter Gift Set (Green Deck) |  | 0 / 26 | — |
 | Pokémon Japan | Quick Starter Gift Set (Red Deck) |  | 0 / 24 | — |
-| Pokémon Japan | Rampardos the Attacker Constructed Half Deck |  | 15 / 15 | — |
+| Pokémon Japan | Rampardos the Attacker Constructed Half Deck | https://archives.bulbagarden.net/media/upload/1/1c/DP2_Logo_EN.png | 15 / 15 | bulbapedia |
 | Pokémon Japan | Random Constructed Starter Decks (Venusaur/Charizard/Blastoise) |  | 0 / 52 | — |
 | Pokémon Japan | Rayquaza Constructed Starter Deck |  | 16 / 16 | — |
 | Pokémon Japan | Rocket Gang |  | 65 / 65 | — |
 | Pokémon Japan | Rocket Gang Strikes Back |  | 85 / 85 | — |
 | Pokémon Japan | Rulers of the Heavens |  | 54 / 54 | — |
 | Pokémon Japan | S-P: Sword & Shield Promos |  | 0 / 344 | — |
-| Pokémon Japan | S10D: Time Gazer |  | 87 / 88 | — |
-| Pokémon Japan | S10P: Space Juggler |  | 87 / 88 | — |
-| Pokémon Japan | S10a: Dark Phantasma |  | 147 / 148 | — |
-| Pokémon Japan | S10b: Pokemon GO |  | 104 / 104 | — |
-| Pokémon Japan | S11: Lost Abyss |  | 127 / 127 | — |
-| Pokémon Japan | S11a: Incandescent Arcana |  | 140 / 140 | — |
-| Pokémon Japan | S12: Paradigm Trigger |  | 125 / 125 | — |
-| Pokémon Japan | S12a: VSTAR Universe |  | 349 / 351 | — |
-| Pokémon Japan | S1H: Shield |  | 75 / 75 | — |
-| Pokémon Japan | S1W: Sword |  | 75 / 75 | — |
-| Pokémon Japan | S1a: VMAX Rising |  | 86 / 86 | — |
-| Pokémon Japan | S2: Rebellion Crash |  | 113 / 115 | — |
-| Pokémon Japan | S2a: Explosive Walker |  | 86 / 86 | — |
-| Pokémon Japan | S3: Infinity Zone |  | 116 / 119 | — |
-| Pokémon Japan | S3a: Legendary Heartbeat |  | 94 / 94 | — |
-| Pokémon Japan | S4: Amazing Volt Tackle |  | 121 / 121 | — |
-| Pokémon Japan | S4a: Shiny Star V |  | 433 / 454 | — |
-| Pokémon Japan | S5I: Single Strike Master |  | 91 / 91 | — |
-| Pokémon Japan | S5R: Rapid Strike Master |  | 91 / 91 | — |
-| Pokémon Japan | S5a: Peerless Fighters |  | 95 / 96 | — |
-| Pokémon Japan | S6H: Silver Lance |  | 95 / 95 | — |
-| Pokémon Japan | S6K: Jet-Black Spirit |  | 93 / 95 | — |
-| Pokémon Japan | S6a: Eevee Heroes |  | 101 / 101 | — |
-| Pokémon Japan | S7D: Skyscraping Perfection |  | 90 / 90 | — |
-| Pokémon Japan | S7R: Blue Sky Stream |  | 50 / 90 | — |
-| Pokémon Japan | S8: Fusion Arts |  | 128 / 129 | — |
-| Pokémon Japan | S8a: 25th Anniversary Collection |  | 55 / 55 | — |
-| Pokémon Japan | S8b: VMAX Climax |  | 396 / 403 | — |
-| Pokémon Japan | S9: Star Birth |  | 126 / 127 | — |
-| Pokémon Japan | S9a: Battle Region |  | 137 / 138 | — |
+| Pokémon Japan | S10D: Time Gazer | https://archives.bulbagarden.net/media/upload/1/1a/S10D_Time_Gazer_Booster_Chinese.png | 87 / 88 | bulbapedia |
+| Pokémon Japan | S10P: Space Juggler | https://archives.bulbagarden.net/media/upload/6/68/S10P_Space_Juggler_Booster_Chinese.png | 87 / 88 | bulbapedia |
+| Pokémon Japan | S10a: Dark Phantasma | https://archives.bulbagarden.net/media/upload/f/f7/S10a_Dark_Phantasma_Logo.png | 147 / 148 | bulbapedia |
+| Pokémon Japan | S10b: Pokemon GO | https://archives.bulbagarden.net/media/upload/1/1f/S10b_Pok%C3%A9mon_GO_Booster_Chinese.jpg | 104 / 104 | bulbapedia |
+| Pokémon Japan | S11: Lost Abyss | https://archives.bulbagarden.net/media/upload/6/66/S11_Lost_Abyss_Booster_Chinese.png | 127 / 127 | bulbapedia |
+| Pokémon Japan | S11a: Incandescent Arcana | https://archives.bulbagarden.net/media/upload/6/60/S11a_Incandescent_Arcana_Logo.png | 140 / 140 | bulbapedia |
+| Pokémon Japan | S12: Paradigm Trigger | https://archives.bulbagarden.net/media/upload/a/a7/S12_Paradigm_Trigger_Booster_Chinese.png | 125 / 125 | bulbapedia |
+| Pokémon Japan | S12a: VSTAR Universe | https://archives.bulbagarden.net/media/upload/4/42/S12a_VSTAR_Universe_Logo.png | 349 / 351 | bulbapedia |
+| Pokémon Japan | S1H: Shield | https://archives.bulbagarden.net/media/upload/8/87/S1H_Shield_pack.jpg | 75 / 75 | bulbapedia |
+| Pokémon Japan | S1W: Sword | https://archives.bulbagarden.net/media/upload/8/8e/S1W_Sword_pack.jpg | 75 / 75 | bulbapedia |
+| Pokémon Japan | S1a: VMAX Rising | https://archives.bulbagarden.net/media/upload/b/ba/S1a_VMAX_Rising_Box.jpg | 86 / 86 | bulbapedia |
+| Pokémon Japan | S2: Rebellion Crash | https://archives.bulbagarden.net/media/upload/7/75/S2_Rebellion_Crash_pack.jpg | 113 / 115 | bulbapedia |
+| Pokémon Japan | S2a: Explosive Walker | https://archives.bulbagarden.net/media/upload/b/b9/S2a_Explosive_Walker_pack.jpg | 86 / 86 | bulbapedia |
+| Pokémon Japan | S3: Infinity Zone | https://archives.bulbagarden.net/media/upload/9/9d/S3_Infinity_Zone_pack.jpg | 116 / 119 | bulbapedia |
+| Pokémon Japan | S3a: Legendary Heartbeat | https://archives.bulbagarden.net/media/upload/f/f7/S3a_Legendary_Heartbeat_pack.jpg | 94 / 94 | bulbapedia |
+| Pokémon Japan | S4: Amazing Volt Tackle | https://archives.bulbagarden.net/media/upload/e/e4/S4_Amazing_Volt_Tackle_Booster_Chinese.jpg | 121 / 121 | bulbapedia |
+| Pokémon Japan | S4a: Shiny Star V | https://archives.bulbagarden.net/media/upload/c/ca/S4a_Shiny_Star_V_Booster_Chinese.jpg | 433 / 454 | bulbapedia |
+| Pokémon Japan | S5I: Single Strike Master | https://archives.bulbagarden.net/media/upload/9/95/S5I_Single_Strike_Master_Booster_Chinese.jpg | 91 / 91 | bulbapedia |
+| Pokémon Japan | S5R: Rapid Strike Master | https://archives.bulbagarden.net/media/upload/b/bf/S5R_Rapid_Strike_Master_Booster_Chinese.jpg | 91 / 91 | bulbapedia |
+| Pokémon Japan | S5a: Peerless Fighters | https://archives.bulbagarden.net/media/upload/5/50/S5a_Peerless_Fighters_Logo.png | 95 / 96 | bulbapedia |
+| Pokémon Japan | S6H: Silver Lance | https://archives.bulbagarden.net/media/upload/3/30/S6H_Silver_Lance_Booster_Indonesian.png | 95 / 95 | bulbapedia |
+| Pokémon Japan | S6K: Jet-Black Spirit | https://archives.bulbagarden.net/media/upload/2/26/S6K_Jet-Black_Spirit_Booster_Indonesian.png | 93 / 95 | bulbapedia |
+| Pokémon Japan | S6a: Eevee Heroes | https://archives.bulbagarden.net/media/upload/1/1f/S6a_Eevee_Heroes_Logo.png | 101 / 101 | bulbapedia |
+| Pokémon Japan | S7D: Skyscraping Perfection | https://archives.bulbagarden.net/media/upload/0/06/S7D_Skyscraping_Perfection_Booster_Chinese.png | 90 / 90 | bulbapedia |
+| Pokémon Japan | S7R: Blue Sky Stream | https://archives.bulbagarden.net/media/upload/e/eb/S7R_Blue_Sky_Stream_Booster_Chinese.png | 50 / 90 | bulbapedia |
+| Pokémon Japan | S8: Fusion Arts | https://archives.bulbagarden.net/media/upload/e/e6/S8_Fusion_Arts_Booster_Chinese.png | 128 / 129 | bulbapedia |
+| Pokémon Japan | S8a: 25th Anniversary Collection | https://archives.bulbagarden.net/media/upload/a/a3/S8a_25th_Anniversary_Collection_Logo.png | 55 / 55 | bulbapedia |
+| Pokémon Japan | S8b: VMAX Climax | https://archives.bulbagarden.net/media/upload/4/4d/S8b_VMAX_Climax_Logo.png | 396 / 403 | bulbapedia |
+| Pokémon Japan | S9: Star Birth | https://archives.bulbagarden.net/media/upload/8/8e/S9_Star_Birth_Booster_Chinese.png | 126 / 127 | bulbapedia |
+| Pokémon Japan | S9a: Battle Region | https://archives.bulbagarden.net/media/upload/c/cb/S9a_Battle_Region_Logo.png | 137 / 138 | bulbapedia |
 | Pokémon Japan | SI: Start Deck 100 |  | 513 / 522 | — |
 | Pokémon Japan | SM-P: Sun & Moon Promos |  | 0 / 413 | — |
 | Pokémon Japan | SM0: Pikachu's New Friends |  | 0 / 4 | — |
 | Pokémon Japan | SM1+: Sun & Moon |  | 0 / 1 | — |
-| Pokémon Japan | SM10: Double Blaze |  | 116 / 116 | — |
-| Pokémon Japan | SM10a: GG End |  | 69 / 69 | — |
-| Pokémon Japan | SM10b: Sky Legend |  | 69 / 69 | — |
-| Pokémon Japan | SM11: Miracle Twin |  | 115 / 115 | — |
-| Pokémon Japan | SM11a: Remix Bout |  | 80 / 80 | — |
-| Pokémon Japan | SM11b: Dream League |  | 75 / 75 | — |
-| Pokémon Japan | SM12: Alter Genesis |  | 117 / 117 | — |
-| Pokémon Japan | SM12a: TAG TEAM GX: Tag All Stars |  | 342 / 353 | — |
+| Pokémon Japan | SM10: Double Blaze | https://archives.bulbagarden.net/media/upload/c/cd/SM10_Double_Blaze_pack.jpg | 116 / 116 | bulbapedia |
+| Pokémon Japan | SM10a: GG End | https://archives.bulbagarden.net/media/upload/5/51/SM10a_GG_End_Box.jpg | 69 / 69 | bulbapedia |
+| Pokémon Japan | SM10b: Sky Legend | https://archives.bulbagarden.net/media/upload/f/f9/SM10b_Sky_Legend_Box.jpg | 69 / 69 | bulbapedia |
+| Pokémon Japan | SM11: Miracle Twin | https://archives.bulbagarden.net/media/upload/4/46/SM11_Miracle_Twin_Box.jpg | 115 / 115 | bulbapedia |
+| Pokémon Japan | SM11a: Remix Bout | https://archives.bulbagarden.net/media/upload/a/a7/SM11a_Remix_Bout_Box.jpg | 80 / 80 | bulbapedia |
+| Pokémon Japan | SM11b: Dream League | https://archives.bulbagarden.net/media/upload/9/98/SM11b_Dream_League_Box.jpg | 75 / 75 | bulbapedia |
+| Pokémon Japan | SM12: Alter Genesis | https://archives.bulbagarden.net/media/upload/0/07/SM12_Alter_Genesis_Box.jpg | 117 / 117 | bulbapedia |
+| Pokémon Japan | SM12a: TAG TEAM GX: Tag All Stars | https://archives.bulbagarden.net/media/upload/4/44/SM12a_Logo.png | 342 / 353 | bulbapedia |
 | Pokémon Japan | SM1M: Collection Moon |  | 73 / 73 | — |
 | Pokémon Japan | SM1S: Collection Sun |  | 73 / 73 | — |
 | Pokémon Japan | SM2+: Facing a New Trial |  | 0 / 70 | — |
-| Pokémon Japan | SM2K: Islands Await You |  | 62 / 62 | — |
-| Pokémon Japan | SM2L: Alolan Moonlight |  | 62 / 62 | — |
+| Pokémon Japan | SM2K: Islands Await You | https://archives.bulbagarden.net/media/upload/3/31/SM2K_Islands_Await_You_Box.jpg | 62 / 62 | bulbapedia |
+| Pokémon Japan | SM2L: Alolan Moonlight | https://archives.bulbagarden.net/media/upload/3/3d/SM2L_Alolan_Moonlight_Box.jpg | 62 / 62 | bulbapedia |
 | Pokémon Japan | SM3+: Shining Legends |  | 0 / 82 | — |
-| Pokémon Japan | SM3H: To Have Seen the Battle Rainbow |  | 64 / 64 | — |
-| Pokémon Japan | SM3N: Darkness that Consumes Light |  | 64 / 64 | — |
+| Pokémon Japan | SM3H: To Have Seen the Battle Rainbow | https://archives.bulbagarden.net/media/upload/7/72/SM3H_To_Have_Seen_the_Battle_Rainbow_Box.jpg | 64 / 64 | bulbapedia |
+| Pokémon Japan | SM3N: Darkness that Consumes Light | https://archives.bulbagarden.net/media/upload/5/54/SM3N_Darkness_that_Consumes_Light_Box.jpg | 64 / 64 | bulbapedia |
 | Pokémon Japan | SM4+: GX Battle Boost |  | 0 / 125 | — |
-| Pokémon Japan | SM4A: Ultradimensional Beasts |  | 62 / 62 | — |
-| Pokémon Japan | SM4S: Awakened Heroes |  | 62 / 62 | — |
+| Pokémon Japan | SM4A: Ultradimensional Beasts | https://archives.bulbagarden.net/media/upload/9/91/SM4A_Ultradimensional_Beasts_Box.jpg | 62 / 62 | bulbapedia |
+| Pokémon Japan | SM4S: Awakened Heroes | https://archives.bulbagarden.net/media/upload/d/db/SM4S_Awakened_Heroes_Box.jpg | 62 / 62 | bulbapedia |
 | Pokémon Japan | SM5+: Ultra Force |  | 0 / 68 | — |
-| Pokémon Japan | SM5M: Ultra Moon |  | 78 / 78 | — |
-| Pokémon Japan | SM5S: Ultra Sun |  | 78 / 78 | — |
-| Pokémon Japan | SM6: Forbidden Light |  | 108 / 110 | — |
-| Pokémon Japan | SM6a: Dragon Storm |  | 66 / 66 | — |
-| Pokémon Japan | SM6b: Champion Road |  | 86 / 86 | — |
-| Pokémon Japan | SM7: Sky-Splitting Charisma |  | 112 / 112 | — |
-| Pokémon Japan | SM7a: Thunderclap Spark |  | 73 / 73 | — |
-| Pokémon Japan | SM7b: Fairy Rise |  | 63 / 63 | — |
-| Pokémon Japan | SM8: Super-Burst Impact |  | 111 / 111 | — |
-| Pokémon Japan | SM8a: Dark Order |  | 65 / 65 | — |
-| Pokémon Japan | SM8b: GX Ultra Shiny |  | 371 / 375 | — |
-| Pokémon Japan | SM9: Tag Bolt |  | 118 / 118 | — |
-| Pokémon Japan | SM9a: Night Unison |  | 70 / 70 | — |
-| Pokémon Japan | SM9b: Full Metal Wall |  | 69 / 69 | — |
-| Pokémon Japan | SM: The Best of XY |  | 315 / 323 | — |
-| Pokémon Japan | SNP: Noivern BREAK Evolution Pack |  | 10 / 10 | — |
-| Pokémon Japan | SNP: Raichu BREAK Evolution Pack |  | 10 / 10 | — |
+| Pokémon Japan | SM5M: Ultra Moon | https://archives.bulbagarden.net/media/upload/7/7c/SM5M_Ultra_Moon_Box.jpg | 78 / 78 | bulbapedia |
+| Pokémon Japan | SM5S: Ultra Sun | https://archives.bulbagarden.net/media/upload/d/d9/SM5S_Ultra_Sun_Box.jpg | 78 / 78 | bulbapedia |
+| Pokémon Japan | SM6: Forbidden Light | https://archives.bulbagarden.net/media/upload/2/2f/SM6_Forbidden_Light_Box.jpg | 108 / 110 | bulbapedia |
+| Pokémon Japan | SM6a: Dragon Storm | https://archives.bulbagarden.net/media/upload/8/87/SM6a_Dragon_Storm_pack.jpg | 66 / 66 | bulbapedia |
+| Pokémon Japan | SM6b: Champion Road | https://archives.bulbagarden.net/media/upload/6/6f/SM6b_Champion_Road_Box.jpg | 86 / 86 | bulbapedia |
+| Pokémon Japan | SM7: Sky-Splitting Charisma | https://archives.bulbagarden.net/media/upload/5/50/SM7_Sky-Splitting_Charisma_Box.jpg | 112 / 112 | bulbapedia |
+| Pokémon Japan | SM7a: Thunderclap Spark | https://archives.bulbagarden.net/media/upload/8/8e/SM7a_Thunderclap_Spark_Box.jpg | 73 / 73 | bulbapedia |
+| Pokémon Japan | SM7b: Fairy Rise | https://archives.bulbagarden.net/media/upload/9/9e/SM7b_Fairy_Rise_Box.jpg | 63 / 63 | bulbapedia |
+| Pokémon Japan | SM8: Super-Burst Impact | https://archives.bulbagarden.net/media/upload/9/91/SM8_Super-Burst_Impact_Box.jpg | 111 / 111 | bulbapedia |
+| Pokémon Japan | SM8a: Dark Order | https://archives.bulbagarden.net/media/upload/5/50/SM8a_Dark_Order_pack.jpg | 65 / 65 | bulbapedia |
+| Pokémon Japan | SM8b: GX Ultra Shiny | https://archives.bulbagarden.net/media/upload/3/3b/SM8b_GX_Ultra_Shiny_Box.jpg | 371 / 375 | bulbapedia |
+| Pokémon Japan | SM9: Tag Bolt | https://archives.bulbagarden.net/media/upload/9/93/SM9_Tag_Bolt_Box.jpg | 118 / 118 | bulbapedia |
+| Pokémon Japan | SM9a: Night Unison | https://archives.bulbagarden.net/media/upload/9/9b/SM9a_Night_Unison_Box.jpg | 70 / 70 | bulbapedia |
+| Pokémon Japan | SM9b: Full Metal Wall | https://archives.bulbagarden.net/media/upload/3/32/SM9b_Full_Metal_Wall_Box.jpg | 69 / 69 | bulbapedia |
+| Pokémon Japan | SM: The Best of XY | https://archives.bulbagarden.net/media/upload/b/b5/The_Best_of_XY_Logo.png | 315 / 323 | bulbapedia |
+| Pokémon Japan | SNP: Noivern BREAK Evolution Pack | https://archives.bulbagarden.net/media/upload/thumb/8/85/Noivern_BREAK_Evolution_Pack.jpg/600px-Noivern_BREAK_Evolution_Pack.jpg | 10 / 10 | bulbapedia |
+| Pokémon Japan | SNP: Raichu BREAK Evolution Pack | https://archives.bulbagarden.net/media/upload/thumb/d/d5/Raichu_BREAK_Evolution_Pack.jpg/600px-Raichu_BREAK_Evolution_Pack.jpg | 10 / 10 | bulbapedia |
 | Pokémon Japan | SS: Gengar VMAX High-Class Deck |  | 20 / 20 | — |
 | Pokémon Japan | SS: Inteleon VMAX High-Class Deck |  | 23 / 23 | — |
-| Pokémon Japan | SS: Silver Lance & Jet-Black Spirit Jumbo Pack Set |  | 0 / 6 | — |
+| Pokémon Japan | SS: Silver Lance & Jet-Black Spirit Jumbo Pack Set | https://archives.bulbagarden.net/media/upload/8/86/SS_Era_Logo_C.png | 0 / 6 | bulbapedia |
 | Pokémon Japan | SV-P Promotional Cards |  | 225 / 235 | — |
-| Pokémon Japan | SV10: The Glory of Team Rocket |  | 132 / 132 | — |
-| Pokémon Japan | SV11B: Black Bolt |  | 322 / 326 | — |
-| Pokémon Japan | SV11W: White Flare |  | 319 / 326 | — |
-| Pokémon Japan | SV1S: Scarlet ex |  | 106 / 108 | — |
-| Pokémon Japan | SV1V: Violet ex |  | 108 / 108 | — |
-| Pokémon Japan | SV1a: Triplet Beat |  | 102 / 103 | — |
-| Pokémon Japan | SV2D: Clay Burst |  | 99 / 99 | — |
-| Pokémon Japan | SV2P: Snow Hazard |  | 99 / 99 | — |
-| Pokémon Japan | SV2a: Pokemon Card 151 |  | 513 / 516 | — |
-| Pokémon Japan | SV3: Ruler of the Black Flame |  | 141 / 141 | — |
-| Pokémon Japan | SV3a: Raging Surf |  | 92 / 92 | — |
-| Pokémon Japan | SV4K: Ancient Roar |  | 95 / 95 | — |
-| Pokémon Japan | SV4M: Future Flash |  | 95 / 95 | — |
-| Pokémon Japan | SV4a: Shiny Treasure ex |  | 480 / 484 | — |
-| Pokémon Japan | SV5K: Wild Force |  | 100 / 100 | — |
-| Pokémon Japan | SV5M: Cyber Judge |  | 100 / 100 | — |
-| Pokémon Japan | SV5a: Crimson Haze |  | 96 / 96 | — |
-| Pokémon Japan | SV6: Transformation Mask |  | 133 / 133 | — |
-| Pokémon Japan | SV6a: Night Wanderer |  | 94 / 94 | — |
-| Pokémon Japan | SV7: Stellar Miracle |  | 135 / 135 | — |
-| Pokémon Japan | SV7a: Paradise Dragona |  | 94 / 94 | — |
-| Pokémon Japan | SV8: Super Electric Breaker |  | 138 / 138 | — |
-| Pokémon Japan | SV8a: Terastal Fest ex |  | 480 / 485 | — |
-| Pokémon Japan | SV9: Battle Partners |  | 132 / 132 | — |
-| Pokémon Japan | SV9a: Heat Wave Arena |  | 92 / 92 | — |
+| Pokémon Japan | SV10: The Glory of Team Rocket | https://archives.bulbagarden.net/media/upload/a/ab/SV10.5_BLK_Logo_EN.png | 132 / 132 | bulbapedia |
+| Pokémon Japan | SV11B: Black Bolt | https://archives.bulbagarden.net/media/upload/0/04/SV11B_Logo_JP.png | 322 / 326 | bulbapedia |
+| Pokémon Japan | SV11W: White Flare | https://archives.bulbagarden.net/media/upload/5/51/SV11W_Logo_JP.png | 319 / 326 | bulbapedia |
+| Pokémon Japan | SV1S: Scarlet ex | https://archives.bulbagarden.net/media/upload/f/fb/SV1S_Logo_JP.png | 106 / 108 | bulbapedia |
+| Pokémon Japan | SV1V: Violet ex | https://archives.bulbagarden.net/media/upload/a/a6/SV1V_Logo_JP.png | 108 / 108 | bulbapedia |
+| Pokémon Japan | SV1a: Triplet Beat | https://archives.bulbagarden.net/media/upload/7/70/SV1a_Triplet_Beat_Logo.png | 102 / 103 | bulbapedia |
+| Pokémon Japan | SV2D: Clay Burst | https://archives.bulbagarden.net/media/upload/e/ee/SV2D_Clay_Burst_pack.png | 99 / 99 | bulbapedia |
+| Pokémon Japan | SV2P: Snow Hazard | https://archives.bulbagarden.net/media/upload/4/49/SV2P_Snow_Hazard_pack.png | 99 / 99 | bulbapedia |
+| Pokémon Japan | SV2a: Pokemon Card 151 | https://archives.bulbagarden.net/media/upload/1/12/SV2a_Pok%C3%A9mon_Card_151_Logo.png | 513 / 516 | bulbapedia |
+| Pokémon Japan | SV3: Ruler of the Black Flame | https://archives.bulbagarden.net/media/upload/2/26/SV3.5_Logo_EN.png | 141 / 141 | bulbapedia |
+| Pokémon Japan | SV3a: Raging Surf | https://archives.bulbagarden.net/media/upload/8/8f/SV3a_Raging_Surf_Logo.png | 92 / 92 | bulbapedia |
+| Pokémon Japan | SV4K: Ancient Roar | https://archives.bulbagarden.net/media/upload/7/78/SV4K_Ancient_Roar_pack.png | 95 / 95 | bulbapedia |
+| Pokémon Japan | SV4M: Future Flash | https://archives.bulbagarden.net/media/upload/5/55/SV4M_Future_Flash_pack.png | 95 / 95 | bulbapedia |
+| Pokémon Japan | SV4a: Shiny Treasure ex | https://archives.bulbagarden.net/media/upload/f/fa/SV4a_Shiny_Treasure_ex_Logo.png | 480 / 484 | bulbapedia |
+| Pokémon Japan | SV5K: Wild Force | https://archives.bulbagarden.net/media/upload/8/80/SV5K_Wild_Force_pack.png | 100 / 100 | bulbapedia |
+| Pokémon Japan | SV5M: Cyber Judge | https://archives.bulbagarden.net/media/upload/0/08/SV5M_Cyber_Judge_pack.png | 100 / 100 | bulbapedia |
+| Pokémon Japan | SV5a: Crimson Haze | https://archives.bulbagarden.net/media/upload/9/96/SV5a_Crimson_Haze_Logo.png | 96 / 96 | bulbapedia |
+| Pokémon Japan | SV6: Transformation Mask | https://archives.bulbagarden.net/media/upload/8/83/SV6_Transformation_Mask_pack.png | 133 / 133 | bulbapedia |
+| Pokémon Japan | SV6a: Night Wanderer | https://archives.bulbagarden.net/media/upload/5/5e/SV6a_Night_Wanderer_Logo.png | 94 / 94 | bulbapedia |
+| Pokémon Japan | SV7: Stellar Miracle | https://archives.bulbagarden.net/media/upload/8/8d/SV7_Stellar_Miracle_pack.png | 135 / 135 | bulbapedia |
+| Pokémon Japan | SV7a: Paradise Dragona | https://archives.bulbagarden.net/media/upload/1/1c/SV7a_Paradise_Dragona_Logo.png | 94 / 94 | bulbapedia |
+| Pokémon Japan | SV8: Super Electric Breaker | https://archives.bulbagarden.net/media/upload/f/f8/SV8_Super_Electric_Breaker_pack.png | 138 / 138 | bulbapedia |
+| Pokémon Japan | SV8a: Terastal Fest ex | https://archives.bulbagarden.net/media/upload/9/9c/SV8a_Terastal_Fest_ex_Logo.png | 480 / 485 | bulbapedia |
+| Pokémon Japan | SV9: Battle Partners | https://archives.bulbagarden.net/media/upload/7/7b/SV9_Battle_Partners_pack.png | 132 / 132 | bulbapedia |
+| Pokémon Japan | SV9a: Heat Wave Arena | https://archives.bulbagarden.net/media/upload/a/a6/SV9a_Hot_Wind_Arena_Logo.png | 92 / 92 | bulbapedia |
 | Pokémon Japan | SV: Ancient Koraidon ex Starter Deck & Build Set |  | 0 / 53 | — |
 | Pokémon Japan | SV: Ceruledge ex Stellar Tera Type Starter Set |  | 21 / 21 | — |
 | Pokémon Japan | SV: Chien-Pao ex Battle Master Deck |  | 19 / 19 | — |
 | Pokémon Japan | SV: Future Miraidon ex Starter Deck & Build Set |  | 0 / 51 | — |
 | Pokémon Japan | SV: Mewtwo ex Terastal Starter Set |  | 20 / 20 | — |
-| Pokémon Japan | SV: Premium Trainer Box ex |  | 28 / 28 | — |
-| Pokémon Japan | SV: Ruler of the Black Flame Deck Build Box |  | 38 / 38 | — |
+| Pokémon Japan | SV: Premium Trainer Box ex | https://archives.bulbagarden.net/media/upload/thumb/4/4c/Premium_Trainer_Box_ex.jpg/600px-Premium_Trainer_Box_ex.jpg | 28 / 28 | bulbapedia |
+| Pokémon Japan | SV: Ruler of the Black Flame Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/6/6f/Ruler_of_the_Black_Flame_Deck_Build_Box.jpg/600px-Ruler_of_the_Black_Flame_Deck_Build_Box.jpg | 38 / 38 | bulbapedia |
 | Pokémon Japan | SV: Skeledirge ex Terastal Starter Set |  | 20 / 20 | — |
-| Pokémon Japan | SV: Stellar Miracle Deck Build Box |  | 45 / 45 | — |
+| Pokémon Japan | SV: Stellar Miracle Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/4/42/Stellar_Miracle_Deck_Build_Box.png/600px-Stellar_Miracle_Deck_Build_Box.png | 45 / 45 | bulbapedia |
 | Pokémon Japan | SV: Sylveon ex Stellar Tera Type Starter Set |  | 22 / 22 | — |
 | Pokémon Japan | SV: Terastal Charizard ex Battle Master Deck |  | 21 / 21 | — |
 | Pokémon Japan | SV: Venusaur, Charizard & Blastoise Special Deck Set |  | 0 / 52 | — |
 | Pokémon Japan | SV: ex Special Set |  | 7 / 7 | — |
 | Pokémon Japan | SV: ex Start Decks |  | 138 / 139 | — |
 | Pokémon Japan | SV: ex Starter Set Fuecoco & Ampharos ex |  | 0 / 21 | — |
-| Pokémon Japan | SV: ex Starter Set Marnie's Morpeko & Grimmsnarl ex |  | 0 / 20 | — |
+| Pokémon Japan | SV: ex Starter Set Marnie's Morpeko & Grimmsnarl ex | https://archives.bulbagarden.net/media/upload/thumb/5/5e/Ex_Starter_Set_Marnie_Morpeko_Grimmsnarl_ex_box.jpg/600px-Ex_Starter_Set_Marnie_Morpeko_Grimmsnarl_ex_box.jpg | 0 / 20 | bulbapedia |
 | Pokémon Japan | SV: ex Starter Set Pikachu ex & Pawmot |  | 0 / 16 | — |
 | Pokémon Japan | SV: ex Starter Set Quaxly & Mimikyu ex |  | 0 / 23 | — |
 | Pokémon Japan | SV: ex Starter Set Sprigatito & Lucario ex |  | 0 / 23 | — |
-| Pokémon Japan | SV: ex Starter Set Steven's Beldum & Metagross ex |  | 0 / 19 | — |
-| Pokémon Japan | SVM: Generations Start Decks |  | 175 / 175 | — |
-| Pokémon Japan | SVN: Battle Partners Deck Build Box |  | 45 / 45 | — |
+| Pokémon Japan | SV: ex Starter Set Steven's Beldum & Metagross ex | https://archives.bulbagarden.net/media/upload/thumb/0/08/Ex_Starter_Set_Steven_Beldum_Metagross_ex_box.jpg/600px-Ex_Starter_Set_Steven_Beldum_Metagross_ex_box.jpg | 0 / 19 | bulbapedia |
+| Pokémon Japan | SVM: Generations Start Decks | https://archives.bulbagarden.net/media/upload/f/ff/SVM_Generations_Start_Decks_logo.png | 175 / 175 | bulbapedia |
+| Pokémon Japan | SVN: Battle Partners Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/e/e4/Battle_Partners_Deck_Build_Box_Contents.jpg/600px-Battle_Partners_Deck_Build_Box_Contents.jpg | 45 / 45 | bulbapedia |
 | Pokémon Japan | Salamence Constructed Starter Deck |  | 20 / 20 | — |
 | Pokémon Japan | Scarlet & Violet Era Unnumbered Energies |  | 0 / 16 | — |
-| Pokémon Japan | Shiny Collection |  | 25 / 25 | — |
+| Pokémon Japan | Shiny Collection | https://archives.bulbagarden.net/media/upload/8/80/SC_Shiny_Collection_pack.jpg | 25 / 25 | bulbapedia |
 | Pokémon Japan | Shockwave! Tyranitar ex Constructed Standard Deck |  | 0 / 24 | — |
 | Pokémon Japan | Silver Deck Kit |  | 20 / 20 | — |
-| Pokémon Japan | Southern Island |  | 18 / 18 | — |
+| Pokémon Japan | Southern Island | https://archives.bulbagarden.net/media/upload/thumb/c/c4/SouthernIslandsLogo.png/600px-SouthernIslandsLogo.png | 18 / 18 | bulbapedia |
 | Pokémon Japan | Split Earth |  | 91 / 91 | — |
 | Pokémon Japan | Start Deck 100 Battle Collection |  | 850 / 916 | — |
 | Pokémon Japan | Sun & Moon Era Unnumbered Energies |  | 0 / 18 | — |
@@ -622,7 +622,7 @@
 | Pokémon Japan | Vending Machine cards Series 1 (Blue) |  | 0 / 36 | — |
 | Pokémon Japan | Vending Machine cards Series 2 (Red) |  | 0 / 36 | — |
 | Pokémon Japan | Vending Machine cards Series 3 (Green) |  | 0 / 52 | — |
-| Pokémon Japan | WCS23: 2023 World Championships Yokohama Deck: Pikachu |  | 30 / 30 | — |
+| Pokémon Japan | WCS23: 2023 World Championships Yokohama Deck: Pikachu | https://archives.bulbagarden.net/media/upload/9/96/WCS23_Deckbox.jpg | 30 / 30 | bulbapedia |
 | Pokémon Japan | Water Quick Construction Pack |  | 15 / 15 | — |
 | Pokémon Japan | Wind from the Sea |  | 90 / 90 | — |
 | Pokémon Japan | World Champions Pack |  | 102 / 102 | — |
@@ -632,22 +632,22 @@
 | Pokémon Japan | XY-Bx: Collection X |  | 63 / 64 | — |
 | Pokémon Japan | XY-By: Collection Y |  | 63 / 63 | — |
 | Pokémon Japan | XY-P: XY Promos |  | 302 / 304 | — |
-| Pokémon Japan | XY10: Awakening Psychic King |  | 88 / 88 | — |
+| Pokémon Japan | XY10: Awakening Psychic King | https://archives.bulbagarden.net/media/upload/9/96/XY10_Awakening_Psychic_King_Box.jpg | 88 / 88 | bulbapedia |
 | Pokémon Japan | XY11-Bb: Fever-Burst Fighter |  | 59 / 59 | — |
 | Pokémon Japan | XY11-Br: Cruel Traitor |  | 59 / 59 | — |
-| Pokémon Japan | XY2: Wild Blaze |  | 90 / 90 | — |
-| Pokémon Japan | XY3: Rising Fist |  | 105 / 105 | — |
-| Pokémon Japan | XY4: Phantom Gate |  | 97 / 97 | — |
+| Pokémon Japan | XY2: Wild Blaze | https://archives.bulbagarden.net/media/upload/b/b7/XY2_Wild_Blaze_Booster_Korean.jpg | 90 / 90 | bulbapedia |
+| Pokémon Japan | XY3: Rising Fist | https://archives.bulbagarden.net/media/upload/f/f2/XY3_Rising_Fist_Booster_Korean.jpg | 105 / 105 | bulbapedia |
+| Pokémon Japan | XY4: Phantom Gate | https://archives.bulbagarden.net/media/upload/d/d1/XY4_Phantom_Gate_Logo_KO.png | 97 / 97 | bulbapedia |
 | Pokémon Japan | XY5-Bg: Gaia Volcano |  | 80 / 80 | — |
 | Pokémon Japan | XY5-Bt: Tidal Storm |  | 80 / 80 | — |
-| Pokémon Japan | XY6: Emerald Break |  | 91 / 91 | — |
-| Pokémon Japan | XY7: Bandit Ring |  | 97 / 97 | — |
+| Pokémon Japan | XY6: Emerald Break | https://archives.bulbagarden.net/media/upload/3/34/XY6_Emerald_Break_Box.jpg | 91 / 91 | bulbapedia |
+| Pokémon Japan | XY7: Bandit Ring | https://archives.bulbagarden.net/media/upload/6/62/XY7_Bandit_Ring_Booster_Korean.jpg | 97 / 97 | bulbapedia |
 | Pokémon Japan | XY8-Bb: Blue Shock |  | 65 / 65 | — |
 | Pokémon Japan | XY8-Br: Red Flash |  | 65 / 65 | — |
-| Pokémon Japan | XY9: Rage of the Broken Heavens |  | 88 / 89 | — |
+| Pokémon Japan | XY9: Rage of the Broken Heavens | https://archives.bulbagarden.net/media/upload/f/f2/XY9_Rage_of_the_Broken_Heavens_Box.jpg | 88 / 89 | bulbapedia |
 | Pokémon Japan | XYA: M Charizard-EX Mega Battle Deck |  | 22 / 22 | — |
 | Pokémon Japan | XYB: Dialga-EX + Aegislash-EX Hyper Metal Chain Deck |  | 0 / 20 | — |
-| Pokémon Japan | XYC: Super Legend Set: Xerneas-EX & Yveltal-EX |  | 0 / 23 | — |
+| Pokémon Japan | XYC: Super Legend Set: Xerneas-EX & Yveltal-EX | https://archives.bulbagarden.net/media/upload/d/da/XYC_Legend_Battle_Deck_Logo_KO.png | 0 / 23 | bulbapedia |
 | Pokémon Japan | XYD: M Rayquaza-EX Mega Battle Deck |  | 18 / 18 | — |
 | Pokémon Japan | XYE: Emboar-EX vs Togekiss-EX Deck Kit |  | 22 / 22 | — |
 | Pokémon Japan | XYF: Golduck BREAK + Palkia-EX Combo Deck |  | 0 / 17 | — |
@@ -659,23 +659,23 @@
 | Pokémon Japan | m1S: Mega Symphonia |  | 92 / 92 | — |
 | Pokémon Japan | s0: Charizard VSTAR vs Rayquaza VMAX Special Deck Set |  | 30 / 30 | — |
 | Pokémon Japan | s8a-G: 25th Anniversary Golden Box |  | 16 / 16 | — |
-| Pokémon Japan | s8a-P: Promo Card Pack 25th Anniversary Edition |  | 25 / 25 | — |
+| Pokémon Japan | s8a-P: Promo Card Pack 25th Anniversary Edition | https://archives.bulbagarden.net/media/upload/e/eb/S8a-P_Promo_Card_Pack_25th_Anniversary_Edition.jpg | 25 / 25 | bulbapedia |
 | Pokémon Japan | sA: Fighting Starter Set V |  | 46 / 46 | — |
 | Pokémon Japan | sA: Fire Starter Set V |  | 45 / 45 | — |
 | Pokémon Japan | sA: Grass Starter Set V |  | 45 / 45 | — |
 | Pokémon Japan | sA: Lightning Starter Set V |  | 46 / 46 | — |
 | Pokémon Japan | sA: Water Starter Set V |  | 45 / 45 | — |
-| Pokémon Japan | sB: Sword & Shield Premium Trainer Box |  | 0 / 24 | — |
+| Pokémon Japan | sB: Sword & Shield Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/7/7b/Sword_Shield_Premium_Trainer_Box.jpg/600px-Sword_Shield_Premium_Trainer_Box.jpg | 0 / 24 | bulbapedia |
 | Pokémon Japan | sC2: Charizard Starter Set VMAX 2 |  | 21 / 21 | — |
 | Pokémon Japan | sC: Charizard Starter Set VMAX |  | 21 / 21 | — |
 | Pokémon Japan | sC: Grimmsnarl Starter Set VMAX |  | 20 / 20 | — |
 | Pokémon Japan | sD: V Starter Decks |  | 127 / 127 | — |
 | Pokémon Japan | sEF: Venusaur Starter Set VMAX |  | 21 / 21 | — |
 | Pokémon Japan | sEK: Blastoise Starter Set VMAX |  | 20 / 20 | — |
-| Pokémon Japan | sF: Single Strike & Rapid Strike Premium Trainer Boxes |  | 0 / 33 | — |
+| Pokémon Japan | sF: Single Strike & Rapid Strike Premium Trainer Boxes | https://archives.bulbagarden.net/media/upload/thumb/1/14/Single_Strike_Rapid_Strike_Premium_Trainer_Boxes.jpg/600px-Single_Strike_Rapid_Strike_Premium_Trainer_Boxes.jpg | 0 / 33 | bulbapedia |
 | Pokémon Japan | sH: Sword & Shield Family Pokemon Card Game |  | 0 / 78 | — |
 | Pokémon Japan | sJ: Zacian & Zamazenta vs Eternatus Special Deck Set |  | 0 / 30 | — |
-| Pokémon Japan | sK: VSTAR Premium Trainer Box |  | 30 / 30 | — |
+| Pokémon Japan | sK: VSTAR Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/8/83/VSTAR_Premium_Trainer_Box.jpg/600px-VSTAR_Premium_Trainer_Box.jpg | 30 / 30 | bulbapedia |
 | Pokémon Japan | sLD: Darkrai Starter Set VSTAR |  | 20 / 20 | — |
 | Pokémon Japan | sLL: Lucario Starter Set VSTAR |  | 21 / 21 | — |
 | Pokémon Japan | sN: Start Deck 100 CoroCoro Comic Version |  | 24 / 24 | — |
@@ -683,28 +683,28 @@
 | Pokémon Japan | sPZ: Zeraora VSTAR & VMAX High-Class Deck |  | 0 / 20 | — |
 | Pokémon Japan | sm1+: Enhanced Expansion Pack Sun & Moon |  | 1 / 73 | — |
 | Pokémon Japan | smA: Sun & Moon Starter Set |  | 0 / 59 | — |
-| Pokémon Japan | smB: Premium Trainer Box |  | 18 / 18 | — |
+| Pokémon Japan | smB: Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/4/4c/Premium_Trainer_Box_ex.jpg/600px-Premium_Trainer_Box_ex.jpg | 18 / 18 | bulbapedia |
 | Pokémon Japan | smC: Tapu Bulu-GX Enhanced Starter Set |  | 21 / 21 | — |
 | Pokémon Japan | smD: Ash vs Team Rocket Deck Kit |  | 30 / 30 | — |
 | Pokémon Japan | smE: Solgaleo-GX & Lunala-GX Legendary Starter Set |  | 0 / 21 | — |
-| Pokémon Japan | smF: Ultra Sun & Ultra Moon Premium Trainer Box |  | 0 / 20 | — |
-| Pokémon Japan | smG: Ultra Sun & Ultra Moon Deck Build Boxes |  | 0 / 41 | — |
+| Pokémon Japan | smF: Ultra Sun & Ultra Moon Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/7/75/Ultra_Sun_Ultra_Moon_Premium_Trainer_Box.jpg/600px-Ultra_Sun_Ultra_Moon_Premium_Trainer_Box.jpg | 0 / 20 | bulbapedia |
+| Pokémon Japan | smG: Ultra Sun & Ultra Moon Deck Build Boxes | https://archives.bulbagarden.net/media/upload/thumb/0/0e/Ultra_Sun_Ultra_Moon_Deck_Build_Boxes.jpg/600px-Ultra_Sun_Ultra_Moon_Deck_Build_Boxes.jpg | 0 / 41 | bulbapedia |
 | Pokémon Japan | smH: GX Starter Decks |  | 131 / 131 | — |
 | Pokémon Japan | smI: Flareon-GX, Vaporeon-GX & Jolteon-GX Starter Sets |  | 0 / 76 | — |
-| Pokémon Japan | smJ: Tag Team GX Premium Trainer Box |  | 35 / 35 | — |
+| Pokémon Japan | smJ: Tag Team GX Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/4/49/TAG_TEAM_GX_Premium_Trainer_Box.jpg/600px-TAG_TEAM_GX_Premium_Trainer_Box.jpg | 35 / 35 | bulbapedia |
 | Pokémon Japan | smK: Trainer Battle Decks |  | 31 / 31 | — |
 | Pokémon Japan | smL: Sun & Moon Family Pokemon Card Game |  | 0 / 86 | — |
 | Pokémon Japan | smM: Tag Team GX Starter Sets |  | 31 / 31 | — |
-| Pokémon Japan | smN: Tag Team GX Deck Build Box |  | 29 / 29 | — |
+| Pokémon Japan | smN: Tag Team GX Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/5/59/TAG_TEAM_GX_Deck_Build_Box.jpg/600px-TAG_TEAM_GX_Deck_Build_Box.jpg | 29 / 29 | bulbapedia |
 | Pokémon Japan | smP1: Rockruff Full Power Deck |  | 13 / 13 | — |
 | Pokémon Japan | smP2: Great Detective Pikachu |  | 25 / 25 | — |
-| Pokémon Japan | sp1: Zacian + Zamazenta Box |  | 0 / 7 | — |
+| Pokémon Japan | sp1: Zacian + Zamazenta Box | https://archives.bulbagarden.net/media/upload/thumb/9/9c/Zacian_Zamazenta_Box.jpg/600px-Zacian_Zamazenta_Box.jpg | 0 / 7 | bulbapedia |
 | Pokémon Japan | sp2: VMAX Special Set |  | 8 / 8 | — |
 | Pokémon Japan | sp4: Eevee Heroes VMAX Special Set |  | 4 / 4 | — |
 | Pokémon Japan | sp5: V-UNION Special Card Sets |  | 13 / 13 | — |
 | Pokémon Japan | sp6: VSTAR Special Set |  | 6 / 6 | — |
 
-### Magic: The Gathering（445 个系列，401 个有 logo）
+### Magic: The Gathering（445 个系列，421 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
@@ -730,7 +730,7 @@
 | Magic: The Gathering | Archenemy | https://svgs.scryfall.io/sets/arc.svg?1791172800 | 56 / 150 | scryfall |
 | Magic: The Gathering | Archenemy: Duskmourn |  | 40 / 40 | — |
 | Magic: The Gathering | Archenemy: Nicol Bolas | https://svgs.scryfall.io/sets/e01.svg?1791172800 | 110 / 110 | scryfall |
-| Magic: The Gathering | Arena Promos |  | 86 / 86 | — |
+| Magic: The Gathering | Arena Promos | https://svgs.scryfall.io/sets/mtga.svg?1791172800 | 86 / 86 | scryfall |
 | Magic: The Gathering | Art Series: Adventures in the Forgotten Realms | https://svgs.scryfall.io/sets/afr.svg?1791172800 | 162 / 162 | scryfall |
 | Magic: The Gathering | Art Series: Aetherdrift | https://svgs.scryfall.io/sets/dft.svg?1791172800 | 108 / 108 | scryfall |
 | Magic: The Gathering | Art Series: Avatar: The Last Airbender | https://svgs.scryfall.io/sets/tla.svg?1791172800 | 120 / 120 | scryfall |
@@ -783,7 +783,7 @@
 | Magic: The Gathering | Born of the Gods | https://svgs.scryfall.io/sets/bng.svg?1791172800 | 175 / 176 | scryfall |
 | Magic: The Gathering | Buy-A-Box Promos |  | 92 / 92 | — |
 | Magic: The Gathering | Champions of Kamigawa | https://svgs.scryfall.io/sets/chk.svg?1791172800 | 256 / 307 | scryfall |
-| Magic: The Gathering | Champs Promos |  | 12 / 12 | — |
+| Magic: The Gathering | Champs Promos | https://svgs.scryfall.io/sets/default.svg?1791172800 | 12 / 12 | scryfall |
 | Magic: The Gathering | Chronicles | https://svgs.scryfall.io/sets/chr.svg?1791172800 | 125 / 125 | scryfall |
 | Magic: The Gathering | Classic Sixth Edition | https://svgs.scryfall.io/sets/6ed.svg?1791172800 | 348 / 348 | scryfall |
 | Magic: The Gathering | Coldsnap | https://svgs.scryfall.io/sets/csp.svg?1791172800 | 147 / 155 | scryfall |
@@ -882,7 +882,7 @@
 | Magic: The Gathering | Edge of Eternities: Stellar Sights | https://svgs.scryfall.io/sets/eos.svg?1791172800 | 180 / 180 | scryfall |
 | Magic: The Gathering | Eldritch Moon | https://svgs.scryfall.io/sets/emn.svg?1791172800 | 216 / 216 | scryfall |
 | Magic: The Gathering | Eternal Masters | https://svgs.scryfall.io/sets/ema.svg?1791172800 | 265 / 265 | scryfall |
-| Magic: The Gathering | European Lands |  | 15 / 15 | — |
+| Magic: The Gathering | European Lands | https://svgs.scryfall.io/sets/peuro.svg?1791172800 | 15 / 15 | scryfall |
 | Magic: The Gathering | Eventide | https://svgs.scryfall.io/sets/eve.svg?1791172800 | 187 / 187 | scryfall |
 | Magic: The Gathering | Exodus | https://svgs.scryfall.io/sets/exo.svg?1791172800 | 142 / 143 | scryfall |
 | Magic: The Gathering | Explorers of Ixalan | https://svgs.scryfall.io/sets/e02.svg?1791172800 | 49 / 49 | scryfall |
@@ -909,7 +909,7 @@
 | Magic: The Gathering | From the Vault: Transform | https://svgs.scryfall.io/sets/v17.svg?1791172800 | 15 / 15 | scryfall |
 | Magic: The Gathering | From the Vault: Twenty | https://svgs.scryfall.io/sets/v13.svg?1791172800 | 20 / 20 | scryfall |
 | Magic: The Gathering | Future Sight | https://svgs.scryfall.io/sets/fut.svg?1791172800 | 180 / 180 | scryfall |
-| Magic: The Gathering | Game Day & Store Championship Promos |  | 38 / 174 | — |
+| Magic: The Gathering | Game Day & Store Championship Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 | 38 / 174 | scryfall |
 | Magic: The Gathering | Gatecrash | https://svgs.scryfall.io/sets/gtc.svg?1791172800 | 257 / 257 | scryfall |
 | Magic: The Gathering | Gift Boxes and Promos |  | 16 / 16 | — |
 | Magic: The Gathering | Global Series Jiang Yanggu & Mu Yanling | https://svgs.scryfall.io/sets/gs1.svg?1791172800 | 37 / 41 | scryfall |
@@ -917,8 +917,8 @@
 | Magic: The Gathering | Guildpact | https://svgs.scryfall.io/sets/gpt.svg?1791172800 | 165 / 165 | scryfall |
 | Magic: The Gathering | Guilds of Ravnica | https://svgs.scryfall.io/sets/grn.svg?1791172800 | 270 / 280 | scryfall |
 | Magic: The Gathering | Guilds of Ravnica: Guild Kits | https://holodex-prod-bucket.b-cdn.net/sets/mtg_2334/logo.webp | 137 / 137 | holodex |
-| Magic: The Gathering | Guru Lands |  | 5 / 5 | — |
-| Magic: The Gathering | Hero's Path Promos |  | 42 / 66 | — |
+| Magic: The Gathering | Guru Lands | https://svgs.scryfall.io/sets/pgru.svg?1791172800 | 5 / 5 | scryfall |
+| Magic: The Gathering | Hero's Path Promos | https://svgs.scryfall.io/sets/ths.svg?1791172800 | 42 / 66 | scryfall |
 | Magic: The Gathering | Homelands | https://svgs.scryfall.io/sets/hml.svg?1791172800 | 139 / 140 | scryfall |
 | Magic: The Gathering | Hour of Devastation | https://svgs.scryfall.io/sets/hou.svg?1791172800 | 246 / 246 | scryfall |
 | Magic: The Gathering | Ice Age | https://svgs.scryfall.io/sets/ice.svg?1791172800 | 382 / 383 | scryfall |
@@ -935,7 +935,7 @@
 | Magic: The Gathering | Ixalan | https://svgs.scryfall.io/sets/xln.svg?1791172800 | 281 / 303 | scryfall |
 | Magic: The Gathering | JingHe Age Token Cards |  | 12 / 12 | — |
 | Magic: The Gathering | Journey Into Nyx | https://svgs.scryfall.io/sets/jou.svg?1791172800 | 121 / 171 | scryfall |
-| Magic: The Gathering | Judge Promos |  | 155 / 177 | — |
+| Magic: The Gathering | Judge Promos | https://svgs.scryfall.io/sets/archie.svg?1791172800 | 155 / 177 | scryfall |
 | Magic: The Gathering | Judgment | https://svgs.scryfall.io/sets/jud.svg?1791172800 | 143 / 143 | scryfall |
 | Magic: The Gathering | Jumpstart | https://svgs.scryfall.io/sets/jmp.svg?1791172800 | 518 / 541 | scryfall |
 | Magic: The Gathering | Jumpstart 2022 | https://svgs.scryfall.io/sets/j22.svg?1791172800 | 814 / 880 | scryfall |
@@ -945,7 +945,7 @@
 | Magic: The Gathering | Kamigawa: Neon Dynasty | https://svgs.scryfall.io/sets/neo.svg?1791172800 | 561 / 566 | scryfall |
 | Magic: The Gathering | Khans of Tarkir | https://svgs.scryfall.io/sets/ktk.svg?1791172800 | 282 / 282 | scryfall |
 | Magic: The Gathering | Launch Party & Release Event Promos |  | 66 / 121 | — |
-| Magic: The Gathering | League Promos |  | 19 / 19 | — |
+| Magic: The Gathering | League Promos | https://svgs.scryfall.io/sets/parl.svg?1791172800 | 19 / 19 | scryfall |
 | Magic: The Gathering | Legends | https://svgs.scryfall.io/sets/leg.svg?1791172800 | 5 / 307 | scryfall |
 | Magic: The Gathering | Legions | https://svgs.scryfall.io/sets/lgn.svg?1791172800 | 145 / 145 | scryfall |
 | Magic: The Gathering | Lorwyn | https://svgs.scryfall.io/sets/lrw.svg?1791172800 | 19 / 312 | scryfall |
@@ -963,8 +963,8 @@
 | Magic: The Gathering | Magic Game Night: Free-For-All | https://svgs.scryfall.io/sets/gn3.svg?1791172800 | 142 / 143 | scryfall |
 | Magic: The Gathering | Magic Modern Event Deck | https://svgs.scryfall.io/sets/md1.svg?1791172800 | 29 / 29 | scryfall |
 | Magic: The Gathering | Magic Origins | https://svgs.scryfall.io/sets/ori.svg?1791172800 | 290 / 303 | scryfall |
-| Magic: The Gathering | Magic Player Rewards |  | 27 / 77 | — |
-| Magic: The Gathering | Magic Premiere Shop |  | 1 / 50 | — |
+| Magic: The Gathering | Magic Player Rewards | https://svgs.scryfall.io/sets/default.svg?1791172800 | 27 / 77 | scryfall |
+| Magic: The Gathering | Magic Premiere Shop | https://svgs.scryfall.io/sets/pmps.svg?1791172800 | 1 / 50 | scryfall |
 | Magic: The Gathering | MagicFest Cards |  | 41 / 41 | — |
 | Magic: The Gathering | March of the Machine | https://svgs.scryfall.io/sets/mom.svg?1791172800 | 229 / 504 | scryfall |
 | Magic: The Gathering | March of the Machine: Multiverse Legends | https://svgs.scryfall.io/sets/mul.svg?1791172800 | 262 / 262 | scryfall |
@@ -973,10 +973,10 @@
 | Magic: The Gathering | Marvel Universe Eternal-Legal | https://svgs.scryfall.io/sets/mar.svg?1791172800 | 100 / 100 | scryfall |
 | Magic: The Gathering | Marvel's Spider-Man | https://svgs.scryfall.io/sets/spm.svg?1791172800 | 0 / 289 | scryfall |
 | Magic: The Gathering | Marvel's Spider-Man: Eternal-Legal | https://holodex-prod-bucket.b-cdn.net/sets/mtg_24246/logo.webp | 0 / 26 | holodex |
-| Magic: The Gathering | Masterpiece Series: Amonkhet Invocations |  | 54 / 54 | — |
+| Magic: The Gathering | Masterpiece Series: Amonkhet Invocations | https://svgs.scryfall.io/sets/mp2.svg?1791172800 | 54 / 54 | scryfall |
 | Magic: The Gathering | Masterpiece Series: Kaladesh Inventions | https://svgs.scryfall.io/sets/mps.svg?1791172800 | 54 / 54 | scryfall |
 | Magic: The Gathering | Masters 25 | https://svgs.scryfall.io/sets/a25.svg?1791172800 | 265 / 265 | scryfall |
-| Magic: The Gathering | Media Promos |  | 222 / 255 | — |
+| Magic: The Gathering | Media Promos | https://svgs.scryfall.io/sets/pmei.svg?1791172800 | 222 / 255 | scryfall |
 | Magic: The Gathering | Mercadian Masques | https://svgs.scryfall.io/sets/mmq.svg?1791172800 | 350 / 350 | scryfall |
 | Magic: The Gathering | Mirage | https://svgs.scryfall.io/sets/mir.svg?1791172800 | 350 / 350 | scryfall |
 | Magic: The Gathering | Mirrodin | https://svgs.scryfall.io/sets/mrd.svg?1791172800 | 142 / 306 | scryfall |
@@ -994,7 +994,7 @@
 | Magic: The Gathering | Mystery Booster Commander Edition | https://svgs.scryfall.io/sets/mbc.svg?1791172800 | 80 / 80 | scryfall |
 | Magic: The Gathering | Mystery Booster: Convention Edition Exclusives | https://svgs.scryfall.io/sets/planeswalker.svg?1791172800 | 239 / 246 | scryfall |
 | Magic: The Gathering | Mythic Edition: Guilds of Ravnica | https://svgs.scryfall.io/sets/med.svg?1791172800 | 16 / 16 | scryfall |
-| Magic: The Gathering | Mythic Edition: Ravnica Allegiance |  | 13 / 13 | — |
+| Magic: The Gathering | Mythic Edition: Ravnica Allegiance | https://svgs.scryfall.io/sets/med.svg?1791172800 | 13 / 13 | scryfall |
 | Magic: The Gathering | Mythic Edition: War of the Spark | https://holodex-prod-bucket.b-cdn.net/sets/mtg_2444/logo.webp | 11 / 11 | holodex |
 | Magic: The Gathering | Nemesis | https://svgs.scryfall.io/sets/nem.svg?1791172800 | 143 / 143 | scryfall |
 | Magic: The Gathering | New Phyrexia | https://svgs.scryfall.io/sets/nph.svg?1791172800 | 179 / 180 | scryfall |
@@ -1033,7 +1033,7 @@
 | Magic: The Gathering | Promo Pack: Dominaria United | https://svgs.scryfall.io/sets/dmu.svg?1791172800 ※ | 97 / 97 | scryfall（继承父系列） |
 | Magic: The Gathering | Promo Pack: Duskmourn: House of Horror | https://svgs.scryfall.io/sets/dsk.svg?1791172800 ※ | 89 / 89 | scryfall（继承父系列） |
 | Magic: The Gathering | Promo Pack: Edge of Eternities | https://svgs.scryfall.io/sets/eoe.svg?1791172800 ※ | 99 / 99 | scryfall（继承父系列） |
-| Magic: The Gathering | Promo Pack: Ikoria |  | 89 / 89 | — |
+| Magic: The Gathering | Promo Pack: Ikoria | https://svgs.scryfall.io/sets/iko.svg?1791172800 | 89 / 89 | scryfall |
 | Magic: The Gathering | Promo Pack: Innistrad: Midnight Hunt | https://svgs.scryfall.io/sets/mid.svg?1791172800 ※ | 75 / 75 | scryfall（继承父系列） |
 | Magic: The Gathering | Promo Pack: Kaldheim | https://svgs.scryfall.io/sets/khm.svg?1791172800 ※ | 83 / 83 | scryfall（继承父系列） |
 | Magic: The Gathering | Promo Pack: Kamigawa: Neon Dynasty | https://svgs.scryfall.io/sets/neo.svg?1791172800 ※ | 81 / 81 | scryfall（继承父系列） |
@@ -1086,7 +1086,7 @@
 | Magic: The Gathering | Signature Spellbook: Jace | https://svgs.scryfall.io/sets/ss1.svg?1791172800 | 8 / 8 | scryfall |
 | Magic: The Gathering | Special Guests | https://svgs.scryfall.io/sets/spg.svg?1791172800 | 164 / 174 | scryfall |
 | Magic: The Gathering | Special Occasion |  | 30 / 30 | — |
-| Magic: The Gathering | Standard Showdown Promos |  | 51 / 51 | — |
+| Magic: The Gathering | Standard Showdown Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 | 51 / 51 | scryfall |
 | Magic: The Gathering | Star Trek | https://svgs.scryfall.io/sets/trk.svg?1791172800 | 56 / 56 | scryfall |
 | Magic: The Gathering | Star Trek: Stardates | https://svgs.scryfall.io/sets/sds.svg?1791172800 | 1 / 1 | scryfall |
 | Magic: The Gathering | Starter 1999 | https://svgs.scryfall.io/sets/s99.svg?1791172800 | 173 / 173 | scryfall |
@@ -1097,7 +1097,7 @@
 | Magic: The Gathering | Strixhaven: School of Mages | https://svgs.scryfall.io/sets/stx.svg?1791172800 | 419 / 419 | scryfall |
 | Magic: The Gathering | Stronghold | https://svgs.scryfall.io/sets/sth.svg?1791172800 | 143 / 143 | scryfall |
 | Magic: The Gathering | Summer Magic | https://svgs.scryfall.io/sets/psum.svg?1791172800 | 305 / 305 | scryfall |
-| Magic: The Gathering | Tarkir Dragonfury Promos |  | 4 / 4 | — |
+| Magic: The Gathering | Tarkir Dragonfury Promos | https://svgs.scryfall.io/sets/tdm.svg?1791172800 | 4 / 4 | scryfall |
 | Magic: The Gathering | Tarkir: Dragonstorm | https://svgs.scryfall.io/sets/tdm.svg?1791172800 | 171 / 431 | scryfall |
 | Magic: The Gathering | Teenage Mutant Ninja Turtles | https://svgs.scryfall.io/sets/tmt.svg?1791172800 | 240 / 332 | scryfall |
 | Magic: The Gathering | Teenage Mutant Ninja Turtles Source Material | https://svgs.scryfall.io/sets/pza.svg?1791172800 | 20 / 20 | scryfall |
@@ -1107,7 +1107,7 @@
 | Magic: The Gathering | The Dark | https://svgs.scryfall.io/sets/drk.svg?1791172800 | 119 / 119 | scryfall |
 | Magic: The Gathering | The Hobbit | https://svgs.scryfall.io/sets/hob.svg?1791172800 | 286 / 334 | scryfall |
 | Magic: The Gathering | The Hobbit: Eternal-Legal | https://svgs.scryfall.io/sets/hoc.svg?1791172800 | 158 / 158 | scryfall |
-| Magic: The Gathering | The List Reprints |  | 5025 / 5302 | — |
+| Magic: The Gathering | The List Reprints | https://svgs.scryfall.io/sets/planeswalker.svg?1791172800 | 5025 / 5302 | scryfall |
 | Magic: The Gathering | The Lost Caverns of Ixalan | https://svgs.scryfall.io/sets/lci.svg?1791172800 | 223 / 480 | scryfall |
 | Magic: The Gathering | Theros | https://svgs.scryfall.io/sets/ths.svg?1791172800 | 94 / 260 | scryfall |
 | Magic: The Gathering | Theros Beyond Death | https://svgs.scryfall.io/sets/thb.svg?1791172800 | 387 / 388 | scryfall |
@@ -1116,7 +1116,7 @@
 | Magic: The Gathering | Time Spiral: Remastered | https://svgs.scryfall.io/sets/tsr.svg?1791172800 | 425 / 425 | scryfall |
 | Magic: The Gathering | Timeshifted | https://svgs.scryfall.io/sets/tsp.svg?1791172800 | 71 / 121 | scryfall |
 | Magic: The Gathering | Torment | https://svgs.scryfall.io/sets/tor.svg?1791172800 | 143 / 143 | scryfall |
-| Magic: The Gathering | Ugin's Fate Promos |  | 0 / 26 | — |
+| Magic: The Gathering | Ugin's Fate Promos | https://svgs.scryfall.io/sets/frf.svg?1791172800 | 0 / 26 | scryfall |
 | Magic: The Gathering | Ultimate Masters | https://svgs.scryfall.io/sets/uma.svg?1791172800 | 270 / 270 | scryfall |
 | Magic: The Gathering | Ultimate Masters: Box Toppers | https://svgs.scryfall.io/sets/uma.svg?1791172800 ※ | 40 / 40 | scryfall（继承父系列） |
 | Magic: The Gathering | Un-Known Event Playtest Cards | https://svgs.scryfall.io/sets/planeswalker.svg?1791172800 | 396 / 434 | scryfall |
@@ -1139,7 +1139,7 @@
 | Magic: The Gathering | Urza's Saga | https://svgs.scryfall.io/sets/usg.svg?1791172800 | 0 / 350 | scryfall |
 | Magic: The Gathering | Vanguard | https://holodex-prod-bucket.b-cdn.net/sets/mtg_119/logo.webp | 32 / 32 | holodex |
 | Magic: The Gathering | Visions | https://svgs.scryfall.io/sets/vis.svg?1791172800 | 117 / 167 | scryfall |
-| Magic: The Gathering | WMCQ Promo Cards |  | 6 / 6 | — |
+| Magic: The Gathering | WMCQ Promo Cards | https://svgs.scryfall.io/sets/star.svg?1791172800 | 6 / 6 | scryfall |
 | Magic: The Gathering | WPN & Gateway Promos |  | 20 / 121 | — |
 | Magic: The Gathering | War of the Spark | https://svgs.scryfall.io/sets/war.svg?1791172800 | 329 / 329 | scryfall |
 | Magic: The Gathering | Weatherlight | https://svgs.scryfall.io/sets/wth.svg?1791172800 | 117 / 167 | scryfall |
@@ -1147,7 +1147,7 @@
 | Magic: The Gathering | Welcome Deck 2017 | https://svgs.scryfall.io/sets/w17.svg?1791172800 | 30 / 30 | scryfall |
 | Magic: The Gathering | Wilds of Eldraine | https://svgs.scryfall.io/sets/woe.svg?1791172800 | 242 / 437 | scryfall |
 | Magic: The Gathering | Wilds of Eldraine: Enchanting Tales | https://svgs.scryfall.io/sets/wot.svg?1791172800 | 103 / 103 | scryfall |
-| Magic: The Gathering | World Championship Decks |  | 1330 / 1335 | — |
+| Magic: The Gathering | World Championship Decks | https://svgs.scryfall.io/sets/default.svg?1791172800 | 1330 / 1335 | scryfall |
 | Magic: The Gathering | Worldwake | https://svgs.scryfall.io/sets/wwk.svg?1791172800 | 151 / 151 | scryfall |
 | Magic: The Gathering | Zendikar | https://svgs.scryfall.io/sets/zen.svg?1791172800 | 60 / 280 | scryfall |
 | Magic: The Gathering | Zendikar Expeditions | https://svgs.scryfall.io/sets/exp.svg?1791172800 | 45 / 45 | scryfall |
@@ -1887,71 +1887,71 @@
 | Disney Lorcana | Wilds Unknown | https://holodex-prod-bucket.b-cdn.net/sets/dl_24617/logo.webp | 200 / 267 | holodex |
 | Disney Lorcana | Winterspell | https://holodex-prod-bucket.b-cdn.net/sets/dl_24500/logo.webp | 266 / 266 | holodex |
 
-### Flesh and Blood TCG（105 个系列，0 个有 logo）
+### Flesh and Blood TCG（105 个系列，88 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
-| Flesh and Blood TCG | 1st Strike |  | 62 / 62 | — |
-| Flesh and Blood TCG | Arcane Rising |  | 50 / 284 | — |
-| Flesh and Blood TCG | Armory Deck Origins: Hala |  | 27 / 27 | — |
-| Flesh and Blood TCG | Armory Deck: Arakni |  | 31 / 31 | — |
-| Flesh and Blood TCG | Armory Deck: Aurora |  | 28 / 28 | — |
-| Flesh and Blood TCG | Armory Deck: Azalea |  | 32 / 32 | — |
-| Flesh and Blood TCG | Armory Deck: Boltyn |  | 28 / 28 | — |
-| Flesh and Blood TCG | Armory Deck: Dash |  | 27 / 27 | — |
-| Flesh and Blood TCG | Armory Deck: Dr. Mortimer |  | 4 / 4 | — |
-| Flesh and Blood TCG | Armory Deck: Gravy Bones |  | 49 / 49 | — |
-| Flesh and Blood TCG | Armory Deck: Ira |  | 27 / 27 | — |
+| Flesh and Blood TCG | 1st Strike | https://cdn.fabtcg.com/uploads/2025/09/1ststrike_blitz_dropshadow.webp | 62 / 62 | fab-official |
+| Flesh and Blood TCG | Arcane Rising | https://cdn.fabtcg.com/uploads/2025/11/ARC-1.png | 50 / 284 | fab-official |
+| Flesh and Blood TCG | Armory Deck Origins: Hala | https://cdn.fabtcg.com/uploads/2026/03/LO-RES_FR_Hala_ArmoryDeck_Mockup.png | 27 / 27 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Arakni | https://cdn.fabtcg.com/uploads/2025/12/arakni_name.png | 31 / 31 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Aurora | https://cdn.fabtcg.com/uploads/2025/07/aurora_cover.2e16d0ba.fill-1200x630-1.jpg | 28 / 28 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Azalea | https://cdn.fabtcg.com/uploads/2025/07/ad_azalea_dropshadow.webp | 32 / 32 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Boltyn | https://cdn.fabtcg.com/uploads/2025/07/ad-boltyn_dropshadow.webp | 28 / 28 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Dash | https://cdn.fabtcg.com/uploads/2025/07/ad_dash_dropshadow.webp | 27 / 27 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Dr. Mortimer | https://cdn.fabtcg.com/uploads/2026/08/mortimer_name.png | 4 / 4 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Gravy Bones | https://cdn.fabtcg.com/uploads/2025/12/gravy_ad_cover-scaled.jpg | 49 / 49 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Ira | https://cdn.fabtcg.com/uploads/2025/07/ad_ira_dropshadow.webp | 27 / 27 | fab-official |
 | Flesh and Blood TCG | Armory Deck: Jarl Vetreidi |  | 27 / 27 | — |
-| Flesh and Blood TCG | Armory Deck: Kayo |  | 28 / 28 | — |
-| Flesh and Blood TCG | Armory Deck: Legends Prism |  | 27 / 27 | — |
-| Flesh and Blood TCG | Armory Deck: Legends Viserai |  | 30 / 30 | — |
-| Flesh and Blood TCG | Armory Deck: Malice |  | 8 / 30 | — |
-| Flesh and Blood TCG | Armory Deck: Maxx Nitro |  | 30 / 30 | — |
-| Flesh and Blood TCG | Armory Deck: Olympia |  | 29 / 29 | — |
-| Flesh and Blood TCG | Armory Deck: Pleiades |  | 32 / 32 | — |
-| Flesh and Blood TCG | Armory Deck: Rhinar |  | 30 / 30 | — |
-| Flesh and Blood TCG | Armory Deck: Zyggy |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Betsy |  | 31 / 31 | — |
-| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Kassai |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Kayo |  | 29 / 29 | — |
-| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Olympia |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Rhinar |  | 29 / 29 | — |
-| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Victor |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Monarch - Boltyn |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Monarch - Chane |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Monarch - Levia |  | 29 / 29 | — |
-| Flesh and Blood TCG | Blitz Deck: Monarch - Prism |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Outsiders - Arakni |  | 29 / 29 | — |
-| Flesh and Blood TCG | Blitz Deck: Outsiders - Azalea |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Outsiders - Benji |  | 26 / 26 | — |
-| Flesh and Blood TCG | Blitz Deck: Outsiders - Katsu |  | 26 / 26 | — |
-| Flesh and Blood TCG | Blitz Deck: Outsiders - Riptide |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Outsiders - Uzuri |  | 31 / 31 | — |
-| Flesh and Blood TCG | Blitz Deck: Part the Mistveil - Enigma |  | 29 / 29 | — |
-| Flesh and Blood TCG | Blitz Deck: Part the Mistveil - Nuu |  | 28 / 28 | — |
-| Flesh and Blood TCG | Blitz Deck: Part the Mistveil - Zen |  | 29 / 29 | — |
-| Flesh and Blood TCG | Blitz Deck: Rosetta - Aurora |  | 29 / 29 | — |
-| Flesh and Blood TCG | Blitz Deck: Rosetta - Florian |  | 29 / 29 | — |
-| Flesh and Blood TCG | Blitz Deck: Rosetta - Oscilio |  | 29 / 29 | — |
-| Flesh and Blood TCG | Blitz Deck: Rosetta - Verdance |  | 28 / 28 | — |
-| Flesh and Blood TCG | Blitz Deck: Tales of Aria - Briar |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Tales of Aria - Lexi |  | 30 / 30 | — |
-| Flesh and Blood TCG | Blitz Deck: Tales of Aria - Oldhim |  | 32 / 32 | — |
-| Flesh and Blood TCG | Blitz Deck: The Hunted - Arakni |  | 26 / 26 | — |
-| Flesh and Blood TCG | Blitz Deck: The Hunted - Arakni, Web of Deceit |  | 31 / 31 | — |
-| Flesh and Blood TCG | Blitz Deck: The Hunted - Cindra |  | 28 / 28 | — |
-| Flesh and Blood TCG | Blitz Deck: The Hunted - Fang |  | 28 / 28 | — |
-| Flesh and Blood TCG | Blitz Deck: Uprising - Dromai |  | 28 / 28 | — |
-| Flesh and Blood TCG | Blitz Deck: Uprising - Fai |  | 26 / 26 | — |
-| Flesh and Blood TCG | Bright Lights |  | 200 / 261 | — |
-| Flesh and Blood TCG | Classic Battles: Rhinar vs Dorinthea |  | 54 / 55 | — |
-| Flesh and Blood TCG | Compendium of Rathe |  | 368 / 368 | — |
+| Flesh and Blood TCG | Armory Deck: Kayo | https://cdn.fabtcg.com/uploads/2025/07/ad_kayo_dropshadow.webp | 28 / 28 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Legends Prism | https://cdn.fabtcg.com/uploads/2025/07/ad_legends_product_dropshadow.webp ※ | 27 / 27 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Armory Deck: Legends Viserai | https://cdn.fabtcg.com/uploads/2025/07/ad_legends_product_dropshadow.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Armory Deck: Malice | https://cdn.fabtcg.com/uploads/2026/07/malice_name.png | 8 / 30 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Maxx Nitro | https://cdn.fabtcg.com/uploads/2025/07/ad_maxx_dropshadow.webp | 30 / 30 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Olympia | https://cdn.fabtcg.com/uploads/2026/04/BDO-01.webp | 29 / 29 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Pleiades | https://cdn.fabtcg.com/uploads/2025/12/jp_pleiades_name.png | 32 / 32 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Rhinar | https://cdn.fabtcg.com/uploads/2025/12/rhinar_name.png | 30 / 30 | fab-official |
+| Flesh and Blood TCG | Armory Deck: Zyggy | https://cdn.fabtcg.com/uploads/2026/02/en_ad_zyggy_mockup_LO-RES.png | 30 / 30 | fab-official |
+| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Betsy | https://cdn.fabtcg.com/uploads/2025/08/en_heavy_hitters_booster_display.width-1200.format-webp.webp ※ | 31 / 31 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Kassai | https://cdn.fabtcg.com/uploads/2025/08/en_heavy_hitters_booster_display.width-1200.format-webp.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Kayo | https://cdn.fabtcg.com/uploads/2025/08/en_heavy_hitters_booster_display.width-1200.format-webp.webp ※ | 29 / 29 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Olympia | https://cdn.fabtcg.com/uploads/2025/08/en_heavy_hitters_booster_display.width-1200.format-webp.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Rhinar | https://cdn.fabtcg.com/uploads/2025/08/en_heavy_hitters_booster_display.width-1200.format-webp.webp ※ | 29 / 29 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Heavy Hitters - Victor | https://cdn.fabtcg.com/uploads/2025/08/en_heavy_hitters_booster_display.width-1200.format-webp.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Monarch - Boltyn | https://cdn.fabtcg.com/uploads/2025/09/mon_mock_herodeck_box_02_dropshadow.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Monarch - Chane | https://cdn.fabtcg.com/uploads/2025/09/mon_mock_herodeck_box_02_dropshadow.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Monarch - Levia | https://cdn.fabtcg.com/uploads/2025/09/mon_mock_herodeck_box_02_dropshadow.webp ※ | 29 / 29 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Monarch - Prism | https://cdn.fabtcg.com/uploads/2025/09/mon_mock_herodeck_box_02_dropshadow.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Outsiders - Arakni | https://cdn.fabtcg.com/uploads/2025/09/outsiders_blitz_dropshadow.webp ※ | 29 / 29 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Outsiders - Azalea | https://cdn.fabtcg.com/uploads/2025/09/outsiders_blitz_dropshadow.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Outsiders - Benji | https://cdn.fabtcg.com/uploads/2025/09/outsiders_blitz_dropshadow.webp ※ | 26 / 26 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Outsiders - Katsu | https://cdn.fabtcg.com/uploads/2025/09/outsiders_blitz_dropshadow.webp ※ | 26 / 26 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Outsiders - Riptide | https://cdn.fabtcg.com/uploads/2025/09/outsiders_blitz_dropshadow.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Outsiders - Uzuri | https://cdn.fabtcg.com/uploads/2025/09/outsiders_blitz_dropshadow.webp ※ | 31 / 31 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Part the Mistveil - Enigma | https://cdn.fabtcg.com/uploads/2025/09/mistveil_collection_dropshadow.webp ※ | 29 / 29 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Part the Mistveil - Nuu | https://cdn.fabtcg.com/uploads/2025/09/mistveil_collection_dropshadow.webp ※ | 28 / 28 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Part the Mistveil - Zen | https://cdn.fabtcg.com/uploads/2025/09/mistveil_collection_dropshadow.webp ※ | 29 / 29 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Rosetta - Aurora | https://cdn.fabtcg.com/uploads/2025/09/rosetta_blitz_collection_dropshadow.webp ※ | 29 / 29 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Rosetta - Florian | https://cdn.fabtcg.com/uploads/2025/09/rosetta_blitz_collection_dropshadow.webp ※ | 29 / 29 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Rosetta - Oscilio | https://cdn.fabtcg.com/uploads/2025/09/rosetta_blitz_collection_dropshadow.webp ※ | 29 / 29 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Rosetta - Verdance | https://cdn.fabtcg.com/uploads/2025/09/rosetta_blitz_collection_dropshadow.webp ※ | 28 / 28 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Tales of Aria - Briar | https://cdn.fabtcg.com/uploads/2025/07/toa_mock_herodeck_box_dropshadow.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Tales of Aria - Lexi | https://cdn.fabtcg.com/uploads/2025/07/toa_mock_herodeck_box_dropshadow.webp ※ | 30 / 30 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Tales of Aria - Oldhim | https://cdn.fabtcg.com/uploads/2025/07/toa_mock_herodeck_box_dropshadow.webp ※ | 32 / 32 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: The Hunted - Arakni | https://cdn.fabtcg.com/uploads/2025/07/hnt_collection_dropshadow.webp ※ | 26 / 26 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: The Hunted - Arakni, Web of Deceit | https://cdn.fabtcg.com/uploads/2025/07/hnt_collection_dropshadow.webp ※ | 31 / 31 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: The Hunted - Cindra | https://cdn.fabtcg.com/uploads/2025/07/hnt_collection_dropshadow.webp ※ | 28 / 28 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: The Hunted - Fang | https://cdn.fabtcg.com/uploads/2025/07/hnt_collection_dropshadow.webp ※ | 28 / 28 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Uprising - Dromai | https://cdn.fabtcg.com/uploads/2025/07/upr_mock_blitz_display_box_01_Fx5.width-992.format-webp.webp ※ | 28 / 28 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Blitz Deck: Uprising - Fai | https://cdn.fabtcg.com/uploads/2025/07/upr_mock_blitz_display_box_01_Fx5.width-992.format-webp.webp ※ | 26 / 26 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Bright Lights | https://cdn.fabtcg.com/uploads/2025/08/en_evo_mock_boosterbox.width-992.format-webp.webp | 200 / 261 | fab-official |
+| Flesh and Blood TCG | Classic Battles: Rhinar vs Dorinthea | https://cdn.fabtcg.com/uploads/2025/12/cb_logo_1.png | 54 / 55 | fab-official |
+| Flesh and Blood TCG | Compendium of Rathe | https://cdn.fabtcg.com/uploads/2026/01/pen-logo-2026.png | 368 / 368 | fab-official |
 | Flesh and Blood TCG | Compendium of Rathe - Antiquity Pack |  | 65 / 65 | — |
-| Flesh and Blood TCG | Crucible of War |  | 100 / 199 | — |
-| Flesh and Blood TCG | Dusk till Dawn |  | 100 / 252 | — |
-| Flesh and Blood TCG | Dynasty |  | 100 / 265 | — |
-| Flesh and Blood TCG | Everfest |  | 220 / 221 | — |
+| Flesh and Blood TCG | Crucible of War | https://cdn.fabtcg.com/uploads/2025/12/cru_logo_stacked.png | 100 / 199 | fab-official |
+| Flesh and Blood TCG | Dusk till Dawn | https://cdn.fabtcg.com/uploads/2025/07/dtd_booster_box.width-992.format-webp.webp | 100 / 252 | fab-official |
+| Flesh and Blood TCG | Dynasty | https://cdn.fabtcg.com/uploads/2025/07/dyn_mock_booster_box.width-992.format-webp.webp | 100 / 265 | fab-official |
+| Flesh and Blood TCG | Everfest | https://cdn.fabtcg.com/uploads/2025/07/evr_paper_booster_dropshadow.webp | 220 / 221 | fab-official |
 | Flesh and Blood TCG | Flesh and Blood: Promo Cards |  | 50 / 1233 | — |
 | Flesh and Blood TCG | GEM Pack 1 |  | 50 / 50 | — |
 | Flesh and Blood TCG | GEM Pack 2 |  | 54 / 54 | — |
@@ -1959,43 +1959,43 @@
 | Flesh and Blood TCG | GEM Pack 4 |  | 54 / 54 | — |
 | Flesh and Blood TCG | GEM Pack 6 |  | 2 / 35 | — |
 | Flesh and Blood TCG | Gem Pack 5 |  | 61 / 61 | — |
-| Flesh and Blood TCG | Heavy Hitters |  | 239 / 262 | — |
+| Flesh and Blood TCG | Heavy Hitters | https://cdn.fabtcg.com/uploads/2025/08/en_heavy_hitters_booster_display.width-1200.format-webp.webp | 239 / 262 | fab-official |
 | Flesh and Blood TCG | Hero Deck: Bravo |  | 29 / 29 | — |
 | Flesh and Blood TCG | Hero Deck: Dorinthea |  | 30 / 30 | — |
 | Flesh and Blood TCG | Hero Deck: Katsu |  | 30 / 30 | — |
 | Flesh and Blood TCG | Hero Deck: Rhinar |  | 31 / 31 | — |
-| Flesh and Blood TCG | High Seas |  | 369 / 375 | — |
-| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Bravo |  | 27 / 27 | — |
-| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Dash |  | 28 / 28 | — |
-| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Dorinthea |  | 27 / 27 | — |
-| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Kano |  | 27 / 27 | — |
-| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Rhinar |  | 26 / 26 | — |
-| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Viserai |  | 27 / 27 | — |
-| Flesh and Blood TCG | History Pack Vol.1 |  | 0 / 427 | — |
-| Flesh and Blood TCG | Mastery Pack Assassin |  | 9 / 14 | — |
-| Flesh and Blood TCG | Mastery Pack Guardian |  | 0 / 148 | — |
-| Flesh and Blood TCG | Mastery Pack Warrior |  | 165 / 165 | — |
-| Flesh and Blood TCG | Monarch |  | 100 / 313 | — |
-| Flesh and Blood TCG | Omens of the Third Age |  | 0 / 291 | — |
-| Flesh and Blood TCG | Outsiders |  | 96 / 255 | — |
-| Flesh and Blood TCG | Part the Mistveil |  | 0 / 265 | — |
-| Flesh and Blood TCG | Rosetta |  | 50 / 327 | — |
-| Flesh and Blood TCG | Round the Table: TCCxLSS |  | 110 / 110 | — |
+| Flesh and Blood TCG | High Seas | https://cdn.fabtcg.com/uploads/2025/07/en_sea_display_gravybones.width-1200.format-webp-1.webp | 369 / 375 | fab-official |
+| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Bravo | https://cdn.fabtcg.com/uploads/2025/09/hp1_blitz_dropshadow.webp ※ | 27 / 27 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Dash | https://cdn.fabtcg.com/uploads/2025/09/hp1_blitz_dropshadow.webp ※ | 28 / 28 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Dorinthea | https://cdn.fabtcg.com/uploads/2025/09/hp1_blitz_dropshadow.webp ※ | 27 / 27 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Kano | https://cdn.fabtcg.com/uploads/2025/09/hp1_blitz_dropshadow.webp ※ | 27 / 27 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Rhinar | https://cdn.fabtcg.com/uploads/2025/09/hp1_blitz_dropshadow.webp ※ | 26 / 26 | fab-official（继承父系列） |
+| Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Viserai | https://cdn.fabtcg.com/uploads/2025/09/hp1_blitz_dropshadow.webp ※ | 27 / 27 | fab-official（继承父系列） |
+| Flesh and Blood TCG | History Pack Vol.1 | https://cdn.fabtcg.com/uploads/2025/09/1hp_booster_dropshadow.webp | 0 / 427 | fab-official |
+| Flesh and Blood TCG | Mastery Pack Assassin | https://cdn.fabtcg.com/uploads/2026/08/mpa-web-logo.webp | 9 / 14 | fab-official |
+| Flesh and Blood TCG | Mastery Pack Guardian | https://cdn.fabtcg.com/uploads/2025/07/masterypack_guardian_booster_dropshadow.webp | 0 / 148 | fab-official |
+| Flesh and Blood TCG | Mastery Pack Warrior | https://cdn.fabtcg.com/uploads/2026/03/mpw-logo-scaled.webp | 165 / 165 | fab-official |
+| Flesh and Blood TCG | Monarch | https://cdn.fabtcg.com/uploads/2025/12/mon_article_cover_standard.jpg | 100 / 313 | fab-official |
+| Flesh and Blood TCG | Omens of the Third Age | https://cdn.fabtcg.com/uploads/2026/03/en_omn_display_aurora-2-1.png | 0 / 291 | fab-official |
+| Flesh and Blood TCG | Outsiders | https://cdn.fabtcg.com/uploads/2025/09/out_en_mock_booster_box.width-992.format-webp.webp | 96 / 255 | fab-official |
+| Flesh and Blood TCG | Part the Mistveil | https://cdn.fabtcg.com/uploads/2025/07/mst_booster_dropshadow.webp | 0 / 265 | fab-official |
+| Flesh and Blood TCG | Rosetta | https://cdn.fabtcg.com/uploads/2025/09/rosetta_boosters_dropshadow.webp | 50 / 327 | fab-official |
+| Flesh and Blood TCG | Round the Table: TCCxLSS | https://cdn.fabtcg.com/uploads/2025/12/TCC_mkt_release_twtcover2.jpg | 110 / 110 | fab-official |
 | Flesh and Blood TCG | Silver Age Chapter 1 |  | 173 / 173 | — |
 | Flesh and Blood TCG | Silver Age Chapter 2 |  | 0 / 169 | — |
-| Flesh and Blood TCG | Silver Age Chapter 3 |  | 173 / 175 | — |
-| Flesh and Blood TCG | Silver Age: Usurp the Shadow Throne |  | 34 / 68 | — |
-| Flesh and Blood TCG | Smash Palace |  | 32 / 32 | — |
-| Flesh and Blood TCG | Smash Palace: Chorus of Steel |  | 12 / 12 | — |
-| Flesh and Blood TCG | Super Slam |  | 0 / 301 | — |
-| Flesh and Blood TCG | Tales of Aria |  | 236 / 239 | — |
-| Flesh and Blood TCG | The Hunted |  | 297 / 299 | — |
-| Flesh and Blood TCG | Uprising |  | 97 / 243 | — |
-| Flesh and Blood TCG | Usurp the Shadow Throne |  | 82 / 287 | — |
-| Flesh and Blood TCG | Usurp the Shadow Throne Pre-release Cards |  | 4 / 5 | — |
+| Flesh and Blood TCG | Silver Age Chapter 3 | https://cdn.fabtcg.com/uploads/2025/10/en_slv_display_ch2_LO-RES.png | 173 / 175 | fab-official |
+| Flesh and Blood TCG | Silver Age: Usurp the Shadow Throne | https://cdn.fabtcg.com/uploads/2025/12/silver_age_logo.png | 34 / 68 | fab-official |
+| Flesh and Blood TCG | Smash Palace | https://cdn.fabtcg.com/uploads/2026/04/AD_Olympia_Banner_Background.webp | 32 / 32 | fab-official |
+| Flesh and Blood TCG | Smash Palace: Chorus of Steel | https://cdn.fabtcg.com/uploads/2026/07/spw_logo.png | 12 / 12 | fab-official |
+| Flesh and Blood TCG | Super Slam | https://cdn.fabtcg.com/uploads/2025/07/sup_tuffnutlyath_booster_dropshadow.webp | 0 / 301 | fab-official |
+| Flesh and Blood TCG | Tales of Aria | https://cdn.fabtcg.com/uploads/2025/09/toa_mock_booster_box__first_editi.width-992.format-webp_juJoQmE-1.webp | 236 / 239 | fab-official |
+| Flesh and Blood TCG | The Hunted | https://cdn.fabtcg.com/uploads/2025/07/hnt_booster_dropshadow.webp | 297 / 299 | fab-official |
+| Flesh and Blood TCG | Uprising | https://cdn.fabtcg.com/uploads/2025/08/upr_mock_booster_box_Fx5.width-992.format-webp.webp | 97 / 243 | fab-official |
+| Flesh and Blood TCG | Usurp the Shadow Throne | https://cdn.fabtcg.com/uploads/2026/07/usurp_the_shadow_throne_logo.png | 82 / 287 | fab-official |
+| Flesh and Blood TCG | Usurp the Shadow Throne Pre-release Cards | https://cdn.fabtcg.com/uploads/2026/07/usurp_the_shadow_throne_logo.png ※ | 4 / 5 | fab-official（继承父系列） |
 | Flesh and Blood TCG | Welcome Deck Bravo |  | 18 / 18 | — |
 | Flesh and Blood TCG | Welcome Deck: Ira |  | 12 / 12 | — |
-| Flesh and Blood TCG | Welcome to Rathe |  | 302 / 303 | — |
+| Flesh and Blood TCG | Welcome to Rathe | https://cdn.fabtcg.com/uploads/2025/09/wtr_alpha_booster_dropshadow-scaled.webp | 302 / 303 | fab-official |
 
 ### Dragon Ball Super: Masters（100 个系列，59 个有 logo）
 
@@ -2114,11 +2114,13 @@
 | ygoprodeck | 官方**系列图**（JPG） | 1035 个 set | `db.ygoprodeck.com/api/v7/cardsets.php`，先按 `setCode`↔`set_code`，再按名 |
 | TCGdex | 系列 **logo**（webp/png） | 220 个 set，其中 156 个有 logo | `api.tcgdex.net/v2/en/sets/{id}`，按 `setCode`↔`abbreviation`，再按名 |
 | Holodex | 第三方 App 的系列 logo（webp） | 存量 12 个游戏 | `crawl/crawl/holodex_sets_organized.json`，按名 |
-| ONE PIECE 官方站 | 产品 logo（webp） | 187 个产品页，21 个带 logo | `en.onepiece-cardgame.com/products/`，按产品代号 `ST-27` 之类 |
+| FAB 官方站 | 系列 logo / 产品封面（png/webp），88 条命中 | 275 个页面 | `fabtcg.com`（被 Cloudflare 挡，用 `curl_cffi` 伪装 TLS 指纹），sitemap + products/digital-assets 页 |
+| Bulbapedia 图库 | 日文系列 logo / 包装图，177 条命中 | 按代码前缀枚举 | `archives.bulbagarden.net/w/api.php` + `bulbapedia.bulbagarden.net/w/api.php`（opensearch 找条目），文件名形如 `S8b_VMAX_Climax_Logo.png` |
+| ONE PIECE 官方站 | 产品 logo（webp），7 条命中 | 187 个产品页 | `en.onepiece-cardgame.com/products/`，按产品代号 `ST-27` 之类 |
 
-**表内所有 logo URL 已逐个校验可访问**（`script_temp/verify_logo_urls.py`，HEAD 请求，1218/1218 全部返回 200）。
+**表内所有 logo URL 已逐个校验可访问**（`script_temp/verify_logo_urls.py`，HEAD 请求）。
 
-注意两点：万智牌里有 1 个系列拿到的 Scryfall 图标是通用默认符号（`default.svg`），说明该系列在 Scryfall 没有专属符号；另有 82 条是衍生子线继承父系列 logo（表中标 `※`）、15 条是人工核对指定。
+注意两点：万智牌里有 4 个系列拿到的 Scryfall 图标是通用默认符号（`default.svg`），说明该系列在 Scryfall 没有专属符号；另有 123 条是衍生子线继承父系列 logo（表中标 `※`）、35 条是人工核对指定。
 
 匹配规则上的两道保险：**代号必须在本品线内唯一**（否则 `PR` 这类被 12 个系列共用的促销码会撞车），**词元数少于 2 个不走词元匹配**（否则 `Promos-A` 会撞上 `XY Promos`）。
 
@@ -2127,27 +2129,27 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 ### 3.2 仍然没有 logo 的系列及原因
 
 - **Pokémon**：29 个未覆盖
-  - 缺的是 Trainer Kit、各类 Promo、World Championship Decks 等子线，三个源都不单独收录。
+  - 缺的是 Trainer Kit、各类 Promo、World Championship Decks、Jumbo Cards 等子线，TCGdex / Holodex / Scryfall 三类源都不单独收录。
   - 明细：BW Trainer Kit: Excadrill & Zoroark、Best of Promos、Blister Exclusives、Burger King Promos、Countdown Calendar Promos、DP Trainer Kit: Manaphy & Lucario、Deck Exclusives、EX Trainer Kit 1: Latias & Latios、EX Trainer Kit 2: Plusle & Minun、First Partner Collection 2026、First Partner Pack、HGSS Trainer Kit: Gyarados & Raichu …
-- **Pokémon Japan**：455 个未覆盖
-  - TCGdex 的日文 set **没有 logo 字段**（只有英文 set 有），实测 ja 详情接口只返回 cardCount/cards/id/name/serie；官方 `pokemon-card.com` 只在最新产品页放 logo，老系列页面（如 st05.php）里只有卡图；Holodex 不收录日文系列。
+- **Pokémon Japan**：278 个未覆盖
+  - 已有的 177 条来自 Bulbapedia 图库，按系列代码做前缀枚举命中（Bulbapedia 的 logo 文件名就是 `{代码}_{名称}_Logo.png`）。剩余的没命中，是因为 **TCGPlayer 有 153 个系列根本没给代码**（都是 1996–2009 的老扩展包与预组，如 `Pokemon VS`、`City Gym Decks`），另外 158 个有代码的里多数在 Bulbapedia 上只有卡图、没有包装图或 logo（如 `SM-P`、`XY-P` 这类促销线，前缀查询返回 0 个文件）。TCGdex 的日文 set 没有 logo 字段；官方 `pokemon-card.com` 只在最新产品页放 logo。
   - 明细：10th Movie Commemoration Set、11th Movie Commemoration Set、64 Mario Stadium Best Photo Contest、ADV Expansion Pack、ADV-P Promotional cards、Aqua Deck Kit、Arceus LV.X Deck: Grass & Fire、Arceus LV.X Deck: Lightning & Psychic、Awakening Legends、BK: Cobalion Battle Strength Deck、BK: Terrakion Battle Strength Deck、BK: Virizion Battle Strength Deck …
-- **Magic: The Gathering**：44 个未覆盖
-  - 缺的是 Judge/Arena/FNM 等各类促销线、Oversize、Guru Lands 等，Scryfall 命名与 TCGPlayer 不一致或本身没有专属符号。
-  - 明细：30th Anniversary Promos、AFR Ampersand Promos、APAC Lands、Archenemy: Duskmourn、Arena Promos、Buy-A-Box Promos、Champs Promos、Commander、Duel Decks: Anthology、European Lands、Game Day & Store Championship Promos、Gift Boxes and Promos …
+- **Magic: The Gathering**：24 个未覆盖
+  - 缺的是 TCGPlayer 独有的促销聚合线（`Oversize Cards`、`Prerelease Cards`、`Buy-A-Box Promos`、`WPN & Gateway Promos` 等），Scryfall 侧按年度拆开收录、没有与之对应的单一条目；可对应的 20 条已人工核对补上（见 3.3）。
+  - 明细：30th Anniversary Promos、AFR Ampersand Promos、APAC Lands、Archenemy: Duskmourn、Buy-A-Box Promos、Commander、Duel Decks: Anthology、Gift Boxes and Promos、International Edition、JingHe Age Token Cards、Junior Series Promos、Launch Party & Release Event Promos …
 - **Yu-Gi-Oh!**：99 个未覆盖
-  - 缺的是铁盒、收藏盒、活动场次卡等子线。
+  - 缺的是铁盒、收藏盒、活动场次卡等子线，ygoprodeck 对这批 set 只给名录不给图（1035 个 set 里有 125 个没有 `set_image` 字段，且用 `set_code` 拼 URL 也是 404）。
   - 明细：2-Player Starter Set、2002 Collectors Tin、2003 Collectors Tin、2004 Collectors Tin、2011 Duelist Pack Tin、25th Anniversary Tin: Dueling Mirrors、Advent Calendar 2011 (Adventskalender)、Advent Calendar 2014 (Adventskalender ZEXAL-Edition)、Collector's Boxes、Crossed Souls: Advanced Edition、Dawn of Destiny Xbox、Destiny Board Traveler Promo …
 - **One Piece Card Game**：43 个未覆盖
-  - 缺的绝大多数是 `ST-01`…`ST-20` 早期预组：官方站对应产品页（`decks/st05.php`）只放了卡图，没有预组 logo 图。
+  - 缺的绝大多数是 `ST-01`…`ST-20` 早期预组：官方站对应产品页（`decks/st05.php`、`st15-20.php`）只放了卡图，没有预组 logo 或包装图；`optcgapi.com` 只收录 22 个主系列。
   - 明细：Awakening of the New Era: 1st Anniversary Tournament Cards、Carrying On His Will: 3rd Anniversary Tournament Cards、Emperors in the New World: 2nd Anniversary Tournament Cards、Extra Booster: One Piece Heroines Edition Vol. 2、Learn Together Deck Set、One Piece Demo Deck Cards、One Piece Promotion Cards、Revision Pack Cards、ST-01: Starter Deck 1 Straw Hat Crew、ST-01: Starter Deck 1 Straw Hat Crew (Super Pre-Release Edition)、ST-02: Starter Deck 2 Worst Generation、ST-02: Starter Deck 2 Worst Generation (Super Pre-Release Edition) …
 - **Disney Lorcana**：5 个未覆盖
-  - 缺的是铁盒、收藏盒、活动场次卡等子线。
+  - 缺的是铁盒、收藏盒、活动场次卡等子线，ygoprodeck 对这批 set 只给名录不给图（1035 个 set 里有 125 个没有 `set_image` 字段，且用 `set_code` 拼 URL 也是 404）。
   - 明细：Disney100 Promos、Hyperia City、Illumineer's Quest: Deep Trouble、Illumineer's Quest: Palace Heist、Illumineer's Quest: The Great Hunny Rescue
-- **Flesh and Blood TCG**：105 个未覆盖
-  - `fabtcg.com` 被 Cloudflare 拦截（403）；官方 CardVault（`api.cardvault.fabtcg.com/carddb/api/v1/`）只有卡牌数据、没有系列图；`fabdb.net` / `api.fabdb.net` 已无法解析。
-  - 明细：1st Strike、Arcane Rising、Armory Deck Origins: Hala、Armory Deck: Arakni、Armory Deck: Aurora、Armory Deck: Azalea、Armory Deck: Boltyn、Armory Deck: Dash、Armory Deck: Dr. Mortimer、Armory Deck: Gravy Bones、Armory Deck: Ira、Armory Deck: Jarl Vetreidi …
+- **Flesh and Blood TCG**：17 个未覆盖
+  - 已通过 `curl_cffi` 绕过 Cloudflare 抓到官方站 275 个页面的系列 logo 与封面图。剩余的是官方站**没有独立素材**的：单副 Blitz Deck（官网只按合集页出售，如 `Blitz Deck: Monarch - Boltyn` 只存在于 `monarch-blitz-decks` 合集里，已按父合集图继承）、`GEM Pack`、`Hero Deck`、`Welcome Deck` / `Flesh and Blood: Promo Cards`。
+  - 明细：Armory Deck: Jarl Vetreidi、Compendium of Rathe - Antiquity Pack、Flesh and Blood: Promo Cards、GEM Pack 1、GEM Pack 2、GEM Pack 3、GEM Pack 4、GEM Pack 6、Gem Pack 5、Hero Deck: Bravo、Hero Deck: Dorinthea、Hero Deck: Katsu …
 - **Dragon Ball Super: Masters**：41 个未覆盖
-  - 缺的主要是 `Expansion Deck Box Set XX`、`Collector's Selection Vol.X` 这类非补充包产品，Holodex 不单独收录。
+  - 缺的主要是 `Expansion Deck Box Set XX`、`Collector's Selection Vol.X` 这类非补充包产品，Holodex 不单独收录；官方站 `dbs-cardgame.com` 的产品页只展示当期产品，没有全量归档。
   - 明细：5th Anniversary Set、Collector's Selection Vol. 1、Collector's Selection Vol. 2、Collector's Selection Vol. 3、Expansion Deck Box Set 01: Mighty Heroes、Expansion Deck Box Set 02: Dark Demon's Villains、Expansion Deck Box Set 03: Ultimate Box、Expansion Deck Box Set 04: Unity of Saiyans、Expansion Deck Box Set 05: Unity of Destruction、Expansion Deck Box Set 07: Magnificent Collection - Fusion Hero、Expansion Deck Box Set 08: Magnificent Collection - Forsaken Warrior、Expansion Deck Box Set 09: Saiyan Surge …
 
