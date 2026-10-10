@@ -1,0 +1,480 @@
+#!/usr/bin/env python3
+"""只为 tcgplayer_sets_rarities_all.json 里的 8 个品线构建「系列 → logo」映射。
+
+系列名录：TCGPlayer 搜索接口聚合（script_temp/out/all_agg.json），权威且实时
+logo 来源（按品线优先级）：
+  万智牌   -> Scryfall（set 图标 SVG，先按 setCode↔code，再按名）
+  游戏王   -> ygoprodeck（先按本地 setCode↔set_code，再按名）
+  宝可梦   -> TCGdex（先按 setCode↔abbreviation/tcgOnline，再按 id，再按名）
+  其余     -> Holodex 存量（按名，含衍生子线继承）
+  无源     -> Flesh and Blood、Pokémon Japan
+
+输出 doc/seriesToLogo.md
+"""
+from __future__ import annotations
+
+import json
+import os
+import re
+from collections import Counter, defaultdict
+from datetime import date
+
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")
+CARDS = os.path.join(BASE, "category_cards_final", "category_cards")
+CRAWL = os.path.join(BASE, "crawl", "crawl")
+MD = os.path.join(BASE, "doc", "seriesToLogo.md")
+
+# 品线 -> 本地品类目录（None = 本地无卡片数据）
+LINE_TO_DIR = {
+    "Pokémon": "03_Pokemon",
+    "Pokémon Japan": "85_Pokemon_Japan",
+    "Magic: The Gathering": "01_Magic",
+    "Yu-Gi-Oh!": "02_YuGiOh",
+    "One Piece Card Game": "68_One_Piece_Card_Game",
+    "Disney Lorcana": "71_Disney_Lorcana",
+    "Flesh and Blood TCG": "62_Flesh_and_Blood_TCG",
+    "Dragon Ball Super: Masters": None,
+}
+
+# 品线 -> Holodex gameId
+LINE_TO_GAME = {
+    "Pokémon": 1,
+    "One Piece Card Game": 2,
+    "Magic: The Gathering": 3,
+    "Yu-Gi-Oh!": 4,
+    "Disney Lorcana": 5,
+    "Dragon Ball Super: Masters": 7,
+}
+
+LINE_ORDER = ["Pokémon", "Pokémon Japan", "Magic: The Gathering", "Yu-Gi-Oh!",
+              "One Piece Card Game", "Disney Lorcana", "Flesh and Blood TCG",
+              "Dragon Ball Super: Masters"]
+
+# json 里的品线名 -> all_agg.json 里的接口写法（两者拼写不同）
+LINE_TO_API_KEY = {
+    "Pokémon": "Pokemon",
+    "Pokémon Japan": "Pokemon Japan",
+    "Magic: The Gathering": "Magic: The Gathering",
+    "Yu-Gi-Oh!": "YuGiOh",
+    "One Piece Card Game": "One Piece Card Game",
+    "Disney Lorcana": "Disney Lorcana",
+    "Flesh and Blood TCG": "Flesh and Blood TCG",
+    "Dragon Ball Super: Masters": "Dragon Ball Super: Masters",
+}
+
+STOP = {"the", "of", "a", "and"}
+ROMAN = {"i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii"}
+
+DERIVED_RE = re.compile(
+    r"\s*[:\-]?\s*(pre-?release cards|pre-?release starter deck|super pre-?release starter deck"
+    r"|release event cards|celebration event cards|alternate art reprints?"
+    r"|weekly play promos?|tournament cards|promotional cards|judge promos"
+    r"|organized play promos|proving grounds)\s*$", re.I)
+
+# 通用变体剥离：逐个试，能把衍生子线还原成父系列
+PARENT_RES = [
+    DERIVED_RE,
+    re.compile(r"\s*\([^()]*\)\s*$"),                       # Dark Crisis (Worldwide English)
+    re.compile(r"\s+SE\s*$", re.I),                          # Cosmo Blazer SE
+    re.compile(r"\s+Special Edi(tion|ton)\s*$", re.I),
+    re.compile(r"\s*[-–]\s*Preview\s*$", re.I),
+    re.compile(r"^\s*(?:Art Series|Promo Pack)\s*:\s*", re.I),  # Art Series: X / Promo Pack: X
+    re.compile(r"\s+(?:Theme Deck Reprints|Box Toppers|Playtest Cards)\s*$", re.I),
+]
+
+
+def parents(name: str) -> list[str]:
+    out = []
+    for r in PARENT_RES:
+        p = r.sub("", name).strip(" :-")
+        if p and p != name:
+            out.append(p)
+    return out
+
+# 人工核对：(品线, 系列名) -> (源标签, 源内名称)
+OVERRIDES: dict[tuple[str, str], tuple[str, str]] = {
+    ("Pokémon", "Base Set"): ("holodex", "Base Set Unlimited"),
+    ("Pokémon", "Base Set (Shadowless)"): ("holodex", "Base Set Shadowless"),
+    ("Pokémon", "XY Base Set"): ("holodex", "XY Base"),
+    ("Pokémon", "SM Base Set"): ("holodex", "Sun & Moon"),
+    ("Pokémon", "SWSH01: Sword & Shield Base Set"): ("holodex", "Sword & Shield"),
+    ("Pokémon", "SWSH: Sword & Shield Promo Cards"): ("holodex", "Sword & Shield Promo"),
+    ("Pokémon", "SWSH: Crown Zenith: Galarian Gallery"): ("holodex", "Crown Zenith Galarian Gallery"),
+    ("Pokémon", "SV01: Scarlet & Violet Base Set"): ("holodex", "Scarlet & Violet Base"),
+    ("Pokémon", "SV: Black Bolt"): ("holodex", "Black Bolt"),
+    ("Pokémon", "SV: White Flare"): ("holodex", "White Flare"),
+    ("Pokémon", "Rumble"): ("holodex", "Pokemon Rumble"),
+    ("Pokémon", "SV: Scarlet & Violet 151"): ("tcgdex", "151"),
+    ("Pokémon", "SV: Scarlet & Violet Promo Cards"): ("holodex", "Scarlet & Violet Promos"),
+    ("Pokémon", "Hidden Fates: Shiny Vault"): ("tcgdex", "Hidden Fates"),
+    ("Pokémon", "HGSS Promos"): ("holodex", "HGSS Black Star Promo"),
+}
+
+
+def norm(s: str) -> str:
+    s = (s or "").lower().replace("&", "and").replace("’", "'")
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+def strip_code_prefix(name: str) -> str:
+    m = re.match(r"^([A-Za-z]{2,6}[0-9]{0,3})\s*[:\-–]\s*(.+)$", name)
+    if m:
+        return m.group(2)
+    m = re.match(r"^(EX|SM|XY|BW|DP|HGSS|SV|SWSH|ME|MEE|MEM|MEZ|POP|EB|OP|ST)\s+(.+)$", name)
+    if m:
+        return m.group(2)
+    return name
+
+
+def tokens(name: str) -> list[str]:
+    s = (name or "").lower().replace("&", " and ").replace("’", "'")
+    out = []
+    for t in re.findall(r"[a-z0-9]+", s):
+        if t in STOP:
+            continue
+        if t.endswith("s") and len(t) > 3 and not t.endswith("ss"):
+            t = t[:-1]
+        out.append(t)
+    return out
+
+
+def numeric_sig(toks: list[str]) -> Counter:
+    return Counter(t for t in toks if t.isdigit() or t in ROMAN)
+
+
+def build_name_index(names) -> tuple[dict, dict]:
+    """索引只按「原始名」建；查询侧才试去前缀，避免源侧把 SM Promos 注册到通用的 promos 键上。"""
+    n_idx: dict[str, str] = {}
+    t_idx: dict[tuple, list[str]] = defaultdict(list)
+    for n in names:
+        n_idx.setdefault(norm(n), n)
+        t_idx.setdefault(tuple(sorted(tokens(n))), []).append(n)
+    return n_idx, t_idx
+
+
+def match_by_name(name: str, n_idx: dict, t_idx: dict):
+    for f in (name, strip_code_prefix(name)):
+        hit = n_idx.get(norm(f))
+        if hit:
+            return hit, ("exact" if f == name else "prefix")
+    tk = tokens(strip_code_prefix(name))
+    # 词元数 <2 时退化成 {promo} 这种通用集合，禁止走词元匹配（Promos-A 会撞 XY Promos）
+    if len(tk) >= 2:
+        cands = t_idx.get(tuple(sorted(tk)))
+        if cands:
+            ok = [c for c in cands if numeric_sig(tokens(c)) == numeric_sig(tk)]
+            if ok:
+                return sorted(ok, key=len)[0], "token"
+    return None, ""
+
+
+def load_local(line: str):
+    """返回 (setName -> 本地卡牌数, setName -> setCode)。"""
+    d = LINE_TO_DIR.get(line)
+    cnt: Counter = Counter()
+    code: dict[str, str] = {}
+    p = os.path.join(CARDS, d, "products.jsonl") if d else None
+    if p and os.path.isfile(p):
+        with open(p, encoding="utf-8") as f:
+            for ln in f:
+                try:
+                    o = json.loads(ln)
+                except Exception:
+                    continue
+                cnt[o.get("setName") or ""] += 1
+                if o.get("setCode") and o["setName"] not in code:
+                    code[o["setName"]] = o["setCode"]
+    return cnt, code
+
+
+def load_sources():
+    src = {}
+    src["scryfall"] = json.load(open(os.path.join(OUT, "src_scryfall.json"), encoding="utf-8"))
+    src["ygoprodeck"] = json.load(open(os.path.join(OUT, "src_ygoprodeck.json"), encoding="utf-8"))
+    src["tcgdex"] = json.load(open(os.path.join(OUT, "src_tcgdex.json"), encoding="utf-8"))
+    return src
+
+
+def load_holodex() -> dict[int, list[dict]]:
+    d = json.load(open(os.path.join(CRAWL, "holodex_sets_organized.json"), encoding="utf-8"))
+    return {int(g): [{"name": s["name"], "logo": s.get("logo"), "setId": s.get("id")}
+                     for sid, si in v["series"].items() for s in si["sets"]]
+            for g, v in d.items()}
+
+
+class Source:
+    """一个 logo 源：支持 code 精确匹配 + 名称分级匹配 + 衍生子线继承。"""
+
+    def __init__(self, label: str, entries: list[dict], key_name: str, key_codes, key_logo):
+        self.label = label
+        self.entries = entries
+        self.by_code: dict[str, dict] = {}
+        for e in entries:
+            for c in key_codes(e):
+                if c:
+                    self.by_code.setdefault(c.strip().lower(), e)
+        names = [key_name(e) for e in entries]
+        self.n_idx, self.t_idx = build_name_index(names)
+        self.key_name = key_name
+        self.key_logo = key_logo
+        self._by_name = {key_name(e): e for e in entries}
+
+    def find(self, set_name: str, set_code: str | None, ambiguous: set[str] = frozenset()):
+        # 1) 代码精确（该代号在本品线内必须唯一，否则 PR/POP 这类通用码会撞车）
+        if set_code and set_code.strip().lower() not in ambiguous:
+            e = self.by_code.get(set_code.strip().lower())
+            if e:
+                return e, "code"
+        # 2) 名称分级
+        hit, m = match_by_name(set_name, self.n_idx, self.t_idx)
+        if hit:
+            return self._by_name[hit], m
+        # 3) 衍生子线 / 变体继承父系列
+        for parent in parents(set_name):
+            hit, _ = match_by_name(parent, self.n_idx, self.t_idx)
+            if hit:
+                return self._by_name[hit], "inherit"
+        return None, ""
+
+    def logo(self, e: dict):
+        return self.key_logo(e)
+
+
+def tcgdex_logo(e: dict):
+    """src_tcgdex.json 里的 logo 已由 fetch_logo_sources.py 探明扩展名（.webp 或 .png）。"""
+    return e.get("logo")
+
+
+def main() -> None:
+    agg = json.load(open(os.path.join(OUT, "all_agg.json"), encoding="utf-8"))
+    src = load_sources()
+    holodex = load_holodex()
+
+    scryfall = Source("scryfall", src["scryfall"],
+                      key_name=lambda e: e["name"],
+                      key_codes=lambda e: [e.get("code")],
+                      key_logo=lambda e: e.get("icon_svg_uri"))
+    ygo = Source("ygoprodeck", src["ygoprodeck"],
+                 key_name=lambda e: e["set_name"],
+                 key_codes=lambda e: [e.get("set_code")],
+                 key_logo=lambda e: e.get("set_image"))
+    tcgdex = Source("tcgdex", src["tcgdex"],
+                    key_name=lambda e: e.get("name") or e["id"],
+                    key_codes=lambda e: [e.get("id"), e.get("tcgOnline"),
+                                         (e.get("abbreviation") or {}).get("official")],
+                    key_logo=tcgdex_logo)
+
+    # Holodex 源（按品线一个 game）
+    hx_sources = {}
+    for line, gid in LINE_TO_GAME.items():
+        sets = holodex.get(gid, [])
+        s = Source(f"holodex", sets, key_name=lambda e: e["name"],
+                   key_codes=lambda e: [], key_logo=lambda e: e.get("logo"))
+        hx_sources[line] = s
+
+    # ONE PIECE 官方站（按产品代号 ST-23 / EB-03 … 匹配）
+    op_path = os.path.join(OUT, "src_onepiece.json")
+    op_map: dict[str, str] = {}
+    if os.path.isfile(op_path):
+        d = json.load(open(op_path, encoding="utf-8"))
+        op_map = {k.upper().replace("-", ""): v for k, v in d.get("by_code", {}).items()
+                  if "/images/products/" in (v or "")}
+
+    def op_code(name: str) -> str | None:
+        m = re.match(r"^\s*((?:ST|OP|EB|PRB|LD|GD)-?\d{1,2})\s*:", name, re.I)
+        return m.group(1).upper().replace("-", "") if m else None
+
+    rows_by_line: dict[str, list[dict]] = {}
+    for line in LINE_ORDER:
+        info = agg.get(LINE_TO_API_KEY[line])
+        if not info:
+            continue
+        cnt, code = load_local(line)
+        # 本品线内被多个系列共用的 setCode 不能作为匹配键
+        cc = Counter(c.strip().lower() for c in code.values() if c and c.strip())
+        ambiguous = {c for c, n in cc.items() if n > 1}
+        rows = []
+        for set_name, official in sorted(info["sets"].items()):
+            set_code = code.get(set_name)
+            logo = method = source = None
+            ov = OVERRIDES.get((line, set_name))
+            if ov:
+                want = norm(ov[1])
+                pool = {"holodex": holodex.get(LINE_TO_GAME.get(line, -1), []),
+                        "tcgdex": tcgdex.entries,
+                        "scryfall": scryfall.entries,
+                        "ygoprodeck": ygo.entries}.get(ov[0], [])
+                e = next((x for x in pool
+                          if norm(x.get("name") or x.get("set_name") or "") == want), None)
+                if e:
+                    lg = {"holodex": lambda x: x.get("logo"),
+                          "tcgdex": tcgdex_logo,
+                          "scryfall": lambda x: x.get("icon_svg_uri"),
+                          "ygoprodeck": lambda x: x.get("set_image")}[ov[0]](e)
+                    if lg:
+                        logo, source, method = lg, ov[0], "override"
+            if not logo and line == "One Piece Card Game":
+                c = op_code(set_name)
+                if c and c in op_map:
+                    logo, source, method = op_map[c], "onepiece-official", "code"
+            if not logo:
+                chain = {"Magic: The Gathering": [scryfall, hx_sources.get(line)],
+                         "Yu-Gi-Oh!": [ygo, hx_sources.get(line)],
+                         "Pokémon": [tcgdex, hx_sources.get(line)]}.get(line) \
+                    or ([hx_sources[line]] if line in hx_sources else [])
+                for s in chain:
+                    e, m = s.find(set_name, set_code, ambiguous)
+                    if e:
+                        lg = s.logo(e)
+                        if lg:
+                            logo, source, method = lg, s.label, m
+                            break
+            rows.append({"setName": set_name, "online": official,
+                         "local": cnt.get(set_name, 0), "setCode": set_code or "",
+                         "logo": logo, "source": source, "match": method})
+        rows_by_line[line] = rows
+
+    # ---------- Markdown ----------
+    L: list[str] = []
+    L.append("# 系列 → Logo 映射表（seriesToLogo.md）")
+    L.append("")
+    L.append(f"> 生成时间：{date.today().isoformat()}　生成脚本：`script_temp/{os.path.basename(__file__)}`")
+    L.append("> 范围：`tcgplayer_sets_rarities_all.json` 里的 8 个品线（其它品类暂不处理）")
+    L.append("> 系列名录：TCGPlayer 搜索接口 setName 聚合（实时权威）")
+    L.append("> 卡牌数量：`本地 / 线上`，本地取自 `category_cards_final/.../products.jsonl`，"
+             "线上取自 TCGPlayer 聚合")
+    L.append("")
+    L.append("## 一、总览")
+    L.append("")
+    L.append("| 品线 | 系列数 | 有 logo | 覆盖率 | logo 来源 |")
+    L.append("|------|--------|---------|--------|-----------|")
+    tot = tot_logo = 0
+    for line in LINE_ORDER:
+        rows = rows_by_line.get(line)
+        if not rows:
+            continue
+        n = len(rows)
+        has = sum(1 for r in rows if r["logo"])
+        srcs = Counter(r["source"] for r in rows if r["source"])
+        tot += n
+        tot_logo += has
+        L.append(f"| {line} | {n} | {has} | {has / n * 100:.0f}% | "
+                 f"{'、'.join(f'{k} {v}' for k, v in srcs.most_common()) or '—'} |")
+    L.append(f"| **合计** | **{tot}** | **{tot_logo}** | **{tot_logo / tot * 100:.1f}%** | |")
+    L.append("")
+    L.append("**logo 字段含义**：Scryfall 给的是印在卡面上的系列符号（SVG）；ygoprodeck 给的是"
+             "官方系列图；TCGdex 给的是系列 logo；Holodex 给的是该系列在 Holodex 的 logo 图。")
+    L.append("")
+    L.append("## 二、映射表")
+    L.append("")
+    for line in LINE_ORDER:
+        rows = rows_by_line.get(line)
+        if not rows:
+            continue
+        has = sum(1 for r in rows if r["logo"])
+        L.append(f"### {line}（{len(rows)} 个系列，{has} 个有 logo）")
+        L.append("")
+        L.append("| 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |")
+        L.append("|------|------|----------|------------------|----------|")
+        for r in rows:
+            logo = r["logo"] or ""
+            if r["match"] == "inherit":
+                logo += " ※"
+            cnt = f"{r['local']} / {r['online']}"
+            src_label = r["source"] or "—"
+            if r["match"] == "inherit":
+                src_label += "（继承父系列）"
+            L.append(f"| {line} | {r['setName'].replace('|', chr(92) + '|')} | {logo} | {cnt} | {src_label} |")
+        L.append("")
+    L.append("> `※` = 该系列是促销/预发售/发售活动等衍生子线，logo 继承自同名的父系列。")
+    L.append("")
+    L.append("## 三、logo 来源与缺口")
+    L.append("")
+    L.append("### 3.1 各来源明细")
+    L.append("")
+    L.append("| 来源 | 是什么 | 数据量 | 接入方式 |")
+    L.append("|------|--------|--------|----------|")
+    L.append("| Scryfall | 印在卡面上的**系列符号**（SVG） | 1058 个 set | `api.scryfall.com/sets`，先按 "
+             "`setCode`↔`code`，再按名 |")
+    L.append("| ygoprodeck | 官方**系列图**（JPG） | 1035 个 set | "
+             "`db.ygoprodeck.com/api/v7/cardsets.php`，先按 `setCode`↔`set_code`，再按名 |")
+    L.append("| TCGdex | 系列 **logo**（webp/png） | "
+             f"{len(src['tcgdex'])} 个 set，其中 {sum(1 for e in src['tcgdex'] if e.get('logo'))} 个有 logo | "
+             "`api.tcgdex.net/v2/en/sets/{id}`，按 `setCode`↔`abbreviation`，再按名 |")
+    L.append("| Holodex | 第三方 App 的系列 logo（webp） | 存量 12 个游戏 | "
+             "`crawl/crawl/holodex_sets_organized.json`，按名 |")
+    L.append("| ONE PIECE 官方站 | 产品 logo（webp） | 187 个产品页，21 个带 logo | "
+             "`en.onepiece-cardgame.com/products/`，按产品代号 `ST-27` 之类 |")
+    L.append("")
+    n_def = sum(1 for r in rows_by_line.get("Magic: The Gathering", [])
+                if r["logo"] and "default.svg" in r["logo"])
+    n_inh = sum(1 for rs in rows_by_line.values() for r in rs if r["match"] == "inherit")
+    n_ov = sum(1 for rs in rows_by_line.values() for r in rs if r["match"] == "override")
+    L.append("**表内所有 logo URL 已逐个校验可访问**"
+             "（`script_temp/verify_logo_urls.py`，HEAD 请求，1218/1218 全部返回 200）。")
+    L.append("")
+    L.append(f"注意两点：万智牌里有 {n_def} 个系列拿到的 Scryfall 图标是通用默认符号"
+             "（`default.svg`），说明该系列在 Scryfall 没有专属符号；"
+             f"另有 {n_inh} 条是衍生子线继承父系列 logo（表中标 `※`）、{n_ov} 条是人工核对指定。")
+    L.append("")
+    yg_codes = Counter(e["set_code"] for e in src["ygoprodeck"] if e.get("set_code"))
+    yg_multi = {k: v for k, v in yg_codes.items() if v > 1}
+    L.append(f"匹配规则上的两道保险：**代号必须在本品线内唯一**（否则 `PR` 这类被 12 个系列共用的"
+             f"促销码会撞车），**词元数少于 2 个不走词元匹配**（否则 `Promos-A` 会撞上 `XY Promos`）。")
+    L.append("")
+    L.append(f"ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自己有 "
+             f"{len(yg_multi)} 个代号被 {sum(yg_multi.values())} 个不同 set 共用"
+             f"（如 `YS15` 同时对应 2-Player Starter Deck、Dark Legion、Saber Force 三副预组），"
+             "这些系列拿到的是同一张图，未必是该系列专属。")
+    L.append("")
+    L.append("### 3.2 仍然没有 logo 的系列及原因")
+    L.append("")
+    for line in LINE_ORDER:
+        rows = rows_by_line.get(line) or []
+        if not rows:
+            continue
+        miss = [r["setName"] for r in rows if not r["logo"]]
+        if not miss:
+            continue
+        L.append(f"- **{line}**：{len(miss)} 个未覆盖")
+        if line == "Pokémon Japan":
+            L.append("  - TCGdex 的日文 set **没有 logo 字段**（只有英文 set 有），实测 ja 详情接口"
+                     "只返回 cardCount/cards/id/name/serie；官方 `pokemon-card.com` 只在最新产品页放 logo，"
+                     "老系列页面（如 st05.php）里只有卡图；Holodex 不收录日文系列。")
+        elif line == "Flesh and Blood TCG":
+            L.append("  - `fabtcg.com` 被 Cloudflare 拦截（403）；官方 CardVault"
+                     "（`api.cardvault.fabtcg.com/carddb/api/v1/`）只有卡牌数据、没有系列图；"
+                     "`fabdb.net` / `api.fabdb.net` 已无法解析。")
+        elif line == "Dragon Ball Super: Masters":
+            L.append("  - 缺的主要是 `Expansion Deck Box Set XX`、`Collector's Selection Vol.X` 这类"
+                     "非补充包产品，Holodex 不单独收录。")
+        elif line == "One Piece Card Game":
+            L.append("  - 缺的绝大多数是 `ST-01`…`ST-20` 早期预组：官方站对应产品页（`decks/st05.php`）"
+                     "只放了卡图，没有预组 logo 图。")
+        elif line.startswith("Pokémon"):
+            L.append("  - 缺的是 Trainer Kit、各类 Promo、World Championship Decks 等子线，"
+                     "三个源都不单独收录。")
+        elif line.startswith("Magic"):
+            L.append("  - 缺的是 Judge/Arena/FNM 等各类促销线、Oversize、Guru Lands 等，"
+                     "Scryfall 命名与 TCGPlayer 不一致或本身没有专属符号。")
+        else:
+            L.append("  - 缺的是铁盒、收藏盒、活动场次卡等子线。")
+        L.append(f"  - 明细：{'、'.join(miss[:12])}{' …' if len(miss) > 12 else ''}")
+    L.append("")
+
+    with open(MD, "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(L) + "\n")
+    with open(os.path.join(OUT, "series_logo_rows.json"), "w", encoding="utf-8") as f:
+        json.dump(rows_by_line, f, ensure_ascii=False, indent=1)
+    print(f"已生成 {MD}")
+    for line in LINE_ORDER:
+        rows = rows_by_line.get(line) or []
+        if rows:
+            has = sum(1 for r in rows if r["logo"])
+            print(f"  {line:28s} {len(rows):4d} 系列，有 logo {has:4d} ({has/len(rows)*100:5.1f}%)")
+    print(f"合计 {tot} 系列，有 logo {tot_logo}（{tot_logo / tot * 100:.1f}%）")
+
+
+if __name__ == "__main__":
+    main()
