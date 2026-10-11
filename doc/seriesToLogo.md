@@ -10,14 +10,14 @@
 | 品线 | 系列数 | 有 logo | 覆盖率 | logo 来源 |
 |------|--------|---------|--------|-----------|
 | Pokémon | 216 | 197 | 91% | tcgdex 132、holodex 55、bulbapedia 5、pokellector 3、pokemontcg.io 2 |
-| Pokémon Japan | 455 | 224 | 49% | bulbapedia 177、bulbapedia-article 30、bulbapedia-merch 17 |
+| Pokémon Japan | 455 | 340 | 75% | bulbapedia 177、bulbapedia-article 105、bulbapedia-list 31、bulbapedia-merch 27 |
 | Magic: The Gathering | 445 | 431 | 97% | scryfall 421、holodex 10 |
-| Yu-Gi-Oh! | 613 | 570 | 93% | ygoprodeck 512、yugipedia 56、holodex 2 |
+| Yu-Gi-Oh! | 613 | 595 | 97% | ygoprodeck 512、yugipedia 81、holodex 2 |
 | One Piece Card Game | 85 | 82 | 96% | onepiece-official 44、holodex 35、inherit 3 |
 | Disney Lorcana | 20 | 15 | 75% | holodex 15 |
 | Flesh and Blood TCG | 105 | 104 | 99% | fab-official 104 |
 | Dragon Ball Super: Masters | 100 | 96 | 96% | holodex 62、dbs-cardgame.com 30、tcgplayer-cdn 4 |
-| **合计** | **2039** | **1719** | **84.3%** | |
+| **合计** | **2039** | **1860** | **91.2%** | |
 
 **logo 字段含义**：Scryfall 是印在卡面上的系列符号（SVG）；ygoprodeck 是官方系列图；TCGdex / Holodex / FAB 官方站 / ONE PIECE 官方站是各自来源的系列 logo 或产品封面；Bulbapedia 是日文系列的 logo，没有 logo 素材时退化为包装图。
 
@@ -244,26 +244,26 @@
 | Pokémon | XY Trainer Kit: Sylveon & Noivern | https://archives.bulbagarden.net/media/upload/9/92/XYTrainerKit.jpg | 0 / 61 | bulbapedia |
 | Pokémon | e-Reader Sample Cards |  | 1 / 1 | — |
 
-### Pokémon Japan（455 个系列，224 个有 logo）
+### Pokémon Japan（455 个系列，340 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
 | Pokémon Japan | 10th Movie Commemoration Set |  | 11 / 11 | — |
 | Pokémon Japan | 11th Movie Commemoration Set |  | 9 / 9 | — |
 | Pokémon Japan | 64 Mario Stadium Best Photo Contest |  | 5 / 5 | — |
-| Pokémon Japan | ADV Expansion Pack | https://archives.bulbagarden.net/media/upload/f/f1/ADV1_Expansion_Pack_pack.jpg | 55 / 55 | bulbapedia-article |
+| Pokémon Japan | ADV Expansion Pack |  | 55 / 55 | — |
 | Pokémon Japan | ADV-P Promotional cards |  | 63 / 63 | — |
-| Pokémon Japan | Aqua Deck Kit |  | 33 / 33 | — |
+| Pokémon Japan | Aqua Deck Kit | https://archives.bulbagarden.net/media/upload/c/c6/ADV_EX1_Aqua_Deck_Kit.jpg | 33 / 33 | bulbapedia-article |
 | Pokémon Japan | Arceus LV.X Deck: Grass & Fire |  | 0 / 17 | — |
 | Pokémon Japan | Arceus LV.X Deck: Lightning & Psychic |  | 0 / 17 | — |
-| Pokémon Japan | Awakening Legends |  | 57 / 57 | — |
-| Pokémon Japan | BK: Cobalion Battle Strength Deck |  | 16 / 16 | — |
-| Pokémon Japan | BK: Terrakion Battle Strength Deck |  | 17 / 17 | — |
-| Pokémon Japan | BK: Virizion Battle Strength Deck |  | 17 / 17 | — |
-| Pokémon Japan | BKB: Black Kyurem-EX Battle Strength Deck |  | 18 / 18 | — |
-| Pokémon Japan | BKR: Reshiram-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/4/4d/BattleStrengthDeckReshiramEX.jpg | 18 / 18 | bulbapedia-article |
-| Pokémon Japan | BKW: White Kyurem-EX Battle Strength Deck |  | 18 / 18 | — |
-| Pokémon Japan | BKZ: Zekrom-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/a/a6/BattleStrengthDeckZekromEX.jpg | 18 / 18 | bulbapedia-article |
+| Pokémon Japan | Awakening Legends | https://archives.bulbagarden.net/media/upload/5/59/Neo3_Logo.png | 57 / 57 | bulbapedia-list |
+| Pokémon Japan | BK: Cobalion Battle Strength Deck | https://archives.bulbagarden.net/media/upload/8/89/Battle_Strength_Decks.jpg | 16 / 16 | bulbapedia-article |
+| Pokémon Japan | BK: Terrakion Battle Strength Deck | https://archives.bulbagarden.net/media/upload/8/89/Battle_Strength_Decks.jpg | 17 / 17 | bulbapedia-article |
+| Pokémon Japan | BK: Virizion Battle Strength Deck | https://archives.bulbagarden.net/media/upload/8/89/Battle_Strength_Decks.jpg | 17 / 17 | bulbapedia-article |
+| Pokémon Japan | BKB: Black Kyurem-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/0/03/BlackKyuremEXBattleStrengthDeck.jpg | 18 / 18 | bulbapedia-article |
+| Pokémon Japan | BKR: Reshiram-EX Battle Strength Deck |  | 18 / 18 | — |
+| Pokémon Japan | BKW: White Kyurem-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/9/9e/WhiteKyuremEXBattleStrengthDeck.jpg | 18 / 18 | bulbapedia-article |
+| Pokémon Japan | BKZ: Zekrom-EX Battle Strength Deck |  | 18 / 18 | — |
 | Pokémon Japan | BREAK Starter Pack | https://archives.bulbagarden.net/media/upload/8/8b/20th_Anniversary_logo.png | 77 / 77 | bulbapedia |
 | Pokémon Japan | BW-P Promotional cards |  | 250 / 250 | — |
 | Pokémon Japan | BW1: Black Collection | https://archives.bulbagarden.net/media/upload/1/1e/BW1_Black_Collection_Box.jpg | 56 / 56 | bulbapedia |
@@ -281,18 +281,18 @@
 | Pokémon Japan | BW8: Thunder Knuckle | https://archives.bulbagarden.net/media/upload/b/b2/BW8_Thunder_Knuckle_Box.jpg | 58 / 58 | bulbapedia |
 | Pokémon Japan | BW9: Megalo Cannon | https://archives.bulbagarden.net/media/upload/3/3d/BW9_Megalo_Cannon_Box.jpg | 86 / 86 | bulbapedia |
 | Pokémon Japan | BW: Extra Regulation Box | https://archives.bulbagarden.net/media/upload/5/57/Extra_Regulation_Box.jpg | 48 / 48 | bulbapedia |
-| Pokémon Japan | Base Expansion Pack |  | 131 / 131 | — |
+| Pokémon Japan | Base Expansion Pack | https://archives.bulbagarden.net/media/upload/a/a5/E1_Base_Expansion_Pack_pack.jpg | 131 / 131 | bulbapedia-article |
 | Pokémon Japan | Bastiodon the Defender Half Deck | https://archives.bulbagarden.net/media/upload/1/1c/DP2_Logo_EN.png | 14 / 14 | bulbapedia |
 | Pokémon Japan | Battle Academy | https://archives.bulbagarden.net/media/upload/thumb/7/76/Pokemon_TCG_Battle_Academy_Logo.png/600px-Pokemon_TCG_Battle_Academy_Logo.png | 74 / 74 | bulbapedia |
-| Pokémon Japan | Battle Gift Set: Thundurus vs Tornadus |  | 20 / 20 | — |
-| Pokémon Japan | Battle Road | https://archives.bulbagarden.net/media/upload/c/cb/Battle_Roads_Autumn_logo.png | 22 / 22 | bulbapedia-article |
-| Pokémon Japan | Battle Starter Deck (Blastoise) |  | 0 / 10 | — |
-| Pokémon Japan | Battle Starter Deck (Magmortar) |  | 0 / 9 | — |
-| Pokémon Japan | Battle Starter Deck (Raichu) |  | 0 / 11 | — |
-| Pokémon Japan | Battle Starter Deck (Torterra) |  | 0 / 10 | — |
-| Pokémon Japan | Battle Theme Deck: Victini |  | 21 / 21 | — |
-| Pokémon Japan | Black Deck Kit | https://archives.bulbagarden.net/media/upload/9/90/Team_Rocket_Strikes_Back_-_Black_Deck_Kit.jpg | 20 / 20 | bulbapedia-article |
-| Pokémon Japan | Blastoise + Kyurem-EX Combo Deck |  | 0 / 18 | — |
+| Pokémon Japan | Battle Gift Set: Thundurus vs Tornadus | https://archives.bulbagarden.net/media/upload/6/69/BattleGiftSet.jpg | 20 / 20 | bulbapedia-article |
+| Pokémon Japan | Battle Road |  | 22 / 22 | — |
+| Pokémon Japan | Battle Starter Deck (Blastoise) | https://archives.bulbagarden.net/media/upload/b/b2/Blastoise_Battle_Starter_Deck.jpg | 0 / 10 | bulbapedia-merch |
+| Pokémon Japan | Battle Starter Deck (Magmortar) | https://archives.bulbagarden.net/media/upload/6/68/Magmortar_Battle_Starter_Deck.jpg | 0 / 9 | bulbapedia-merch |
+| Pokémon Japan | Battle Starter Deck (Raichu) | https://archives.bulbagarden.net/media/upload/4/45/Raichu_Battle_Starter_Deck.jpg | 0 / 11 | bulbapedia-merch |
+| Pokémon Japan | Battle Starter Deck (Torterra) | https://archives.bulbagarden.net/media/upload/9/9b/Pok%C3%A9BallTorterraStarterDeck9.jpg | 0 / 10 | bulbapedia-article |
+| Pokémon Japan | Battle Theme Deck: Victini | https://archives.bulbagarden.net/media/upload/6/68/BattleThemeDeckVictini.jpg | 21 / 21 | bulbapedia-article |
+| Pokémon Japan | Black Deck Kit |  | 20 / 20 | — |
+| Pokémon Japan | Blastoise + Kyurem-EX Combo Deck | https://archives.bulbagarden.net/media/upload/c/c4/BlastoiseKyuremEXComboDeck.jpg | 0 / 18 | bulbapedia-article |
 | Pokémon Japan | CP1: Magma Gang vs Aqua Gang: Double Crisis | https://archives.bulbagarden.net/media/upload/f/f0/CP1_Logo.png | 34 / 34 | bulbapedia |
 | Pokémon Japan | CP2: Legendary Shine Collection | https://archives.bulbagarden.net/media/upload/d/d6/CP2_Legendary_Shine_Collection_pack_1.jpg | 27 / 27 | bulbapedia |
 | Pokémon Japan | CP3: PokeKyun Collection | https://archives.bulbagarden.net/media/upload/9/92/CP3_Pok%C3%A9Kyun_Collection_pack.jpg | 32 / 32 | bulbapedia |
@@ -300,12 +300,12 @@
 | Pokémon Japan | CP5: Mythical & Legendary Dream Shine Collection | https://archives.bulbagarden.net/media/upload/9/90/CP5_Mythical_Legendary_Dream_Shine_Collection_pack.jpg | 0 / 38 | bulbapedia |
 | Pokémon Japan | CP6: Expansion Pack 20th Anniversary | https://archives.bulbagarden.net/media/upload/6/61/CP6_Expansion_Pack_20th_Anniversary_Box.jpg | 103 / 103 | bulbapedia |
 | Pokémon Japan | CS1: Journey Partners Collection Sheet | https://archives.bulbagarden.net/media/upload/7/79/CS1.5_logo.png | 9 / 9 | bulbapedia |
-| Pokémon Japan | Challenge from the Darkness |  | 99 / 99 | — |
-| Pokémon Japan | Champion Road |  | 2 / 6 | — |
-| Pokémon Japan | City Gym Decks | https://archives.bulbagarden.net/media/upload/8/81/Brock_Pewter_City_Gym_Trainer_Battle_Deck.jpg | 124 / 124 | bulbapedia-article |
-| Pokémon Japan | Clash of the Blue Sky |  | 82 / 82 | — |
+| Pokémon Japan | Challenge from the Darkness | https://archives.bulbagarden.net/media/upload/1/1a/Challenge_from_the_Darkness_pack.jpg | 99 / 99 | bulbapedia-article |
+| Pokémon Japan | Champion Road | https://archives.bulbagarden.net/media/upload/f/fa/SM6b_Logo.png | 2 / 6 | bulbapedia-list |
+| Pokémon Japan | City Gym Decks |  | 124 / 124 | — |
+| Pokémon Japan | Clash of the Blue Sky | https://archives.bulbagarden.net/media/upload/3/3b/PCG2_Clash_of_the_Blue_Sky_pack.jpg | 82 / 82 | bulbapedia-article |
 | Pokémon Japan | CoroCoro Promotional Cards |  | 51 / 51 | — |
-| Pokémon Japan | Crossing the Ruins... |  | 0 / 57 | — |
+| Pokémon Japan | Crossing the Ruins... | https://archives.bulbagarden.net/media/upload/c/ca/Neo2_Crossing_the_Ruins_pack.jpg | 0 / 57 | bulbapedia-article |
 | Pokémon Japan | DP-P Promotional cards |  | 126 / 127 | — |
 | Pokémon Japan | DP1: Space-Time Creation | https://archives.bulbagarden.net/media/upload/0/00/DP1_Logo_BR.png | 121 / 121 | bulbapedia |
 | Pokémon Japan | DP2: Secret of the Lakes | https://archives.bulbagarden.net/media/upload/1/1c/DP2_Logo_EN.png | 123 / 123 | bulbapedia |
@@ -319,79 +319,79 @@
 | Pokémon Japan | DPt Gift Box (Piplup) |  | 0 / 12 | — |
 | Pokémon Japan | DPt Gift Box (Turtwig) |  | 0 / 12 | — |
 | Pokémon Japan | DPt-P Promotional cards |  | 51 / 51 | — |
-| Pokémon Japan | Darkness, and to Light... |  | 0 / 113 | — |
-| Pokémon Japan | Deoxys Constructed Starter Deck |  | 16 / 16 | — |
-| Pokémon Japan | Dialga LV.X Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/e/e6/DialgaLV.XConstructedStandardDeck.jpg | 0 / 18 | bulbapedia-article |
+| Pokémon Japan | Darkness, and to Light... | https://archives.bulbagarden.net/media/upload/1/19/Neo4_Logo.png | 0 / 113 | bulbapedia-list |
+| Pokémon Japan | Deoxys Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/9/9e/DeoxysConstructedStarterDeck.jpg | 16 / 16 | bulbapedia-article |
+| Pokémon Japan | Dialga LV.X Constructed Standard Deck |  | 0 / 18 | — |
 | Pokémon Japan | Dragon Selection | https://archives.bulbagarden.net/media/upload/b/b6/DS_Dragon_Selection_pack.jpg | 20 / 20 | bulbapedia |
 | Pokémon Japan | EX Battle Boost | https://archives.bulbagarden.net/media/upload/b/b2/EBB_EX_Battle_Boost_Box.jpg | 186 / 187 | bulbapedia |
-| Pokémon Japan | Earth's Groudon ex Constructed Starter Deck |  | 0 / 16 | — |
+| Pokémon Japan | Earth's Groudon ex Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/7/7f/EarthGroudonConstructedStarterDeck.jpg | 0 / 16 | bulbapedia-article |
 | Pokémon Japan | Elementary School Competition |  | 4 / 4 | — |
 | Pokémon Japan | Emerald Gift Box (Deoxys) |  | 0 / 19 | — |
 | Pokémon Japan | Emerald Gift Box (Rayquaza) |  | 0 / 19 | — |
 | Pokémon Japan | Entry Pack | https://archives.bulbagarden.net/media/upload/0/00/DP1_Logo_BR.png | 12 / 28 | bulbapedia |
 | Pokémon Japan | Entry Pack '08 | https://archives.bulbagarden.net/media/upload/3/3c/DP-DS-box.png | 24 / 42 | bulbapedia |
-| Pokémon Japan | Entry Pack DPt (Dialga) |  | 3 / 13 | — |
-| Pokémon Japan | Entry Pack DPt (Giratina) |  | 5 / 13 | — |
-| Pokémon Japan | Entry Pack DPt (Palkia) |  | 6 / 13 | — |
+| Pokémon Japan | Entry Pack DPt (Dialga) | https://archives.bulbagarden.net/media/upload/5/52/EntryPackDPt.jpg | 3 / 13 | bulbapedia-merch |
+| Pokémon Japan | Entry Pack DPt (Giratina) | https://archives.bulbagarden.net/media/upload/5/52/EntryPackDPt.jpg | 5 / 13 | bulbapedia-merch |
+| Pokémon Japan | Entry Pack DPt (Palkia) | https://archives.bulbagarden.net/media/upload/5/52/EntryPackDPt.jpg | 6 / 13 | bulbapedia-article |
 | Pokémon Japan | Everyone's Exciting Battle |  | 0 / 47 | — |
-| Pokémon Japan | Expansion Pack |  | 93 / 102 | — |
+| Pokémon Japan | Expansion Pack | https://archives.bulbagarden.net/media/upload/c/cb/Expansion_Pack_pack.jpg | 93 / 102 | bulbapedia-article |
 | Pokémon Japan | Expansion Pack (No Rarity) |  | 1 / 96 | — |
-| Pokémon Japan | Feraligatr Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/e/e7/Golden_Sky_Silvery_Ocean_-_Feraligatr_Deck.jpg | 16 / 16 | bulbapedia-article |
-| Pokémon Japan | Fighting Quick Construction Pack |  | 15 / 15 | — |
-| Pokémon Japan | Fire Quick Construction Pack |  | 15 / 15 | — |
-| Pokémon Japan | Flight of Legends |  | 82 / 82 | — |
-| Pokémon Japan | Flygon Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/9/95/ADV3_Flygon_Deck.jpg | 20 / 20 | bulbapedia-article |
-| Pokémon Japan | Garchomp Half Deck |  | 15 / 15 | — |
-| Pokémon Japan | Garchomp vs Charizard SP Deck Kit (Charizard) |  | 16 / 16 | — |
-| Pokémon Japan | Garchomp vs Charizard SP Deck Kit (Garchomp) |  | 13 / 13 | — |
-| Pokémon Japan | Gift Box (Latias) | https://archives.bulbagarden.net/media/upload/d/d6/CSF_Dragon_Resurgence_Advanced_Gift_Box_Fierce.jpg | 0 / 18 | bulbapedia-article |
-| Pokémon Japan | Gift Box (Latios) | https://archives.bulbagarden.net/media/upload/3/37/Latias_%26_Latios_Gift_Set_-_Box_front.jpg | 0 / 18 | bulbapedia-article |
-| Pokémon Japan | Gift Box Mew - Lucario (Crawdaunt Quarter Deck) |  | 0 / 15 | — |
-| Pokémon Japan | Gift Box Mew - Lucario (Lucario Quarter Deck) |  | 0 / 15 | — |
-| Pokémon Japan | Gift Box Mew - Lucario (Mew Quarter Deck) |  | 0 / 15 | — |
-| Pokémon Japan | Gift Box Mew - Lucario (Mightyena Quarter Deck) |  | 0 / 15 | — |
-| Pokémon Japan | Gift Box Mew - Lucario (Pokemon Star) |  | 0 / 2 | — |
-| Pokémon Japan | Giratina vs Dialga Deck Kit (Dialga) |  | 14 / 14 | — |
-| Pokémon Japan | Giratina vs Dialga Deck Kit (Giratina) |  | 14 / 14 | — |
-| Pokémon Japan | Gold, Silver, to a New World... |  | 0 / 96 | — |
-| Pokémon Japan | Golden Sky, Silvery Ocean |  | 106 / 106 | — |
-| Pokémon Japan | Grass Quick Construction Pack |  | 15 / 15 | — |
+| Pokémon Japan | Feraligatr Constructed Starter Deck |  | 16 / 16 | — |
+| Pokémon Japan | Fighting Quick Construction Pack | https://archives.bulbagarden.net/media/upload/6/6d/Fighting_Quick_Construction_Pack.jpg | 15 / 15 | bulbapedia-merch |
+| Pokémon Japan | Fire Quick Construction Pack | https://archives.bulbagarden.net/media/upload/2/2d/Fire_Quick_Construction_Pack.jpg | 15 / 15 | bulbapedia-merch |
+| Pokémon Japan | Flight of Legends | https://archives.bulbagarden.net/media/upload/8/82/PCG1_Flight_of_Legends_pack.jpg | 82 / 82 | bulbapedia-article |
+| Pokémon Japan | Flygon Constructed Starter Deck |  | 20 / 20 | — |
+| Pokémon Japan | Garchomp Half Deck | https://archives.bulbagarden.net/media/upload/c/ca/GarchompHalfDeck.jpg | 15 / 15 | bulbapedia-article |
+| Pokémon Japan | Garchomp vs Charizard SP Deck Kit (Charizard) | https://archives.bulbagarden.net/media/upload/a/a2/GarchompVSCharizardSPDeckKit.jpg | 16 / 16 | bulbapedia-merch |
+| Pokémon Japan | Garchomp vs Charizard SP Deck Kit (Garchomp) | https://archives.bulbagarden.net/media/upload/a/a2/GarchompVSCharizardSPDeckKit.jpg | 13 / 13 | bulbapedia-merch |
+| Pokémon Japan | Gift Box (Latias) |  | 0 / 18 | — |
+| Pokémon Japan | Gift Box (Latios) |  | 0 / 18 | — |
+| Pokémon Japan | Gift Box Mew - Lucario (Crawdaunt Quarter Deck) | https://archives.bulbagarden.net/media/upload/f/fa/GiftBoxMewLucario.jpg | 0 / 15 | bulbapedia-article |
+| Pokémon Japan | Gift Box Mew - Lucario (Lucario Quarter Deck) | https://archives.bulbagarden.net/media/upload/f/fa/GiftBoxMewLucario.jpg | 0 / 15 | bulbapedia-article |
+| Pokémon Japan | Gift Box Mew - Lucario (Mew Quarter Deck) | https://archives.bulbagarden.net/media/upload/f/fa/GiftBoxMewLucario.jpg | 0 / 15 | bulbapedia-article |
+| Pokémon Japan | Gift Box Mew - Lucario (Mightyena Quarter Deck) | https://archives.bulbagarden.net/media/upload/f/fa/GiftBoxMewLucario.jpg | 0 / 15 | bulbapedia-article |
+| Pokémon Japan | Gift Box Mew - Lucario (Pokemon Star) | https://archives.bulbagarden.net/media/upload/f/fa/GiftBoxMewLucario.jpg | 0 / 2 | bulbapedia-merch |
+| Pokémon Japan | Giratina vs Dialga Deck Kit (Dialga) | https://archives.bulbagarden.net/media/upload/f/f9/GiratinaVSDialgaDeckKit.jpg | 14 / 14 | bulbapedia-article |
+| Pokémon Japan | Giratina vs Dialga Deck Kit (Giratina) | https://archives.bulbagarden.net/media/upload/f/f9/GiratinaVSDialgaDeckKit.jpg | 14 / 14 | bulbapedia-article |
+| Pokémon Japan | Gold, Silver, to a New World... | https://archives.bulbagarden.net/media/upload/7/7b/Neo1_Gold_Silver_to_a_New_World_pack.jpg | 0 / 96 | bulbapedia-article |
+| Pokémon Japan | Golden Sky, Silvery Ocean | https://archives.bulbagarden.net/media/upload/5/58/PCG4_Golden_Sky_Silvery_Ocean_pack.jpg | 106 / 106 | bulbapedia-article |
+| Pokémon Japan | Grass Quick Construction Pack | https://archives.bulbagarden.net/media/upload/7/77/Grass_Quick_Construction_Pack.jpg | 15 / 15 | bulbapedia-merch |
 | Pokémon Japan | Gym Challenge | https://archives.bulbagarden.net/media/upload/thumb/e/e0/Gym_Challenge_Logo.png/600px-Gym_Challenge_Logo.png | 21 / 21 | bulbapedia |
-| Pokémon Japan | HS: Beginning Set |  | 0 / 1 | — |
-| Pokémon Japan | HSP: Beginning Set Pikachu Version |  | 0 / 1 | — |
-| Pokémon Japan | HSZ: National Beginning Set |  | 0 / 34 | — |
+| Pokémon Japan | HS: Beginning Set | https://archives.bulbagarden.net/media/upload/d/d6/BeginningSet.jpg | 0 / 1 | bulbapedia-article |
+| Pokémon Japan | HSP: Beginning Set Pikachu Version | https://archives.bulbagarden.net/media/upload/1/19/BeginningSetPikachuVersion.jpg | 0 / 1 | bulbapedia-article |
+| Pokémon Japan | HSZ: National Beginning Set | https://archives.bulbagarden.net/media/upload/d/de/NationalBeginningSet.jpg | 0 / 34 | bulbapedia-article |
 | Pokémon Japan | Heatran vs Regigigas Deck Kit | https://archives.bulbagarden.net/media/upload/d/de/DP5_Logo_EN.png | 23 / 23 | bulbapedia |
-| Pokémon Japan | Holon Phantom |  | 52 / 52 | — |
-| Pokémon Japan | Holon Research Tower |  | 74 / 86 | — |
-| Pokémon Japan | Holon Research Tower Fire Quarter Deck |  | 15 / 15 | — |
-| Pokémon Japan | Holon Research Tower Lightning Quarter Deck |  | 14 / 14 | — |
-| Pokémon Japan | Holon Research Tower Water Quarter Deck |  | 15 / 15 | — |
+| Pokémon Japan | Holon Phantom | https://archives.bulbagarden.net/media/upload/1/1b/PCG7_Holon_Phantom_pack.jpg | 52 / 52 | bulbapedia-article |
+| Pokémon Japan | Holon Research Tower | https://archives.bulbagarden.net/media/upload/4/41/PCG6_Holon_Research_Tower_pack.jpg | 74 / 86 | bulbapedia-article |
+| Pokémon Japan | Holon Research Tower Fire Quarter Deck | https://archives.bulbagarden.net/media/upload/9/95/HolonResearchTowerFireQuarterDeck.jpg | 15 / 15 | bulbapedia-article |
+| Pokémon Japan | Holon Research Tower Lightning Quarter Deck | https://archives.bulbagarden.net/media/upload/a/ab/HolonResearchTowerLightningQuarterDeck.jpg | 14 / 14 | bulbapedia-article |
+| Pokémon Japan | Holon Research Tower Water Quarter Deck | https://archives.bulbagarden.net/media/upload/5/5c/HolonResearchTowerWaterQuarterDeck.jpg | 15 / 15 | bulbapedia-article |
 | Pokémon Japan | How I Became a Pokemon Card |  | 6 / 6 | — |
-| Pokémon Japan | Hydreigon Half Deck |  | 15 / 15 | — |
-| Pokémon Japan | Imprison! Gardevoir ex Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/3/36/ImprisonGardevoirexConstructedDeck.jpg | 0 / 24 | bulbapedia-article |
-| Pokémon Japan | Infernape vs Gallade SP Deck Kit (Gallade) |  | 12 / 12 | — |
-| Pokémon Japan | Infernape vs Gallade SP Deck Kit (Infernape) |  | 18 / 18 | — |
-| Pokémon Japan | Intense Fight in the Destroyed Sky |  | 42 / 92 | — |
-| Pokémon Japan | Intro Pack (Bulbasaur) | https://archives.bulbagarden.net/media/upload/4/4f/IntroPack.jpg | 0 / 41 | bulbapedia-merch |
-| Pokémon Japan | Intro Pack (Squirtle) | https://archives.bulbagarden.net/media/upload/4/4f/IntroPack.jpg | 0 / 41 | bulbapedia-article |
-| Pokémon Japan | Intro Pack Neo (Chikorita) |  | 0 / 40 | — |
-| Pokémon Japan | Intro Pack Neo (Totodile) |  | 0 / 40 | — |
+| Pokémon Japan | Hydreigon Half Deck | https://archives.bulbagarden.net/media/upload/2/28/HydreigonHalfDeck.jpg | 15 / 15 | bulbapedia-article |
+| Pokémon Japan | Imprison! Gardevoir ex Constructed Standard Deck |  | 0 / 24 | — |
+| Pokémon Japan | Infernape vs Gallade SP Deck Kit (Gallade) | https://archives.bulbagarden.net/media/upload/f/f6/InfernapeVSGalladeSPDeckKit.jpg | 12 / 12 | bulbapedia-article |
+| Pokémon Japan | Infernape vs Gallade SP Deck Kit (Infernape) | https://archives.bulbagarden.net/media/upload/f/f6/InfernapeVSGalladeSPDeckKit.jpg | 18 / 18 | bulbapedia-article |
+| Pokémon Japan | Intense Fight in the Destroyed Sky | https://archives.bulbagarden.net/media/upload/f/f4/DP6_Intense_Fight_in_the_Destroyed_Sky_pack.jpg | 42 / 92 | bulbapedia-article |
+| Pokémon Japan | Intro Pack (Bulbasaur) |  | 0 / 41 | — |
+| Pokémon Japan | Intro Pack (Squirtle) |  | 0 / 41 | — |
+| Pokémon Japan | Intro Pack Neo (Chikorita) | https://archives.bulbagarden.net/media/upload/7/7d/IntroPackNeo.jpg | 0 / 40 | bulbapedia-article |
+| Pokémon Japan | Intro Pack Neo (Totodile) | https://archives.bulbagarden.net/media/upload/7/7d/IntroPackNeo.jpg | 0 / 40 | bulbapedia-article |
 | Pokémon Japan | J Promotional cards |  | 2 / 2 | — |
 | Pokémon Japan | Japanese CD Promo |  | 4 / 4 | — |
-| Pokémon Japan | Keldeo Battle Strength Deck |  | 15 / 15 | — |
+| Pokémon Japan | Keldeo Battle Strength Deck | https://archives.bulbagarden.net/media/upload/0/0a/KeldeoBattleStrengthDeck.jpg | 15 / 15 | bulbapedia-article |
 | Pokémon Japan | L-P: Legends Promos |  | 79 / 79 | — |
-| Pokémon Japan | L1: HeartGold Collection |  | 143 / 141 | — |
-| Pokémon Japan | L1: SoulSilver Collection |  | 141 / 141 | — |
+| Pokémon Japan | L1: HeartGold Collection | https://archives.bulbagarden.net/media/upload/3/3c/L1_Logo.png | 143 / 141 | bulbapedia-list |
+| Pokémon Japan | L1: SoulSilver Collection | https://archives.bulbagarden.net/media/upload/3/3c/L1_Logo.png | 141 / 141 | bulbapedia-list |
 | Pokémon Japan | L2: Revival Legends | https://archives.bulbagarden.net/media/upload/6/64/L2_Logo.png | 160 / 161 | bulbapedia |
 | Pokémon Japan | L2: Steelix Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/6/64/L2_Logo.png | 19 / 19 | bulbapedia |
 | Pokémon Japan | L2: Tyranitar Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/6/64/L2_Logo.png | 19 / 19 | bulbapedia |
 | Pokémon Japan | L3: Clash at the Summit | https://archives.bulbagarden.net/media/upload/5/59/L3_Logo.png | 161 / 161 | bulbapedia |
 | Pokémon Japan | LEGEND Era Unnumbered Energies |  | 0 / 8 | — |
 | Pokémon Japan | LL: Lost Link | https://archives.bulbagarden.net/media/upload/0/03/LL_Lost_Link_pack.jpg | 40 / 40 | bulbapedia |
-| Pokémon Japan | Leaders' Stadium |  | 0 / 96 | — |
+| Pokémon Japan | Leaders' Stadium | https://archives.bulbagarden.net/media/upload/c/cc/Leaders_Stadium_pack.jpg | 0 / 96 | bulbapedia-article |
 | Pokémon Japan | Leafeon vs Metagross Expert Deck (Leafeon) | https://archives.bulbagarden.net/media/upload/6/62/E-Reader_logo.png | 15 / 15 | bulbapedia |
 | Pokémon Japan | Leafeon vs Metagross Expert Deck (Metagross) | https://archives.bulbagarden.net/media/upload/6/62/E-Reader_logo.png | 14 / 14 | bulbapedia |
-| Pokémon Japan | Lightning Quick Construction Pack |  | 15 / 15 | — |
+| Pokémon Japan | Lightning Quick Construction Pack | https://archives.bulbagarden.net/media/upload/d/d5/Lightning_Quick_Construction_Pack.jpg | 15 / 15 | bulbapedia-merch |
 | Pokémon Japan | M Master Deck Build Box Power Style | https://archives.bulbagarden.net/media/upload/thumb/3/31/M_Master_Deck_Build_Box_Power_Style.jpg/600px-M_Master_Deck_Build_Box_Power_Style.jpg | 58 / 58 | bulbapedia |
 | Pokémon Japan | M Master Deck Build Box Speed Style | https://archives.bulbagarden.net/media/upload/thumb/8/87/M_Master_Deck_Build_Box_Speed_Style.jpg/600px-M_Master_Deck_Build_Box_Speed_Style.jpg | 57 / 57 | bulbapedia |
 | Pokémon Japan | M-P Promotional Cards |  | 60 / 67 | — |
@@ -404,76 +404,76 @@
 | Pokémon Japan | M6a: MEGA Expansion 30th Celebration |  | 0 / 176 | — |
 | Pokémon Japan | MBD: MEGA Starter Set Mega Diancie ex | https://archives.bulbagarden.net/media/upload/9/91/MEGA_Starter_Set_Mega_Diancie_ex_box.jpg | 22 / 22 | bulbapedia |
 | Pokémon Japan | MBG: MEGA Starter Set Mega Gengar ex | https://archives.bulbagarden.net/media/upload/f/f6/MEGA_Starter_Set_Mega_Gengar_ex_box.jpg | 22 / 22 | bulbapedia |
-| Pokémon Japan | MEE: Starter Set ex Eevee ex | https://archives.bulbagarden.net/media/upload/0/00/Ex_Starter_Set_Eevee_ex.png | 20 / 20 | bulbapedia-merch |
-| Pokémon Japan | MEM: Starter Set ex Meowscarada ex | https://archives.bulbagarden.net/media/upload/1/15/Ex_Starter_Set_Sprigatito_Meowscarada_ex.png | 18 / 18 | bulbapedia-merch |
-| Pokémon Japan | MEZ: Starter Set ex Zoroark ex | https://archives.bulbagarden.net/media/upload/6/62/Ex_Starter_Set_Zorua_Zoroark_ex.png | 20 / 20 | bulbapedia-article |
-| Pokémon Japan | MF: 30th CELEBRATION Premium Deck Set Espeon & Umbreon |  | 0 / 49 | — |
-| Pokémon Japan | MP1: Start Deck 100 Battle Collection CoroCiao Version |  | 23 / 23 | — |
-| Pokémon Japan | Magma Deck Kit |  | 33 / 33 | — |
-| Pokémon Japan | Magma VS Aqua: Two Ambitions |  | 80 / 80 | — |
+| Pokémon Japan | MEE: Starter Set ex Eevee ex |  | 20 / 20 | — |
+| Pokémon Japan | MEM: Starter Set ex Meowscarada ex |  | 18 / 18 | — |
+| Pokémon Japan | MEZ: Starter Set ex Zoroark ex |  | 20 / 20 | — |
+| Pokémon Japan | MF: 30th CELEBRATION Premium Deck Set Espeon & Umbreon | https://archives.bulbagarden.net/media/upload/5/5c/30th_Celebration_Premium_Deck_Set_Espeon_Umbreon.jpg | 0 / 49 | bulbapedia-article |
+| Pokémon Japan | MP1: Start Deck 100 Battle Collection CoroCiao Version | https://archives.bulbagarden.net/media/upload/c/c2/Start_Deck_100_Battle_Collection_CoroCiao_Version.jpg | 23 / 23 | bulbapedia-article |
+| Pokémon Japan | Magma Deck Kit | https://archives.bulbagarden.net/media/upload/1/19/ADV_EX1_Magma_Deck_Kit.jpg | 33 / 33 | bulbapedia-article |
+| Pokémon Japan | Magma VS Aqua: Two Ambitions | https://archives.bulbagarden.net/media/upload/4/48/Ex1_Magma_VS_Aqua_Two_Ambitions_pack.jpg | 80 / 80 | bulbapedia-article |
 | Pokémon Japan | Magmortar vs Electivire Deck Kit | https://archives.bulbagarden.net/media/upload/c/cc/DP4_Logo_EN.png | 26 / 26 | bulbapedia |
 | Pokémon Japan | Master Deck Build Box EX | https://archives.bulbagarden.net/media/upload/thumb/a/a9/MasterDeckBuildBoxEX.jpg/600px-MasterDeckBuildBoxEX.jpg | 46 / 46 | bulbapedia |
-| Pokémon Japan | Master Kit (Bulbasaur) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | 0 / 9 | bulbapedia-article |
-| Pokémon Japan | Master Kit (Side Deck) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | 0 / 10 | bulbapedia-merch |
-| Pokémon Japan | Master Kit (Torchic) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | 0 / 11 | bulbapedia-article |
-| Pokémon Japan | McDonald's Pokémon-e Minimum Pack |  | 0 / 24 | — |
+| Pokémon Japan | Master Kit (Bulbasaur) |  | 0 / 9 | — |
+| Pokémon Japan | Master Kit (Side Deck) |  | 0 / 10 | — |
+| Pokémon Japan | Master Kit (Torchic) |  | 0 / 11 | — |
+| Pokémon Japan | McDonald's Pokémon-e Minimum Pack | https://archives.bulbagarden.net/media/upload/0/01/McDonald%27s_e_Minimum_Booster_Pack.jpg | 0 / 24 | bulbapedia-article |
 | Pokémon Japan | Mega Evolution Era Unnumbered Energies |  | 0 / 4 | — |
-| Pokémon Japan | Meganium Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/2/2c/Golden_Sky_Silvery_Ocean_-_Meganium_Deck.jpg | 16 / 16 | bulbapedia-article |
-| Pokémon Japan | Melee! Pokemon Scramble |  | 0 / 19 | — |
-| Pokémon Japan | Metagross Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/2/2e/ADV4_Metagross_Deck.jpg | 19 / 19 | bulbapedia-article |
-| Pokémon Japan | Mewtwo vs Genesect Deck Kit (Genesect) |  | 16 / 16 | — |
-| Pokémon Japan | Mewtwo vs Genesect Deck Kit (Mewtwo) |  | 16 / 16 | — |
-| Pokémon Japan | Miracle Crystal |  | 75 / 75 | — |
-| Pokémon Japan | Miracle of the Desert |  | 53 / 53 | — |
-| Pokémon Japan | Mirage Forest | https://archives.bulbagarden.net/media/upload/9/96/PCG5_Mirage_Forest_pack.jpg | 86 / 86 | bulbapedia-article |
-| Pokémon Japan | Mirage's Mew Constructed Starter Deck |  | 0 / 17 | — |
+| Pokémon Japan | Meganium Constructed Starter Deck |  | 16 / 16 | — |
+| Pokémon Japan | Melee! Pokemon Scramble | https://archives.bulbagarden.net/media/upload/8/82/Melee_Pok%C3%A9mon_Scramble_Pok%C3%A9mon_Card_Game.jpg | 0 / 19 | bulbapedia-merch |
+| Pokémon Japan | Metagross Constructed Starter Deck |  | 19 / 19 | — |
+| Pokémon Japan | Mewtwo vs Genesect Deck Kit (Genesect) | https://archives.bulbagarden.net/media/upload/4/42/MewtwoVSGenesectDeckKit.jpg | 16 / 16 | bulbapedia-article |
+| Pokémon Japan | Mewtwo vs Genesect Deck Kit (Mewtwo) | https://archives.bulbagarden.net/media/upload/4/42/MewtwoVSGenesectDeckKit.jpg | 16 / 16 | bulbapedia-article |
+| Pokémon Japan | Miracle Crystal | https://archives.bulbagarden.net/media/upload/6/61/PCG8_Miracle_Crystal_pack.jpg | 75 / 75 | bulbapedia-article |
+| Pokémon Japan | Miracle of the Desert | https://archives.bulbagarden.net/media/upload/6/66/ADV2_Miracle_of_the_Desert_pack.jpg | 53 / 53 | bulbapedia-article |
+| Pokémon Japan | Mirage Forest |  | 86 / 86 | — |
+| Pokémon Japan | Mirage's Mew Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/6/62/MirageMewConstructedStarterDeck.jpg | 0 / 17 | bulbapedia-article |
 | Pokémon Japan | Movie Commemoration Random Pack |  | 22 / 22 | — |
 | Pokémon Japan | Movie Commemoration VS Pack | https://archives.bulbagarden.net/media/upload/4/49/Lucario_Movie_Commemoration_VS_Pack.jpg | 11 / 19 | bulbapedia |
 | Pokémon Japan | Movie Commemoration VS Pack: Aura's Lucario | https://archives.bulbagarden.net/media/upload/4/49/Lucario_Movie_Commemoration_VS_Pack.jpg | 16 / 20 | bulbapedia |
 | Pokémon Japan | Movie Commemoration VS Pack: Sea's Manaphy | https://archives.bulbagarden.net/media/upload/5/56/Manaphy_Movie_Commemoration_VS_Pack.jpg | 12 / 19 | bulbapedia |
 | Pokémon Japan | Movie Commemoration VS Pack: Sky-Splitting Deoxys | https://archives.bulbagarden.net/media/upload/6/6f/Deoxys_Movie_Commemoration_VS_Pack.jpg | 20 / 20 | bulbapedia |
-| Pokémon Japan | Mudkip Constructed Starter Deck |  | 20 / 20 | — |
-| Pokémon Japan | Mysterious Mountains |  | 91 / 91 | — |
-| Pokémon Japan | Mystery of the Fossils |  | 48 / 48 | — |
+| Pokémon Japan | Mudkip Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/3/35/MudkipConstructedStarterDeck.jpg | 20 / 20 | bulbapedia-article |
+| Pokémon Japan | Mysterious Mountains | https://archives.bulbagarden.net/media/upload/f/fd/E5_Logo.png | 91 / 91 | bulbapedia-list |
+| Pokémon Japan | Mystery of the Fossils | https://archives.bulbagarden.net/media/upload/2/25/Mystery_of_the_Fossils_pack.jpg | 48 / 48 | bulbapedia-article |
 | Pokémon Japan | Neo Premium File 1 |  | 9 / 9 | — |
-| Pokémon Japan | Neo Premium File 2 |  | 9 / 9 | — |
-| Pokémon Japan | Neo Premium File 3 |  | 9 / 9 | — |
-| Pokémon Japan | Ocean's Kyogre ex Constructed Starter Deck |  | 0 / 16 | — |
-| Pokémon Japan | Offense and Defense of the Furthest Ends | https://archives.bulbagarden.net/media/upload/d/dd/PCG9_Offense_Defense_Furthest_Ends_pack.jpg | 68 / 68 | bulbapedia-article |
+| Pokémon Japan | Neo Premium File 2 | https://archives.bulbagarden.net/media/upload/2/2d/Neo_Premium_File_2.jpg | 9 / 9 | bulbapedia-article |
+| Pokémon Japan | Neo Premium File 3 | https://archives.bulbagarden.net/media/upload/7/72/Neo_Premium_File_3.jpg | 9 / 9 | bulbapedia-article |
+| Pokémon Japan | Ocean's Kyogre ex Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/1/16/OceanKyogreConstructedStarterDeck.jpg | 0 / 16 | bulbapedia-article |
+| Pokémon Japan | Offense and Defense of the Furthest Ends |  | 68 / 68 | — |
 | Pokémon Japan | P Promotional cards |  | 1 / 47 | — |
 | Pokémon Japan | PCG-P Promotional cards |  | 155 / 155 | — |
 | Pokémon Japan | PLAY Promotional cards |  | 32 / 32 | — |
 | Pokémon Japan | PPP Promotional cards |  | 7 / 7 | — |
-| Pokémon Japan | Palkia LV.X Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/f/f0/PalkiaLV.XConstructedStandardDeck.jpg | 0 / 19 | bulbapedia-article |
+| Pokémon Japan | Palkia LV.X Constructed Standard Deck |  | 0 / 19 | — |
 | Pokémon Japan | Player Placement Trainer Promos |  | 2 / 2 | — |
 | Pokémon Japan | PokePark Blue |  | 9 / 9 | — |
 | Pokémon Japan | PokePark Forest |  | 9 / 9 | — |
 | Pokémon Japan | Pokemon Card Design Contest |  | 6 / 6 | — |
 | Pokémon Japan | Pokemon Card Fan Club |  | 10 / 10 | — |
 | Pokémon Japan | Pokemon Card Information Promotional cards |  | 3 / 3 | — |
-| Pokémon Japan | Pokemon Jungle |  | 48 / 48 | — |
+| Pokémon Japan | Pokemon Jungle | https://archives.bulbagarden.net/media/upload/1/16/Pok%C3%A9mon_Jungle_pack.jpg | 48 / 48 | bulbapedia-article |
 | Pokémon Japan | Pokemon TCG Classic: Blastoise |  | 34 / 34 | — |
 | Pokémon Japan | Pokemon TCG Classic: Charizard |  | 34 / 34 | — |
 | Pokémon Japan | Pokemon TCG Classic: Venusaur |  | 34 / 34 | — |
-| Pokémon Japan | Pokemon VS |  | 151 / 152 | — |
-| Pokémon Japan | Pokemon Web |  | 47 / 47 | — |
+| Pokémon Japan | Pokemon VS | https://archives.bulbagarden.net/media/upload/0/07/Pok%C3%A9mon_Card_VS_Logo.png | 151 / 152 | bulbapedia-list |
+| Pokémon Japan | Pokemon Web | https://archives.bulbagarden.net/media/upload/4/44/Pok%C3%A9mon_Card_web_Logo.png | 47 / 47 | bulbapedia-list |
 | Pokémon Japan | Pokemon-e Starter Deck |  | 29 / 29 | — |
-| Pokémon Japan | Psychic Quick Construction Pack |  | 15 / 15 | — |
-| Pokémon Japan | Pt1: Galactic's Conquest |  | 0 / 96 | — |
-| Pokémon Japan | Pt2: Bonds to the End of Time |  | 90 / 90 | — |
-| Pokémon Japan | Pt3: Beat of the Frontier |  | 100 / 100 | — |
-| Pokémon Japan | Pt4: Advent of Arceus |  | 90 / 90 | — |
-| Pokémon Japan | PtM: Mewtwo LV.X Collection Pack |  | 0 / 12 | — |
-| Pokémon Japan | PtR: Regigigas LV.X Collection Pack |  | 0 / 12 | — |
-| Pokémon Japan | PtS: Shaymin LV.X Collection Pack |  | 0 / 12 | — |
-| Pokémon Japan | Quick Starter Gift Set (Green Deck) |  | 0 / 26 | — |
-| Pokémon Japan | Quick Starter Gift Set (Red Deck) |  | 0 / 24 | — |
+| Pokémon Japan | Psychic Quick Construction Pack | https://archives.bulbagarden.net/media/upload/d/dc/Psychic_Quick_Construction_Pack.jpg | 15 / 15 | bulbapedia-merch |
+| Pokémon Japan | Pt1: Galactic's Conquest | https://archives.bulbagarden.net/media/upload/1/1a/DPt1_Logo.png | 0 / 96 | bulbapedia-list |
+| Pokémon Japan | Pt2: Bonds to the End of Time | https://archives.bulbagarden.net/media/upload/9/97/DPt2_Logo.png | 90 / 90 | bulbapedia-list |
+| Pokémon Japan | Pt3: Beat of the Frontier | https://archives.bulbagarden.net/media/upload/1/1d/DPt3_Logo.png | 100 / 100 | bulbapedia-list |
+| Pokémon Japan | Pt4: Advent of Arceus | https://archives.bulbagarden.net/media/upload/5/58/DPt4_Logo.png | 90 / 90 | bulbapedia-list |
+| Pokémon Japan | PtM: Mewtwo LV.X Collection Pack | https://archives.bulbagarden.net/media/upload/e/eb/Mewtwo_LV.X_Collection_Pack.jpg | 0 / 12 | bulbapedia-article |
+| Pokémon Japan | PtR: Regigigas LV.X Collection Pack | https://archives.bulbagarden.net/media/upload/4/4d/Regigigas_LV.X_Collection_Pack.jpg | 0 / 12 | bulbapedia-article |
+| Pokémon Japan | PtS: Shaymin LV.X Collection Pack | https://archives.bulbagarden.net/media/upload/7/70/Shaymin_LV.X_Collection_Pack.jpg | 0 / 12 | bulbapedia-article |
+| Pokémon Japan | Quick Starter Gift Set (Green Deck) | https://archives.bulbagarden.net/media/upload/a/ac/Quick_Starter_Gift_Set.png | 0 / 26 | bulbapedia-article |
+| Pokémon Japan | Quick Starter Gift Set (Red Deck) | https://archives.bulbagarden.net/media/upload/a/ac/Quick_Starter_Gift_Set.png | 0 / 24 | bulbapedia-merch |
 | Pokémon Japan | Rampardos the Attacker Constructed Half Deck | https://archives.bulbagarden.net/media/upload/1/1c/DP2_Logo_EN.png | 15 / 15 | bulbapedia |
-| Pokémon Japan | Random Constructed Starter Decks (Venusaur/Charizard/Blastoise) |  | 0 / 52 | — |
-| Pokémon Japan | Rayquaza Constructed Starter Deck |  | 16 / 16 | — |
-| Pokémon Japan | Rocket Gang |  | 65 / 65 | — |
-| Pokémon Japan | Rocket Gang Strikes Back |  | 85 / 85 | — |
-| Pokémon Japan | Rulers of the Heavens |  | 54 / 54 | — |
+| Pokémon Japan | Random Constructed Starter Decks (Venusaur/Charizard/Blastoise) | https://archives.bulbagarden.net/media/upload/3/3a/RandomConstructedStarterDecks.jpg | 0 / 52 | bulbapedia-article |
+| Pokémon Japan | Rayquaza Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/e/e4/RayquazaConstructedStarterDeck.jpg | 16 / 16 | bulbapedia-article |
+| Pokémon Japan | Rocket Gang | https://archives.bulbagarden.net/media/upload/d/d1/Rocket_Gang_pack.jpg | 65 / 65 | bulbapedia-article |
+| Pokémon Japan | Rocket Gang Strikes Back | https://archives.bulbagarden.net/media/upload/a/a5/PCG3_Rocket_Gang_Strikes_Back_pack.jpg | 85 / 85 | bulbapedia-article |
+| Pokémon Japan | Rulers of the Heavens | https://archives.bulbagarden.net/media/upload/e/ed/ADV3_Rulers_of_the_Heavens_pack.jpg | 54 / 54 | bulbapedia-article |
 | Pokémon Japan | S-P: Sword & Shield Promos |  | 0 / 344 | — |
 | Pokémon Japan | S10D: Time Gazer | https://archives.bulbagarden.net/media/upload/1/1a/S10D_Time_Gazer_Booster_Chinese.png | 87 / 88 | bulbapedia |
 | Pokémon Japan | S10P: Space Juggler | https://archives.bulbagarden.net/media/upload/6/68/S10P_Space_Juggler_Booster_Chinese.png | 87 / 88 | bulbapedia |
@@ -505,10 +505,10 @@
 | Pokémon Japan | S8b: VMAX Climax | https://archives.bulbagarden.net/media/upload/4/4d/S8b_VMAX_Climax_Logo.png | 396 / 403 | bulbapedia |
 | Pokémon Japan | S9: Star Birth | https://archives.bulbagarden.net/media/upload/8/8e/S9_Star_Birth_Booster_Chinese.png | 126 / 127 | bulbapedia |
 | Pokémon Japan | S9a: Battle Region | https://archives.bulbagarden.net/media/upload/c/cb/S9a_Battle_Region_Logo.png | 137 / 138 | bulbapedia |
-| Pokémon Japan | SI: Start Deck 100 |  | 513 / 522 | — |
+| Pokémon Japan | SI: Start Deck 100 | https://archives.bulbagarden.net/media/upload/8/85/Start_Deck_100.jpg | 513 / 522 | bulbapedia-article |
 | Pokémon Japan | SM-P: Sun & Moon Promos |  | 0 / 413 | — |
 | Pokémon Japan | SM0: Pikachu's New Friends |  | 0 / 4 | — |
-| Pokémon Japan | SM1+: Sun & Moon |  | 0 / 1 | — |
+| Pokémon Japan | SM1+: Sun & Moon | https://archives.bulbagarden.net/media/upload/4/4c/Sun_and_Moon_Booster_Box.jpg | 0 / 1 | bulbapedia-article |
 | Pokémon Japan | SM10: Double Blaze | https://archives.bulbagarden.net/media/upload/c/cd/SM10_Double_Blaze_pack.jpg | 116 / 116 | bulbapedia |
 | Pokémon Japan | SM10a: GG End | https://archives.bulbagarden.net/media/upload/5/51/SM10a_GG_End_Box.jpg | 69 / 69 | bulbapedia |
 | Pokémon Japan | SM10b: Sky Legend | https://archives.bulbagarden.net/media/upload/f/f9/SM10b_Sky_Legend_Box.jpg | 69 / 69 | bulbapedia |
@@ -517,18 +517,18 @@
 | Pokémon Japan | SM11b: Dream League | https://archives.bulbagarden.net/media/upload/9/98/SM11b_Dream_League_Box.jpg | 75 / 75 | bulbapedia |
 | Pokémon Japan | SM12: Alter Genesis | https://archives.bulbagarden.net/media/upload/0/07/SM12_Alter_Genesis_Box.jpg | 117 / 117 | bulbapedia |
 | Pokémon Japan | SM12a: TAG TEAM GX: Tag All Stars | https://archives.bulbagarden.net/media/upload/4/44/SM12a_Logo.png | 342 / 353 | bulbapedia |
-| Pokémon Japan | SM1M: Collection Moon |  | 73 / 73 | — |
-| Pokémon Japan | SM1S: Collection Sun |  | 73 / 73 | — |
-| Pokémon Japan | SM2+: Facing a New Trial |  | 0 / 70 | — |
+| Pokémon Japan | SM1M: Collection Moon | https://archives.bulbagarden.net/media/upload/a/a2/SM1_Logo.png | 73 / 73 | bulbapedia-list |
+| Pokémon Japan | SM1S: Collection Sun | https://archives.bulbagarden.net/media/upload/a/a2/SM1_Logo.png | 73 / 73 | bulbapedia-list |
+| Pokémon Japan | SM2+: Facing a New Trial | https://archives.bulbagarden.net/media/upload/1/1a/SM2Plus_Logo.png | 0 / 70 | bulbapedia-list |
 | Pokémon Japan | SM2K: Islands Await You | https://archives.bulbagarden.net/media/upload/3/31/SM2K_Islands_Await_You_Box.jpg | 62 / 62 | bulbapedia |
 | Pokémon Japan | SM2L: Alolan Moonlight | https://archives.bulbagarden.net/media/upload/3/3d/SM2L_Alolan_Moonlight_Box.jpg | 62 / 62 | bulbapedia |
-| Pokémon Japan | SM3+: Shining Legends |  | 0 / 82 | — |
+| Pokémon Japan | SM3+: Shining Legends | https://archives.bulbagarden.net/media/upload/7/75/SM3Plus_Logo.png | 0 / 82 | bulbapedia-list |
 | Pokémon Japan | SM3H: To Have Seen the Battle Rainbow | https://archives.bulbagarden.net/media/upload/7/72/SM3H_To_Have_Seen_the_Battle_Rainbow_Box.jpg | 64 / 64 | bulbapedia |
 | Pokémon Japan | SM3N: Darkness that Consumes Light | https://archives.bulbagarden.net/media/upload/5/54/SM3N_Darkness_that_Consumes_Light_Box.jpg | 64 / 64 | bulbapedia |
-| Pokémon Japan | SM4+: GX Battle Boost |  | 0 / 125 | — |
+| Pokémon Japan | SM4+: GX Battle Boost | https://archives.bulbagarden.net/media/upload/7/71/SM4Plus_Logo.png | 0 / 125 | bulbapedia-list |
 | Pokémon Japan | SM4A: Ultradimensional Beasts | https://archives.bulbagarden.net/media/upload/9/91/SM4A_Ultradimensional_Beasts_Box.jpg | 62 / 62 | bulbapedia |
 | Pokémon Japan | SM4S: Awakened Heroes | https://archives.bulbagarden.net/media/upload/d/db/SM4S_Awakened_Heroes_Box.jpg | 62 / 62 | bulbapedia |
-| Pokémon Japan | SM5+: Ultra Force |  | 0 / 68 | — |
+| Pokémon Japan | SM5+: Ultra Force | https://archives.bulbagarden.net/media/upload/f/f9/SM5Plus_Logo.png | 0 / 68 | bulbapedia-list |
 | Pokémon Japan | SM5M: Ultra Moon | https://archives.bulbagarden.net/media/upload/7/7c/SM5M_Ultra_Moon_Box.jpg | 78 / 78 | bulbapedia |
 | Pokémon Japan | SM5S: Ultra Sun | https://archives.bulbagarden.net/media/upload/d/d9/SM5S_Ultra_Sun_Box.jpg | 78 / 78 | bulbapedia |
 | Pokémon Japan | SM6: Forbidden Light | https://archives.bulbagarden.net/media/upload/2/2f/SM6_Forbidden_Light_Box.jpg | 108 / 110 | bulbapedia |
@@ -546,8 +546,8 @@
 | Pokémon Japan | SM: The Best of XY | https://archives.bulbagarden.net/media/upload/b/b5/The_Best_of_XY_Logo.png | 315 / 323 | bulbapedia |
 | Pokémon Japan | SNP: Noivern BREAK Evolution Pack | https://archives.bulbagarden.net/media/upload/thumb/8/85/Noivern_BREAK_Evolution_Pack.jpg/600px-Noivern_BREAK_Evolution_Pack.jpg | 10 / 10 | bulbapedia |
 | Pokémon Japan | SNP: Raichu BREAK Evolution Pack | https://archives.bulbagarden.net/media/upload/thumb/d/d5/Raichu_BREAK_Evolution_Pack.jpg/600px-Raichu_BREAK_Evolution_Pack.jpg | 10 / 10 | bulbapedia |
-| Pokémon Japan | SS: Gengar VMAX High-Class Deck |  | 20 / 20 | — |
-| Pokémon Japan | SS: Inteleon VMAX High-Class Deck |  | 23 / 23 | — |
+| Pokémon Japan | SS: Gengar VMAX High-Class Deck | https://archives.bulbagarden.net/media/upload/9/9a/Gengar_VMAX_High-Class_Deck.jpg | 20 / 20 | bulbapedia-merch |
+| Pokémon Japan | SS: Inteleon VMAX High-Class Deck | https://archives.bulbagarden.net/media/upload/9/99/Inteleon_VMAX_High-Class_Deck.jpg | 23 / 23 | bulbapedia-merch |
 | Pokémon Japan | SS: Silver Lance & Jet-Black Spirit Jumbo Pack Set | https://archives.bulbagarden.net/media/upload/8/86/SS_Era_Logo_C.png | 0 / 6 | bulbapedia |
 | Pokémon Japan | SV-P Promotional Cards |  | 225 / 235 | — |
 | Pokémon Japan | SV10: The Glory of Team Rocket | https://archives.bulbagarden.net/media/upload/a/ab/SV10.5_BLK_Logo_EN.png | 132 / 132 | bulbapedia |
@@ -575,134 +575,134 @@
 | Pokémon Japan | SV8a: Terastal Fest ex | https://archives.bulbagarden.net/media/upload/9/9c/SV8a_Terastal_Fest_ex_Logo.png | 480 / 485 | bulbapedia |
 | Pokémon Japan | SV9: Battle Partners | https://archives.bulbagarden.net/media/upload/7/7b/SV9_Battle_Partners_pack.png | 132 / 132 | bulbapedia |
 | Pokémon Japan | SV9a: Heat Wave Arena | https://archives.bulbagarden.net/media/upload/a/a6/SV9a_Hot_Wind_Arena_Logo.png | 92 / 92 | bulbapedia |
-| Pokémon Japan | SV: Ancient Koraidon ex Starter Deck & Build Set |  | 0 / 53 | — |
-| Pokémon Japan | SV: Ceruledge ex Stellar Tera Type Starter Set | https://archives.bulbagarden.net/media/upload/8/80/Stellar_Tera_Type_Starter_Set_Ceruledge_ex.jpg | 21 / 21 | bulbapedia-merch |
-| Pokémon Japan | SV: Chien-Pao ex Battle Master Deck | https://archives.bulbagarden.net/media/upload/5/55/Battle_Master_Deck_Chien-Pao_ex_Contents.png | 19 / 19 | bulbapedia-article |
-| Pokémon Japan | SV: Future Miraidon ex Starter Deck & Build Set |  | 0 / 51 | — |
-| Pokémon Japan | SV: Mewtwo ex Terastal Starter Set | https://archives.bulbagarden.net/media/upload/2/2f/Terastal_Starter_Set_Mewtwo_ex_Contents.png | 20 / 20 | bulbapedia-article |
+| Pokémon Japan | SV: Ancient Koraidon ex Starter Deck & Build Set | https://archives.bulbagarden.net/media/upload/8/82/Ancient_Koraidon_ex_Starter_Deck_Build_Set.png | 0 / 53 | bulbapedia-article |
+| Pokémon Japan | SV: Ceruledge ex Stellar Tera Type Starter Set |  | 21 / 21 | — |
+| Pokémon Japan | SV: Chien-Pao ex Battle Master Deck |  | 19 / 19 | — |
+| Pokémon Japan | SV: Future Miraidon ex Starter Deck & Build Set | https://archives.bulbagarden.net/media/upload/3/33/Future_Miraidon_ex_Starter_Deck_Build_Set.png | 0 / 51 | bulbapedia-article |
+| Pokémon Japan | SV: Mewtwo ex Terastal Starter Set |  | 20 / 20 | — |
 | Pokémon Japan | SV: Premium Trainer Box ex | https://archives.bulbagarden.net/media/upload/thumb/4/4c/Premium_Trainer_Box_ex.jpg/600px-Premium_Trainer_Box_ex.jpg | 28 / 28 | bulbapedia |
 | Pokémon Japan | SV: Ruler of the Black Flame Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/6/6f/Ruler_of_the_Black_Flame_Deck_Build_Box.jpg/600px-Ruler_of_the_Black_Flame_Deck_Build_Box.jpg | 38 / 38 | bulbapedia |
-| Pokémon Japan | SV: Skeledirge ex Terastal Starter Set | https://archives.bulbagarden.net/media/upload/4/49/Terastal_Starter_Set_Skeledirge_ex_Contents.png | 20 / 20 | bulbapedia-article |
+| Pokémon Japan | SV: Skeledirge ex Terastal Starter Set |  | 20 / 20 | — |
 | Pokémon Japan | SV: Stellar Miracle Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/4/42/Stellar_Miracle_Deck_Build_Box.png/600px-Stellar_Miracle_Deck_Build_Box.png | 45 / 45 | bulbapedia |
-| Pokémon Japan | SV: Sylveon ex Stellar Tera Type Starter Set | https://archives.bulbagarden.net/media/upload/c/c3/Stellar_Tera_Type_Starter_Set_Sylveon_ex.jpg | 22 / 22 | bulbapedia-merch |
-| Pokémon Japan | SV: Terastal Charizard ex Battle Master Deck | https://archives.bulbagarden.net/media/upload/5/5e/Battle_Master_Deck_Terastal_Charizard_ex_Contents.png | 21 / 21 | bulbapedia-merch |
-| Pokémon Japan | SV: Venusaur, Charizard & Blastoise Special Deck Set |  | 0 / 52 | — |
-| Pokémon Japan | SV: ex Special Set |  | 7 / 7 | — |
-| Pokémon Japan | SV: ex Start Decks |  | 138 / 139 | — |
-| Pokémon Japan | SV: ex Starter Set Fuecoco & Ampharos ex |  | 0 / 21 | — |
+| Pokémon Japan | SV: Sylveon ex Stellar Tera Type Starter Set |  | 22 / 22 | — |
+| Pokémon Japan | SV: Terastal Charizard ex Battle Master Deck |  | 21 / 21 | — |
+| Pokémon Japan | SV: Venusaur, Charizard & Blastoise Special Deck Set | https://archives.bulbagarden.net/media/upload/0/0c/Venusaur_Charizard_Blastoise_Special_Deck_Set_ex_contents.png | 0 / 52 | bulbapedia-article |
+| Pokémon Japan | SV: ex Special Set | https://archives.bulbagarden.net/media/upload/7/78/Ex_Special_Set.jpg | 7 / 7 | bulbapedia-article |
+| Pokémon Japan | SV: ex Start Decks | https://archives.bulbagarden.net/media/upload/e/eb/Ex_Start_Decks.png | 138 / 139 | bulbapedia-article |
+| Pokémon Japan | SV: ex Starter Set Fuecoco & Ampharos ex | https://archives.bulbagarden.net/media/upload/e/e5/Ex_Starter_Set_Fuecoco_Ampharos_ex.jpg | 0 / 21 | bulbapedia-merch |
 | Pokémon Japan | SV: ex Starter Set Marnie's Morpeko & Grimmsnarl ex | https://archives.bulbagarden.net/media/upload/thumb/5/5e/Ex_Starter_Set_Marnie_Morpeko_Grimmsnarl_ex_box.jpg/600px-Ex_Starter_Set_Marnie_Morpeko_Grimmsnarl_ex_box.jpg | 0 / 20 | bulbapedia |
-| Pokémon Japan | SV: ex Starter Set Pikachu ex & Pawmot |  | 0 / 16 | — |
-| Pokémon Japan | SV: ex Starter Set Quaxly & Mimikyu ex |  | 0 / 23 | — |
-| Pokémon Japan | SV: ex Starter Set Sprigatito & Lucario ex |  | 0 / 23 | — |
+| Pokémon Japan | SV: ex Starter Set Pikachu ex & Pawmot | https://archives.bulbagarden.net/media/upload/f/f8/Ex_Starter_Set_Pikachu_ex_Pawmot_Contents.jpg | 0 / 16 | bulbapedia-merch |
+| Pokémon Japan | SV: ex Starter Set Quaxly & Mimikyu ex | https://archives.bulbagarden.net/media/upload/1/16/Ex_Starter_Set_Quaxly_Mimikyu_ex.jpg | 0 / 23 | bulbapedia-merch |
+| Pokémon Japan | SV: ex Starter Set Sprigatito & Lucario ex | https://archives.bulbagarden.net/media/upload/5/58/Ex_Starter_Set_Sprigatito_Lucario_ex.jpg | 0 / 23 | bulbapedia-merch |
 | Pokémon Japan | SV: ex Starter Set Steven's Beldum & Metagross ex | https://archives.bulbagarden.net/media/upload/thumb/0/08/Ex_Starter_Set_Steven_Beldum_Metagross_ex_box.jpg/600px-Ex_Starter_Set_Steven_Beldum_Metagross_ex_box.jpg | 0 / 19 | bulbapedia |
 | Pokémon Japan | SVM: Generations Start Decks | https://archives.bulbagarden.net/media/upload/f/ff/SVM_Generations_Start_Decks_logo.png | 175 / 175 | bulbapedia |
 | Pokémon Japan | SVN: Battle Partners Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/e/e4/Battle_Partners_Deck_Build_Box_Contents.jpg/600px-Battle_Partners_Deck_Build_Box_Contents.jpg | 45 / 45 | bulbapedia |
-| Pokémon Japan | Salamence Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/0/03/ADV3_Salamence_Deck.jpg | 20 / 20 | bulbapedia-article |
+| Pokémon Japan | Salamence Constructed Starter Deck |  | 20 / 20 | — |
 | Pokémon Japan | Scarlet & Violet Era Unnumbered Energies |  | 0 / 16 | — |
 | Pokémon Japan | Shiny Collection | https://archives.bulbagarden.net/media/upload/8/80/SC_Shiny_Collection_pack.jpg | 25 / 25 | bulbapedia |
-| Pokémon Japan | Shockwave! Tyranitar ex Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/8/8e/ShockwaveTyranitarexConstructedDeck.jpg | 0 / 24 | bulbapedia-article |
-| Pokémon Japan | Silver Deck Kit | https://archives.bulbagarden.net/media/upload/5/5c/Team_Rocket_Strikes_Back_-_Silver_Deck_Kit.jpg | 20 / 20 | bulbapedia-article |
+| Pokémon Japan | Shockwave! Tyranitar ex Constructed Standard Deck |  | 0 / 24 | — |
+| Pokémon Japan | Silver Deck Kit |  | 20 / 20 | — |
 | Pokémon Japan | Southern Island | https://archives.bulbagarden.net/media/upload/thumb/c/c4/SouthernIslandsLogo.png/600px-SouthernIslandsLogo.png | 18 / 18 | bulbapedia |
-| Pokémon Japan | Split Earth |  | 91 / 91 | — |
-| Pokémon Japan | Start Deck 100 Battle Collection |  | 850 / 916 | — |
+| Pokémon Japan | Split Earth | https://archives.bulbagarden.net/media/upload/0/06/E4_Logo.png | 91 / 91 | bulbapedia-list |
+| Pokémon Japan | Start Deck 100 Battle Collection | https://archives.bulbagarden.net/media/upload/7/7a/Start_Deck_100_Battle_Collection.jpg | 850 / 916 | bulbapedia-article |
 | Pokémon Japan | Sun & Moon Era Unnumbered Energies |  | 0 / 18 | — |
 | Pokémon Japan | Sword & Shield Era Unnumbered Energies |  | 0 / 17 | — |
 | Pokémon Japan | T Promotional cards |  | 24 / 24 | — |
-| Pokémon Japan | Team Plasma Battle Gift Set |  | 16 / 16 | — |
-| Pokémon Japan | Team Plasma's Powered Half Deck | https://archives.bulbagarden.net/media/upload/f/f9/Expansion_Pack_Team_Plasma_Set.jpg | 0 / 17 | bulbapedia-merch |
-| Pokémon Japan | The Town on No Map | https://archives.bulbagarden.net/media/upload/a/ab/E2_The_Town_on_No_Map_pack.jpg | 92 / 92 | bulbapedia-article |
+| Pokémon Japan | Team Plasma Battle Gift Set | https://archives.bulbagarden.net/media/upload/6/62/TeamPlasmaBattleGiftSet.jpg | 16 / 16 | bulbapedia-article |
+| Pokémon Japan | Team Plasma's Powered Half Deck |  | 0 / 17 | — |
+| Pokémon Japan | The Town on No Map |  | 92 / 92 | — |
 | Pokémon Japan | Theater Limited VS Pack |  | 18 / 18 | — |
-| Pokémon Japan | Torchic Constructed Starter Deck |  | 20 / 20 | — |
+| Pokémon Japan | Torchic Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/1/10/TorchicConstructedStarterDeck.jpg | 20 / 20 | bulbapedia-article |
 | Pokémon Japan | Trainer Prize Cards |  | 3 / 3 | — |
-| Pokémon Japan | Treecko Constructed Starter Deck |  | 20 / 20 | — |
-| Pokémon Japan | Typhlosion Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/9/9f/Golden_Sky_Silvery_Ocean_-_Typhlosion_Deck.jpg | 16 / 16 | bulbapedia-article |
-| Pokémon Japan | Undone Seal |  | 83 / 83 | — |
+| Pokémon Japan | Treecko Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/f/f4/TreeckoConstructedStarterDeck.jpg | 20 / 20 | bulbapedia-article |
+| Pokémon Japan | Typhlosion Constructed Starter Deck |  | 16 / 16 | — |
+| Pokémon Japan | Undone Seal | https://archives.bulbagarden.net/media/upload/3/32/ADV4_Undone_Seal_pack.jpg | 83 / 83 | bulbapedia-article |
 | Pokémon Japan | Unnumbered Promotional cards |  | 81 / 81 | — |
 | Pokémon Japan | Unnumbered World Championships |  | 6 / 6 | — |
 | Pokémon Japan | Vending Machine cards Series 1 (Blue) |  | 0 / 36 | — |
 | Pokémon Japan | Vending Machine cards Series 2 (Red) |  | 0 / 36 | — |
 | Pokémon Japan | Vending Machine cards Series 3 (Green) |  | 0 / 52 | — |
 | Pokémon Japan | WCS23: 2023 World Championships Yokohama Deck: Pikachu | https://archives.bulbagarden.net/media/upload/9/96/WCS23_Deckbox.jpg | 30 / 30 | bulbapedia |
-| Pokémon Japan | Water Quick Construction Pack |  | 15 / 15 | — |
-| Pokémon Japan | Wind from the Sea |  | 90 / 90 | — |
-| Pokémon Japan | World Champions Pack |  | 102 / 102 | — |
+| Pokémon Japan | Water Quick Construction Pack | https://archives.bulbagarden.net/media/upload/8/80/Water_Quick_Construction_Pack.jpg | 15 / 15 | bulbapedia-merch |
+| Pokémon Japan | Wind from the Sea | https://archives.bulbagarden.net/media/upload/b/b0/E3_Logo.png | 90 / 90 | bulbapedia-list |
+| Pokémon Japan | World Champions Pack | https://archives.bulbagarden.net/media/upload/c/c0/World_Champions_Pack.jpg | 102 / 102 | bulbapedia-article |
 | Pokémon Japan | World Hobby Fair |  | 8 / 8 | — |
-| Pokémon Japan | XY Beginning Set |  | 41 / 41 | — |
+| Pokémon Japan | XY Beginning Set | https://archives.bulbagarden.net/media/upload/6/62/XYBeginningSet.png | 41 / 41 | bulbapedia-merch |
 | Pokémon Japan | XY Era Unnumbered Energies |  | 0 / 9 | — |
-| Pokémon Japan | XY-Bx: Collection X |  | 63 / 64 | — |
-| Pokémon Japan | XY-By: Collection Y |  | 63 / 63 | — |
+| Pokémon Japan | XY-Bx: Collection X | https://archives.bulbagarden.net/media/upload/c/c8/XY1_Logo.png | 63 / 64 | bulbapedia-list |
+| Pokémon Japan | XY-By: Collection Y | https://archives.bulbagarden.net/media/upload/c/c8/XY1_Logo.png | 63 / 63 | bulbapedia-list |
 | Pokémon Japan | XY-P: XY Promos |  | 302 / 304 | — |
 | Pokémon Japan | XY10: Awakening Psychic King | https://archives.bulbagarden.net/media/upload/9/96/XY10_Awakening_Psychic_King_Box.jpg | 88 / 88 | bulbapedia |
-| Pokémon Japan | XY11-Bb: Fever-Burst Fighter |  | 59 / 59 | — |
-| Pokémon Japan | XY11-Br: Cruel Traitor |  | 59 / 59 | — |
+| Pokémon Japan | XY11-Bb: Fever-Burst Fighter | https://archives.bulbagarden.net/media/upload/6/68/XY11_Logo.png | 59 / 59 | bulbapedia-list |
+| Pokémon Japan | XY11-Br: Cruel Traitor | https://archives.bulbagarden.net/media/upload/6/68/XY11_Logo.png | 59 / 59 | bulbapedia-list |
 | Pokémon Japan | XY2: Wild Blaze | https://archives.bulbagarden.net/media/upload/b/b7/XY2_Wild_Blaze_Booster_Korean.jpg | 90 / 90 | bulbapedia |
 | Pokémon Japan | XY3: Rising Fist | https://archives.bulbagarden.net/media/upload/f/f2/XY3_Rising_Fist_Booster_Korean.jpg | 105 / 105 | bulbapedia |
 | Pokémon Japan | XY4: Phantom Gate | https://archives.bulbagarden.net/media/upload/d/d1/XY4_Phantom_Gate_Logo_KO.png | 97 / 97 | bulbapedia |
-| Pokémon Japan | XY5-Bg: Gaia Volcano |  | 80 / 80 | — |
-| Pokémon Japan | XY5-Bt: Tidal Storm |  | 80 / 80 | — |
+| Pokémon Japan | XY5-Bg: Gaia Volcano | https://archives.bulbagarden.net/media/upload/d/d4/XY5_Logo.png | 80 / 80 | bulbapedia-list |
+| Pokémon Japan | XY5-Bt: Tidal Storm | https://archives.bulbagarden.net/media/upload/d/d4/XY5_Logo.png | 80 / 80 | bulbapedia-list |
 | Pokémon Japan | XY6: Emerald Break | https://archives.bulbagarden.net/media/upload/3/34/XY6_Emerald_Break_Box.jpg | 91 / 91 | bulbapedia |
 | Pokémon Japan | XY7: Bandit Ring | https://archives.bulbagarden.net/media/upload/6/62/XY7_Bandit_Ring_Booster_Korean.jpg | 97 / 97 | bulbapedia |
-| Pokémon Japan | XY8-Bb: Blue Shock |  | 65 / 65 | — |
-| Pokémon Japan | XY8-Br: Red Flash |  | 65 / 65 | — |
+| Pokémon Japan | XY8-Bb: Blue Shock | https://archives.bulbagarden.net/media/upload/4/45/XY8_Logo.png | 65 / 65 | bulbapedia-list |
+| Pokémon Japan | XY8-Br: Red Flash | https://archives.bulbagarden.net/media/upload/4/45/XY8_Logo.png | 65 / 65 | bulbapedia-list |
 | Pokémon Japan | XY9: Rage of the Broken Heavens | https://archives.bulbagarden.net/media/upload/f/f2/XY9_Rage_of_the_Broken_Heavens_Box.jpg | 88 / 89 | bulbapedia |
-| Pokémon Japan | XYA: M Charizard-EX Mega Battle Deck |  | 22 / 22 | — |
+| Pokémon Japan | XYA: M Charizard-EX Mega Battle Deck | https://archives.bulbagarden.net/media/upload/b/bc/M_Charizard-EX_Mega_Battle_Deck.jpg | 22 / 22 | bulbapedia-article |
 | Pokémon Japan | XYB: Dialga-EX + Aegislash-EX Hyper Metal Chain Deck |  | 0 / 20 | — |
 | Pokémon Japan | XYC: Super Legend Set: Xerneas-EX & Yveltal-EX | https://archives.bulbagarden.net/media/upload/d/da/XYC_Legend_Battle_Deck_Logo_KO.png | 0 / 23 | bulbapedia |
-| Pokémon Japan | XYD: M Rayquaza-EX Mega Battle Deck |  | 18 / 18 | — |
-| Pokémon Japan | XYE: Emboar-EX vs Togekiss-EX Deck Kit | https://archives.bulbagarden.net/media/upload/9/93/EmboarEX_vs_TogekissEX_Deck_Kit.jpg | 22 / 22 | bulbapedia-article |
-| Pokémon Japan | XYF: Golduck BREAK + Palkia-EX Combo Deck |  | 0 / 17 | — |
-| Pokémon Japan | XYG: Zygarde-EX Perfect Battle Deck |  | 19 / 19 | — |
-| Pokémon Japan | XYH: M Audino-EX Mega Battle Deck |  | 26 / 26 | — |
-| Pokémon Japan | Xerneas Half Deck |  | 15 / 15 | — |
-| Pokémon Japan | Yveltal Half Deck |  | 15 / 15 | — |
-| Pokémon Japan | m1L: Mega Brave |  | 93 / 93 | — |
-| Pokémon Japan | m1S: Mega Symphonia |  | 92 / 92 | — |
-| Pokémon Japan | s0: Charizard VSTAR vs Rayquaza VMAX Special Deck Set |  | 30 / 30 | — |
-| Pokémon Japan | s8a-G: 25th Anniversary Golden Box |  | 16 / 16 | — |
+| Pokémon Japan | XYD: M Rayquaza-EX Mega Battle Deck | https://archives.bulbagarden.net/media/upload/a/a3/M_Rayquaza-EX_Mega_Battle_Deck.jpg | 18 / 18 | bulbapedia-article |
+| Pokémon Japan | XYE: Emboar-EX vs Togekiss-EX Deck Kit |  | 22 / 22 | — |
+| Pokémon Japan | XYF: Golduck BREAK + Palkia-EX Combo Deck | https://archives.bulbagarden.net/media/upload/7/75/Golduck_BREAK_Palkia-EX_Combo_Deck.jpg | 0 / 17 | bulbapedia-article |
+| Pokémon Japan | XYG: Zygarde-EX Perfect Battle Deck | https://archives.bulbagarden.net/media/upload/6/66/Zygarde-EX_Perfect_Battle_Deck.jpg | 19 / 19 | bulbapedia-article |
+| Pokémon Japan | XYH: M Audino-EX Mega Battle Deck | https://archives.bulbagarden.net/media/upload/c/c0/M_Audino-EX_Mega_Battle_Deck.jpg | 26 / 26 | bulbapedia-article |
+| Pokémon Japan | Xerneas Half Deck | https://archives.bulbagarden.net/media/upload/e/e7/XerneasHalfDeck.jpg | 15 / 15 | bulbapedia-article |
+| Pokémon Japan | Yveltal Half Deck | https://archives.bulbagarden.net/media/upload/3/32/YveltalHalfDeck.jpg | 15 / 15 | bulbapedia-article |
+| Pokémon Japan | m1L: Mega Brave | https://archives.bulbagarden.net/media/upload/a/ab/M1_Logo_JP.png | 93 / 93 | bulbapedia-list |
+| Pokémon Japan | m1S: Mega Symphonia | https://archives.bulbagarden.net/media/upload/a/ab/M1_Logo_JP.png | 92 / 92 | bulbapedia-list |
+| Pokémon Japan | s0: Charizard VSTAR vs Rayquaza VMAX Special Deck Set | https://archives.bulbagarden.net/media/upload/4/4a/Charizard_VSTAR_vs_Rayquaza_VMAX_Special_Deck_Set.jpg | 30 / 30 | bulbapedia-article |
+| Pokémon Japan | s8a-G: 25th Anniversary Golden Box | https://archives.bulbagarden.net/media/upload/c/cd/25th_Anniversary_Golden_Box.jpg | 16 / 16 | bulbapedia-merch |
 | Pokémon Japan | s8a-P: Promo Card Pack 25th Anniversary Edition | https://archives.bulbagarden.net/media/upload/e/eb/S8a-P_Promo_Card_Pack_25th_Anniversary_Edition.jpg | 25 / 25 | bulbapedia |
-| Pokémon Japan | sA: Fighting Starter Set V | https://archives.bulbagarden.net/media/upload/2/20/V_Starter_Set_Fighting.jpg | 46 / 46 | bulbapedia-merch |
-| Pokémon Japan | sA: Fire Starter Set V | https://archives.bulbagarden.net/media/upload/5/53/V_Starter_Set_Fire.jpg | 45 / 45 | bulbapedia-merch |
-| Pokémon Japan | sA: Grass Starter Set V | https://archives.bulbagarden.net/media/upload/3/3a/V_Starter_Set_Grass.jpg | 45 / 45 | bulbapedia-merch |
-| Pokémon Japan | sA: Lightning Starter Set V | https://archives.bulbagarden.net/media/upload/d/de/V_Starter_Set_Lightning.jpg | 46 / 46 | bulbapedia-merch |
-| Pokémon Japan | sA: Water Starter Set V | https://archives.bulbagarden.net/media/upload/6/69/V_Starter_Set_Water.jpg | 45 / 45 | bulbapedia-merch |
+| Pokémon Japan | sA: Fighting Starter Set V |  | 46 / 46 | — |
+| Pokémon Japan | sA: Fire Starter Set V |  | 45 / 45 | — |
+| Pokémon Japan | sA: Grass Starter Set V |  | 45 / 45 | — |
+| Pokémon Japan | sA: Lightning Starter Set V |  | 46 / 46 | — |
+| Pokémon Japan | sA: Water Starter Set V |  | 45 / 45 | — |
 | Pokémon Japan | sB: Sword & Shield Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/7/7b/Sword_Shield_Premium_Trainer_Box.jpg/600px-Sword_Shield_Premium_Trainer_Box.jpg | 0 / 24 | bulbapedia |
-| Pokémon Japan | sC2: Charizard Starter Set VMAX 2 |  | 21 / 21 | — |
-| Pokémon Japan | sC: Charizard Starter Set VMAX | https://archives.bulbagarden.net/media/upload/3/36/Charizard_VMAX_Starter_Set.jpg | 21 / 21 | bulbapedia-merch |
-| Pokémon Japan | sC: Grimmsnarl Starter Set VMAX | https://archives.bulbagarden.net/media/upload/d/d0/Grimmsnarl_VMAX_Starter_Set.jpg | 20 / 20 | bulbapedia-merch |
-| Pokémon Japan | sD: V Starter Decks |  | 127 / 127 | — |
-| Pokémon Japan | sEF: Venusaur Starter Set VMAX | https://archives.bulbagarden.net/media/upload/1/1e/Venusaur_VMAX_Starter_Set.jpg | 21 / 21 | bulbapedia-merch |
-| Pokémon Japan | sEK: Blastoise Starter Set VMAX | https://archives.bulbagarden.net/media/upload/e/e8/Blastoise_VMAX_Starter_Set.jpg | 20 / 20 | bulbapedia-merch |
+| Pokémon Japan | sC2: Charizard Starter Set VMAX 2 | https://archives.bulbagarden.net/media/upload/9/92/Charizard_Random_Constructed_Starter_Deck.jpg | 21 / 21 | bulbapedia-merch |
+| Pokémon Japan | sC: Charizard Starter Set VMAX |  | 21 / 21 | — |
+| Pokémon Japan | sC: Grimmsnarl Starter Set VMAX |  | 20 / 20 | — |
+| Pokémon Japan | sD: V Starter Decks | https://archives.bulbagarden.net/media/upload/6/65/V_Starter_Decks.jpg | 127 / 127 | bulbapedia-article |
+| Pokémon Japan | sEF: Venusaur Starter Set VMAX |  | 21 / 21 | — |
+| Pokémon Japan | sEK: Blastoise Starter Set VMAX |  | 20 / 20 | — |
 | Pokémon Japan | sF: Single Strike & Rapid Strike Premium Trainer Boxes | https://archives.bulbagarden.net/media/upload/thumb/1/14/Single_Strike_Rapid_Strike_Premium_Trainer_Boxes.jpg/600px-Single_Strike_Rapid_Strike_Premium_Trainer_Boxes.jpg | 0 / 33 | bulbapedia |
 | Pokémon Japan | sH: Sword & Shield Family Pokemon Card Game |  | 0 / 78 | — |
-| Pokémon Japan | sJ: Zacian & Zamazenta vs Eternatus Special Deck Set |  | 0 / 30 | — |
+| Pokémon Japan | sJ: Zacian & Zamazenta vs Eternatus Special Deck Set | https://archives.bulbagarden.net/media/upload/f/ff/Zacian_Zamazenta_vs_Eternatus_Special_Deck_Set.jpg | 0 / 30 | bulbapedia-article |
 | Pokémon Japan | sK: VSTAR Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/8/83/VSTAR_Premium_Trainer_Box.jpg/600px-VSTAR_Premium_Trainer_Box.jpg | 30 / 30 | bulbapedia |
 | Pokémon Japan | sLD: Darkrai Starter Set VSTAR |  | 20 / 20 | — |
 | Pokémon Japan | sLL: Lucario Starter Set VSTAR |  | 21 / 21 | — |
 | Pokémon Japan | sN: Start Deck 100 CoroCoro Comic Version |  | 24 / 24 | — |
-| Pokémon Japan | sPD: Deoxys VSTAR & VMAX High-Class Deck |  | 0 / 20 | — |
-| Pokémon Japan | sPZ: Zeraora VSTAR & VMAX High-Class Deck |  | 0 / 20 | — |
-| Pokémon Japan | sm1+: Enhanced Expansion Pack Sun & Moon |  | 1 / 73 | — |
+| Pokémon Japan | sPD: Deoxys VSTAR & VMAX High-Class Deck | https://archives.bulbagarden.net/media/upload/5/59/Deoxys_VSTAR_VMAX_High-Class_Deck.jpg | 0 / 20 | bulbapedia-merch |
+| Pokémon Japan | sPZ: Zeraora VSTAR & VMAX High-Class Deck | https://archives.bulbagarden.net/media/upload/8/84/Zeraora_VSTAR_VMAX_High-Class_Deck.jpg | 0 / 20 | bulbapedia-merch |
+| Pokémon Japan | sm1+: Enhanced Expansion Pack Sun & Moon | https://archives.bulbagarden.net/media/upload/d/d1/SM1Plus_Logo.png | 1 / 73 | bulbapedia-list |
 | Pokémon Japan | smA: Sun & Moon Starter Set |  | 0 / 59 | — |
 | Pokémon Japan | smB: Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/4/4c/Premium_Trainer_Box_ex.jpg/600px-Premium_Trainer_Box_ex.jpg | 18 / 18 | bulbapedia |
-| Pokémon Japan | smC: Tapu Bulu-GX Enhanced Starter Set |  | 21 / 21 | — |
-| Pokémon Japan | smD: Ash vs Team Rocket Deck Kit |  | 30 / 30 | — |
-| Pokémon Japan | smE: Solgaleo-GX & Lunala-GX Legendary Starter Set |  | 0 / 21 | — |
+| Pokémon Japan | smC: Tapu Bulu-GX Enhanced Starter Set | https://archives.bulbagarden.net/media/upload/b/bc/TapuBuluGXEnhancedStarterSet.jpg | 21 / 21 | bulbapedia-article |
+| Pokémon Japan | smD: Ash vs Team Rocket Deck Kit | https://archives.bulbagarden.net/media/upload/b/b9/Ash_vs_Team_Rocket_Deck_Kit.jpg | 30 / 30 | bulbapedia-article |
+| Pokémon Japan | smE: Solgaleo-GX & Lunala-GX Legendary Starter Set | https://archives.bulbagarden.net/media/upload/9/9b/Solgaleo-GX_Lunala-GX_Legendary_Starter_Set.jpg | 0 / 21 | bulbapedia-article |
 | Pokémon Japan | smF: Ultra Sun & Ultra Moon Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/7/75/Ultra_Sun_Ultra_Moon_Premium_Trainer_Box.jpg/600px-Ultra_Sun_Ultra_Moon_Premium_Trainer_Box.jpg | 0 / 20 | bulbapedia |
 | Pokémon Japan | smG: Ultra Sun & Ultra Moon Deck Build Boxes | https://archives.bulbagarden.net/media/upload/thumb/0/0e/Ultra_Sun_Ultra_Moon_Deck_Build_Boxes.jpg/600px-Ultra_Sun_Ultra_Moon_Deck_Build_Boxes.jpg | 0 / 41 | bulbapedia |
-| Pokémon Japan | smH: GX Starter Decks |  | 131 / 131 | — |
+| Pokémon Japan | smH: GX Starter Decks | https://archives.bulbagarden.net/media/upload/d/df/GX_Starter_Decks.jpg | 131 / 131 | bulbapedia-article |
 | Pokémon Japan | smI: Flareon-GX, Vaporeon-GX & Jolteon-GX Starter Sets |  | 0 / 76 | — |
 | Pokémon Japan | smJ: Tag Team GX Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/4/49/TAG_TEAM_GX_Premium_Trainer_Box.jpg/600px-TAG_TEAM_GX_Premium_Trainer_Box.jpg | 35 / 35 | bulbapedia |
-| Pokémon Japan | smK: Trainer Battle Decks |  | 31 / 31 | — |
-| Pokémon Japan | smL: Sun & Moon Family Pokemon Card Game |  | 0 / 86 | — |
-| Pokémon Japan | smM: Tag Team GX Starter Sets |  | 31 / 31 | — |
+| Pokémon Japan | smK: Trainer Battle Decks | https://archives.bulbagarden.net/media/upload/5/5a/Trainer_Battle_Decks.jpg | 31 / 31 | bulbapedia-article |
+| Pokémon Japan | smL: Sun & Moon Family Pokemon Card Game | https://archives.bulbagarden.net/media/upload/e/ec/Sun_Moon_Family_Pok%C3%A9mon_Card_Game.jpg | 0 / 86 | bulbapedia-article |
+| Pokémon Japan | smM: Tag Team GX Starter Sets | https://archives.bulbagarden.net/media/upload/b/b4/TAG_TEAM_GX_Starter_Sets.jpg | 31 / 31 | bulbapedia-article |
 | Pokémon Japan | smN: Tag Team GX Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/5/59/TAG_TEAM_GX_Deck_Build_Box.jpg/600px-TAG_TEAM_GX_Deck_Build_Box.jpg | 29 / 29 | bulbapedia |
-| Pokémon Japan | smP1: Rockruff Full Power Deck |  | 13 / 13 | — |
-| Pokémon Japan | smP2: Great Detective Pikachu |  | 25 / 25 | — |
+| Pokémon Japan | smP1: Rockruff Full Power Deck | https://archives.bulbagarden.net/media/upload/7/75/Rockruff_Full_Power_Deck.jpg | 13 / 13 | bulbapedia-article |
+| Pokémon Japan | smP2: Great Detective Pikachu | https://archives.bulbagarden.net/media/upload/c/ce/SMP2_Great_Detective_Pikachu_pack.jpg | 25 / 25 | bulbapedia-article |
 | Pokémon Japan | sp1: Zacian + Zamazenta Box | https://archives.bulbagarden.net/media/upload/thumb/9/9c/Zacian_Zamazenta_Box.jpg/600px-Zacian_Zamazenta_Box.jpg | 0 / 7 | bulbapedia |
-| Pokémon Japan | sp2: VMAX Special Set |  | 8 / 8 | — |
-| Pokémon Japan | sp4: Eevee Heroes VMAX Special Set |  | 4 / 4 | — |
-| Pokémon Japan | sp5: V-UNION Special Card Sets |  | 13 / 13 | — |
-| Pokémon Japan | sp6: VSTAR Special Set |  | 6 / 6 | — |
+| Pokémon Japan | sp2: VMAX Special Set | https://archives.bulbagarden.net/media/upload/1/14/VMAX_Special_Set.jpg | 8 / 8 | bulbapedia-article |
+| Pokémon Japan | sp4: Eevee Heroes VMAX Special Set | https://archives.bulbagarden.net/media/upload/f/fd/Eevee_Heroes_VMAX_Special_Set.jpg | 4 / 4 | bulbapedia-article |
+| Pokémon Japan | sp5: V-UNION Special Card Sets | https://archives.bulbagarden.net/media/upload/a/aa/V-UNION_Special_Card_Sets.jpg | 13 / 13 | bulbapedia-article |
+| Pokémon Japan | sp6: VSTAR Special Set | https://archives.bulbagarden.net/media/upload/0/0c/VSTAR_Special_Set.jpg | 6 / 6 | bulbapedia-article |
 
 ### Magic: The Gathering（445 个系列，431 个有 logo）
 
@@ -1154,11 +1154,11 @@
 | Magic: The Gathering | Zendikar Rising | https://svgs.scryfall.io/sets/znr.svg?1791172800 | 443 / 446 | scryfall |
 | Magic: The Gathering | Zendikar Rising Expeditions | https://svgs.scryfall.io/sets/zne.svg?1791172800 | 30 / 30 | scryfall |
 
-### Yu-Gi-Oh!（613 个系列，570 个有 logo）
+### Yu-Gi-Oh!（613 个系列，595 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
-| Yu-Gi-Oh! | 2-Player Starter Set |  | 88 / 88 | — |
+| Yu-Gi-Oh! | 2-Player Starter Set | https://ms.yugipedia.com//4/4d/2PlayerStarterSet-DeckEN.png | 88 / 88 | yugipedia |
 | Yu-Gi-Oh! | 2002 Collectors Tin | https://ms.yugipedia.com/e/e4/BPT-PromoEN-2002.png | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | 2003 Collectors Tin | https://ms.yugipedia.com/3/3a/BPT-PromoEN-2003.png | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | 2004 Collectors Tin | https://ms.yugipedia.com/e/e4/CT1-PromoEN.jpg | 6 / 6 | yugipedia |
@@ -1284,12 +1284,12 @@
 | Yu-Gi-Oh! | Dark Revelation Volume 4 | https://images.ygoprodeck.com/images/sets/DR04.jpg | 245 / 245 | ygoprodeck |
 | Yu-Gi-Oh! | Dark Saviors | https://images.ygoprodeck.com/images/sets/DASA.jpg | 60 / 60 | ygoprodeck |
 | Yu-Gi-Oh! | Darkwing Blast | https://images.ygoprodeck.com/images/sets/DABL.jpg | 106 / 106 | ygoprodeck |
-| Yu-Gi-Oh! | Dawn of Destiny Xbox |  | 6 / 6 | — |
+| Yu-Gi-Oh! | Dawn of Destiny Xbox | https://ms.yugipedia.com//b/b7/DOD-VideoGame-NA.jpg | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | Dawn of Majesty | https://images.ygoprodeck.com/images/sets/DAMA.jpg | 106 / 106 | ygoprodeck |
 | Yu-Gi-Oh! | Demo Deck 2015 | https://images.ygoprodeck.com/images/sets/DEM2.jpg | 20 / 20 | ygoprodeck |
 | Yu-Gi-Oh! | Demo Deck 2016 | https://images.ygoprodeck.com/images/sets/DEM3.jpg | 20 / 20 | ygoprodeck |
 | Yu-Gi-Oh! | Demo Pack | https://images.ygoprodeck.com/images/sets/DEM1.jpg | 20 / 20 | ygoprodeck |
-| Yu-Gi-Oh! | Destiny Board Traveler Promo |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Destiny Board Traveler Promo | https://ms.yugipedia.com//5/56/DBT-VideoGame-NA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Destiny Soldiers | https://images.ygoprodeck.com/images/sets/DESO.jpg | 55 / 60 | ygoprodeck |
 | Yu-Gi-Oh! | Dimension Force | https://images.ygoprodeck.com/images/sets/DIFO.jpg | 106 / 106 | ygoprodeck |
 | Yu-Gi-Oh! | Dimension of Chaos | https://images.ygoprodeck.com/images/sets/DOCS.jpg | 111 / 111 | ygoprodeck |
@@ -1326,7 +1326,7 @@
 | Yu-Gi-Oh! | Duelist Pack 7: Jesse Anderson | https://images.ygoprodeck.com/images/sets/DP07.jpg | 25 / 25 | ygoprodeck |
 | Yu-Gi-Oh! | Duelist Pack 8: Yusei Fudo | https://images.ygoprodeck.com/images/sets/DP08.jpg | 30 / 30 | ygoprodeck |
 | Yu-Gi-Oh! | Duelist Pack 9: Yusei 2 | https://images.ygoprodeck.com/images/sets/DP09.jpg | 30 / 30 | ygoprodeck |
-| Yu-Gi-Oh! | Duelist Pack Collection Tin |  | 10 / 10 | — |
+| Yu-Gi-Oh! | Duelist Pack Collection Tin | https://ms.yugipedia.com//3/3e/DPCT-PromoEN-2008.png | 10 / 10 | yugipedia |
 | Yu-Gi-Oh! | Duelist Pack Special Edition |  | 3 / 3 | — |
 | Yu-Gi-Oh! | Duelist Pack: Battle City | https://images.ygoprodeck.com/images/sets/DPBC.jpg | 47 / 47 | ygoprodeck |
 | Yu-Gi-Oh! | Duelist Pack: Dimensional Guardians | https://images.ygoprodeck.com/images/sets/DPDG.jpg | 45 / 45 | ygoprodeck |
@@ -1335,16 +1335,16 @@
 | Yu-Gi-Oh! | Duelist Pack: Yugi | https://images.ygoprodeck.com/images/sets/DPYG.jpg | 30 / 30 | ygoprodeck |
 | Yu-Gi-Oh! | Duelist Revolution | https://images.ygoprodeck.com/images/sets/DREV.jpg | 114 / 114 | ygoprodeck |
 | Yu-Gi-Oh! | Duelist Saga | https://images.ygoprodeck.com/images/sets/DUSA.jpg | 100 / 100 | ygoprodeck |
-| Yu-Gi-Oh! | Duelist of the Roses |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Duelist of the Roses | https://ms.yugipedia.com//7/7a/DOR-VideoGame-NA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Duelist's Advance | https://images.ygoprodeck.com/images/sets/DUAD.jpg | 131 / 131 | ygoprodeck |
-| Yu-Gi-Oh! | Early Days Collection Promotional Cards |  | 2 / 2 | — |
+| Yu-Gi-Oh! | Early Days Collection Promotional Cards | https://ms.yugipedia.com//3/31/EDC1-VideoGameNA.png | 2 / 2 | yugipedia |
 | Yu-Gi-Oh! | Egyptian God Deck: Obelisk the Tormentor | https://images.ygoprodeck.com/images/sets/EGO1.jpg | 35 / 35 | ygoprodeck |
 | Yu-Gi-Oh! | Egyptian God Deck: Slifer the Sky Dragon | https://images.ygoprodeck.com/images/sets/EGS1.jpg | 38 / 38 | ygoprodeck |
 | Yu-Gi-Oh! | Elemental Energy | https://images.ygoprodeck.com/images/sets/EEN.jpg | 90 / 90 | ygoprodeck |
 | Yu-Gi-Oh! | Elemental Hero Collection 1 | https://ms.yugipedia.com/e/e1/EHC-PromoEN.jpg | 4 / 4 | yugipedia |
 | Yu-Gi-Oh! | Elemental Hero Collection 2 | https://ms.yugipedia.com/e/e1/EHC-PromoEN.jpg | 4 / 4 | yugipedia |
 | Yu-Gi-Oh! | Enemy of Justice | https://images.ygoprodeck.com/images/sets/EOJ.jpg | 85 / 85 | ygoprodeck |
-| Yu-Gi-Oh! | Eternal Duelist Soul |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Eternal Duelist Soul | https://ms.yugipedia.com//3/3d/EDS-VideoGame-NA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Eternity Code | https://images.ygoprodeck.com/images/sets/ETCO.jpg | 106 / 106 | ygoprodeck |
 | Yu-Gi-Oh! | Event Pack Speed Duel | https://images.ygoprodeck.com/images/sets/EVSD.jpg | 7 / 7 | ygoprodeck |
 | Yu-Gi-Oh! | Extreme Force | https://images.ygoprodeck.com/images/sets/EXFO.jpg | 105 / 105 | ygoprodeck |
@@ -1356,10 +1356,10 @@
 | Yu-Gi-Oh! | Forbidden Legacy | https://ms.yugipedia.com/1/1d/FL-PromoEN.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Force of the Breaker | https://images.ygoprodeck.com/images/sets/FOTB.jpg | 96 / 96 | ygoprodeck |
 | Yu-Gi-Oh! | Fusion Enforcers | https://images.ygoprodeck.com/images/sets/FUEN.jpg | 60 / 60 | ygoprodeck |
-| Yu-Gi-Oh! | GX Duel Academy GBA Promo |  | 3 / 3 | — |
+| Yu-Gi-Oh! | GX Duel Academy GBA Promo | https://ms.yugipedia.com//a/a5/GX1-VideoGame-NA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | GX Next Generation Blister Pack Promo | https://images.ygoprodeck.com/images/sets/GXNG.jpg | 1 / 1 | ygoprodeck |
-| Yu-Gi-Oh! | GX Spirit Caller Promo |  | 3 / 3 | — |
-| Yu-Gi-Oh! | GX Tag Force Promo |  | 3 / 3 | — |
+| Yu-Gi-Oh! | GX Spirit Caller Promo | https://ms.yugipedia.com//b/b7/GX03-VideoGame-NA.jpg | 3 / 3 | yugipedia |
+| Yu-Gi-Oh! | GX Tag Force Promo | https://ms.yugipedia.com//c/c2/GX02-VideoGame-NA.png | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | GX Ultimate Beginner's Pack 1 | https://ms.yugipedia.com/e/eb/UBP1-PromoEN.jpg | 5 / 5 | yugipedia |
 | Yu-Gi-Oh! | Galactic Overlord | https://images.ygoprodeck.com/images/sets/GAOV.jpg | 112 / 112 | ygoprodeck |
 | Yu-Gi-Oh! | Generation Force | https://images.ygoprodeck.com/images/sets/GENF.jpg | 114 / 114 | ygoprodeck |
@@ -1409,7 +1409,7 @@
 | Yu-Gi-Oh! | Legacy of the Valiant | https://images.ygoprodeck.com/images/sets/LVAL.jpg | 111 / 111 | ygoprodeck |
 | Yu-Gi-Oh! | Legend of Blue Eyes White Dragon (25th Anniversary Edition) | https://images.ygoprodeck.com/images/sets/LOB.jpg | 126 / 126 | ygoprodeck |
 | Yu-Gi-Oh! | Legend of Blue Eyes White Dragon (Worldwide English) | https://images.ygoprodeck.com/images/sets/LOB.jpg ※ | 51 / 126 | ygoprodeck（继承父系列） |
-| Yu-Gi-Oh! | Legendary 5D's Decks |  | 118 / 118 | — |
+| Yu-Gi-Oh! | Legendary 5D's Decks | https://ms.yugipedia.com//4/48/L5DD-DeckNA.png | 118 / 118 | yugipedia |
 | Yu-Gi-Oh! | Legendary Arc-V Decks | https://images.ygoprodeck.com/images/sets/LAVD.jpg | 108 / 158 | ygoprodeck |
 | Yu-Gi-Oh! | Legendary Collection 1 | https://ms.yugipedia.com/f/ff/LC01-PromoEN.png | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | Legendary Collection 2 | https://images.ygoprodeck.com/images/sets/LC02.jpg | 279 / 279 | ygoprodeck |
@@ -1469,7 +1469,7 @@
 | Yu-Gi-Oh! | Millennium Pack | https://images.ygoprodeck.com/images/sets/MIL1.jpg | 48 / 48 | ygoprodeck |
 | Yu-Gi-Oh! | Miscellaneous Promotional Cards |  | 21 / 22 | — |
 | Yu-Gi-Oh! | Mystic Fighters | https://images.ygoprodeck.com/images/sets/MYFI.jpg | 60 / 60 | ygoprodeck |
-| Yu-Gi-Oh! | Nintendo DS Nightmare of Troubadour |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Nintendo DS Nightmare of Troubadour | https://ms.yugipedia.com//e/e2/NTR-VideoGame-NA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Noble Knights of the Round Table Box Set | https://images.ygoprodeck.com/images/sets/NKRT.jpg | 44 / 44 | ygoprodeck |
 | Yu-Gi-Oh! | Number Hunters | https://images.ygoprodeck.com/images/sets/NUMH.jpg | 60 / 60 | ygoprodeck |
 | Yu-Gi-Oh! | OTS Tournament Pack 1 | https://images.ygoprodeck.com/images/sets/OP01.jpg | 27 / 27 | ygoprodeck |
@@ -1535,7 +1535,7 @@
 | Yu-Gi-Oh! | Raging Tempest | https://images.ygoprodeck.com/images/sets/RATE.jpg | 105 / 105 | ygoprodeck |
 | Yu-Gi-Oh! | Rarity Collection 5 | https://images.ygoprodeck.com/images/sets/RA05.jpg | 696 / 697 | ygoprodeck |
 | Yu-Gi-Oh! | Redemption Replacement |  | 9 / 9 | — |
-| Yu-Gi-Oh! | Reshef of Destruction |  | 1 / 1 | — |
+| Yu-Gi-Oh! | Reshef of Destruction | https://ms.yugipedia.com//6/64/ROD-VideoGame-NA.jpg | 1 / 1 | yugipedia |
 | Yu-Gi-Oh! | Retro Pack | https://images.ygoprodeck.com/images/sets/RP01.jpg | 1 / 101 | ygoprodeck |
 | Yu-Gi-Oh! | Retro Pack (2020 Date Reprint) | https://images.ygoprodeck.com/images/sets/RP01.jpg ※ | 65 / 101 | ygoprodeck（继承父系列） |
 | Yu-Gi-Oh! | Retro Pack 2 | https://images.ygoprodeck.com/images/sets/RP02.jpg | 57 / 101 | ygoprodeck |
@@ -1578,7 +1578,7 @@
 | Yu-Gi-Oh! | Speed Duel: Arena of Lost Souls | https://images.ygoprodeck.com/images/sets/SBLS.jpg | 50 / 50 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Attack from the Deep | https://images.ygoprodeck.com/images/sets/SBAD.jpg | 50 / 50 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Battle City Box | https://images.ygoprodeck.com/images/sets/SBCB.jpg | 244 / 244 | ygoprodeck |
-| Yu-Gi-Oh! | Speed Duel: Battle City Finals |  | 250 / 250 | — |
+| Yu-Gi-Oh! | Speed Duel: Battle City Finals | https://ms.yugipedia.com//7/76/SBC2-BoxEN.png | 250 / 250 | yugipedia |
 | Yu-Gi-Oh! | Speed Duel: Scars of Battle | https://images.ygoprodeck.com/images/sets/SBSC.jpg | 50 / 50 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Streets of Battle City | https://images.ygoprodeck.com/images/sets/SBC1.jpg | 187 / 237 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Tournament Pack 1 | https://ms.yugipedia.com/3/3e/STP1-BoosterEN.png | 18 / 18 | yugipedia |
@@ -1593,13 +1593,13 @@
 | Yu-Gi-Oh! | Spell Ruler (25th Anniversary Edition) | https://images.ygoprodeck.com/images/sets/SRL.jpg | 104 / 104 | ygoprodeck |
 | Yu-Gi-Oh! | Spell Ruler (Worldwide English) | https://images.ygoprodeck.com/images/sets/SRL.jpg ※ | 104 / 104 | ygoprodeck（继承父系列） |
 | Yu-Gi-Oh! | Spirit Warriors | https://images.ygoprodeck.com/images/sets/SPWA.jpg | 60 / 60 | ygoprodeck |
-| Yu-Gi-Oh! | Stairway to the Destined Duel |  | 6 / 6 | — |
+| Yu-Gi-Oh! | Stairway to the Destined Duel | https://ms.yugipedia.com//b/bd/SDD-VideoGame-NA.jpg | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | Star Pack - Battle Royal | https://images.ygoprodeck.com/images/sets/SP17.jpg | 99 / 99 | ygoprodeck |
 | Yu-Gi-Oh! | Star Pack 2013 | https://images.ygoprodeck.com/images/sets/SP13.jpg | 100 / 100 | ygoprodeck |
 | Yu-Gi-Oh! | Star Pack 2014 | https://images.ygoprodeck.com/images/sets/SP14.jpg | 100 / 100 | ygoprodeck |
 | Yu-Gi-Oh! | Star Pack ARC-V | https://images.ygoprodeck.com/images/sets/SP15.jpg | 98 / 98 | ygoprodeck |
 | Yu-Gi-Oh! | Star Pack VRAINS | https://images.ygoprodeck.com/images/sets/SP18.jpg | 99 / 99 | ygoprodeck |
-| Yu-Gi-Oh! | Stardust Accelerator Promos |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Stardust Accelerator Promos | https://ms.yugipedia.com//0/06/WC09-VideoGame-NA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Stardust Overdrive | https://images.ygoprodeck.com/images/sets/SOVR.jpg | 116 / 116 | ygoprodeck |
 | Yu-Gi-Oh! | Starstrike Blast | https://images.ygoprodeck.com/images/sets/STBL.jpg | 110 / 111 | ygoprodeck |
 | Yu-Gi-Oh! | Starter Deck 2006 | https://images.ygoprodeck.com/images/sets/YSD.jpg | 41 / 41 | ygoprodeck |
@@ -1738,11 +1738,11 @@
 | Yu-Gi-Oh! | Wild Survivors | https://images.ygoprodeck.com/images/sets/WISU.jpg | 75 / 75 | ygoprodeck |
 | Yu-Gi-Oh! | Wing Raiders | https://images.ygoprodeck.com/images/sets/WIRA.jpg | 60 / 60 | ygoprodeck |
 | Yu-Gi-Oh! | Winner's Pack 2026-2027 | https://images.ygoprodeck.com/images/sets/WI26.jpg | 118 / 120 | ygoprodeck |
-| Yu-Gi-Oh! | World Championship 2004: GBA Promo |  | 6 / 6 | — |
-| Yu-Gi-Oh! | World Championship 2005: 7 Trials to Glory |  | 3 / 3 | — |
+| Yu-Gi-Oh! | World Championship 2004: GBA Promo | https://ms.yugipedia.com//2/2a/WC4-VideoGame-NA.jpg | 6 / 6 | yugipedia |
+| Yu-Gi-Oh! | World Championship 2005: 7 Trials to Glory | https://ms.yugipedia.com//2/28/WC5-VideoGame-NA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | World Championship 2006: Ultimate Masters | https://images.ygoprodeck.com/images/sets/WC6.jpg | 3 / 3 | ygoprodeck |
-| Yu-Gi-Oh! | World Championship 2007 |  | 3 / 3 | — |
-| Yu-Gi-Oh! | World Championship 2008 |  | 3 / 3 | — |
+| Yu-Gi-Oh! | World Championship 2007 | https://ms.yugipedia.com//b/ba/WC07-VideoGame-NA.jpg | 3 / 3 | yugipedia |
+| Yu-Gi-Oh! | World Championship 2008 | https://ms.yugipedia.com//5/54/WC08-VideoGame-NA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | World Championship 2010 Card Pack | https://images.ygoprodeck.com/images/sets/WCPP.jpg | 20 / 20 | ygoprodeck |
 | Yu-Gi-Oh! | World Championship 2011 Card Pack | https://images.ygoprodeck.com/images/sets/WP11.jpg | 20 / 20 | ygoprodeck |
 | Yu-Gi-Oh! | World Championship JPP Cards |  | 8 / 10 | — |
@@ -1750,17 +1750,17 @@
 | Yu-Gi-Oh! | World Superstars | https://images.ygoprodeck.com/images/sets/WSUP.jpg | 52 / 52 | ygoprodeck |
 | Yu-Gi-Oh! | X-Saber Power-Up | https://ms.yugipedia.com/f/f4/XSPU-PromoEN.jpg | 1 / 1 | yugipedia |
 | Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Manga Promotional Cards |  | 9 / 9 | — |
-| Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Over the Nexus Promo Cards |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Over the Nexus Promo Cards | https://ms.yugipedia.com//f/f1/WC11-VideoGame-NA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Tag Force Promotional Cards | https://ms.yugipedia.com/9/99/TF05-VideoGameNA.jpg | 3 / 3 | yugipedia |
-| Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Wheelie Breakers Promotional Cards |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Wheelie Breakers Promotional Cards | https://ms.yugipedia.com//6/66/WB01-VideoGame-NA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Yu-Gi-Oh! ARC-V Promo Cards | https://images.ygoprodeck.com/images/sets/YA01.jpg | 7 / 7 | ygoprodeck |
-| Yu-Gi-Oh! | Yu-Gi-Oh! Championship Series 2025 Prize Cards |  | 13 / 13 | — |
+| Yu-Gi-Oh! | Yu-Gi-Oh! Championship Series 2025 Prize Cards | https://ms.yugipedia.com//e/e7/YCSW-PromoEN.png | 13 / 13 | yugipedia |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Championship Series Prize Cards | https://images.ygoprodeck.com/images/sets/YCSW.jpg | 30 / 30 | ygoprodeck |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Day Promos | https://images.ygoprodeck.com/images/sets/YDPR.jpg | 5 / 5 | ygoprodeck |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Duel Monsters International: Worldwide Edition | https://ms.yugipedia.com/f/fa/GBI-Box-AE.png | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | Yu-Gi-Oh! GX Manga Promotional Cards |  | 8 / 8 | — |
-| Yu-Gi-Oh! | Yu-Gi-Oh! GX Tag Force Evolution Promo |  | 2 / 2 | — |
-| Yu-Gi-Oh! | Yu-Gi-Oh! GX Tag Force Promotional Cards |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Yu-Gi-Oh! GX Tag Force Evolution Promo | https://ms.yugipedia.com//8/88/GX05-VideoGame-EU.png | 2 / 2 | yugipedia |
+| Yu-Gi-Oh! | Yu-Gi-Oh! GX Tag Force Promotional Cards | https://ms.yugipedia.com//c/c2/GX02-VideoGame-NA.png | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Movie Exclusive Pack | https://images.ygoprodeck.com/images/sets/EP1.jpg | 9 / 9 | ygoprodeck |
 | Yu-Gi-Oh! | Yu-Gi-Oh! R Manga Promo |  | 4 / 4 | — |
 | Yu-Gi-Oh! | Yu-Gi-Oh! The Movie Ani-Manga Promo | https://ms.yugipedia.com/2/2e/YMA-PromoEN.png | 1 / 1 | yugipedia |
@@ -2125,11 +2125,11 @@
 
 | 层级 | 含义 | 条数 |
 |------|------|------|
-| `symbol` | 系列专属符号 / logo（最可靠） | 1244 |
+| `symbol` | 系列专属符号 / logo（最可靠） | 1385 |
 | `artwork` | 官方包装图 / 产品封面（能标识系列，但不是 logo 本身） | 335 |
 | `inherit` | 继承自父系列的图（衍生子线共用一张） | 123 |
 | `generic` | Scryfall 通用占位图标（`default.svg` / `star.svg`） | 17 |
-| `none` | 没有 logo | 320 |
+| `none` | 没有 logo | 179 |
 
 注意两点：万智牌里有 4 个系列拿到的 Scryfall 图标是通用默认符号（`default.svg`），说明该系列在 Scryfall 没有专属符号；另有 123 条是衍生子线继承父系列 logo（表中标 `※`）、35 条是人工核对指定。
 
@@ -2142,15 +2142,15 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - **Pokémon**：19 个未覆盖
   - 缺的是 Trainer Kit、各类 Promo、World Championship Decks、Jumbo Cards 等子线，TCGdex / Holodex / Scryfall 三类源都不单独收录。
   - 明细：BW Trainer Kit: Excadrill & Zoroark、Blister Exclusives、Burger King Promos、Countdown Calendar Promos、DP Trainer Kit: Manaphy & Lucario、Deck Exclusives、First Partner Collection 2026、First Partner Pack、Jumbo Cards、Kids WB Promos、League & Championship Cards、Pikachu World Collection Promos …
-- **Pokémon Japan**：231 个未覆盖
+- **Pokémon Japan**：115 个未覆盖
   - 已有的 177 条来自 Bulbapedia 图库，按系列代码做前缀枚举命中（Bulbapedia 的 logo 文件名就是 `{代码}_{名称}_Logo.png`）。剩余的没命中，是因为 **TCGPlayer 有 153 个系列根本没给代码**（都是 1996–2009 的老扩展包与预组，如 `Pokemon VS`、`City Gym Decks`），另外 158 个有代码的里多数在 Bulbapedia 上只有卡图、没有包装图或 logo（如 `SM-P`、`XY-P` 这类促销线，前缀查询返回 0 个文件）。TCGdex 的日文 set 没有 logo 字段；官方 `pokemon-card.com` 只在最新产品页放 logo。
-  - 明细：10th Movie Commemoration Set、11th Movie Commemoration Set、64 Mario Stadium Best Photo Contest、ADV-P Promotional cards、Aqua Deck Kit、Arceus LV.X Deck: Grass & Fire、Arceus LV.X Deck: Lightning & Psychic、Awakening Legends、BK: Cobalion Battle Strength Deck、BK: Terrakion Battle Strength Deck、BK: Virizion Battle Strength Deck、BKB: Black Kyurem-EX Battle Strength Deck …
+  - 明细：10th Movie Commemoration Set、11th Movie Commemoration Set、64 Mario Stadium Best Photo Contest、ADV Expansion Pack、ADV-P Promotional cards、Arceus LV.X Deck: Grass & Fire、Arceus LV.X Deck: Lightning & Psychic、BKR: Reshiram-EX Battle Strength Deck、BKZ: Zekrom-EX Battle Strength Deck、BW-P Promotional cards、Battle Road、Black Deck Kit …
 - **Magic: The Gathering**：14 个未覆盖
   - 缺的是 TCGPlayer 独有的促销聚合线（`Oversize Cards`、`Prerelease Cards`、`Buy-A-Box Promos`、`WPN & Gateway Promos` 等），Scryfall 侧按年度拆开收录、没有与之对应的单一条目；可对应的 20 条已人工核对补上（见 3.3）。
   - 明细：Buy-A-Box Promos、Duel Decks: Anthology、Gift Boxes and Promos、JingHe Age Token Cards、Junior Series Promos、Launch Party & Release Event Promos、MagicFest Cards、Open House Promos、Oversize Cards、Play Promos、Prerelease Cards、Special Occasion …
-- **Yu-Gi-Oh!**：43 个未覆盖
+- **Yu-Gi-Oh!**：18 个未覆盖
   - 缺的是铁盒、收藏盒、活动场次卡等子线，ygoprodeck 对这批 set 只给名录不给图（1035 个 set 里有 125 个没有 `set_image` 字段，且用 `set_code` 拼 URL 也是 404）。
-  - 明细：2-Player Starter Set、Collector's Boxes、Dawn of Destiny Xbox、Destiny Board Traveler Promo、Duelist Pack Collection Tin、Duelist Pack Special Edition、Duelist of the Roses、Early Days Collection Promotional Cards、Eternal Duelist Soul、GX Duel Academy GBA Promo、GX Spirit Caller Promo、GX Tag Force Promo …
+  - 明细：Collector's Boxes、Duelist Pack Special Edition、Mattel Action Figure Promos: Series 2、Miscellaneous Promotional Cards、Redemption Replacement、Sneak Preview Series 1、Sneak Preview Series 2、Sneak Preview Series 3、Sneak Preview Series 4、Sneak Preview Series 5、Speed Duel Demo Deck 2020、World Championship JPP Cards …
 - **One Piece Card Game**：3 个未覆盖
   - 缺的绝大多数是 `ST-01`…`ST-20` 早期预组：官方站对应产品页（`decks/st05.php`、`st15-20.php`）只放了卡图，没有预组 logo 或包装图；`optcgapi.com` 只收录 22 个主系列。
   - 明细：One Piece Demo Deck Cards、One Piece Promotion Cards、Revision Pack Cards
@@ -2164,7 +2164,7 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
   - 缺的主要是 `Expansion Deck Box Set XX`、`Collector's Selection Vol.X` 这类非补充包产品，Holodex 不单独收录；官方站 `dbs-cardgame.com` 的产品页只展示当期产品，没有全量归档。
   - 明细：Judge Promotion Cards、Oversized Cards、Promotion Cards、Tournament Promotion Cards
 
-### 3.3 本轮由子 agent 补齐的 216 条（逐条附依据，便于复核）
+### 3.3 本轮由子 agent 补齐的 357 条（逐条附依据，便于复核）
 
 | 品线 | 系列 | logo | 来源 | 判定依据 |
 |------|------|------|------|----------|
@@ -2178,53 +2178,169 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 | Pokémon | XY Trainer Kit: Latias & Latios | https://archives.bulbagarden.net/media/upload/c/c1/XYTrainerKit_Latias_Latios.jpg | bulbapedia | 来自 Bulbapedia 条目 "XY Trainer Kit: Latias & Latios (TCG)" 的主图，文件名与系列名逐字对应。 |
 | Pokémon | XY Trainer Kit: Pikachu Libre & Suicune | https://archives.bulbagarden.net/media/upload/6/66/XYTrainerKit_PikachuLibre_Suicune.jpg | bulbapedia | 来自 Bulbapedia 条目 "XY Trainer Kit: Pikachu Libre & Suicune (TCG)" 的主图，文件名与系列名逐字对应。 |
 | Pokémon | XY Trainer Kit: Sylveon & Noivern | https://archives.bulbagarden.net/media/upload/9/92/XYTrainerKit.jpg | bulbapedia | 来自 Bulbapedia 条目 "XY Trainer Kit (TCG)" 的主图 XYTrainerKit.jpg；该条目即 Sylveon & Noivern 套牌(条目图像含 SetSymbolSylveon/Noivern_Half_Deck)。 |
-| Pokémon Japan | ADV Expansion Pack | https://archives.bulbagarden.net/media/upload/f/f1/ADV1_Expansion_Pack_pack.jpg | bulbapedia-article | Bulbapedia 条目「ADV Expansion Pack (TCG)」图像 ADV1 Expansion Pack pack.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | BKR: Reshiram-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/4/4d/BattleStrengthDeckReshiramEX.jpg | bulbapedia-article | Bulbapedia 条目「Reshiram-EX Battle Strength Deck (TCG)」图像 BattleStrengthDeckReshiramEX.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | BKZ: Zekrom-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/a/a6/BattleStrengthDeckZekromEX.jpg | bulbapedia-article | Bulbapedia 条目「Zekrom-EX Battle Strength Deck (TCG)」图像 BattleStrengthDeckZekromEX.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Battle Road | https://archives.bulbagarden.net/media/upload/c/cb/Battle_Roads_Autumn_logo.png | bulbapedia-article | Bulbapedia 条目「Battle Road」图像 Battle Roads Autumn logo.png（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Black Deck Kit | https://archives.bulbagarden.net/media/upload/9/90/Team_Rocket_Strikes_Back_-_Black_Deck_Kit.jpg | bulbapedia-article | Bulbapedia 条目「Black Deck Kit (TCG)」图像 Team Rocket Strikes Back - Black Deck Kit.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | City Gym Decks | https://archives.bulbagarden.net/media/upload/8/81/Brock_Pewter_City_Gym_Trainer_Battle_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Trainer Battle Decks (TCG)」图像 Brock Pewter City Gym Trainer Battle Deck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Dialga LV.X Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/e/e6/DialgaLV.XConstructedStandardDeck.jpg | bulbapedia-article | Bulbapedia 条目「Dialga LV.X Constructed Standard Deck (TCG)」图像 DialgaLV.XConstructedStandardDeck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Feraligatr Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/e/e7/Golden_Sky_Silvery_Ocean_-_Feraligatr_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Feraligatr Constructed Starter Deck (TCG)」图像 Golden Sky Silvery Ocean - Feraligatr Deck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Flygon Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/9/95/ADV3_Flygon_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Flygon Constructed Starter Deck (TCG)」图像 ADV3 Flygon Deck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Gift Box (Latias) | https://archives.bulbagarden.net/media/upload/d/d6/CSF_Dragon_Resurgence_Advanced_Gift_Box_Fierce.jpg | bulbapedia-article | Bulbapedia 条目「Dragon Resurgence (ATCG)」图像 CSF Dragon Resurgence Advanced Gift Box Fierce.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Gift Box (Latios) | https://archives.bulbagarden.net/media/upload/3/37/Latias_%26_Latios_Gift_Set_-_Box_front.jpg | bulbapedia-article | Bulbapedia 条目「Gift Box (TCG)」图像 Latias & Latios Gift Set - Box front.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Imprison! Gardevoir ex Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/3/36/ImprisonGardevoirexConstructedDeck.jpg | bulbapedia-article | Bulbapedia 条目「Imprison! Gardevoir ex Constructed Standard Deck (TCG)」图像 ImprisonGardevoirexConstructedDeck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Intro Pack (Bulbasaur) | https://archives.bulbagarden.net/media/upload/4/4f/IntroPack.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 IntroPack.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | Intro Pack (Squirtle) | https://archives.bulbagarden.net/media/upload/4/4f/IntroPack.jpg | bulbapedia-article | Bulbapedia 条目「Intro Pack (TCG)」图像 IntroPack.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | MEE: Starter Set ex Eevee ex | https://archives.bulbagarden.net/media/upload/0/00/Ex_Starter_Set_Eevee_ex.png | bulbapedia-merch | Bulbapedia 时代周边页图像 Ex Starter Set Eevee ex.png（文件名含系列罗马字名） |
-| Pokémon Japan | MEM: Starter Set ex Meowscarada ex | https://archives.bulbagarden.net/media/upload/1/15/Ex_Starter_Set_Sprigatito_Meowscarada_ex.png | bulbapedia-merch | Bulbapedia 时代周边页图像 Ex Starter Set Sprigatito Meowscarada ex.png（文件名含系列罗马字名） |
-| Pokémon Japan | MEZ: Starter Set ex Zoroark ex | https://archives.bulbagarden.net/media/upload/6/62/Ex_Starter_Set_Zorua_Zoroark_ex.png | bulbapedia-article | Bulbapedia 条目「Ex Starter Sets 2026 (TCG)」图像 Ex Starter Set Zorua Zoroark ex.png（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Master Kit (Bulbasaur) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | bulbapedia-article | Bulbapedia 条目「Master Kit (TCG)」图像 MasterKit.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Master Kit (Side Deck) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 MasterKit.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | Master Kit (Torchic) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | bulbapedia-article | Bulbapedia 条目「Master Kit (TCG)」图像 MasterKit.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Meganium Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/2/2c/Golden_Sky_Silvery_Ocean_-_Meganium_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Meganium Constructed Starter Deck (TCG)」图像 Golden Sky Silvery Ocean - Meganium Deck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Metagross Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/2/2e/ADV4_Metagross_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Metagross Constructed Starter Deck (TCG)」图像 ADV4 Metagross Deck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Mirage Forest | https://archives.bulbagarden.net/media/upload/9/96/PCG5_Mirage_Forest_pack.jpg | bulbapedia-article | Bulbapedia 条目「Mirage Forest (TCG)」图像 PCG5 Mirage Forest pack.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Offense and Defense of the Furthest Ends | https://archives.bulbagarden.net/media/upload/d/dd/PCG9_Offense_Defense_Furthest_Ends_pack.jpg | bulbapedia-article | Bulbapedia 条目「Offense and Defense of the Furthest Ends (TCG)」图像 PCG9 Offense Defense Furthest Ends pack.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Palkia LV.X Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/f/f0/PalkiaLV.XConstructedStandardDeck.jpg | bulbapedia-article | Bulbapedia 条目「Palkia LV.X Constructed Standard Deck (TCG)」图像 PalkiaLV.XConstructedStandardDeck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | SV: Ceruledge ex Stellar Tera Type Starter Set | https://archives.bulbagarden.net/media/upload/8/80/Stellar_Tera_Type_Starter_Set_Ceruledge_ex.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Stellar Tera Type Starter Set Ceruledge ex.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | SV: Chien-Pao ex Battle Master Deck | https://archives.bulbagarden.net/media/upload/5/55/Battle_Master_Deck_Chien-Pao_ex_Contents.png | bulbapedia-article | Bulbapedia 条目「Battle Master Decks (TCG)」图像 Battle Master Deck Chien-Pao ex Contents.png（文件名内嵌系列罗马字名） |
-| Pokémon Japan | SV: Mewtwo ex Terastal Starter Set | https://archives.bulbagarden.net/media/upload/2/2f/Terastal_Starter_Set_Mewtwo_ex_Contents.png | bulbapedia-article | Bulbapedia 条目「Terastal Starter Sets (TCG)」图像 Terastal Starter Set Mewtwo ex Contents.png（文件名内嵌系列罗马字名） |
-| Pokémon Japan | SV: Skeledirge ex Terastal Starter Set | https://archives.bulbagarden.net/media/upload/4/49/Terastal_Starter_Set_Skeledirge_ex_Contents.png | bulbapedia-article | Bulbapedia 条目「Terastal Starter Sets (TCG)」图像 Terastal Starter Set Skeledirge ex Contents.png（文件名内嵌系列罗马字名） |
-| Pokémon Japan | SV: Sylveon ex Stellar Tera Type Starter Set | https://archives.bulbagarden.net/media/upload/c/c3/Stellar_Tera_Type_Starter_Set_Sylveon_ex.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Stellar Tera Type Starter Set Sylveon ex.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | SV: Terastal Charizard ex Battle Master Deck | https://archives.bulbagarden.net/media/upload/5/5e/Battle_Master_Deck_Terastal_Charizard_ex_Contents.png | bulbapedia-merch | Bulbapedia 时代周边页图像 Battle Master Deck Terastal Charizard ex Contents.png（文件名含系列罗马字名） |
-| Pokémon Japan | Salamence Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/0/03/ADV3_Salamence_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Salamence Constructed Starter Deck (TCG)」图像 ADV3 Salamence Deck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Shockwave! Tyranitar ex Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/8/8e/ShockwaveTyranitarexConstructedDeck.jpg | bulbapedia-article | Bulbapedia 条目「Shockwave! Tyranitar ex Constructed Standard Deck (TCG)」图像 ShockwaveTyranitarexConstructedDeck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Silver Deck Kit | https://archives.bulbagarden.net/media/upload/5/5c/Team_Rocket_Strikes_Back_-_Silver_Deck_Kit.jpg | bulbapedia-article | Bulbapedia 条目「Silver Deck Kit (TCG)」图像 Team Rocket Strikes Back - Silver Deck Kit.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Team Plasma's Powered Half Deck | https://archives.bulbagarden.net/media/upload/f/f9/Expansion_Pack_Team_Plasma_Set.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Expansion Pack Team Plasma Set.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | The Town on No Map | https://archives.bulbagarden.net/media/upload/a/ab/E2_The_Town_on_No_Map_pack.jpg | bulbapedia-article | Bulbapedia 条目「The Town on No Map (TCG)」图像 E2 The Town on No Map pack.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | Typhlosion Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/9/9f/Golden_Sky_Silvery_Ocean_-_Typhlosion_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Typhlosion Constructed Starter Deck (TCG)」图像 Golden Sky Silvery Ocean - Typhlosion Deck.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | XYE: Emboar-EX vs Togekiss-EX Deck Kit | https://archives.bulbagarden.net/media/upload/9/93/EmboarEX_vs_TogekissEX_Deck_Kit.jpg | bulbapedia-article | Bulbapedia 条目「Emboar-EX vs Togekiss-EX Deck Kit (TCG)」图像 EmboarEX vs TogekissEX Deck Kit.jpg（文件名内嵌系列罗马字名） |
-| Pokémon Japan | sA: Fighting Starter Set V | https://archives.bulbagarden.net/media/upload/2/20/V_Starter_Set_Fighting.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 V Starter Set Fighting.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | sA: Fire Starter Set V | https://archives.bulbagarden.net/media/upload/5/53/V_Starter_Set_Fire.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 V Starter Set Fire.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | sA: Grass Starter Set V | https://archives.bulbagarden.net/media/upload/3/3a/V_Starter_Set_Grass.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 V Starter Set Grass.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | sA: Lightning Starter Set V | https://archives.bulbagarden.net/media/upload/d/de/V_Starter_Set_Lightning.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 V Starter Set Lightning.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | sA: Water Starter Set V | https://archives.bulbagarden.net/media/upload/6/69/V_Starter_Set_Water.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 V Starter Set Water.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | sC: Charizard Starter Set VMAX | https://archives.bulbagarden.net/media/upload/3/36/Charizard_VMAX_Starter_Set.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Charizard VMAX Starter Set.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | sC: Grimmsnarl Starter Set VMAX | https://archives.bulbagarden.net/media/upload/d/d0/Grimmsnarl_VMAX_Starter_Set.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Grimmsnarl VMAX Starter Set.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | sEF: Venusaur Starter Set VMAX | https://archives.bulbagarden.net/media/upload/1/1e/Venusaur_VMAX_Starter_Set.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Venusaur VMAX Starter Set.jpg（文件名含系列罗马字名） |
-| Pokémon Japan | sEK: Blastoise Starter Set VMAX | https://archives.bulbagarden.net/media/upload/e/e8/Blastoise_VMAX_Starter_Set.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Blastoise VMAX Starter Set.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Aqua Deck Kit | https://archives.bulbagarden.net/media/upload/c/c6/ADV_EX1_Aqua_Deck_Kit.jpg | bulbapedia-article | Bulbapedia 条目「Aqua Deck Kit (TCG)」图像 ADV EX1 Aqua Deck Kit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Awakening Legends | https://archives.bulbagarden.net/media/upload/5/59/Neo3_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Awakening Legends」一行 Logo 列文件 neo3 Logo.png |
+| Pokémon Japan | BK: Cobalion Battle Strength Deck | https://archives.bulbagarden.net/media/upload/8/89/Battle_Strength_Decks.jpg | bulbapedia-article | Bulbapedia 条目「Cobalion Battle Strength Deck (TCG)」图像 Battle Strength Decks.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | BK: Terrakion Battle Strength Deck | https://archives.bulbagarden.net/media/upload/8/89/Battle_Strength_Decks.jpg | bulbapedia-article | Bulbapedia 条目「Terrakion Battle Strength Deck (TCG)」图像 Battle Strength Decks.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | BK: Virizion Battle Strength Deck | https://archives.bulbagarden.net/media/upload/8/89/Battle_Strength_Decks.jpg | bulbapedia-article | Bulbapedia 条目「Virizion Battle Strength Deck (TCG)」图像 Battle Strength Decks.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | BKB: Black Kyurem-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/0/03/BlackKyuremEXBattleStrengthDeck.jpg | bulbapedia-article | Bulbapedia 条目「Black Kyurem-EX Battle Strength Deck (TCG)」图像 BlackKyuremEXBattleStrengthDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | BKW: White Kyurem-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/9/9e/WhiteKyuremEXBattleStrengthDeck.jpg | bulbapedia-article | Bulbapedia 条目「White Kyurem-EX Battle Strength Deck (TCG)」图像 WhiteKyuremEXBattleStrengthDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Base Expansion Pack | https://archives.bulbagarden.net/media/upload/a/a5/E1_Base_Expansion_Pack_pack.jpg | bulbapedia-article | Bulbapedia 条目「Base Expansion Pack (TCG)」图像 E1 Base Expansion Pack pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Battle Gift Set: Thundurus vs Tornadus | https://archives.bulbagarden.net/media/upload/6/69/BattleGiftSet.jpg | bulbapedia-article | Bulbapedia 条目「Battle Gift Set: Thundurus vs Tornadus (TCG)」图像 BattleGiftSet.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Battle Starter Deck (Blastoise) | https://archives.bulbagarden.net/media/upload/b/b2/Blastoise_Battle_Starter_Deck.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Blastoise Battle Starter Deck.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Battle Starter Deck (Magmortar) | https://archives.bulbagarden.net/media/upload/6/68/Magmortar_Battle_Starter_Deck.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Magmortar Battle Starter Deck.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Battle Starter Deck (Raichu) | https://archives.bulbagarden.net/media/upload/4/45/Raichu_Battle_Starter_Deck.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Raichu Battle Starter Deck.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Battle Starter Deck (Torterra) | https://archives.bulbagarden.net/media/upload/9/9b/Pok%C3%A9BallTorterraStarterDeck9.jpg | bulbapedia-article | Bulbapedia 条目「Poké Ball (Jungle 64)」图像 PokéBallTorterraStarterDeck9.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Battle Theme Deck: Victini | https://archives.bulbagarden.net/media/upload/6/68/BattleThemeDeckVictini.jpg | bulbapedia-article | Bulbapedia 条目「Battle Theme Deck: Victini (TCG)」图像 BattleThemeDeckVictini.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Blastoise + Kyurem-EX Combo Deck | https://archives.bulbagarden.net/media/upload/c/c4/BlastoiseKyuremEXComboDeck.jpg | bulbapedia-article | Bulbapedia 条目「Blastoise + Kyurem-EX Combo Deck (TCG)」图像 BlastoiseKyuremEXComboDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Challenge from the Darkness | https://archives.bulbagarden.net/media/upload/1/1a/Challenge_from_the_Darkness_pack.jpg | bulbapedia-article | Bulbapedia 条目「Challenge from the Darkness (TCG)」图像 Challenge from the Darkness pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Champion Road | https://archives.bulbagarden.net/media/upload/f/fa/SM6b_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Champion Road」一行 Logo 列文件 SM6b Logo.png |
+| Pokémon Japan | Clash of the Blue Sky | https://archives.bulbagarden.net/media/upload/3/3b/PCG2_Clash_of_the_Blue_Sky_pack.jpg | bulbapedia-article | Bulbapedia 条目「Clash of the Blue Sky (TCG)」图像 PCG2 Clash of the Blue Sky pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Crossing the Ruins... | https://archives.bulbagarden.net/media/upload/c/ca/Neo2_Crossing_the_Ruins_pack.jpg | bulbapedia-article | Bulbapedia 条目「Crossing the Ruins... (TCG)」图像 Neo2 Crossing the Ruins pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Darkness, and to Light... | https://archives.bulbagarden.net/media/upload/1/19/Neo4_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Darkness, and to Light...」一行 Logo 列文件 neo4 Logo.png |
+| Pokémon Japan | Deoxys Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/9/9e/DeoxysConstructedStarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Deoxys Constructed Starter Deck (TCG)」图像 DeoxysConstructedStarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Earth's Groudon ex Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/7/7f/EarthGroudonConstructedStarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Earth's Groudon ex Constructed Starter Deck (TCG)」图像 EarthGroudonConstructedStarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Entry Pack DPt (Dialga) | https://archives.bulbagarden.net/media/upload/5/52/EntryPackDPt.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 EntryPackDPt.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Entry Pack DPt (Giratina) | https://archives.bulbagarden.net/media/upload/5/52/EntryPackDPt.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 EntryPackDPt.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Entry Pack DPt (Palkia) | https://archives.bulbagarden.net/media/upload/5/52/EntryPackDPt.jpg | bulbapedia-article | Bulbapedia 条目「Entry Pack DPt (TCG)」图像 EntryPackDPt.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Expansion Pack | https://archives.bulbagarden.net/media/upload/c/cb/Expansion_Pack_pack.jpg | bulbapedia-article | Bulbapedia 条目「Expansion Pack (TCG)」图像 Expansion Pack pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Fighting Quick Construction Pack | https://archives.bulbagarden.net/media/upload/6/6d/Fighting_Quick_Construction_Pack.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Fighting Quick Construction Pack.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Fire Quick Construction Pack | https://archives.bulbagarden.net/media/upload/2/2d/Fire_Quick_Construction_Pack.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Fire Quick Construction Pack.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Flight of Legends | https://archives.bulbagarden.net/media/upload/8/82/PCG1_Flight_of_Legends_pack.jpg | bulbapedia-article | Bulbapedia 条目「Flight of Legends (TCG)」图像 PCG1 Flight of Legends pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Garchomp Half Deck | https://archives.bulbagarden.net/media/upload/c/ca/GarchompHalfDeck.jpg | bulbapedia-article | Bulbapedia 条目「Garchomp Half Deck (TCG)」图像 GarchompHalfDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Garchomp vs Charizard SP Deck Kit (Charizard) | https://archives.bulbagarden.net/media/upload/a/a2/GarchompVSCharizardSPDeckKit.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 GarchompVSCharizardSPDeckKit.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Garchomp vs Charizard SP Deck Kit (Garchomp) | https://archives.bulbagarden.net/media/upload/a/a2/GarchompVSCharizardSPDeckKit.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 GarchompVSCharizardSPDeckKit.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Gift Box Mew - Lucario (Crawdaunt Quarter Deck) | https://archives.bulbagarden.net/media/upload/f/fa/GiftBoxMewLucario.jpg | bulbapedia-article | Bulbapedia 条目「Gift Box Mew • Lucario (TCG)」图像 GiftBoxMewLucario.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Gift Box Mew - Lucario (Lucario Quarter Deck) | https://archives.bulbagarden.net/media/upload/f/fa/GiftBoxMewLucario.jpg | bulbapedia-article | Bulbapedia 条目「Gift Box Mew • Lucario (TCG)」图像 GiftBoxMewLucario.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Gift Box Mew - Lucario (Mew Quarter Deck) | https://archives.bulbagarden.net/media/upload/f/fa/GiftBoxMewLucario.jpg | bulbapedia-article | Bulbapedia 条目「Gift Box Mew • Lucario (TCG)」图像 GiftBoxMewLucario.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Gift Box Mew - Lucario (Mightyena Quarter Deck) | https://archives.bulbagarden.net/media/upload/f/fa/GiftBoxMewLucario.jpg | bulbapedia-article | Bulbapedia 条目「Gift Box Mew • Lucario (TCG)」图像 GiftBoxMewLucario.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Gift Box Mew - Lucario (Pokemon Star) | https://archives.bulbagarden.net/media/upload/f/fa/GiftBoxMewLucario.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 GiftBoxMewLucario.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Giratina vs Dialga Deck Kit (Dialga) | https://archives.bulbagarden.net/media/upload/f/f9/GiratinaVSDialgaDeckKit.jpg | bulbapedia-article | Bulbapedia 条目「Giratina vs Dialga Deck Kit (TCG)」图像 GiratinaVSDialgaDeckKit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Giratina vs Dialga Deck Kit (Giratina) | https://archives.bulbagarden.net/media/upload/f/f9/GiratinaVSDialgaDeckKit.jpg | bulbapedia-article | Bulbapedia 条目「Giratina vs Dialga Deck Kit (TCG)」图像 GiratinaVSDialgaDeckKit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Gold, Silver, to a New World... | https://archives.bulbagarden.net/media/upload/7/7b/Neo1_Gold_Silver_to_a_New_World_pack.jpg | bulbapedia-article | Bulbapedia 条目「Gold, Silver, to a New World... (TCG)」图像 Neo1 Gold Silver to a New World pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Golden Sky, Silvery Ocean | https://archives.bulbagarden.net/media/upload/5/58/PCG4_Golden_Sky_Silvery_Ocean_pack.jpg | bulbapedia-article | Bulbapedia 条目「Golden Sky, Silvery Ocean (TCG)」图像 PCG4 Golden Sky Silvery Ocean pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Grass Quick Construction Pack | https://archives.bulbagarden.net/media/upload/7/77/Grass_Quick_Construction_Pack.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Grass Quick Construction Pack.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | HS: Beginning Set | https://archives.bulbagarden.net/media/upload/d/d6/BeginningSet.jpg | bulbapedia-article | Bulbapedia 条目「Beginning Set (TCG)」图像 BeginningSet.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | HSP: Beginning Set Pikachu Version | https://archives.bulbagarden.net/media/upload/1/19/BeginningSetPikachuVersion.jpg | bulbapedia-article | Bulbapedia 条目「Beginning Set Pikachu Version (TCG)」图像 BeginningSetPikachuVersion.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | HSZ: National Beginning Set | https://archives.bulbagarden.net/media/upload/d/de/NationalBeginningSet.jpg | bulbapedia-article | Bulbapedia 条目「National Beginning Set (TCG)」图像 NationalBeginningSet.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Holon Phantom | https://archives.bulbagarden.net/media/upload/1/1b/PCG7_Holon_Phantom_pack.jpg | bulbapedia-article | Bulbapedia 条目「Holon Phantom (TCG)」图像 PCG7 Holon Phantom pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Holon Research Tower | https://archives.bulbagarden.net/media/upload/4/41/PCG6_Holon_Research_Tower_pack.jpg | bulbapedia-article | Bulbapedia 条目「Holon Research Tower (TCG)」图像 PCG6 Holon Research Tower pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Holon Research Tower Fire Quarter Deck | https://archives.bulbagarden.net/media/upload/9/95/HolonResearchTowerFireQuarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Holon Research Tower Fire Quarter Deck (TCG)」图像 HolonResearchTowerFireQuarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Holon Research Tower Lightning Quarter Deck | https://archives.bulbagarden.net/media/upload/a/ab/HolonResearchTowerLightningQuarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Holon Research Tower Lightning Quarter Deck (TCG)」图像 HolonResearchTowerLightningQuarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Holon Research Tower Water Quarter Deck | https://archives.bulbagarden.net/media/upload/5/5c/HolonResearchTowerWaterQuarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Holon Research Tower Water Quarter Deck (TCG)」图像 HolonResearchTowerWaterQuarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Hydreigon Half Deck | https://archives.bulbagarden.net/media/upload/2/28/HydreigonHalfDeck.jpg | bulbapedia-article | Bulbapedia 条目「Hydreigon Half Deck (TCG)」图像 HydreigonHalfDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Infernape vs Gallade SP Deck Kit (Gallade) | https://archives.bulbagarden.net/media/upload/f/f6/InfernapeVSGalladeSPDeckKit.jpg | bulbapedia-article | Bulbapedia 条目「Infernape vs Gallade SP Deck Kit (TCG)」图像 InfernapeVSGalladeSPDeckKit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Infernape vs Gallade SP Deck Kit (Infernape) | https://archives.bulbagarden.net/media/upload/f/f6/InfernapeVSGalladeSPDeckKit.jpg | bulbapedia-article | Bulbapedia 条目「Infernape vs Gallade SP Deck Kit (TCG)」图像 InfernapeVSGalladeSPDeckKit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Intense Fight in the Destroyed Sky | https://archives.bulbagarden.net/media/upload/f/f4/DP6_Intense_Fight_in_the_Destroyed_Sky_pack.jpg | bulbapedia-article | Bulbapedia 条目「Intense Fight in the Destroyed Sky (TCG)」图像 DP6 Intense Fight in the Destroyed Sky pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Intro Pack Neo (Chikorita) | https://archives.bulbagarden.net/media/upload/7/7d/IntroPackNeo.jpg | bulbapedia-article | Bulbapedia 条目「Intro Pack Neo (TCG)」图像 IntroPackNeo.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Intro Pack Neo (Totodile) | https://archives.bulbagarden.net/media/upload/7/7d/IntroPackNeo.jpg | bulbapedia-article | Bulbapedia 条目「Intro Pack Neo (TCG)」图像 IntroPackNeo.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Keldeo Battle Strength Deck | https://archives.bulbagarden.net/media/upload/0/0a/KeldeoBattleStrengthDeck.jpg | bulbapedia-article | Bulbapedia 条目「Keldeo Battle Strength Deck (TCG)」图像 KeldeoBattleStrengthDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | L1: HeartGold Collection | https://archives.bulbagarden.net/media/upload/3/3c/L1_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「L1: HeartGold Collection」一行 Logo 列文件 L1 Logo.png |
+| Pokémon Japan | L1: SoulSilver Collection | https://archives.bulbagarden.net/media/upload/3/3c/L1_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「L1: SoulSilver Collection」一行 Logo 列文件 L1 Logo.png |
+| Pokémon Japan | Leaders' Stadium | https://archives.bulbagarden.net/media/upload/c/cc/Leaders_Stadium_pack.jpg | bulbapedia-article | Bulbapedia 条目「Leaders' Stadium (TCG)」图像 Leaders Stadium pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Lightning Quick Construction Pack | https://archives.bulbagarden.net/media/upload/d/d5/Lightning_Quick_Construction_Pack.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Lightning Quick Construction Pack.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | MF: 30th CELEBRATION Premium Deck Set Espeon & Umbreon | https://archives.bulbagarden.net/media/upload/5/5c/30th_Celebration_Premium_Deck_Set_Espeon_Umbreon.jpg | bulbapedia-article | Bulbapedia 条目「30th Celebration Premium Deck Set Espeon & Umbreon (TCG)」图像 30th Celebration Premium Deck Set Espeon Umbreon.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | MP1: Start Deck 100 Battle Collection CoroCiao Version | https://archives.bulbagarden.net/media/upload/c/c2/Start_Deck_100_Battle_Collection_CoroCiao_Version.jpg | bulbapedia-article | Bulbapedia 条目「Start Deck 100 Battle Collection CoroCiao Version (TCG)」图像 Start Deck 100 Battle Collection CoroCiao Version.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Magma Deck Kit | https://archives.bulbagarden.net/media/upload/1/19/ADV_EX1_Magma_Deck_Kit.jpg | bulbapedia-article | Bulbapedia 条目「Magma Deck Kit (TCG)」图像 ADV EX1 Magma Deck Kit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Magma VS Aqua: Two Ambitions | https://archives.bulbagarden.net/media/upload/4/48/Ex1_Magma_VS_Aqua_Two_Ambitions_pack.jpg | bulbapedia-article | Bulbapedia 条目「Magma VS Aqua: Two Ambitions (TCG)」图像 Ex1 Magma VS Aqua Two Ambitions pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | McDonald's Pokémon-e Minimum Pack | https://archives.bulbagarden.net/media/upload/0/01/McDonald%27s_e_Minimum_Booster_Pack.jpg | bulbapedia-article | Bulbapedia 条目「McDonald's Pokémon-e Minimum Pack (TCG)」图像 McDonald's e Minimum Booster Pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Melee! Pokemon Scramble | https://archives.bulbagarden.net/media/upload/8/82/Melee_Pok%C3%A9mon_Scramble_Pok%C3%A9mon_Card_Game.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Melee Pokémon Scramble Pokémon Card Game.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Mewtwo vs Genesect Deck Kit (Genesect) | https://archives.bulbagarden.net/media/upload/4/42/MewtwoVSGenesectDeckKit.jpg | bulbapedia-article | Bulbapedia 条目「Mewtwo vs Genesect Deck Kit (TCG)」图像 MewtwoVSGenesectDeckKit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Mewtwo vs Genesect Deck Kit (Mewtwo) | https://archives.bulbagarden.net/media/upload/4/42/MewtwoVSGenesectDeckKit.jpg | bulbapedia-article | Bulbapedia 条目「Mewtwo vs Genesect Deck Kit (TCG)」图像 MewtwoVSGenesectDeckKit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Miracle Crystal | https://archives.bulbagarden.net/media/upload/6/61/PCG8_Miracle_Crystal_pack.jpg | bulbapedia-article | Bulbapedia 条目「Miracle Crystal (TCG)」图像 PCG8 Miracle Crystal pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Miracle of the Desert | https://archives.bulbagarden.net/media/upload/6/66/ADV2_Miracle_of_the_Desert_pack.jpg | bulbapedia-article | Bulbapedia 条目「Miracle of the Desert (TCG)」图像 ADV2 Miracle of the Desert pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Mirage's Mew Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/6/62/MirageMewConstructedStarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Mirage's Mew Constructed Starter Deck (TCG)」图像 MirageMewConstructedStarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Mudkip Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/3/35/MudkipConstructedStarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Mudkip Constructed Starter Deck (TCG)」图像 MudkipConstructedStarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Mysterious Mountains | https://archives.bulbagarden.net/media/upload/f/fd/E5_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Mysterious Mountains」一行 Logo 列文件 E5 Logo.png |
+| Pokémon Japan | Mystery of the Fossils | https://archives.bulbagarden.net/media/upload/2/25/Mystery_of_the_Fossils_pack.jpg | bulbapedia-article | Bulbapedia 条目「Mystery of the Fossils (TCG)」图像 Mystery of the Fossils pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Neo Premium File 2 | https://archives.bulbagarden.net/media/upload/2/2d/Neo_Premium_File_2.jpg | bulbapedia-article | Bulbapedia 条目「Neo Premium File 2 (TCG)」图像 Neo Premium File 2.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Neo Premium File 3 | https://archives.bulbagarden.net/media/upload/7/72/Neo_Premium_File_3.jpg | bulbapedia-article | Bulbapedia 条目「Neo Premium File 3 (TCG)」图像 Neo Premium File 3.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Ocean's Kyogre ex Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/1/16/OceanKyogreConstructedStarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Ocean's Kyogre ex Constructed Starter Deck (TCG)」图像 OceanKyogreConstructedStarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Pokemon Jungle | https://archives.bulbagarden.net/media/upload/1/16/Pok%C3%A9mon_Jungle_pack.jpg | bulbapedia-article | Bulbapedia 条目「Pokémon Jungle (TCG)」图像 Pokémon Jungle pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Pokemon VS | https://archives.bulbagarden.net/media/upload/0/07/Pok%C3%A9mon_Card_VS_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Pokemon VS」一行 Logo 列文件 Pokémon Card VS Logo.png |
+| Pokémon Japan | Pokemon Web | https://archives.bulbagarden.net/media/upload/4/44/Pok%C3%A9mon_Card_web_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Pokemon Web」一行 Logo 列文件 Pokémon Card web Logo.png |
+| Pokémon Japan | Psychic Quick Construction Pack | https://archives.bulbagarden.net/media/upload/d/dc/Psychic_Quick_Construction_Pack.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Psychic Quick Construction Pack.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Pt1: Galactic's Conquest | https://archives.bulbagarden.net/media/upload/1/1a/DPt1_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Pt1: Galactic's Conquest」一行 Logo 列文件 DPt1 Logo.png |
+| Pokémon Japan | Pt2: Bonds to the End of Time | https://archives.bulbagarden.net/media/upload/9/97/DPt2_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Pt2: Bonds to the End of Time」一行 Logo 列文件 DPt2 Logo.png |
+| Pokémon Japan | Pt3: Beat of the Frontier | https://archives.bulbagarden.net/media/upload/1/1d/DPt3_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Pt3: Beat of the Frontier」一行 Logo 列文件 DPt3 Logo.png |
+| Pokémon Japan | Pt4: Advent of Arceus | https://archives.bulbagarden.net/media/upload/5/58/DPt4_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Pt4: Advent of Arceus」一行 Logo 列文件 DPt4 Logo.png |
+| Pokémon Japan | PtM: Mewtwo LV.X Collection Pack | https://archives.bulbagarden.net/media/upload/e/eb/Mewtwo_LV.X_Collection_Pack.jpg | bulbapedia-article | Bulbapedia 条目「DPt TCG Era merchandise」图像 Mewtwo LV.X Collection Pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | PtR: Regigigas LV.X Collection Pack | https://archives.bulbagarden.net/media/upload/4/4d/Regigigas_LV.X_Collection_Pack.jpg | bulbapedia-article | Bulbapedia 条目「DPt TCG Era merchandise」图像 Regigigas LV.X Collection Pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | PtS: Shaymin LV.X Collection Pack | https://archives.bulbagarden.net/media/upload/7/70/Shaymin_LV.X_Collection_Pack.jpg | bulbapedia-article | Bulbapedia 条目「DPt TCG Era merchandise」图像 Shaymin LV.X Collection Pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Quick Starter Gift Set (Green Deck) | https://archives.bulbagarden.net/media/upload/a/ac/Quick_Starter_Gift_Set.png | bulbapedia-article | Bulbapedia 条目「Quick Starter Gift Set (TCG)」图像 Quick Starter Gift Set.png（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Quick Starter Gift Set (Red Deck) | https://archives.bulbagarden.net/media/upload/a/ac/Quick_Starter_Gift_Set.png | bulbapedia-merch | Bulbapedia 时代周边页图像 Quick Starter Gift Set.png（文件名含系列罗马字名） |
+| Pokémon Japan | Random Constructed Starter Decks (Venusaur/Charizard/Blastoise) | https://archives.bulbagarden.net/media/upload/3/3a/RandomConstructedStarterDecks.jpg | bulbapedia-article | Bulbapedia 条目「Venusaur/Charizard/Blastoise Random Constructed Starter Decks (TCG)」图像 RandomConstructedStarterDecks.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Rayquaza Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/e/e4/RayquazaConstructedStarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Rayquaza Constructed Starter Deck (TCG)」图像 RayquazaConstructedStarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Rocket Gang | https://archives.bulbagarden.net/media/upload/d/d1/Rocket_Gang_pack.jpg | bulbapedia-article | Bulbapedia 条目「Rocket Gang (TCG)」图像 Rocket Gang pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Rocket Gang Strikes Back | https://archives.bulbagarden.net/media/upload/a/a5/PCG3_Rocket_Gang_Strikes_Back_pack.jpg | bulbapedia-article | Bulbapedia 条目「Rocket Gang Strikes Back (TCG)」图像 PCG3 Rocket Gang Strikes Back pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Rulers of the Heavens | https://archives.bulbagarden.net/media/upload/e/ed/ADV3_Rulers_of_the_Heavens_pack.jpg | bulbapedia-article | Bulbapedia 条目「Rulers of the Heavens (TCG)」图像 ADV3 Rulers of the Heavens pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SI: Start Deck 100 | https://archives.bulbagarden.net/media/upload/8/85/Start_Deck_100.jpg | bulbapedia-article | Bulbapedia 条目「Start Deck 100 (TCG)」图像 Start Deck 100.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SM1+: Sun & Moon | https://archives.bulbagarden.net/media/upload/4/4c/Sun_and_Moon_Booster_Box.jpg | bulbapedia-article | Bulbapedia 条目「Sun & Moon (TCG)」图像 Sun and Moon Booster Box.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SM1M: Collection Moon | https://archives.bulbagarden.net/media/upload/a/a2/SM1_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「SM1M: Collection Moon」一行 Logo 列文件 SM1 Logo.png |
+| Pokémon Japan | SM1S: Collection Sun | https://archives.bulbagarden.net/media/upload/a/a2/SM1_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「SM1S: Collection Sun」一行 Logo 列文件 SM1 Logo.png |
+| Pokémon Japan | SM2+: Facing a New Trial | https://archives.bulbagarden.net/media/upload/1/1a/SM2Plus_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「SM2+: Facing a New Trial」一行 Logo 列文件 SM2Plus Logo.png |
+| Pokémon Japan | SM3+: Shining Legends | https://archives.bulbagarden.net/media/upload/7/75/SM3Plus_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「SM3+: Shining Legends」一行 Logo 列文件 SM3Plus Logo.png |
+| Pokémon Japan | SM4+: GX Battle Boost | https://archives.bulbagarden.net/media/upload/7/71/SM4Plus_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「SM4+: GX Battle Boost」一行 Logo 列文件 SM4Plus Logo.png |
+| Pokémon Japan | SM5+: Ultra Force | https://archives.bulbagarden.net/media/upload/f/f9/SM5Plus_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「SM5+: Ultra Force」一行 Logo 列文件 SM5Plus Logo.png |
+| Pokémon Japan | SS: Gengar VMAX High-Class Deck | https://archives.bulbagarden.net/media/upload/9/9a/Gengar_VMAX_High-Class_Deck.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Gengar VMAX High-Class Deck.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | SS: Inteleon VMAX High-Class Deck | https://archives.bulbagarden.net/media/upload/9/99/Inteleon_VMAX_High-Class_Deck.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Inteleon VMAX High-Class Deck.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | SV: Ancient Koraidon ex Starter Deck & Build Set | https://archives.bulbagarden.net/media/upload/8/82/Ancient_Koraidon_ex_Starter_Deck_Build_Set.png | bulbapedia-article | Bulbapedia 条目「Ancient Koraidon ex Starter Deck & Build Set (TCG)」图像 Ancient Koraidon ex Starter Deck Build Set.png（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SV: Future Miraidon ex Starter Deck & Build Set | https://archives.bulbagarden.net/media/upload/3/33/Future_Miraidon_ex_Starter_Deck_Build_Set.png | bulbapedia-article | Bulbapedia 条目「Future Miraidon ex Starter Deck & Build Set (TCG)」图像 Future Miraidon ex Starter Deck Build Set.png（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SV: Venusaur, Charizard & Blastoise Special Deck Set | https://archives.bulbagarden.net/media/upload/0/0c/Venusaur_Charizard_Blastoise_Special_Deck_Set_ex_contents.png | bulbapedia-article | Bulbapedia 条目「Venusaur & Charizard & Blastoise Special Deck Set ex (TCG)」图像 Venusaur Charizard Blastoise Special Deck Set ex contents.png（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SV: ex Special Set | https://archives.bulbagarden.net/media/upload/7/78/Ex_Special_Set.jpg | bulbapedia-article | Bulbapedia 条目「ex Special Set (TCG)」图像 Ex Special Set.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SV: ex Start Decks | https://archives.bulbagarden.net/media/upload/e/eb/Ex_Start_Decks.png | bulbapedia-article | Bulbapedia 条目「ex Start Decks (TCG)」图像 Ex Start Decks.png（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SV: ex Starter Set Fuecoco & Ampharos ex | https://archives.bulbagarden.net/media/upload/e/e5/Ex_Starter_Set_Fuecoco_Ampharos_ex.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Ex Starter Set Fuecoco Ampharos ex.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | SV: ex Starter Set Pikachu ex & Pawmot | https://archives.bulbagarden.net/media/upload/f/f8/Ex_Starter_Set_Pikachu_ex_Pawmot_Contents.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Ex Starter Set Pikachu ex Pawmot Contents.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | SV: ex Starter Set Quaxly & Mimikyu ex | https://archives.bulbagarden.net/media/upload/1/16/Ex_Starter_Set_Quaxly_Mimikyu_ex.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Ex Starter Set Quaxly Mimikyu ex.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | SV: ex Starter Set Sprigatito & Lucario ex | https://archives.bulbagarden.net/media/upload/5/58/Ex_Starter_Set_Sprigatito_Lucario_ex.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Ex Starter Set Sprigatito Lucario ex.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Split Earth | https://archives.bulbagarden.net/media/upload/0/06/E4_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Split Earth」一行 Logo 列文件 E4 Logo.png |
+| Pokémon Japan | Start Deck 100 Battle Collection | https://archives.bulbagarden.net/media/upload/7/7a/Start_Deck_100_Battle_Collection.jpg | bulbapedia-article | Bulbapedia 条目「Start Deck 100 Battle Collection (TCG)」图像 Start Deck 100 Battle Collection.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Team Plasma Battle Gift Set | https://archives.bulbagarden.net/media/upload/6/62/TeamPlasmaBattleGiftSet.jpg | bulbapedia-article | Bulbapedia 条目「Team Plasma Battle Gift Set (TCG)」图像 TeamPlasmaBattleGiftSet.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Torchic Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/1/10/TorchicConstructedStarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Torchic Constructed Starter Deck (TCG)」图像 TorchicConstructedStarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Treecko Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/f/f4/TreeckoConstructedStarterDeck.jpg | bulbapedia-article | Bulbapedia 条目「Treecko Constructed Starter Deck (TCG)」图像 TreeckoConstructedStarterDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Undone Seal | https://archives.bulbagarden.net/media/upload/3/32/ADV4_Undone_Seal_pack.jpg | bulbapedia-article | Bulbapedia 条目「Undone Seal (TCG)」图像 ADV4 Undone Seal pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Water Quick Construction Pack | https://archives.bulbagarden.net/media/upload/8/80/Water_Quick_Construction_Pack.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Water Quick Construction Pack.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Wind from the Sea | https://archives.bulbagarden.net/media/upload/b/b0/E3_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「Wind from the Sea」一行 Logo 列文件 E3 Logo.png |
+| Pokémon Japan | World Champions Pack | https://archives.bulbagarden.net/media/upload/c/c0/World_Champions_Pack.jpg | bulbapedia-article | Bulbapedia 条目「World Champions Pack (TCG)」图像 World Champions Pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | XY Beginning Set | https://archives.bulbagarden.net/media/upload/6/62/XYBeginningSet.png | bulbapedia-merch | Bulbapedia 时代周边页图像 XYBeginningSet.png（文件名含系列罗马字名） |
+| Pokémon Japan | XY-Bx: Collection X | https://archives.bulbagarden.net/media/upload/c/c8/XY1_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「XY-Bx: Collection X」一行 Logo 列文件 XY1 Logo.png |
+| Pokémon Japan | XY-By: Collection Y | https://archives.bulbagarden.net/media/upload/c/c8/XY1_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「XY-By: Collection Y」一行 Logo 列文件 XY1 Logo.png |
+| Pokémon Japan | XY11-Bb: Fever-Burst Fighter | https://archives.bulbagarden.net/media/upload/6/68/XY11_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「XY11-Bb: Fever-Burst Fighter」一行 Logo 列文件 XY11 Logo.png |
+| Pokémon Japan | XY11-Br: Cruel Traitor | https://archives.bulbagarden.net/media/upload/6/68/XY11_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「XY11-Br: Cruel Traitor」一行 Logo 列文件 XY11 Logo.png |
+| Pokémon Japan | XY5-Bg: Gaia Volcano | https://archives.bulbagarden.net/media/upload/d/d4/XY5_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「XY5-Bg: Gaia Volcano」一行 Logo 列文件 XY5 Logo.png |
+| Pokémon Japan | XY5-Bt: Tidal Storm | https://archives.bulbagarden.net/media/upload/d/d4/XY5_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「XY5-Bt: Tidal Storm」一行 Logo 列文件 XY5 Logo.png |
+| Pokémon Japan | XY8-Bb: Blue Shock | https://archives.bulbagarden.net/media/upload/4/45/XY8_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「XY8-Bb: Blue Shock」一行 Logo 列文件 XY8 Logo.png |
+| Pokémon Japan | XY8-Br: Red Flash | https://archives.bulbagarden.net/media/upload/4/45/XY8_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「XY8-Br: Red Flash」一行 Logo 列文件 XY8 Logo.png |
+| Pokémon Japan | XYA: M Charizard-EX Mega Battle Deck | https://archives.bulbagarden.net/media/upload/b/bc/M_Charizard-EX_Mega_Battle_Deck.jpg | bulbapedia-article | Bulbapedia 条目「M Charizard-EX Mega Battle Deck (TCG)」图像 M Charizard-EX Mega Battle Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | XYD: M Rayquaza-EX Mega Battle Deck | https://archives.bulbagarden.net/media/upload/a/a3/M_Rayquaza-EX_Mega_Battle_Deck.jpg | bulbapedia-article | Bulbapedia 条目「M Rayquaza-EX Mega Battle Deck (TCG)」图像 M Rayquaza-EX Mega Battle Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | XYF: Golduck BREAK + Palkia-EX Combo Deck | https://archives.bulbagarden.net/media/upload/7/75/Golduck_BREAK_Palkia-EX_Combo_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Golduck BREAK + Palkia-EX Combo Deck (TCG)」图像 Golduck BREAK Palkia-EX Combo Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | XYG: Zygarde-EX Perfect Battle Deck | https://archives.bulbagarden.net/media/upload/6/66/Zygarde-EX_Perfect_Battle_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Zygarde-EX Perfect Battle Deck (TCG)」图像 Zygarde-EX Perfect Battle Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | XYH: M Audino-EX Mega Battle Deck | https://archives.bulbagarden.net/media/upload/c/c0/M_Audino-EX_Mega_Battle_Deck.jpg | bulbapedia-article | Bulbapedia 条目「M Audino-EX Mega Battle Deck (TCG)」图像 M Audino-EX Mega Battle Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Xerneas Half Deck | https://archives.bulbagarden.net/media/upload/e/e7/XerneasHalfDeck.jpg | bulbapedia-article | Bulbapedia 条目「Xerneas Half Deck (TCG)」图像 XerneasHalfDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Yveltal Half Deck | https://archives.bulbagarden.net/media/upload/3/32/YveltalHalfDeck.jpg | bulbapedia-article | Bulbapedia 条目「Yveltal Half Deck (TCG)」图像 YveltalHalfDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | m1L: Mega Brave | https://archives.bulbagarden.net/media/upload/a/ab/M1_Logo_JP.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「m1L: Mega Brave」一行 Logo 列文件 M1 Logo JP.png |
+| Pokémon Japan | m1S: Mega Symphonia | https://archives.bulbagarden.net/media/upload/a/ab/M1_Logo_JP.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「m1S: Mega Symphonia」一行 Logo 列文件 M1 Logo JP.png |
+| Pokémon Japan | s0: Charizard VSTAR vs Rayquaza VMAX Special Deck Set | https://archives.bulbagarden.net/media/upload/4/4a/Charizard_VSTAR_vs_Rayquaza_VMAX_Special_Deck_Set.jpg | bulbapedia-article | Bulbapedia 条目「Charizard VSTAR vs Rayquaza VMAX Special Deck Set (TCG)」图像 Charizard VSTAR vs Rayquaza VMAX Special Deck Set.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | s8a-G: 25th Anniversary Golden Box | https://archives.bulbagarden.net/media/upload/c/cd/25th_Anniversary_Golden_Box.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 25th Anniversary Golden Box.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sC2: Charizard Starter Set VMAX 2 | https://archives.bulbagarden.net/media/upload/9/92/Charizard_Random_Constructed_Starter_Deck.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Charizard Random Constructed Starter Deck.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sD: V Starter Decks | https://archives.bulbagarden.net/media/upload/6/65/V_Starter_Decks.jpg | bulbapedia-article | Bulbapedia 条目「V Starter Decks (TCG)」图像 V Starter Decks.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | sJ: Zacian & Zamazenta vs Eternatus Special Deck Set | https://archives.bulbagarden.net/media/upload/f/ff/Zacian_Zamazenta_vs_Eternatus_Special_Deck_Set.jpg | bulbapedia-article | Bulbapedia 条目「Zacian & Zamazenta vs Eternatus Special Deck Set (TCG)」图像 Zacian Zamazenta vs Eternatus Special Deck Set.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | sPD: Deoxys VSTAR & VMAX High-Class Deck | https://archives.bulbagarden.net/media/upload/5/59/Deoxys_VSTAR_VMAX_High-Class_Deck.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Deoxys VSTAR VMAX High-Class Deck.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sPZ: Zeraora VSTAR & VMAX High-Class Deck | https://archives.bulbagarden.net/media/upload/8/84/Zeraora_VSTAR_VMAX_High-Class_Deck.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Zeraora VSTAR VMAX High-Class Deck.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sm1+: Enhanced Expansion Pack Sun & Moon | https://archives.bulbagarden.net/media/upload/d/d1/SM1Plus_Logo.png | bulbapedia-list | Bulbapedia《List of Japanese Pokémon Trading Card Game expansions》表中「sm1+: Enhanced Expansion Pack Sun & Moon」一行 Logo 列文件 SM1Plus Logo.png |
+| Pokémon Japan | smC: Tapu Bulu-GX Enhanced Starter Set | https://archives.bulbagarden.net/media/upload/b/bc/TapuBuluGXEnhancedStarterSet.jpg | bulbapedia-article | Bulbapedia 条目「Tapu Bulu-GX Enhanced Starter Set (TCG)」图像 TapuBuluGXEnhancedStarterSet.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | smD: Ash vs Team Rocket Deck Kit | https://archives.bulbagarden.net/media/upload/b/b9/Ash_vs_Team_Rocket_Deck_Kit.jpg | bulbapedia-article | Bulbapedia 条目「Ash vs Team Rocket Deck Kit (TCG)」图像 Ash vs Team Rocket Deck Kit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | smE: Solgaleo-GX & Lunala-GX Legendary Starter Set | https://archives.bulbagarden.net/media/upload/9/9b/Solgaleo-GX_Lunala-GX_Legendary_Starter_Set.jpg | bulbapedia-article | Bulbapedia 条目「Solgaleo-GX & Lunala-GX Legendary Starter Set (TCG)」图像 Solgaleo-GX Lunala-GX Legendary Starter Set.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | smH: GX Starter Decks | https://archives.bulbagarden.net/media/upload/d/df/GX_Starter_Decks.jpg | bulbapedia-article | Bulbapedia 条目「GX Starter Decks (TCG)」图像 GX Starter Decks.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | smK: Trainer Battle Decks | https://archives.bulbagarden.net/media/upload/5/5a/Trainer_Battle_Decks.jpg | bulbapedia-article | Bulbapedia 条目「Trainer Battle Decks (TCG)」图像 Trainer Battle Decks.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | smL: Sun & Moon Family Pokemon Card Game | https://archives.bulbagarden.net/media/upload/e/ec/Sun_Moon_Family_Pok%C3%A9mon_Card_Game.jpg | bulbapedia-article | Bulbapedia 条目「Sun & Moon Family Pokémon Card Game (TCG)」图像 Sun Moon Family Pokémon Card Game.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | smM: Tag Team GX Starter Sets | https://archives.bulbagarden.net/media/upload/b/b4/TAG_TEAM_GX_Starter_Sets.jpg | bulbapedia-article | Bulbapedia 条目「TAG TEAM GX Starter Sets (TCG)」图像 TAG TEAM GX Starter Sets.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | smP1: Rockruff Full Power Deck | https://archives.bulbagarden.net/media/upload/7/75/Rockruff_Full_Power_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Rockruff Full Power Deck (TCG)」图像 Rockruff Full Power Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | smP2: Great Detective Pikachu | https://archives.bulbagarden.net/media/upload/c/ce/SMP2_Great_Detective_Pikachu_pack.jpg | bulbapedia-article | Bulbapedia 条目「Great Detective Pikachu (TCG)」图像 SMP2 Great Detective Pikachu pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | sp2: VMAX Special Set | https://archives.bulbagarden.net/media/upload/1/14/VMAX_Special_Set.jpg | bulbapedia-article | Bulbapedia 条目「VMAX Special Set (TCG)」图像 VMAX Special Set.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | sp4: Eevee Heroes VMAX Special Set | https://archives.bulbagarden.net/media/upload/f/fd/Eevee_Heroes_VMAX_Special_Set.jpg | bulbapedia-article | Bulbapedia 条目「Eevee Heroes VMAX Special Set (TCG)」图像 Eevee Heroes VMAX Special Set.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | sp5: V-UNION Special Card Sets | https://archives.bulbagarden.net/media/upload/a/aa/V-UNION_Special_Card_Sets.jpg | bulbapedia-article | Bulbapedia 条目「V-UNION Special Card Sets (TCG)」图像 V-UNION Special Card Sets.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | sp6: VSTAR Special Set | https://archives.bulbagarden.net/media/upload/0/0c/VSTAR_Special_Set.jpg | bulbapedia-article | Bulbapedia 条目「VSTAR Special Set (TCG)」图像 VSTAR Special Set.jpg（文件名内嵌系列罗马字名） |
 | Magic: The Gathering | 30th Anniversary Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 | scryfall | TCGPlayer 该集合 = Scryfall 的 30A 促销子集 p30h/p30a/p30m/p30t（History/Play/Misc/Celebration Tokyo）合并，卡名一一对应（Serra Angel、Lord of Atlantis…Richard Garfield, Ph.D.），四者印在卡面上的符号都是同一枚 OP 星形符号 star.svg；已用 p30h 的 Llanowar Elves 卡图目视确认该星形符号。 |
 | Magic: The Gathering | AFR Ampersand Promos | https://svgs.scryfall.io/sets/afr.svg?1791172800 | scryfall | TCGPlayer 该集合 80 张全部包含于 Scryfall 的 pafr『Adventures in the Forgotten Realms Promos』（81 张，仅多出 Purple Worm），pafr 的 icon 即 AFR 主符号 afr.svg，也就是卡面上的 D&D 花体 & 符号。 |
 | Magic: The Gathering | APAC Lands | https://svgs.scryfall.io/sets/papac.svg?1791172800 | scryfall | 数量吻合：TCGPlayer『APAC Lands』15 张 = Scryfall palp『Asia Pacific Land Program』15 张；与已映射的『European Lands』→pelp 完全对称，符号 papac.svg 正是该土地促销系列印的图案。 |
@@ -2235,6 +2351,7 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 | Magic: The Gathering | Planechase: Universes Beyond: Doctor Who | https://svgs.scryfall.io/sets/who.svg?1791172800 | scryfall | 该集合是 Doctor Who 指挥官预组里的 Plane 卡（Bad Wolf Bay、Aplan Mortarium…）；Scryfall 把这些 Plane 收在 who『Doctor Who』集合内，符号为 who.svg。 |
 | Magic: The Gathering | Planeswalker Event Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 | scryfall | 卡名几乎完全命中 Scryfall pwcs『Planeswalker Championship Promos』(46 张)：Pteramander、Narset, Parter of Veils、Liliana, Dreadhorde General、Basri Ket…（TCGPlayer 只多出 1st Place/Top 8/Top 50 标注），故用 pwcs 的符号 star.svg。 |
 | Magic: The Gathering | Secret Lair x MSCHF: The Zeta Set | https://svgs.scryfall.io/sets/slz.svg?1791172800 | scryfall | 名称与数量吻合：TCGPlayer 362 张 ≈ Scryfall slz『The Zeta Set』(363 张，box，2026-09-02)，即 Secret Lair × MSCHF 联名的 Zeta Set，符号 slz.svg。 |
+| Yu-Gi-Oh! | 2-Player Starter Set | https://ms.yugipedia.com//4/4d/2PlayerStarterSet-DeckEN.png | yugipedia | fandom《2-Player Starter Set》fandom 页面主图（相似度 1.0） |
 | Yu-Gi-Oh! | 2002 Collectors Tin | https://ms.yugipedia.com/e/e4/BPT-PromoEN-2002.png | yugipedia | fandom《2002 Collectible Tin》fandom 页面主图，文件名含代码 BPT |
 | Yu-Gi-Oh! | 2003 Collectors Tin | https://ms.yugipedia.com/3/3a/BPT-PromoEN-2003.png | yugipedia | fandom《2003 Collector's Tins》fandom 页面主图，文件名含代码 BPT |
 | Yu-Gi-Oh! | 2004 Collectors Tin | https://ms.yugipedia.com/e/e4/CT1-PromoEN.jpg | yugipedia | fandom《Collectible Tins 2004》fandom 页面主图，文件名含代码 CT1 |
@@ -2243,12 +2360,21 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 | Yu-Gi-Oh! | Advent Calendar 2011 (Adventskalender) | https://ms.yugipedia.com/b/b7/AC11-PromoDE.png | yugipedia | fandom《Yu-Gi-Oh! Advent Calendar》fandom 页面主图，文件名含代码 AC11 |
 | Yu-Gi-Oh! | Advent Calendar 2014 (Adventskalender ZEXAL-Edition) | https://ms.yugipedia.com/9/92/AC14-PromoDE.png | yugipedia | fandom《Yu-Gi-Oh! Advent Calendar ZEXAL Edition》fandom 页面主图，文件名含代码 AC14 |
 | Yu-Gi-Oh! | Crossed Souls: Advanced Edition | https://ms.yugipedia.com/e/e8/CROS-PromoNA.png | yugipedia | fandom《Crossed Souls Advance Edition》fandom 页面主图（相似度 0.75） |
+| Yu-Gi-Oh! | Dawn of Destiny Xbox | https://ms.yugipedia.com//b/b7/DOD-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! The Dawn of Destiny》人工指定页面 |
+| Yu-Gi-Oh! | Destiny Board Traveler Promo | https://ms.yugipedia.com//5/56/DBT-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! Destiny Board Traveler》fandom 页面主图，文件名含代码 DBT |
 | Yu-Gi-Oh! | Duel Terminal - Preview | https://ms.yugipedia.com/5/59/DuelTerminal.png | yugipedia | fandom《Duel Terminal - Preview》fandom 页面主图（相似度 1.0） |
 | Yu-Gi-Oh! | Duel Terminal 1 | https://ms.yugipedia.com/5/59/DuelTerminal.png | yugipedia | fandom《Duel Terminal 1》fandom 页面主图（相似度 1.0） |
 | Yu-Gi-Oh! | Duelist League Promo | https://ms.yugipedia.com/4/40/DL-PromoEN-Konami.png | yugipedia | fandom《Duelist League 2010 participation cards》fandom 页面主图，文件名含代码 DL |
+| Yu-Gi-Oh! | Duelist Pack Collection Tin | https://ms.yugipedia.com//3/3e/DPCT-PromoEN-2008.png | yugipedia | fandom《Duelist Pack Collection Tin 2008》fandom 页面主图，文件名含代码 DPCT |
+| Yu-Gi-Oh! | Duelist of the Roses | https://ms.yugipedia.com//7/7a/DOR-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! The Duelists of the Roses》fandom 页面主图，文件名含代码 DOR |
+| Yu-Gi-Oh! | Early Days Collection Promotional Cards | https://ms.yugipedia.com//3/31/EDC1-VideoGameNA.png | yugipedia | fandom《Yu-Gi-Oh! Early Days Collection》人工指定页面 |
 | Yu-Gi-Oh! | Elemental Hero Collection 1 | https://ms.yugipedia.com/e/e1/EHC-PromoEN.jpg | yugipedia | fandom《Elemental Hero Collection 1》fandom 页面主图（相似度 1.0） |
 | Yu-Gi-Oh! | Elemental Hero Collection 2 | https://ms.yugipedia.com/e/e1/EHC-PromoEN.jpg | yugipedia | fandom《Elemental Hero Collection 2》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | Eternal Duelist Soul | https://ms.yugipedia.com//3/3d/EDS-VideoGame-NA.jpg | yugipedia | yugipedia 同名条目主图（Fandom 图床 403，改用分叉站同图） |
 | Yu-Gi-Oh! | Forbidden Legacy | https://ms.yugipedia.com/1/1d/FL-PromoEN.jpg | yugipedia | fandom《Forbidden Legacy》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | GX Duel Academy GBA Promo | https://ms.yugipedia.com//a/a5/GX1-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! GX Duel Academy promotional cards》fandom 页面主图，文件名含代码 GX1 |
+| Yu-Gi-Oh! | GX Spirit Caller Promo | https://ms.yugipedia.com//b/b7/GX03-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! GX Spirit Caller promotional cards》fandom 页面主图，文件名含代码 GX03 |
+| Yu-Gi-Oh! | GX Tag Force Promo | https://ms.yugipedia.com//c/c2/GX02-VideoGame-NA.png | yugipedia | fandom《Yu-Gi-Oh! GX Tag Force promotional cards》fandom 页面主图，文件名含代码 GX02 |
 | Yu-Gi-Oh! | GX Ultimate Beginner's Pack 1 | https://ms.yugipedia.com/e/eb/UBP1-PromoEN.jpg | yugipedia | fandom《Yu-Gi-Oh! GX Ultimate Beginner's Pack》fandom 页面主图，文件名含代码 UBP1 |
 | Yu-Gi-Oh! | Hobby League 1 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | yugipedia | fandom《Hobby League》人工指定页面 |
 | Yu-Gi-Oh! | Hobby League 2 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | yugipedia | fandom《Hobby League》人工指定页面 |
@@ -2260,20 +2386,26 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 | Yu-Gi-Oh! | Judge Promotional Cards | https://ms.yugipedia.com/1/1b/KonamiJudgeLogo-EN.png | yugipedia | fandom《Judge promotional cards》fandom 页面主图（相似度 1.0） |
 | Yu-Gi-Oh! | King of Games: Yugi's Legendary Decks | https://ms.yugipedia.com/1/17/Cover_YGLD-DeckEN.png | yugipedia | fandom《Yugi's Legendary Decks》fandom 页面主图，文件名含代码 YGLD |
 | Yu-Gi-Oh! | King of Games: Yugi's Legendary Decks (2020 Date Reprint) | https://ms.yugipedia.com/1/17/Cover_YGLD-DeckEN.png | yugipedia | fandom《Yugi's Legendary Decks》fandom 页面主图，文件名含代码 YGLD |
+| Yu-Gi-Oh! | Legendary 5D's Decks | https://ms.yugipedia.com//4/48/L5DD-DeckNA.png | yugipedia | fandom《Legendary 5D's Decks》fandom 页面主图（相似度 1.0） |
 | Yu-Gi-Oh! | Legendary Collection 1 | https://ms.yugipedia.com/f/ff/LC01-PromoEN.png | yugipedia | fandom《Legendary Collection 1》fandom 页面主图，文件名含代码 LC01 |
 | Yu-Gi-Oh! | Light and Darkness Power Pack | https://ms.yugipedia.com/7/72/LDPP-PromoEN.jpg | yugipedia | fandom《Light and Darkness Power Pack》fandom 页面主图，文件名含代码 LDPP |
 | Yu-Gi-Oh! | Master Collection Volume 1 | https://ms.yugipedia.com/5/5a/MC1-PromoEN.jpg | yugipedia | fandom《Master Collection Volume 1》fandom 页面主图，文件名含代码 MC1 |
 | Yu-Gi-Oh! | Master Collection Volume 2 | https://ms.yugipedia.com/1/18/MC2-PromoEN.jpg | yugipedia | fandom《Master Collection Volume 2》fandom 页面主图，文件名含代码 MC2 |
 | Yu-Gi-Oh! | Mattel Action Figure Promos: Series 1 | https://ms.yugipedia.com/5/5d/MF01-PromoEN.jpg | yugipedia | fandom《Mattel Action Figure promotional cards: Series 1》fandom 页面主图，文件名含代码 MF01 |
 | Yu-Gi-Oh! | Mattel Action Figure Promos: Series 3 | https://ms.yugipedia.com/1/16/MF03-PromoEN.jpg | yugipedia | fandom《Mattel Action Figure promotional cards: Series 3》fandom 页面主图，文件名含代码 MF03 |
+| Yu-Gi-Oh! | Nintendo DS Nightmare of Troubadour | https://ms.yugipedia.com//e/e2/NTR-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! Nightmare Troubadour》fandom 页面主图，文件名含代码 NTR |
 | Yu-Gi-Oh! | Pharaoh Tour Promos | https://ms.yugipedia.com/5/5a/PharaohTour2007-MedalCase.png | yugipedia | fandom《Pharaoh Tour》fandom 页面主图（相似度 0.667） |
+| Yu-Gi-Oh! | Reshef of Destruction | https://ms.yugipedia.com//6/64/ROD-VideoGame-NA.jpg | yugipedia | yugipedia 同名条目主图（Fandom 图床 403，改用分叉站同图） |
 | Yu-Gi-Oh! | Samurai Assault | https://ms.yugipedia.com/4/4e/SAAS-PromoEN.png | yugipedia | fandom《Samurai Assault》fandom 页面文件 SAAS-PromoEN.png（含代码 SAAS） |
 | Yu-Gi-Oh! | Shonen Jump Championship Series Promos | https://ms.yugipedia.com/e/e3/SJCS-PromoEN.png | yugipedia | fandom《Shonen Jump Championship Series Promos》fandom 页面主图（相似度 1.0） |
 | Yu-Gi-Oh! | Shonen Jump Magazine Promos | https://ms.yugipedia.com/0/00/JUMP-PromoEN.jpg | yugipedia | fandom《Shonen Jump Magazine Promos》fandom 页面主图（相似度 1.0） |
 | Yu-Gi-Oh! | Speed Duel Demo Deck | https://ms.yugipedia.com/7/77/DEM5-Poster-EN.png | yugipedia | fandom《Speed Duel Demo Deck》fandom 页面主图，文件名含代码 DEM5 |
 | Yu-Gi-Oh! | Speed Duel GX: Midterm Destruction | https://ms.yugipedia.com/a/ad/SGX4-BoxEN.png | yugipedia | fandom《Speed Duel GX: Midterm Destruction》fandom 页面主图，文件名含代码 SGX4 |
+| Yu-Gi-Oh! | Speed Duel: Battle City Finals | https://ms.yugipedia.com//7/76/SBC2-BoxEN.png | yugipedia | fandom《Speed Duel: Battle City Finals》fandom 页面主图，文件名含代码 SBC2 |
 | Yu-Gi-Oh! | Speed Duel: Tournament Pack 1 | https://ms.yugipedia.com/3/3e/STP1-BoosterEN.png | yugipedia | fandom《Speed Duel Tournament Pack 1》人工指定页面 |
 | Yu-Gi-Oh! | Speed Duel: Tournament Pack 7 | https://ms.yugipedia.com/b/bb/STP7-BoosterEN.png | yugipedia | fandom《Speed Duel Tournament Pack 7》fandom 页面主图，文件名含代码 STP7 |
+| Yu-Gi-Oh! | Stairway to the Destined Duel | https://ms.yugipedia.com//b/bd/SDD-VideoGame-NA.jpg | yugipedia | yugipedia 同名条目主图（Fandom 图床 403，改用分叉站同图） |
+| Yu-Gi-Oh! | Stardust Accelerator Promos | https://ms.yugipedia.com//0/06/WC09-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! 5D's World Championship 2009: Stardust Accelerator》人工指定页面 |
 | Yu-Gi-Oh! | Super Starter: Space-Time Showdown Power-Up Pack | https://ms.yugipedia.com/7/7e/YS14-PowerUpPackV1.png | yugipedia | fandom《Space-Time Showdown Power-Up Pack》fandom 页面主图（相似度 0.75） |
 | Yu-Gi-Oh! | Super Starter: V for Victory Power-Up Pack | https://ms.yugipedia.com/3/38/YS13-PromoEU.png | yugipedia | fandom《Super Starter Power-Up Pack》fandom 页面主图，文件名含代码 YS13 |
 | Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack: Gold Edition | https://ms.yugipedia.com/7/74/MVP1-PromoNA.png | yugipedia | fandom《Yu-Gi-Oh! The Dark Side of Dimensions Movie Pack: Gold Edition》人工指定页面 |
@@ -2283,9 +2415,18 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 | Yu-Gi-Oh! | Toys "R" Us Throwdown Promo | https://ms.yugipedia.com/e/e6/TKN2-PromoEN.png | yugipedia | fandom《Toys "R" Us Throwdown promotional cards》fandom 页面主图，文件名含代码 TKN2 |
 | Yu-Gi-Oh! | Twilight Edition | https://ms.yugipedia.com/4/4f/TWED-PromoEN.jpg | yugipedia | fandom《Twilight Edition》fandom 页面主图，文件名含代码 TWED |
 | Yu-Gi-Oh! | Ultimate Edition 2 | https://ms.yugipedia.com/3/31/UE02-PromoEN.jpg | yugipedia | fandom《Ultimate Edition 2》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | World Championship 2004: GBA Promo | https://ms.yugipedia.com//2/2a/WC4-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! World Championship Tournament 2004》fandom 页面主图，文件名含代码 WC4 |
+| Yu-Gi-Oh! | World Championship 2005: 7 Trials to Glory | https://ms.yugipedia.com//2/28/WC5-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! 7 Trials to Glory: World Championship Tournament 2005》fandom 页面主图，文件名含代码 WC5 |
+| Yu-Gi-Oh! | World Championship 2007 | https://ms.yugipedia.com//b/ba/WC07-VideoGame-NA.jpg | yugipedia | yugipedia 同名条目主图（Fandom 图床 403，改用分叉站同图） |
+| Yu-Gi-Oh! | World Championship 2008 | https://ms.yugipedia.com//5/54/WC08-VideoGame-NA.jpg | yugipedia | yugipedia 同名条目主图（Fandom 图床 403，改用分叉站同图） |
 | Yu-Gi-Oh! | X-Saber Power-Up | https://ms.yugipedia.com/f/f4/XSPU-PromoEN.jpg | yugipedia | fandom《X-Saber Power-Up》fandom 页面主图，文件名含代码 XSPU |
+| Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Over the Nexus Promo Cards | https://ms.yugipedia.com//f/f1/WC11-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! 5D's World Championship 2011: Over the Nexus》fandom 页面主图，文件名含代码 WC11 |
 | Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Tag Force Promotional Cards | https://ms.yugipedia.com/9/99/TF05-VideoGameNA.jpg | yugipedia | fandom《Yu-Gi-Oh! 5D's Tag Force 5 promotional cards》人工指定页面 |
+| Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Wheelie Breakers Promotional Cards | https://ms.yugipedia.com//6/66/WB01-VideoGame-NA.jpg | yugipedia | fandom《Yu-Gi-Oh! 5D's Wheelie Breakers promotional cards》fandom 页面主图，文件名含代码 WB01 |
+| Yu-Gi-Oh! | Yu-Gi-Oh! Championship Series 2025 Prize Cards | https://ms.yugipedia.com//e/e7/YCSW-PromoEN.png | yugipedia | fandom《Yu-Gi-Oh! Championship Series Providence 2025》人工指定页面 |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Duel Monsters International: Worldwide Edition | https://ms.yugipedia.com/f/fa/GBI-Box-AE.png | yugipedia | fandom《Yu-Gi-Oh! Duel Monsters International: Worldwide Edition promotional cards》人工指定页面 |
+| Yu-Gi-Oh! | Yu-Gi-Oh! GX Tag Force Evolution Promo | https://ms.yugipedia.com//8/88/GX05-VideoGame-EU.png | yugipedia | fandom《Yu-Gi-Oh! GX Tag Force Evolution》fandom 页面主图（相似度 0.875） |
+| Yu-Gi-Oh! | Yu-Gi-Oh! GX Tag Force Promotional Cards | https://ms.yugipedia.com//c/c2/GX02-VideoGame-NA.png | yugipedia | fandom《Yu-Gi-Oh! GX Tag Force promotional cards》fandom 页面主图（相似度 1.0） |
 | Yu-Gi-Oh! | Yu-Gi-Oh! The Movie Ani-Manga Promo | https://ms.yugipedia.com/2/2e/YMA-PromoEN.png | yugipedia | fandom《Yu-Gi-Oh! The Movie Ani-Manga Promo》fandom 页面主图，文件名含代码 YMA |
 | Yu-Gi-Oh! | Yu-Gi-Oh! The Movie Promo Set | https://ms.yugipedia.com/9/9e/MOV-BoosterEN.png | yugipedia | fandom《Movie Pack》人工指定页面 |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Tokens | https://ms.yugipedia.com/8/80/TKN3-PromoEN.jpg | yugipedia | fandom《Token Pack》人工指定页面 |
@@ -2387,7 +2528,7 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 
 ## 四、待补系列完整清单
 
-下面是没有 logo 的全部 320 个系列，按品线分组，用于后续逐个补齐。
+下面是没有 logo 的全部 179 个系列，按品线分组，用于后续逐个补齐。
 
 **Pokémon**（19 个）
 
@@ -2411,239 +2552,123 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - World Championship Decks
 - e-Reader Sample Cards
 
-**Pokémon Japan**（231 个）
+**Pokémon Japan**（115 个）
 
 - 10th Movie Commemoration Set
 - 11th Movie Commemoration Set
 - 64 Mario Stadium Best Photo Contest
+- ADV Expansion Pack
 - ADV-P Promotional cards
-- Aqua Deck Kit
 - Arceus LV.X Deck: Grass & Fire
 - Arceus LV.X Deck: Lightning & Psychic
-- Awakening Legends
-- BK: Cobalion Battle Strength Deck
-- BK: Terrakion Battle Strength Deck
-- BK: Virizion Battle Strength Deck
-- BKB: Black Kyurem-EX Battle Strength Deck
-- BKW: White Kyurem-EX Battle Strength Deck
+- BKR: Reshiram-EX Battle Strength Deck
+- BKZ: Zekrom-EX Battle Strength Deck
 - BW-P Promotional cards
-- Base Expansion Pack
-- Battle Gift Set: Thundurus vs Tornadus
-- Battle Starter Deck (Blastoise)
-- Battle Starter Deck (Magmortar)
-- Battle Starter Deck (Raichu)
-- Battle Starter Deck (Torterra)
-- Battle Theme Deck: Victini
-- Blastoise + Kyurem-EX Combo Deck
-- Challenge from the Darkness
-- Champion Road
-- Clash of the Blue Sky
+- Battle Road
+- Black Deck Kit
+- City Gym Decks
 - CoroCoro Promotional Cards
-- Crossing the Ruins...
 - DP-P Promotional cards
 - DPt Gift Box (Chimchar)
 - DPt Gift Box (Pikachu)
 - DPt Gift Box (Piplup)
 - DPt Gift Box (Turtwig)
 - DPt-P Promotional cards
-- Darkness, and to Light...
-- Deoxys Constructed Starter Deck
-- Earth's Groudon ex Constructed Starter Deck
+- Dialga LV.X Constructed Standard Deck
 - Elementary School Competition
 - Emerald Gift Box (Deoxys)
 - Emerald Gift Box (Rayquaza)
-- Entry Pack DPt (Dialga)
-- Entry Pack DPt (Giratina)
-- Entry Pack DPt (Palkia)
 - Everyone's Exciting Battle
-- Expansion Pack
 - Expansion Pack (No Rarity)
-- Fighting Quick Construction Pack
-- Fire Quick Construction Pack
-- Flight of Legends
-- Garchomp Half Deck
-- Garchomp vs Charizard SP Deck Kit (Charizard)
-- Garchomp vs Charizard SP Deck Kit (Garchomp)
-- Gift Box Mew - Lucario (Crawdaunt Quarter Deck)
-- Gift Box Mew - Lucario (Lucario Quarter Deck)
-- Gift Box Mew - Lucario (Mew Quarter Deck)
-- Gift Box Mew - Lucario (Mightyena Quarter Deck)
-- Gift Box Mew - Lucario (Pokemon Star)
-- Giratina vs Dialga Deck Kit (Dialga)
-- Giratina vs Dialga Deck Kit (Giratina)
-- Gold, Silver, to a New World...
-- Golden Sky, Silvery Ocean
-- Grass Quick Construction Pack
-- HS: Beginning Set
-- HSP: Beginning Set Pikachu Version
-- HSZ: National Beginning Set
-- Holon Phantom
-- Holon Research Tower
-- Holon Research Tower Fire Quarter Deck
-- Holon Research Tower Lightning Quarter Deck
-- Holon Research Tower Water Quarter Deck
+- Feraligatr Constructed Starter Deck
+- Flygon Constructed Starter Deck
+- Gift Box (Latias)
+- Gift Box (Latios)
 - How I Became a Pokemon Card
-- Hydreigon Half Deck
-- Infernape vs Gallade SP Deck Kit (Gallade)
-- Infernape vs Gallade SP Deck Kit (Infernape)
-- Intense Fight in the Destroyed Sky
-- Intro Pack Neo (Chikorita)
-- Intro Pack Neo (Totodile)
+- Imprison! Gardevoir ex Constructed Standard Deck
+- Intro Pack (Bulbasaur)
+- Intro Pack (Squirtle)
 - J Promotional cards
 - Japanese CD Promo
-- Keldeo Battle Strength Deck
 - L-P: Legends Promos
-- L1: HeartGold Collection
-- L1: SoulSilver Collection
 - LEGEND Era Unnumbered Energies
-- Leaders' Stadium
-- Lightning Quick Construction Pack
 - M-P Promotional Cards
 - M6a: MEGA Expansion 30th Celebration
-- MF: 30th CELEBRATION Premium Deck Set Espeon & Umbreon
-- MP1: Start Deck 100 Battle Collection CoroCiao Version
-- Magma Deck Kit
-- Magma VS Aqua: Two Ambitions
-- McDonald's Pokémon-e Minimum Pack
+- MEE: Starter Set ex Eevee ex
+- MEM: Starter Set ex Meowscarada ex
+- MEZ: Starter Set ex Zoroark ex
+- Master Kit (Bulbasaur)
+- Master Kit (Side Deck)
+- Master Kit (Torchic)
 - Mega Evolution Era Unnumbered Energies
-- Melee! Pokemon Scramble
-- Mewtwo vs Genesect Deck Kit (Genesect)
-- Mewtwo vs Genesect Deck Kit (Mewtwo)
-- Miracle Crystal
-- Miracle of the Desert
-- Mirage's Mew Constructed Starter Deck
+- Meganium Constructed Starter Deck
+- Metagross Constructed Starter Deck
+- Mirage Forest
 - Movie Commemoration Random Pack
-- Mudkip Constructed Starter Deck
-- Mysterious Mountains
-- Mystery of the Fossils
 - Neo Premium File 1
-- Neo Premium File 2
-- Neo Premium File 3
-- Ocean's Kyogre ex Constructed Starter Deck
+- Offense and Defense of the Furthest Ends
 - P Promotional cards
 - PCG-P Promotional cards
 - PLAY Promotional cards
 - PPP Promotional cards
+- Palkia LV.X Constructed Standard Deck
 - Player Placement Trainer Promos
 - PokePark Blue
 - PokePark Forest
 - Pokemon Card Design Contest
 - Pokemon Card Fan Club
 - Pokemon Card Information Promotional cards
-- Pokemon Jungle
 - Pokemon TCG Classic: Blastoise
 - Pokemon TCG Classic: Charizard
 - Pokemon TCG Classic: Venusaur
-- Pokemon VS
-- Pokemon Web
 - Pokemon-e Starter Deck
-- Psychic Quick Construction Pack
-- Pt1: Galactic's Conquest
-- Pt2: Bonds to the End of Time
-- Pt3: Beat of the Frontier
-- Pt4: Advent of Arceus
-- PtM: Mewtwo LV.X Collection Pack
-- PtR: Regigigas LV.X Collection Pack
-- PtS: Shaymin LV.X Collection Pack
-- Quick Starter Gift Set (Green Deck)
-- Quick Starter Gift Set (Red Deck)
-- Random Constructed Starter Decks (Venusaur/Charizard/Blastoise)
-- Rayquaza Constructed Starter Deck
-- Rocket Gang
-- Rocket Gang Strikes Back
-- Rulers of the Heavens
 - S-P: Sword & Shield Promos
-- SI: Start Deck 100
 - SM-P: Sun & Moon Promos
 - SM0: Pikachu's New Friends
-- SM1+: Sun & Moon
-- SM1M: Collection Moon
-- SM1S: Collection Sun
-- SM2+: Facing a New Trial
-- SM3+: Shining Legends
-- SM4+: GX Battle Boost
-- SM5+: Ultra Force
-- SS: Gengar VMAX High-Class Deck
-- SS: Inteleon VMAX High-Class Deck
 - SV-P Promotional Cards
-- SV: Ancient Koraidon ex Starter Deck & Build Set
-- SV: Future Miraidon ex Starter Deck & Build Set
-- SV: Venusaur, Charizard & Blastoise Special Deck Set
-- SV: ex Special Set
-- SV: ex Start Decks
-- SV: ex Starter Set Fuecoco & Ampharos ex
-- SV: ex Starter Set Pikachu ex & Pawmot
-- SV: ex Starter Set Quaxly & Mimikyu ex
-- SV: ex Starter Set Sprigatito & Lucario ex
+- SV: Ceruledge ex Stellar Tera Type Starter Set
+- SV: Chien-Pao ex Battle Master Deck
+- SV: Mewtwo ex Terastal Starter Set
+- SV: Skeledirge ex Terastal Starter Set
+- SV: Sylveon ex Stellar Tera Type Starter Set
+- SV: Terastal Charizard ex Battle Master Deck
+- Salamence Constructed Starter Deck
 - Scarlet & Violet Era Unnumbered Energies
-- Split Earth
-- Start Deck 100 Battle Collection
+- Shockwave! Tyranitar ex Constructed Standard Deck
+- Silver Deck Kit
 - Sun & Moon Era Unnumbered Energies
 - Sword & Shield Era Unnumbered Energies
 - T Promotional cards
-- Team Plasma Battle Gift Set
+- Team Plasma's Powered Half Deck
+- The Town on No Map
 - Theater Limited VS Pack
-- Torchic Constructed Starter Deck
 - Trainer Prize Cards
-- Treecko Constructed Starter Deck
-- Undone Seal
+- Typhlosion Constructed Starter Deck
 - Unnumbered Promotional cards
 - Unnumbered World Championships
 - Vending Machine cards Series 1 (Blue)
 - Vending Machine cards Series 2 (Red)
 - Vending Machine cards Series 3 (Green)
-- Water Quick Construction Pack
-- Wind from the Sea
-- World Champions Pack
 - World Hobby Fair
-- XY Beginning Set
 - XY Era Unnumbered Energies
-- XY-Bx: Collection X
-- XY-By: Collection Y
 - XY-P: XY Promos
-- XY11-Bb: Fever-Burst Fighter
-- XY11-Br: Cruel Traitor
-- XY5-Bg: Gaia Volcano
-- XY5-Bt: Tidal Storm
-- XY8-Bb: Blue Shock
-- XY8-Br: Red Flash
-- XYA: M Charizard-EX Mega Battle Deck
 - XYB: Dialga-EX + Aegislash-EX Hyper Metal Chain Deck
-- XYD: M Rayquaza-EX Mega Battle Deck
-- XYF: Golduck BREAK + Palkia-EX Combo Deck
-- XYG: Zygarde-EX Perfect Battle Deck
-- XYH: M Audino-EX Mega Battle Deck
-- Xerneas Half Deck
-- Yveltal Half Deck
-- m1L: Mega Brave
-- m1S: Mega Symphonia
-- s0: Charizard VSTAR vs Rayquaza VMAX Special Deck Set
-- s8a-G: 25th Anniversary Golden Box
-- sC2: Charizard Starter Set VMAX 2
-- sD: V Starter Decks
+- XYE: Emboar-EX vs Togekiss-EX Deck Kit
+- sA: Fighting Starter Set V
+- sA: Fire Starter Set V
+- sA: Grass Starter Set V
+- sA: Lightning Starter Set V
+- sA: Water Starter Set V
+- sC: Charizard Starter Set VMAX
+- sC: Grimmsnarl Starter Set VMAX
+- sEF: Venusaur Starter Set VMAX
+- sEK: Blastoise Starter Set VMAX
 - sH: Sword & Shield Family Pokemon Card Game
-- sJ: Zacian & Zamazenta vs Eternatus Special Deck Set
 - sLD: Darkrai Starter Set VSTAR
 - sLL: Lucario Starter Set VSTAR
 - sN: Start Deck 100 CoroCoro Comic Version
-- sPD: Deoxys VSTAR & VMAX High-Class Deck
-- sPZ: Zeraora VSTAR & VMAX High-Class Deck
-- sm1+: Enhanced Expansion Pack Sun & Moon
 - smA: Sun & Moon Starter Set
-- smC: Tapu Bulu-GX Enhanced Starter Set
-- smD: Ash vs Team Rocket Deck Kit
-- smE: Solgaleo-GX & Lunala-GX Legendary Starter Set
-- smH: GX Starter Decks
 - smI: Flareon-GX, Vaporeon-GX & Jolteon-GX Starter Sets
-- smK: Trainer Battle Decks
-- smL: Sun & Moon Family Pokemon Card Game
-- smM: Tag Team GX Starter Sets
-- smP1: Rockruff Full Power Deck
-- smP2: Great Detective Pikachu
-- sp2: VMAX Special Set
-- sp4: Eevee Heroes VMAX Special Set
-- sp5: V-UNION Special Card Sets
-- sp6: VSTAR Special Set
 
 **Magic: The Gathering**（14 个）
 
@@ -2662,48 +2687,23 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - Unique and Miscellaneous Promos
 - WPN & Gateway Promos
 
-**Yu-Gi-Oh!**（43 个）
+**Yu-Gi-Oh!**（18 个）
 
-- 2-Player Starter Set
 - Collector's Boxes
-- Dawn of Destiny Xbox
-- Destiny Board Traveler Promo
-- Duelist Pack Collection Tin
 - Duelist Pack Special Edition
-- Duelist of the Roses
-- Early Days Collection Promotional Cards
-- Eternal Duelist Soul
-- GX Duel Academy GBA Promo
-- GX Spirit Caller Promo
-- GX Tag Force Promo
-- Legendary 5D's Decks
 - Mattel Action Figure Promos: Series 2
 - Miscellaneous Promotional Cards
-- Nintendo DS Nightmare of Troubadour
 - Redemption Replacement
-- Reshef of Destruction
 - Sneak Preview Series 1
 - Sneak Preview Series 2
 - Sneak Preview Series 3
 - Sneak Preview Series 4
 - Sneak Preview Series 5
 - Speed Duel Demo Deck 2020
-- Speed Duel: Battle City Finals
-- Stairway to the Destined Duel
-- Stardust Accelerator Promos
-- World Championship 2004: GBA Promo
-- World Championship 2005: 7 Trials to Glory
-- World Championship 2007
-- World Championship 2008
 - World Championship JPP Cards
 - World Championship Series
 - Yu-Gi-Oh! 5D's Manga Promotional Cards
-- Yu-Gi-Oh! 5D's Over the Nexus Promo Cards
-- Yu-Gi-Oh! 5D's Wheelie Breakers Promotional Cards
-- Yu-Gi-Oh! Championship Series 2025 Prize Cards
 - Yu-Gi-Oh! GX Manga Promotional Cards
-- Yu-Gi-Oh! GX Tag Force Evolution Promo
-- Yu-Gi-Oh! GX Tag Force Promotional Cards
 - Yu-Gi-Oh! R Manga Promo
 - Yu-Gi-Oh! Value Boxes
 - Yu-Gi-Oh! Video Game Promotional Cards
