@@ -2164,3 +2164,567 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
   - 缺的主要是 `Expansion Deck Box Set XX`、`Collector's Selection Vol.X` 这类非补充包产品，Holodex 不单独收录；官方站 `dbs-cardgame.com` 的产品页只展示当期产品，没有全量归档。
   - 明细：5th Anniversary Set、Collector's Selection Vol. 1、Collector's Selection Vol. 2、Collector's Selection Vol. 3、Expansion Deck Box Set 01: Mighty Heroes、Expansion Deck Box Set 02: Dark Demon's Villains、Expansion Deck Box Set 03: Ultimate Box、Expansion Deck Box Set 04: Unity of Saiyans、Expansion Deck Box Set 05: Unity of Destruction、Expansion Deck Box Set 07: Magnificent Collection - Fusion Hero、Expansion Deck Box Set 08: Magnificent Collection - Forsaken Warrior、Expansion Deck Box Set 09: Saiyan Surge …
 
+## 四、待补系列完整清单
+
+下面是没有 logo 的全部 536 个系列，按品线分组，用于后续逐个补齐。
+
+**Pokémon**（29 个）
+
+- BW Trainer Kit: Excadrill & Zoroark
+- Best of Promos
+- Blister Exclusives
+- Burger King Promos
+- Countdown Calendar Promos
+- DP Trainer Kit: Manaphy & Lucario
+- Deck Exclusives
+- EX Trainer Kit 1: Latias & Latios
+- EX Trainer Kit 2: Plusle & Minun
+- First Partner Collection 2026
+- First Partner Pack
+- HGSS Trainer Kit: Gyarados & Raichu
+- Jumbo Cards
+- Kids WB Promos
+- League & Championship Cards
+- MEE: Mega Evolution Energies
+- Pikachu World Collection Promos
+- Player Placement Trainer Promos
+- Professor Program Promos
+- SM Trainer Kit: Alolan Sandslash & Alolan Ninetales
+- SM Trainer Kit: Lycanroc & Alolan Raichu
+- SVE: Scarlet & Violet Energies
+- Southeast Asia Exclusives
+- World Championship Decks
+- XY Trainer Kit: Bisharp & Wigglytuff
+- XY Trainer Kit: Latias & Latios
+- XY Trainer Kit: Pikachu Libre & Suicune
+- XY Trainer Kit: Sylveon & Noivern
+- e-Reader Sample Cards
+
+**Pokémon Japan**（278 个）
+
+- 10th Movie Commemoration Set
+- 11th Movie Commemoration Set
+- 64 Mario Stadium Best Photo Contest
+- ADV Expansion Pack
+- ADV-P Promotional cards
+- Aqua Deck Kit
+- Arceus LV.X Deck: Grass & Fire
+- Arceus LV.X Deck: Lightning & Psychic
+- Awakening Legends
+- BK: Cobalion Battle Strength Deck
+- BK: Terrakion Battle Strength Deck
+- BK: Virizion Battle Strength Deck
+- BKB: Black Kyurem-EX Battle Strength Deck
+- BKR: Reshiram-EX Battle Strength Deck
+- BKW: White Kyurem-EX Battle Strength Deck
+- BKZ: Zekrom-EX Battle Strength Deck
+- BW-P Promotional cards
+- Base Expansion Pack
+- Battle Gift Set: Thundurus vs Tornadus
+- Battle Road
+- Battle Starter Deck (Blastoise)
+- Battle Starter Deck (Magmortar)
+- Battle Starter Deck (Raichu)
+- Battle Starter Deck (Torterra)
+- Battle Theme Deck: Victini
+- Black Deck Kit
+- Blastoise + Kyurem-EX Combo Deck
+- Challenge from the Darkness
+- Champion Road
+- City Gym Decks
+- Clash of the Blue Sky
+- CoroCoro Promotional Cards
+- Crossing the Ruins...
+- DP-P Promotional cards
+- DPt Gift Box (Chimchar)
+- DPt Gift Box (Pikachu)
+- DPt Gift Box (Piplup)
+- DPt Gift Box (Turtwig)
+- DPt-P Promotional cards
+- Darkness, and to Light...
+- Deoxys Constructed Starter Deck
+- Dialga LV.X Constructed Standard Deck
+- Earth's Groudon ex Constructed Starter Deck
+- Elementary School Competition
+- Emerald Gift Box (Deoxys)
+- Emerald Gift Box (Rayquaza)
+- Entry Pack DPt (Dialga)
+- Entry Pack DPt (Giratina)
+- Entry Pack DPt (Palkia)
+- Everyone's Exciting Battle
+- Expansion Pack
+- Expansion Pack (No Rarity)
+- Feraligatr Constructed Starter Deck
+- Fighting Quick Construction Pack
+- Fire Quick Construction Pack
+- Flight of Legends
+- Flygon Constructed Starter Deck
+- Garchomp Half Deck
+- Garchomp vs Charizard SP Deck Kit (Charizard)
+- Garchomp vs Charizard SP Deck Kit (Garchomp)
+- Gift Box (Latias)
+- Gift Box (Latios)
+- Gift Box Mew - Lucario (Crawdaunt Quarter Deck)
+- Gift Box Mew - Lucario (Lucario Quarter Deck)
+- Gift Box Mew - Lucario (Mew Quarter Deck)
+- Gift Box Mew - Lucario (Mightyena Quarter Deck)
+- Gift Box Mew - Lucario (Pokemon Star)
+- Giratina vs Dialga Deck Kit (Dialga)
+- Giratina vs Dialga Deck Kit (Giratina)
+- Gold, Silver, to a New World...
+- Golden Sky, Silvery Ocean
+- Grass Quick Construction Pack
+- HS: Beginning Set
+- HSP: Beginning Set Pikachu Version
+- HSZ: National Beginning Set
+- Holon Phantom
+- Holon Research Tower
+- Holon Research Tower Fire Quarter Deck
+- Holon Research Tower Lightning Quarter Deck
+- Holon Research Tower Water Quarter Deck
+- How I Became a Pokemon Card
+- Hydreigon Half Deck
+- Imprison! Gardevoir ex Constructed Standard Deck
+- Infernape vs Gallade SP Deck Kit (Gallade)
+- Infernape vs Gallade SP Deck Kit (Infernape)
+- Intense Fight in the Destroyed Sky
+- Intro Pack (Bulbasaur)
+- Intro Pack (Squirtle)
+- Intro Pack Neo (Chikorita)
+- Intro Pack Neo (Totodile)
+- J Promotional cards
+- Japanese CD Promo
+- Keldeo Battle Strength Deck
+- L-P: Legends Promos
+- L1: HeartGold Collection
+- L1: SoulSilver Collection
+- LEGEND Era Unnumbered Energies
+- Leaders' Stadium
+- Lightning Quick Construction Pack
+- M-P Promotional Cards
+- M6a: MEGA Expansion 30th Celebration
+- MEE: Starter Set ex Eevee ex
+- MEM: Starter Set ex Meowscarada ex
+- MEZ: Starter Set ex Zoroark ex
+- MF: 30th CELEBRATION Premium Deck Set Espeon & Umbreon
+- MP1: Start Deck 100 Battle Collection CoroCiao Version
+- Magma Deck Kit
+- Magma VS Aqua: Two Ambitions
+- Master Kit (Bulbasaur)
+- Master Kit (Side Deck)
+- Master Kit (Torchic)
+- McDonald's Pokémon-e Minimum Pack
+- Mega Evolution Era Unnumbered Energies
+- Meganium Constructed Starter Deck
+- Melee! Pokemon Scramble
+- Metagross Constructed Starter Deck
+- Mewtwo vs Genesect Deck Kit (Genesect)
+- Mewtwo vs Genesect Deck Kit (Mewtwo)
+- Miracle Crystal
+- Miracle of the Desert
+- Mirage Forest
+- Mirage's Mew Constructed Starter Deck
+- Movie Commemoration Random Pack
+- Mudkip Constructed Starter Deck
+- Mysterious Mountains
+- Mystery of the Fossils
+- Neo Premium File 1
+- Neo Premium File 2
+- Neo Premium File 3
+- Ocean's Kyogre ex Constructed Starter Deck
+- Offense and Defense of the Furthest Ends
+- P Promotional cards
+- PCG-P Promotional cards
+- PLAY Promotional cards
+- PPP Promotional cards
+- Palkia LV.X Constructed Standard Deck
+- Player Placement Trainer Promos
+- PokePark Blue
+- PokePark Forest
+- Pokemon Card Design Contest
+- Pokemon Card Fan Club
+- Pokemon Card Information Promotional cards
+- Pokemon Jungle
+- Pokemon TCG Classic: Blastoise
+- Pokemon TCG Classic: Charizard
+- Pokemon TCG Classic: Venusaur
+- Pokemon VS
+- Pokemon Web
+- Pokemon-e Starter Deck
+- Psychic Quick Construction Pack
+- Pt1: Galactic's Conquest
+- Pt2: Bonds to the End of Time
+- Pt3: Beat of the Frontier
+- Pt4: Advent of Arceus
+- PtM: Mewtwo LV.X Collection Pack
+- PtR: Regigigas LV.X Collection Pack
+- PtS: Shaymin LV.X Collection Pack
+- Quick Starter Gift Set (Green Deck)
+- Quick Starter Gift Set (Red Deck)
+- Random Constructed Starter Decks (Venusaur/Charizard/Blastoise)
+- Rayquaza Constructed Starter Deck
+- Rocket Gang
+- Rocket Gang Strikes Back
+- Rulers of the Heavens
+- S-P: Sword & Shield Promos
+- SI: Start Deck 100
+- SM-P: Sun & Moon Promos
+- SM0: Pikachu's New Friends
+- SM1+: Sun & Moon
+- SM1M: Collection Moon
+- SM1S: Collection Sun
+- SM2+: Facing a New Trial
+- SM3+: Shining Legends
+- SM4+: GX Battle Boost
+- SM5+: Ultra Force
+- SS: Gengar VMAX High-Class Deck
+- SS: Inteleon VMAX High-Class Deck
+- SV-P Promotional Cards
+- SV: Ancient Koraidon ex Starter Deck & Build Set
+- SV: Ceruledge ex Stellar Tera Type Starter Set
+- SV: Chien-Pao ex Battle Master Deck
+- SV: Future Miraidon ex Starter Deck & Build Set
+- SV: Mewtwo ex Terastal Starter Set
+- SV: Skeledirge ex Terastal Starter Set
+- SV: Sylveon ex Stellar Tera Type Starter Set
+- SV: Terastal Charizard ex Battle Master Deck
+- SV: Venusaur, Charizard & Blastoise Special Deck Set
+- SV: ex Special Set
+- SV: ex Start Decks
+- SV: ex Starter Set Fuecoco & Ampharos ex
+- SV: ex Starter Set Pikachu ex & Pawmot
+- SV: ex Starter Set Quaxly & Mimikyu ex
+- SV: ex Starter Set Sprigatito & Lucario ex
+- Salamence Constructed Starter Deck
+- Scarlet & Violet Era Unnumbered Energies
+- Shockwave! Tyranitar ex Constructed Standard Deck
+- Silver Deck Kit
+- Split Earth
+- Start Deck 100 Battle Collection
+- Sun & Moon Era Unnumbered Energies
+- Sword & Shield Era Unnumbered Energies
+- T Promotional cards
+- Team Plasma Battle Gift Set
+- Team Plasma's Powered Half Deck
+- The Town on No Map
+- Theater Limited VS Pack
+- Torchic Constructed Starter Deck
+- Trainer Prize Cards
+- Treecko Constructed Starter Deck
+- Typhlosion Constructed Starter Deck
+- Undone Seal
+- Unnumbered Promotional cards
+- Unnumbered World Championships
+- Vending Machine cards Series 1 (Blue)
+- Vending Machine cards Series 2 (Red)
+- Vending Machine cards Series 3 (Green)
+- Water Quick Construction Pack
+- Wind from the Sea
+- World Champions Pack
+- World Hobby Fair
+- XY Beginning Set
+- XY Era Unnumbered Energies
+- XY-Bx: Collection X
+- XY-By: Collection Y
+- XY-P: XY Promos
+- XY11-Bb: Fever-Burst Fighter
+- XY11-Br: Cruel Traitor
+- XY5-Bg: Gaia Volcano
+- XY5-Bt: Tidal Storm
+- XY8-Bb: Blue Shock
+- XY8-Br: Red Flash
+- XYA: M Charizard-EX Mega Battle Deck
+- XYB: Dialga-EX + Aegislash-EX Hyper Metal Chain Deck
+- XYD: M Rayquaza-EX Mega Battle Deck
+- XYE: Emboar-EX vs Togekiss-EX Deck Kit
+- XYF: Golduck BREAK + Palkia-EX Combo Deck
+- XYG: Zygarde-EX Perfect Battle Deck
+- XYH: M Audino-EX Mega Battle Deck
+- Xerneas Half Deck
+- Yveltal Half Deck
+- m1L: Mega Brave
+- m1S: Mega Symphonia
+- s0: Charizard VSTAR vs Rayquaza VMAX Special Deck Set
+- s8a-G: 25th Anniversary Golden Box
+- sA: Fighting Starter Set V
+- sA: Fire Starter Set V
+- sA: Grass Starter Set V
+- sA: Lightning Starter Set V
+- sA: Water Starter Set V
+- sC2: Charizard Starter Set VMAX 2
+- sC: Charizard Starter Set VMAX
+- sC: Grimmsnarl Starter Set VMAX
+- sD: V Starter Decks
+- sEF: Venusaur Starter Set VMAX
+- sEK: Blastoise Starter Set VMAX
+- sH: Sword & Shield Family Pokemon Card Game
+- sJ: Zacian & Zamazenta vs Eternatus Special Deck Set
+- sLD: Darkrai Starter Set VSTAR
+- sLL: Lucario Starter Set VSTAR
+- sN: Start Deck 100 CoroCoro Comic Version
+- sPD: Deoxys VSTAR & VMAX High-Class Deck
+- sPZ: Zeraora VSTAR & VMAX High-Class Deck
+- sm1+: Enhanced Expansion Pack Sun & Moon
+- smA: Sun & Moon Starter Set
+- smC: Tapu Bulu-GX Enhanced Starter Set
+- smD: Ash vs Team Rocket Deck Kit
+- smE: Solgaleo-GX & Lunala-GX Legendary Starter Set
+- smH: GX Starter Decks
+- smI: Flareon-GX, Vaporeon-GX & Jolteon-GX Starter Sets
+- smK: Trainer Battle Decks
+- smL: Sun & Moon Family Pokemon Card Game
+- smM: Tag Team GX Starter Sets
+- smP1: Rockruff Full Power Deck
+- smP2: Great Detective Pikachu
+- sp2: VMAX Special Set
+- sp4: Eevee Heroes VMAX Special Set
+- sp5: V-UNION Special Card Sets
+- sp6: VSTAR Special Set
+
+**Magic: The Gathering**（24 个）
+
+- 30th Anniversary Promos
+- AFR Ampersand Promos
+- APAC Lands
+- Archenemy: Duskmourn
+- Buy-A-Box Promos
+- Commander
+- Duel Decks: Anthology
+- Gift Boxes and Promos
+- International Edition
+- JingHe Age Token Cards
+- Junior Series Promos
+- Launch Party & Release Event Promos
+- MagicFest Cards
+- Open House Promos
+- Oversize Cards
+- Planechase: March of the Machine
+- Planechase: Universes Beyond: Doctor Who
+- Planeswalker Event Promos
+- Play Promos
+- Prerelease Cards
+- Secret Lair x MSCHF: The Zeta Set
+- Special Occasion
+- Unique and Miscellaneous Promos
+- WPN & Gateway Promos
+
+**Yu-Gi-Oh!**（99 个）
+
+- 2-Player Starter Set
+- 2002 Collectors Tin
+- 2003 Collectors Tin
+- 2004 Collectors Tin
+- 2011 Duelist Pack Tin
+- 25th Anniversary Tin: Dueling Mirrors
+- Advent Calendar 2011 (Adventskalender)
+- Advent Calendar 2014 (Adventskalender ZEXAL-Edition)
+- Collector's Boxes
+- Crossed Souls: Advanced Edition
+- Dawn of Destiny Xbox
+- Destiny Board Traveler Promo
+- Duel Terminal - Preview
+- Duel Terminal 1
+- Duelist League Promo
+- Duelist Pack Collection Tin
+- Duelist Pack Special Edition
+- Duelist of the Roses
+- Early Days Collection Promotional Cards
+- Elemental Hero Collection 1
+- Elemental Hero Collection 2
+- Eternal Duelist Soul
+- Forbidden Legacy
+- GX Duel Academy GBA Promo
+- GX Spirit Caller Promo
+- GX Tag Force Promo
+- GX Ultimate Beginner's Pack 1
+- Hobby League 1
+- Hobby League 2
+- Hobby League 3
+- Hobby League 4
+- Hobby League 5
+- Hobby League 6
+- Hobby League 7
+- Judge Promotional Cards
+- King of Games: Yugi's Legendary Decks
+- King of Games: Yugi's Legendary Decks (2020 Date Reprint)
+- Legendary 5D's Decks
+- Legendary Collection 1
+- Light and Darkness Power Pack
+- Master Collection Volume 1
+- Master Collection Volume 2
+- Mattel Action Figure Promos: Series 1
+- Mattel Action Figure Promos: Series 2
+- Mattel Action Figure Promos: Series 3
+- Miscellaneous Promotional Cards
+- Nintendo DS Nightmare of Troubadour
+- Pharaoh Tour Promos
+- Redemption Replacement
+- Reshef of Destruction
+- Samurai Assault
+- Shonen Jump Championship Series Promos
+- Shonen Jump Magazine Promos
+- Sneak Preview Series 1
+- Sneak Preview Series 2
+- Sneak Preview Series 3
+- Sneak Preview Series 4
+- Sneak Preview Series 5
+- Speed Duel Demo Deck
+- Speed Duel Demo Deck 2020
+- Speed Duel GX: Midterm Destruction
+- Speed Duel: Battle City Finals
+- Speed Duel: Tournament Pack 1
+- Speed Duel: Tournament Pack 7
+- Stairway to the Destined Duel
+- Stardust Accelerator Promos
+- Super Starter: Space-Time Showdown Power-Up Pack
+- Super Starter: V for Victory Power-Up Pack
+- The Dark Side of Dimensions Movie Pack: Gold Edition
+- The Dark Side of Dimensions Movie Pack: Secret Edition
+- The Dark Side of Dimensions Movie Pack: Special Edition
+- The Valuable Book Volume 5
+- Toys "R" Us Throwdown Promo
+- Twilight Edition
+- Ultimate Edition 2
+- World Championship 2004: GBA Promo
+- World Championship 2005: 7 Trials to Glory
+- World Championship 2007
+- World Championship 2008
+- World Championship JPP Cards
+- World Championship Series
+- X-Saber Power-Up
+- Yu-Gi-Oh! 5D's Manga Promotional Cards
+- Yu-Gi-Oh! 5D's Over the Nexus Promo Cards
+- Yu-Gi-Oh! 5D's Tag Force Promotional Cards
+- Yu-Gi-Oh! 5D's Wheelie Breakers Promotional Cards
+- Yu-Gi-Oh! Championship Series 2025 Prize Cards
+- Yu-Gi-Oh! Duel Monsters International: Worldwide Edition
+- Yu-Gi-Oh! GX Manga Promotional Cards
+- Yu-Gi-Oh! GX Tag Force Evolution Promo
+- Yu-Gi-Oh! GX Tag Force Promotional Cards
+- Yu-Gi-Oh! R Manga Promo
+- Yu-Gi-Oh! The Movie Ani-Manga Promo
+- Yu-Gi-Oh! The Movie Promo Set
+- Yu-Gi-Oh! Tokens
+- Yu-Gi-Oh! Value Boxes
+- Yu-Gi-Oh! Video Game Promotional Cards
+- Yu-Gi-Oh! ZEXAL Manga Promotional Cards
+- Yu-Gi-Oh! ZEXAL World Duel Carnival Promos
+
+**One Piece Card Game**（43 个）
+
+- Awakening of the New Era: 1st Anniversary Tournament Cards
+- Carrying On His Will: 3rd Anniversary Tournament Cards
+- Emperors in the New World: 2nd Anniversary Tournament Cards
+- Extra Booster: One Piece Heroines Edition Vol. 2
+- Learn Together Deck Set
+- One Piece Demo Deck Cards
+- One Piece Promotion Cards
+- Revision Pack Cards
+- ST-01: Starter Deck 1 Straw Hat Crew
+- ST-01: Starter Deck 1 Straw Hat Crew (Super Pre-Release Edition)
+- ST-02: Starter Deck 2 Worst Generation
+- ST-02: Starter Deck 2 Worst Generation (Super Pre-Release Edition)
+- ST-03: Starter Deck 3 The Seven Warlords of The Sea
+- ST-03: Starter Deck 3 The Seven Warlords of The Sea (Super Pre-Release Edition)
+- ST-04: Starter Deck 4 Animal Kingdom Pirates
+- ST-04: Starter Deck 4 Animal Kingdom Pirates (Super Pre-Release Edition)
+- ST-05: Starter Deck 5 Film Edition
+- ST-06: Starter Deck 6 Absolute Justice
+- ST-07: Starter Deck 7 Big Mom Pirates
+- ST-08: Starter Deck 8 Monkey.D.Luffy
+- ST-09: Starter Deck 9 Yamato
+- ST-10: Ultra Deck The Three Captains
+- ST-11: Starter Deck 11 Uta
+- ST-12: Starter Deck 12 Zoro and Sanji
+- ST-13: Ultra Deck The Three Brothers
+- ST-14: Starter Deck 14 3D2Y
+- ST-15: Starter Deck 15 RED Edward.Newgate
+- ST-16: Starter Deck 16 GREEN Uta
+- ST-17: Starter Deck 17 BLUE Donquixote Doflamingo
+- ST-18: Starter Deck 18 PURPLE Monkey.D.Luffy
+- ST-19: Starter Deck 19 BLACK Smoker
+- ST-20: Starter Deck 20 YELLOW Charlotte Katakuri
+- ST-21: Starter Deck 21 EX Gear 5
+- ST-22: Starter Deck 22 Ace & Newgate
+- ST-30: Starter Deck 30 EX Luffy & Ace
+- ST-31: Starter Deck 31 RED Monkey.D.Luffy
+- ST-32: Starter Deck 32 GREEN Roronoa Zoro
+- ST-33: Starter Deck 33 BLUE Kuzan
+- ST-34: Starter Deck 34 PURPLE Charlotte Katakuri
+- ST-35: Starter Deck 35 RED/BLACK Sabo
+- ST-36: Starter Deck 36 YELLOW Eustass"Captain"Kid
+- Set Sail Deck Set
+- The Dominance of God
+
+**Disney Lorcana**（5 个）
+
+- Disney100 Promos
+- Hyperia City
+- Illumineer's Quest: Deep Trouble
+- Illumineer's Quest: Palace Heist
+- Illumineer's Quest: The Great Hunny Rescue
+
+**Flesh and Blood TCG**（17 个）
+
+- Armory Deck: Jarl Vetreidi
+- Compendium of Rathe - Antiquity Pack
+- Flesh and Blood: Promo Cards
+- GEM Pack 1
+- GEM Pack 2
+- GEM Pack 3
+- GEM Pack 4
+- GEM Pack 6
+- Gem Pack 5
+- Hero Deck: Bravo
+- Hero Deck: Dorinthea
+- Hero Deck: Katsu
+- Hero Deck: Rhinar
+- Silver Age Chapter 1
+- Silver Age Chapter 2
+- Welcome Deck Bravo
+- Welcome Deck: Ira
+
+**Dragon Ball Super: Masters**（41 个）
+
+- 5th Anniversary Set
+- Collector's Selection Vol. 1
+- Collector's Selection Vol. 2
+- Collector's Selection Vol. 3
+- Expansion Deck Box Set 01: Mighty Heroes
+- Expansion Deck Box Set 02: Dark Demon's Villains
+- Expansion Deck Box Set 03: Ultimate Box
+- Expansion Deck Box Set 04: Unity of Saiyans
+- Expansion Deck Box Set 05: Unity of Destruction
+- Expansion Deck Box Set 07: Magnificent Collection - Fusion Hero
+- Expansion Deck Box Set 08: Magnificent Collection - Forsaken Warrior
+- Expansion Deck Box Set 09: Saiyan Surge
+- Expansion Deck Box Set 10: Namekian Surge
+- Expansion Deck Box Set 11: Universe 7 Unison
+- Expansion Deck Box Set 12: Universe 11 Unison
+- Expansion Deck Box Set 14: Battle Advanced
+- Expansion Deck Box Set 15: Battle Enhanced
+- Expansion Deck Box Set 16: Ultimate Deck
+- Expansion Deck Box Set 17: Saiyan Boost
+- Expansion Deck Box Set 18: Namekian Boost
+- Expansion Deck Box Set 20: Ultimate Deck 2022
+- Expansion Deck Box Set 22: Ultimate Deck 2023
+- Expansion Deck Box Set 23: Premium Anniversary Box 2023
+- Expansion Deck Box Set 24: Premium 7th Anniversary Box 2024
+- Expansion Deck Box Set 25: Premium Anniversary Box 2025
+- Fearsome Rivals Release Event
+- Fighter's Ambition
+- Impact Beyond Dimensions Release Event
+- Judge Promotion Cards
+- Mythic Booster
+- Oversized Cards
+- Prismatic Clash Release Event
+- Promotion Cards
+- Revision Pack 2020
+- Special Anniversary Set
+- Special Anniversary Set 2020
+- Special Anniversary Set 2021
+- Theme Selection: History of Son Goku
+- Theme Selection: History of Vegeta
+- Three Glorious Fighters Release Event
+- Tournament Promotion Cards
+

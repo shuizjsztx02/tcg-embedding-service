@@ -618,6 +618,21 @@ def main() -> None:
             L.append(f"| {line} | {r['setName'].replace('|', chr(92) + '|')} | {r['logo']} | "
                      f"{r['source']} | {ev} |")
         L.append("")
+    L.append("## 四、待补系列完整清单")
+    L.append("")
+    L.append(f"下面是没有 logo 的全部 {sum(1 for rs in rows_by_line.values() for r in rs if not r['logo'])} "
+             "个系列，按品线分组，用于后续逐个补齐。")
+    L.append("")
+    for line in LINE_ORDER:
+        rows = rows_by_line.get(line) or []
+        miss = [r["setName"] for r in rows if not r["logo"]]
+        if not miss:
+            continue
+        L.append(f"**{line}**（{len(miss)} 个）")
+        L.append("")
+        for n in miss:
+            L.append(f"- {n}")
+        L.append("")
 
     with open(MD, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L) + "\n")
