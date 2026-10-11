@@ -14,13 +14,24 @@ from __future__ import annotations
 import glob
 import json
 import os
+import re
 import subprocess
+import unicodedata
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")
 OK_TYPES = ("image/", "text/xml", "application/xml", "binary/octet-stream")
+STOP = {"the", "of", "a", "and", "vol", "volume", "set", "deck", "pack", "box",
+        "cards", "card", "edition"}
+ROMAN = {"i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii"}
+
+
+def norm(s: str) -> str:
+    s = unicodedata.normalize("NFKD", s or "")
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return re.sub(r"[^a-z0-9]", "", s.lower())
 
 
 def check(url: str) -> tuple[int, str]:
@@ -72,6 +83,39 @@ def check(url: str) -> tuple[int, str]:
         return int(code.strip() or 0), ctype.strip()
     except Exception:
         return 0, ""
+
+
+def toks(s: str) -> set[str]:
+    s = unicodedata.normalize("NFKD", s or "")
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    out = set()
+    for t in re.findall(r"[a-z0-9]+", s.lower()):
+        if t in STOP or len(t) < 3:
+            continue
+        out.add(t[:-1] if t.endswith("s") and len(t) > 4 else t)
+    return out
+
+
+def score_url(set_name: str, url: str) -> int:
+    """给候选 URL 打分，用于同名冲突时择优。
+
+    关键规则（都是踩过的坑）：
+      · 数字必须一致——Neo Premium File 2 不能配 Premium_File_1_back
+      · 文件名多出系列名里没有的词要扣分——'SI: Start Deck 100' 不该配
+        'Start_Deck_100_Battle_Collection'（那是另一个系列）
+    """
+    from urllib.parse import unquote
+    fn = unquote(url.split("/")[-1].rsplit(".", 1)[0])
+    nt, nf = toks(set_name), toks(fn)
+    num_t = {t for t in nt if t.isdigit() or t in ROMAN}
+    num_f = {t for t in nf if t.isdigit() or t in ROMAN}
+    s = 2 * len(nt & nf)
+    if num_t != num_f:
+        s -= 10
+    s -= 2 * len(nf - nt)          # 文件名里多出来的词
+    if norm(set_name) and norm(set_name) in norm(fn):
+        s += 3
+    return s
 
 
 def main() -> None:
@@ -130,20 +174,29 @@ def main() -> None:
     print(f"候选 {len(entries)} 条；agent 自报拿不到 {len(not_found)} 条；"
           f"格式/归属被拒 {len(rejected)} 条")
 
-    # 同名额冲突
+    # 同名额冲突：按文件名与系列名的吻合度打分择优，而不是"先到先得"
+    # （agent 的最终版会把 Neo Premium File 2/3 都写成 Premium_File_1_back，
+    #   单纯取先到的就会把好的一条丢掉）
     by_name: dict[str, dict] = {}
     conflicts = []
     for e in entries:
         n = e["setName"]
-        if n in by_name:
-            if by_name[n]["logo"] != e["logo"]:
-                conflicts.append((n, by_name[n]["logo"], e["logo"], by_name[n]["_file"], e["_file"]))
+        if n not in by_name:
+            by_name[n] = e
             continue
-        by_name[n] = e
+        old = by_name[n]
+        if old["logo"] == e["logo"]:
+            continue
+        so, sn = score_url(n, old["logo"]), score_url(n, e["logo"])
+        conflicts.append((n, old["logo"], e["logo"], so, sn, old["_file"], e["_file"]))
+        if sn > so:
+            by_name[n] = e
     if conflicts:
-        print(f"⚠️  {len(conflicts)} 条同名不同 URL 的冲突，保留先到的：")
-        for c in conflicts[:10]:
-            print(f"   {c[0][:44]:44s} 留 {c[1][:60]}（{c[3]}） 弃 {c[2][:60]}（{c[4]}）")
+        print(f"⚠️  {len(conflicts)} 条同名不同 URL，按吻合度择优：")
+        for n, uo, un, so, sn, fo, fn_ in conflicts:
+            win = "新" if sn > so else ("旧" if so > sn else "旧(平手)")
+            print(f"   {n[:40]:40s} 留{win} 旧({so:+d}) {uo.split('/')[-1][:34]:34s} "
+                  f"[{fo[:18]}] | 新({sn:+d}) {un.split('/')[-1][:34]:34s} [{fn_[:18]}]")
 
     # 逐个校验 URL
     print(f"校验 {len(by_name)} 个 URL…")
