@@ -309,7 +309,9 @@ def logo_tier(r: dict) -> str:
     if m == "inherit":
         return "inherit"
     fn = lg.split("/")[-1].rsplit(".", 1)[0]
-    if src == "bulbapedia":
+    if re.search(r"setsymbol", fn, re.I):
+        return "symbol"          # 卡面上印的系列符号，比包装图更贴切
+    if src.startswith("bulbapedia"):
         return "symbol" if re.search(r"logo", fn, re.I) else "artwork"
     if src == "fab-official":
         return "symbol" if re.search(r"(logo|_name|-name\.|[A-Z]{2,4}-1)", fn) else "artwork"
