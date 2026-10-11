@@ -299,6 +299,25 @@ def fab_parent(set_name: str, fab_rows: list[dict]):
     return None, None, None
 
 
+def logo_tier(r: dict) -> str:
+    """给每条 logo 分质量层级：专属符号 > 官方包装图 > 继承/通用图标。"""
+    lg, src, m = r["logo"] or "", r["source"] or "", r["match"] or ""
+    if not lg:
+        return "none"
+    if "default.svg" in lg or "star.svg" in lg:
+        return "generic"
+    if m == "inherit":
+        return "inherit"
+    fn = lg.split("/")[-1].rsplit(".", 1)[0]
+    if src == "bulbapedia":
+        return "symbol" if re.search(r"logo", fn, re.I) else "artwork"
+    if src == "fab-official":
+        return "symbol" if re.search(r"(logo|_name|-name\.|[A-Z]{2,4}-1)", fn) else "artwork"
+    if src == "holodex":
+        return "artwork"      # Holodex 给的是系列 logo 图，含包装风
+    return "symbol"
+
+
 def main() -> None:
     agg = json.load(open(os.path.join(OUT, "all_agg.json"), encoding="utf-8"))
     src = load_sources()
@@ -354,6 +373,13 @@ def main() -> None:
         m = re.match(r"^\s*((?:ST|OP|EB|PRB|LD|GD)-?\d{1,2})\s*:", name, re.I)
         return m.group(1).upper().replace("-", "") if m else None
 
+    # 子 agent 补齐的缺口（script_temp/merge_gapfix.py 产出，URL 已校验过）
+    gp_path = os.path.join(OUT, "gapfix_merged.json")
+    gapfix: dict[str, dict] = {}
+    if os.path.isfile(gp_path):
+        gapfix = json.load(open(gp_path, encoding="utf-8"))
+        print(f"载入子 agent 补齐结果 {len(gapfix)} 条")
+
     rows_by_line: dict[str, list[dict]] = {}
     for line in LINE_ORDER:
         info = agg.get(LINE_TO_API_KEY[line])
@@ -405,6 +431,9 @@ def main() -> None:
                         if lg:
                             logo, source, method = lg, s.label, m
                             break
+            if not logo and set_name in gapfix:
+                g = gapfix[set_name]
+                logo, source, method = g["logo"], g["source"], "gapfix"
             rows.append({"setName": set_name, "online": official,
                          "local": cnt.get(set_name, 0), "setCode": set_code or "",
                          "logo": logo, "source": source, "match": method})
@@ -457,6 +486,8 @@ def main() -> None:
             logo = r["logo"] or ""
             if r["match"] == "inherit":
                 logo += " ※"
+            if logo and ("default.svg" in logo or "star.svg" in logo):
+                logo += " ⚠"
             cnt = f"{r['local']} / {r['online']}"
             src_label = r["source"] or "—"
             if r["match"] == "inherit":
@@ -464,6 +495,8 @@ def main() -> None:
             L.append(f"| {line} | {r['setName'].replace('|', chr(92) + '|')} | {logo} | {cnt} | {src_label} |")
         L.append("")
     L.append("> `※` = 该系列是促销/预发售/发售活动等衍生子线，logo 继承自同名的父系列。")
+    L.append("> `⚠` = 该系列在 Scryfall 用的是通用/共享图标（`default.svg` 占位或 `star.svg` 星形），"
+             "不是该系列专属符号，可靠性低于其他条目。")
     L.append("")
     L.append("## 三、logo 来源与缺口")
     L.append("")
@@ -498,6 +531,22 @@ def main() -> None:
     n_ov = sum(1 for rs in rows_by_line.values() for r in rs if r["match"] == "override")
     L.append("**表内所有 logo URL 已逐个校验可访问**"
              "（`script_temp/verify_logo_urls.py`，HEAD 请求）。")
+    L.append("")
+    tiers = Counter(logo_tier(r) for rs in rows_by_line.values() for r in rs)
+    TIER_DESC = {
+        "symbol": "系列专属符号 / logo（最可靠）",
+        "artwork": "官方包装图 / 产品封面（能标识系列，但不是 logo 本身）",
+        "inherit": "继承自父系列的图（衍生子线共用一张）",
+        "generic": "Scryfall 通用占位图标（`default.svg` / `star.svg`）",
+        "none": "没有 logo",
+    }
+    L.append("按可靠性分层（同一批 URL 的质量差异较大，这里分开计数）：")
+    L.append("")
+    L.append("| 层级 | 含义 | 条数 |")
+    L.append("|------|------|------|")
+    for k in ("symbol", "artwork", "inherit", "generic", "none"):
+        if tiers.get(k):
+            L.append(f"| `{k}` | {TIER_DESC[k]} | {tiers[k]} |")
     L.append("")
     L.append(f"注意两点：万智牌里有 {n_def} 个系列拿到的 Scryfall 图标是通用默认符号"
              "（`default.svg`），说明该系列在 Scryfall 没有专属符号；"
@@ -556,6 +605,19 @@ def main() -> None:
                      "（1035 个 set 里有 125 个没有 `set_image` 字段，且用 `set_code` 拼 URL 也是 404）。")
         L.append(f"  - 明细：{'、'.join(miss[:12])}{' …' if len(miss) > 12 else ''}")
     L.append("")
+
+    gf = [(line, r) for line in LINE_ORDER for r in (rows_by_line.get(line) or [])
+          if r["match"] == "gapfix"]
+    if gf:
+        L.append(f"### 3.3 本轮由子 agent 补齐的 {len(gf)} 条（逐条附依据，便于复核）")
+        L.append("")
+        L.append("| 品线 | 系列 | logo | 来源 | 判定依据 |")
+        L.append("|------|------|------|------|----------|")
+        for line, r in gf:
+            ev = (gapfix.get(r["setName"], {}).get("evidence") or "").replace("|", "\\|")
+            L.append(f"| {line} | {r['setName'].replace('|', chr(92) + '|')} | {r['logo']} | "
+                     f"{r['source']} | {ev} |")
+        L.append("")
 
     with open(MD, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L) + "\n")

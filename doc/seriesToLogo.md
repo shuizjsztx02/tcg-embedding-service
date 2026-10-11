@@ -1,6 +1,6 @@
 # 系列 → Logo 映射表（seriesToLogo.md）
 
-> 生成时间：2026-10-10　生成脚本：`script_temp/build_series_logo_v2.py`
+> 生成时间：2026-10-11　生成脚本：`script_temp/build_series_logo_v2.py`
 > 范围：`tcgplayer_sets_rarities_all.json` 里的 8 个品线（其它品类暂不处理）
 > 系列名录：TCGPlayer 搜索接口 setName 聚合（实时权威）
 > 卡牌数量：`本地 / 线上`，本地取自 `category_cards_final/.../products.jsonl`，线上取自 TCGPlayer 聚合
@@ -783,7 +783,7 @@
 | Magic: The Gathering | Born of the Gods | https://svgs.scryfall.io/sets/bng.svg?1791172800 | 175 / 176 | scryfall |
 | Magic: The Gathering | Buy-A-Box Promos |  | 92 / 92 | — |
 | Magic: The Gathering | Champions of Kamigawa | https://svgs.scryfall.io/sets/chk.svg?1791172800 | 256 / 307 | scryfall |
-| Magic: The Gathering | Champs Promos | https://svgs.scryfall.io/sets/default.svg?1791172800 | 12 / 12 | scryfall |
+| Magic: The Gathering | Champs Promos | https://svgs.scryfall.io/sets/default.svg?1791172800 ⚠ | 12 / 12 | scryfall |
 | Magic: The Gathering | Chronicles | https://svgs.scryfall.io/sets/chr.svg?1791172800 | 125 / 125 | scryfall |
 | Magic: The Gathering | Classic Sixth Edition | https://svgs.scryfall.io/sets/6ed.svg?1791172800 | 348 / 348 | scryfall |
 | Magic: The Gathering | Coldsnap | https://svgs.scryfall.io/sets/csp.svg?1791172800 | 147 / 155 | scryfall |
@@ -888,7 +888,7 @@
 | Magic: The Gathering | Explorers of Ixalan | https://svgs.scryfall.io/sets/e02.svg?1791172800 | 49 / 49 | scryfall |
 | Magic: The Gathering | FINAL FANTASY | https://svgs.scryfall.io/sets/fin.svg?1791172800 | 309 / 644 | scryfall |
 | Magic: The Gathering | FINAL FANTASY: Through the Ages | https://svgs.scryfall.io/sets/fca.svg?1791172800 | 65 / 65 | scryfall |
-| Magic: The Gathering | FNM Promos | https://svgs.scryfall.io/sets/default.svg?1791172800 | 233 / 234 | scryfall |
+| Magic: The Gathering | FNM Promos | https://svgs.scryfall.io/sets/default.svg?1791172800 ⚠ | 233 / 234 | scryfall |
 | Magic: The Gathering | Fallen Empires | https://svgs.scryfall.io/sets/fem.svg?1791172800 | 137 / 187 | scryfall |
 | Magic: The Gathering | Fate Reforged | https://svgs.scryfall.io/sets/frf.svg?1791172800 | 189 / 189 | scryfall |
 | Magic: The Gathering | Fifth Dawn | https://svgs.scryfall.io/sets/5dn.svg?1791172800 | 165 / 165 | scryfall |
@@ -909,11 +909,11 @@
 | Magic: The Gathering | From the Vault: Transform | https://svgs.scryfall.io/sets/v17.svg?1791172800 | 15 / 15 | scryfall |
 | Magic: The Gathering | From the Vault: Twenty | https://svgs.scryfall.io/sets/v13.svg?1791172800 | 20 / 20 | scryfall |
 | Magic: The Gathering | Future Sight | https://svgs.scryfall.io/sets/fut.svg?1791172800 | 180 / 180 | scryfall |
-| Magic: The Gathering | Game Day & Store Championship Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 | 38 / 174 | scryfall |
+| Magic: The Gathering | Game Day & Store Championship Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 38 / 174 | scryfall |
 | Magic: The Gathering | Gatecrash | https://svgs.scryfall.io/sets/gtc.svg?1791172800 | 257 / 257 | scryfall |
 | Magic: The Gathering | Gift Boxes and Promos |  | 16 / 16 | — |
 | Magic: The Gathering | Global Series Jiang Yanggu & Mu Yanling | https://svgs.scryfall.io/sets/gs1.svg?1791172800 | 37 / 41 | scryfall |
-| Magic: The Gathering | Grand Prix Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 | 20 / 20 | scryfall |
+| Magic: The Gathering | Grand Prix Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 20 / 20 | scryfall |
 | Magic: The Gathering | Guildpact | https://svgs.scryfall.io/sets/gpt.svg?1791172800 | 165 / 165 | scryfall |
 | Magic: The Gathering | Guilds of Ravnica | https://svgs.scryfall.io/sets/grn.svg?1791172800 | 270 / 280 | scryfall |
 | Magic: The Gathering | Guilds of Ravnica: Guild Kits | https://holodex-prod-bucket.b-cdn.net/sets/mtg_2334/logo.webp | 137 / 137 | holodex |
@@ -927,7 +927,7 @@
 | Magic: The Gathering | Innistrad | https://svgs.scryfall.io/sets/isd.svg?1791172800 | 31 / 277 | scryfall |
 | Magic: The Gathering | Innistrad Remastered | https://svgs.scryfall.io/sets/inr.svg?1791172800 | 509 / 510 | scryfall |
 | Magic: The Gathering | Innistrad: Crimson Vow | https://svgs.scryfall.io/sets/vow.svg?1791172800 | 484 / 487 | scryfall |
-| Magic: The Gathering | Innistrad: Double Feature | https://svgs.scryfall.io/sets/star.svg?1791172800 | 534 / 534 | scryfall |
+| Magic: The Gathering | Innistrad: Double Feature | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 534 / 534 | scryfall |
 | Magic: The Gathering | Innistrad: Midnight Hunt | https://svgs.scryfall.io/sets/mid.svg?1791172800 | 463 / 472 | scryfall |
 | Magic: The Gathering | International Edition |  | 248 / 301 | — |
 | Magic: The Gathering | Introductory Two-Player Set | https://svgs.scryfall.io/sets/x2ps.svg?1791172800 | 67 / 67 | scryfall |
@@ -963,7 +963,7 @@
 | Magic: The Gathering | Magic Game Night: Free-For-All | https://svgs.scryfall.io/sets/gn3.svg?1791172800 | 142 / 143 | scryfall |
 | Magic: The Gathering | Magic Modern Event Deck | https://svgs.scryfall.io/sets/md1.svg?1791172800 | 29 / 29 | scryfall |
 | Magic: The Gathering | Magic Origins | https://svgs.scryfall.io/sets/ori.svg?1791172800 | 290 / 303 | scryfall |
-| Magic: The Gathering | Magic Player Rewards | https://svgs.scryfall.io/sets/default.svg?1791172800 | 27 / 77 | scryfall |
+| Magic: The Gathering | Magic Player Rewards | https://svgs.scryfall.io/sets/default.svg?1791172800 ⚠ | 27 / 77 | scryfall |
 | Magic: The Gathering | Magic Premiere Shop | https://svgs.scryfall.io/sets/pmps.svg?1791172800 | 1 / 50 | scryfall |
 | Magic: The Gathering | MagicFest Cards |  | 41 / 41 | — |
 | Magic: The Gathering | March of the Machine | https://svgs.scryfall.io/sets/mom.svg?1791172800 | 229 / 504 | scryfall |
@@ -1024,7 +1024,7 @@
 | Magic: The Gathering | Premium Deck Series: Graveborn | https://svgs.scryfall.io/sets/pd3.svg?1791172800 | 30 / 30 | scryfall |
 | Magic: The Gathering | Premium Deck Series: Slivers | https://svgs.scryfall.io/sets/h09.svg?1791172800 | 41 / 41 | scryfall |
 | Magic: The Gathering | Prerelease Cards |  | 3691 / 4006 | — |
-| Magic: The Gathering | Pro Tour Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 | 26 / 26 | scryfall |
+| Magic: The Gathering | Pro Tour Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 26 / 26 | scryfall |
 | Magic: The Gathering | Promo Pack: Adventures in the Forgotten Realms | https://svgs.scryfall.io/sets/afr.svg?1791172800 ※ | 88 / 88 | scryfall（继承父系列） |
 | Magic: The Gathering | Promo Pack: Aetherdrift | https://svgs.scryfall.io/sets/dft.svg?1791172800 ※ | 97 / 97 | scryfall（继承父系列） |
 | Magic: The Gathering | Promo Pack: Bloomburrow | https://svgs.scryfall.io/sets/blb.svg?1791172800 ※ | 85 / 85 | scryfall（继承父系列） |
@@ -1067,14 +1067,14 @@
 | Magic: The Gathering | Revised Edition (Foreign White Border) | https://svgs.scryfall.io/sets/3ed.svg?1791172800 ※ | 305 / 305 | scryfall（继承父系列） |
 | Magic: The Gathering | Rise of the Eldrazi | https://svgs.scryfall.io/sets/roe.svg?1791172800 | 204 / 255 | scryfall |
 | Magic: The Gathering | Rivals of Ixalan | https://svgs.scryfall.io/sets/rix.svg?1791172800 | 212 / 212 | scryfall |
-| Magic: The Gathering | SLX Cards | https://svgs.scryfall.io/sets/star.svg?1791172800 | 30 / 30 | scryfall |
+| Magic: The Gathering | SLX Cards | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 30 / 30 | scryfall |
 | Magic: The Gathering | Saviors of Kamigawa | https://svgs.scryfall.io/sets/sok.svg?1791172800 | 115 / 165 | scryfall |
 | Magic: The Gathering | Scars of Mirrodin | https://svgs.scryfall.io/sets/som.svg?1791172800 | 259 / 259 | scryfall |
 | Magic: The Gathering | Scourge | https://svgs.scryfall.io/sets/scg.svg?1791172800 | 143 / 143 | scryfall |
-| Magic: The Gathering | Secret Lair Countdown Kit | https://svgs.scryfall.io/sets/star.svg?1791172800 | 111 / 111 | scryfall |
-| Magic: The Gathering | Secret Lair Drop Series | https://svgs.scryfall.io/sets/star.svg?1791172800 | 3119 / 3356 | scryfall |
-| Magic: The Gathering | Secret Lair Series | https://svgs.scryfall.io/sets/star.svg?1791172800 | 16 / 16 | scryfall |
-| Magic: The Gathering | Secret Lair Showdown | https://svgs.scryfall.io/sets/star.svg?1791172800 | 52 / 53 | scryfall |
+| Magic: The Gathering | Secret Lair Countdown Kit | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 111 / 111 | scryfall |
+| Magic: The Gathering | Secret Lair Drop Series | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 3119 / 3356 | scryfall |
+| Magic: The Gathering | Secret Lair Series | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 16 / 16 | scryfall |
+| Magic: The Gathering | Secret Lair Showdown | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 52 / 53 | scryfall |
 | Magic: The Gathering | Secret Lair x MSCHF: The Zeta Set |  | 0 / 362 | — |
 | Magic: The Gathering | Secrets of Strixhaven | https://svgs.scryfall.io/sets/sos.svg?1791172800 | 150 / 380 | scryfall |
 | Magic: The Gathering | Secrets of Strixhaven: Mystical Archive | https://svgs.scryfall.io/sets/soa.svg?1791172800 | 195 / 195 | scryfall |
@@ -1086,7 +1086,7 @@
 | Magic: The Gathering | Signature Spellbook: Jace | https://svgs.scryfall.io/sets/ss1.svg?1791172800 | 8 / 8 | scryfall |
 | Magic: The Gathering | Special Guests | https://svgs.scryfall.io/sets/spg.svg?1791172800 | 164 / 174 | scryfall |
 | Magic: The Gathering | Special Occasion |  | 30 / 30 | — |
-| Magic: The Gathering | Standard Showdown Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 | 51 / 51 | scryfall |
+| Magic: The Gathering | Standard Showdown Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 51 / 51 | scryfall |
 | Magic: The Gathering | Star Trek | https://svgs.scryfall.io/sets/trk.svg?1791172800 | 56 / 56 | scryfall |
 | Magic: The Gathering | Star Trek: Stardates | https://svgs.scryfall.io/sets/sds.svg?1791172800 | 1 / 1 | scryfall |
 | Magic: The Gathering | Starter 1999 | https://svgs.scryfall.io/sets/s99.svg?1791172800 | 173 / 173 | scryfall |
@@ -1139,7 +1139,7 @@
 | Magic: The Gathering | Urza's Saga | https://svgs.scryfall.io/sets/usg.svg?1791172800 | 0 / 350 | scryfall |
 | Magic: The Gathering | Vanguard | https://holodex-prod-bucket.b-cdn.net/sets/mtg_119/logo.webp | 32 / 32 | holodex |
 | Magic: The Gathering | Visions | https://svgs.scryfall.io/sets/vis.svg?1791172800 | 117 / 167 | scryfall |
-| Magic: The Gathering | WMCQ Promo Cards | https://svgs.scryfall.io/sets/star.svg?1791172800 | 6 / 6 | scryfall |
+| Magic: The Gathering | WMCQ Promo Cards | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 6 / 6 | scryfall |
 | Magic: The Gathering | WPN & Gateway Promos |  | 20 / 121 | — |
 | Magic: The Gathering | War of the Spark | https://svgs.scryfall.io/sets/war.svg?1791172800 | 329 / 329 | scryfall |
 | Magic: The Gathering | Weatherlight | https://svgs.scryfall.io/sets/wth.svg?1791172800 | 117 / 167 | scryfall |
@@ -1147,7 +1147,7 @@
 | Magic: The Gathering | Welcome Deck 2017 | https://svgs.scryfall.io/sets/w17.svg?1791172800 | 30 / 30 | scryfall |
 | Magic: The Gathering | Wilds of Eldraine | https://svgs.scryfall.io/sets/woe.svg?1791172800 | 242 / 437 | scryfall |
 | Magic: The Gathering | Wilds of Eldraine: Enchanting Tales | https://svgs.scryfall.io/sets/wot.svg?1791172800 | 103 / 103 | scryfall |
-| Magic: The Gathering | World Championship Decks | https://svgs.scryfall.io/sets/default.svg?1791172800 | 1330 / 1335 | scryfall |
+| Magic: The Gathering | World Championship Decks | https://svgs.scryfall.io/sets/default.svg?1791172800 ⚠ | 1330 / 1335 | scryfall |
 | Magic: The Gathering | Worldwake | https://svgs.scryfall.io/sets/wwk.svg?1791172800 | 151 / 151 | scryfall |
 | Magic: The Gathering | Zendikar | https://svgs.scryfall.io/sets/zen.svg?1791172800 | 60 / 280 | scryfall |
 | Magic: The Gathering | Zendikar Expeditions | https://svgs.scryfall.io/sets/exp.svg?1791172800 | 45 / 45 | scryfall |
@@ -2103,6 +2103,7 @@
 | Dragon Ball Super: Masters | World Martial Arts Tournament | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2297/logo.webp | 0 / 77 | holodex |
 
 > `※` = 该系列是促销/预发售/发售活动等衍生子线，logo 继承自同名的父系列。
+> `⚠` = 该系列在 Scryfall 用的是通用/共享图标（`default.svg` 占位或 `star.svg` 星形），不是该系列专属符号，可靠性低于其他条目。
 
 ## 三、logo 来源与缺口
 
@@ -2119,6 +2120,16 @@
 | ONE PIECE 官方站 | 产品 logo（webp），7 条命中 | 187 个产品页 | `en.onepiece-cardgame.com/products/`，按产品代号 `ST-27` 之类 |
 
 **表内所有 logo URL 已逐个校验可访问**（`script_temp/verify_logo_urls.py`，HEAD 请求）。
+
+按可靠性分层（同一批 URL 的质量差异较大，这里分开计数）：
+
+| 层级 | 含义 | 条数 |
+|------|------|------|
+| `symbol` | 系列专属符号 / logo（最可靠） | 1049 |
+| `artwork` | 官方包装图 / 产品封面（能标识系列，但不是 logo 本身） | 316 |
+| `inherit` | 继承自父系列的图（衍生子线共用一张） | 123 |
+| `generic` | Scryfall 通用占位图标（`default.svg` / `star.svg`） | 15 |
+| `none` | 没有 logo | 536 |
 
 注意两点：万智牌里有 4 个系列拿到的 Scryfall 图标是通用默认符号（`default.svg`），说明该系列在 Scryfall 没有专属符号；另有 123 条是衍生子线继承父系列 logo（表中标 `※`）、35 条是人工核对指定。
 
