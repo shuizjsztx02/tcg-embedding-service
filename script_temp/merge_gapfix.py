@@ -24,19 +24,54 @@ OK_TYPES = ("image/", "text/xml", "application/xml", "binary/octet-stream")
 
 
 def check(url: str) -> tuple[int, str]:
+    """校验 URL 可取到图。
+
+    必须同时试 curl_cffi 与普通 requests，任一成功即可用——不同图床的拦截策略正好相反：
+      · static.wikia.nocookie.net / cdn.fabtcg.com：curl_cffi 能过，普通 curl 403
+      · archives.bulbagarden.net：普通 requests 能过，curl_cffi 反而 403
+    只试一种会把另一类的好链接批量误判成失效。
+    """
+    last = (0, "")
+    clients = []
+    try:
+        from curl_cffi import requests as cr
+        clients.append(("cffi", lambda: (cr.get(url, impersonate="chrome", timeout=25,
+                                                allow_redirects=True).status_code,
+                                         cr.get(url, impersonate="chrome", timeout=25,
+                                                allow_redirects=True)
+                                         .headers.get("content-type", ""))))
+    except ImportError:
+        pass
+    try:
+        import requests as rq
+        clients.append(("requests", lambda: (lambda r: (r.status_code,
+                                                        r.headers.get("content-type", "")))(
+            rq.get(url, timeout=25, allow_redirects=True,
+                   headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}))))
+    except ImportError:
+        pass
+
     for _ in range(2):
-        try:
-            r = subprocess.run(
-                ["curl", "-s", "-o", os.devnull, "-w", "%{http_code} %{content_type}",
-                 "--max-time", "25", url],
-                capture_output=True, text=True, timeout=32)
-            code, _, ctype = (r.stdout or "0 ").partition(" ")
-            code = int(code.strip() or 0)
-            if code:
-                return code, ctype.strip()
-        except Exception:
-            pass
-    return 0, ""
+        for _, fn in clients:
+            try:
+                code, ctype = fn()
+                code, ctype = int(code), (ctype or "").strip()
+                if code == 200:
+                    return code, ctype
+                last = (code, ctype)
+            except Exception:
+                pass
+    if last[0]:
+        return last
+    try:
+        r = subprocess.run(["curl", "-s", "-o", os.devnull, "-w", "%{http_code} %{content_type}",
+                            "--max-time", "25",
+                            "-A", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", url],
+                           capture_output=True, text=True, timeout=32)
+        code, _, ctype = (r.stdout or "0 ").partition(" ")
+        return int(code.strip() or 0), ctype.strip()
+    except Exception:
+        return 0, ""
 
 
 def main() -> None:
@@ -77,10 +112,14 @@ def main() -> None:
         if not isinstance(data, list):
             print(f"  !! {os.path.basename(f)} 不是数组（{type(data).__name__}），跳过")
             continue
+        not_found = []
         for e in data:
             e["_file"] = os.path.basename(f)
-            if not e.get("setName") or not e.get("logo"):
-                rejected.append({**e, "_why": "缺 setName 或 logo"})
+            if not e.get("setName"):
+                rejected.append({**e, "_why": "没有 setName，无法归属"})
+            elif not e.get("logo"):
+                # agent 明确记录的「拿不到」条目，不是错误
+                not_found.append(e)
             elif e["setName"] not in known:
                 rejected.append({**e, "_why": "setName 不属于这 8 个品线的任何系列（拼错）"})
             elif e["setName"] in ambiguous:
@@ -88,7 +127,8 @@ def main() -> None:
                                               "无法确定归属，需人工指定"})
             else:
                 entries.append(e)
-    print(f"候选 {len(entries)} 条，格式/归属被拒 {len(rejected)} 条")
+    print(f"候选 {len(entries)} 条；agent 自报拿不到 {len(not_found)} 条；"
+          f"格式/归属被拒 {len(rejected)} 条")
 
     # 同名额冲突
     by_name: dict[str, dict] = {}

@@ -18,19 +18,34 @@ MD = os.path.join(BASE, "doc", "seriesToLogo.md")
 
 
 def check(url: str) -> tuple[str, int, str]:
+    """两种客户端都要试——不同图床拦截策略相反：
+    wikia/fabtcg 只能 curl_cffi，archives.bulbagarden.net 只能普通 requests。"""
+    last = (url, 0, "")
+    clients = []
+    try:
+        from curl_cffi import requests as cr
+        clients.append(lambda: (lambda r: (r.status_code, r.headers.get("content-type", "")))(
+            cr.get(url, impersonate="chrome", timeout=25, allow_redirects=True)))
+    except ImportError:
+        pass
+    try:
+        import requests as rq
+        clients.append(lambda: (lambda r: (r.status_code, r.headers.get("content-type", "")))(
+            rq.get(url, timeout=25, allow_redirects=True,
+                   headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"})))
+    except ImportError:
+        pass
     for _ in range(2):
-        try:
-            r = subprocess.run(
-                ["curl", "-s", "-o", os.devnull, "-w", "%{http_code} %{content_type}",
-                 "--max-time", "20", url],
-                capture_output=True, text=True, timeout=28)
-            code, _, ctype = (r.stdout or "0 ").partition(" ")
-            code = int(code.strip() or 0)
-            if code:
-                return url, code, ctype.strip()
-        except Exception:
-            pass
-    return url, 0, ""
+        for fn in clients:
+            try:
+                code, ctype = fn()
+                code, ctype = int(code), (ctype or "").strip()
+                if code == 200:
+                    return url, code, ctype
+                last = (url, code, ctype)
+            except Exception:
+                pass
+    return last
 
 
 def main() -> None:

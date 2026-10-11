@@ -9,21 +9,21 @@
 
 | 品线 | 系列数 | 有 logo | 覆盖率 | logo 来源 |
 |------|--------|---------|--------|-----------|
-| Pokémon | 216 | 187 | 87% | tcgdex 132、holodex 55 |
-| Pokémon Japan | 455 | 177 | 39% | bulbapedia 177 |
-| Magic: The Gathering | 445 | 421 | 95% | scryfall 411、holodex 10 |
-| Yu-Gi-Oh! | 613 | 514 | 84% | ygoprodeck 512、holodex 2 |
-| One Piece Card Game | 85 | 42 | 49% | holodex 35、onepiece-official 7 |
+| Pokémon | 216 | 197 | 91% | tcgdex 132、holodex 55、bulbapedia 5、pokellector 3、pokemontcg.io 2 |
+| Pokémon Japan | 455 | 224 | 49% | bulbapedia 177、bulbapedia-article 30、bulbapedia-merch 17 |
+| Magic: The Gathering | 445 | 431 | 97% | scryfall 421、holodex 10 |
+| Yu-Gi-Oh! | 613 | 570 | 93% | ygoprodeck 512、yugipedia 56、holodex 2 |
+| One Piece Card Game | 85 | 82 | 96% | onepiece-official 44、holodex 35、inherit 3 |
 | Disney Lorcana | 20 | 15 | 75% | holodex 15 |
-| Flesh and Blood TCG | 105 | 88 | 84% | fab-official 88 |
-| Dragon Ball Super: Masters | 100 | 59 | 59% | holodex 59 |
-| **合计** | **2039** | **1503** | **73.7%** | |
+| Flesh and Blood TCG | 105 | 104 | 99% | fab-official 104 |
+| Dragon Ball Super: Masters | 100 | 96 | 96% | holodex 62、dbs-cardgame.com 30、tcgplayer-cdn 4 |
+| **合计** | **2039** | **1719** | **84.3%** | |
 
 **logo 字段含义**：Scryfall 是印在卡面上的系列符号（SVG）；ygoprodeck 是官方系列图；TCGdex / Holodex / FAB 官方站 / ONE PIECE 官方站是各自来源的系列 logo 或产品封面；Bulbapedia 是日文系列的 logo，没有 logo 素材时退化为包装图。
 
 ## 二、映射表
 
-### Pokémon（216 个系列，187 个有 logo）
+### Pokémon（216 个系列，197 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
@@ -37,7 +37,7 @@
 | Pokémon | Battle Academy | https://holodex-prod-bucket.b-cdn.net/sets/ba20/logo.webp | 136 / 139 | holodex |
 | Pokémon | Battle Academy 2022 | https://holodex-prod-bucket.b-cdn.net/sets/ba22/logo.webp | 139 / 139 | holodex |
 | Pokémon | Battle Academy 2024 | https://holodex-prod-bucket.b-cdn.net/sets/ba24/logo.webp | 139 / 139 | holodex |
-| Pokémon | Best of Promos |  | 15 / 15 | — |
+| Pokémon | Best of Promos | https://den-media.pokellector.com/logos/Best-of-Game.logo.196.png | 15 / 15 | pokellector |
 | Pokémon | Black and White | https://assets.tcgdex.net/en/bw/bw1/logo.webp | 97 / 122 | tcgdex |
 | Pokémon | Black and White Promos | https://holodex-prod-bucket.b-cdn.net/sets/bwp/logo.webp | 148 / 148 | holodex |
 | Pokémon | Blister Exclusives |  | 140 / 144 | — |
@@ -74,8 +74,8 @@
 | Pokémon | EX Sandstorm | https://assets.tcgdex.net/en/ex/ex2/logo.webp | 100 / 100 | tcgdex |
 | Pokémon | EX Team Magma vs Team Aqua | https://assets.tcgdex.net/en/ex/ex4/logo.webp | 97 / 97 | tcgdex |
 | Pokémon | EX Team Rocket Returns | https://assets.tcgdex.net/en/ex/ex7/logo.webp | 111 / 111 | tcgdex |
-| Pokémon | EX Trainer Kit 1: Latias & Latios |  | 0 / 20 | — |
-| Pokémon | EX Trainer Kit 2: Plusle & Minun |  | 0 / 24 | — |
+| Pokémon | EX Trainer Kit 1: Latias & Latios | https://images.pokemontcg.io/tk1a/logo.png | 0 / 20 | pokemontcg.io |
+| Pokémon | EX Trainer Kit 2: Plusle & Minun | https://images.pokemontcg.io/tk2a/logo.png | 0 / 24 | pokemontcg.io |
 | Pokémon | EX Unseen Forces | https://assets.tcgdex.net/en/ex/ex10/logo.webp | 145 / 145 | tcgdex |
 | Pokémon | Emerging Powers | https://assets.tcgdex.net/en/bw/bw2/logo.webp | 107 / 107 | tcgdex |
 | Pokémon | Expedition | https://assets.tcgdex.net/en/ecard/ecard1/logo.webp | 165 / 165 | tcgdex |
@@ -88,7 +88,7 @@
 | Pokémon | Gym Challenge | https://assets.tcgdex.net/en/gym/gym2/logo.webp | 132 / 132 | tcgdex |
 | Pokémon | Gym Heroes | https://assets.tcgdex.net/en/gym/gym1/logo.webp | 132 / 132 | tcgdex |
 | Pokémon | HGSS Promos | https://holodex-prod-bucket.b-cdn.net/sets/hgss1/logo.webp | 38 / 38 | holodex |
-| Pokémon | HGSS Trainer Kit: Gyarados & Raichu |  | 0 / 60 | — |
+| Pokémon | HGSS Trainer Kit: Gyarados & Raichu | https://archives.bulbagarden.net/media/upload/4/44/HSTrainerKit.jpg | 0 / 60 | bulbapedia |
 | Pokémon | HeartGold SoulSilver | https://assets.tcgdex.net/en/hgss/hgss1/logo.png | 124 / 124 | tcgdex |
 | Pokémon | Hidden Fates | https://assets.tcgdex.net/en/sm/sm115/logo.webp | 72 / 78 | tcgdex |
 | Pokémon | Hidden Fates: Shiny Vault | https://assets.tcgdex.net/en/sm/sm115/logo.webp | 94 / 94 | tcgdex |
@@ -110,7 +110,7 @@
 | Pokémon | ME: 30th Celebration Classic Collection | https://holodex-prod-bucket.b-cdn.net/sets/me_30thcc24837/logo.webp | 0 / 30 | holodex |
 | Pokémon | ME: Ascended Heroes | https://assets.tcgdex.net/en/me/me02.5/logo.webp | 550 / 580 | tcgdex |
 | Pokémon | ME: Mega Evolution Promo | https://holodex-prod-bucket.b-cdn.net/sets/mep/logo.webp | 120 / 141 | holodex |
-| Pokémon | MEE: Mega Evolution Energies |  | 8 / 16 | — |
+| Pokémon | MEE: Mega Evolution Energies | https://den-media.pokellector.com/logos/Mega-Evolution-Energies.logo.436.png | 8 / 16 | pokellector |
 | Pokémon | Majestic Dawn | https://assets.tcgdex.net/en/dp/dp5/logo.webp | 100 / 100 | tcgdex |
 | Pokémon | McDonald's 25th Anniversary Promos | https://holodex-prod-bucket.b-cdn.net/sets/mc10/logo.webp | 25 / 25 | holodex |
 | Pokémon | McDonald's Promos 2011 | https://holodex-prod-bucket.b-cdn.net/sets/mc1/logo.webp | 0 / 12 | holodex |
@@ -186,7 +186,7 @@
 | Pokémon | SV: Scarlet & Violet Promo Cards | https://holodex-prod-bucket.b-cdn.net/sets/svp/logo.webp | 0 / 280 | holodex |
 | Pokémon | SV: Shrouded Fable | https://assets.tcgdex.net/en/sv/sv06.5/logo.webp | 114 / 114 | tcgdex |
 | Pokémon | SV: White Flare | https://holodex-prod-bucket.b-cdn.net/sets/sv16/logo.webp | 330 / 330 | holodex |
-| Pokémon | SVE: Scarlet & Violet Energies |  | 0 / 40 | — |
+| Pokémon | SVE: Scarlet & Violet Energies | https://den-media.pokellector.com/logos/Scarlet-Violet-Energies.logo.404.png | 0 / 40 | pokellector |
 | Pokémon | SWSH01: Sword & Shield Base Set | https://holodex-prod-bucket.b-cdn.net/sets/swsh1/logo.webp | 221 / 246 | holodex |
 | Pokémon | SWSH02: Rebel Clash | https://assets.tcgdex.net/en/swsh/swsh2/logo.webp | 224 / 224 | tcgdex |
 | Pokémon | SWSH03: Darkness Ablaze | https://assets.tcgdex.net/en/swsh/swsh3/logo.webp | 216 / 216 | tcgdex |
@@ -238,20 +238,20 @@
 | Pokémon | XY - Steam Siege | https://assets.tcgdex.net/en/xy/xy11/logo.webp | 134 / 134 | tcgdex |
 | Pokémon | XY Base Set | https://holodex-prod-bucket.b-cdn.net/sets/xy1/logo.webp | 169 / 169 | holodex |
 | Pokémon | XY Promos | https://holodex-prod-bucket.b-cdn.net/sets/xyp/logo.webp | 260 / 269 | holodex |
-| Pokémon | XY Trainer Kit: Bisharp & Wigglytuff |  | 0 / 61 | — |
-| Pokémon | XY Trainer Kit: Latias & Latios |  | 0 / 61 | — |
-| Pokémon | XY Trainer Kit: Pikachu Libre & Suicune |  | 59 / 61 | — |
-| Pokémon | XY Trainer Kit: Sylveon & Noivern |  | 0 / 61 | — |
+| Pokémon | XY Trainer Kit: Bisharp & Wigglytuff | https://archives.bulbagarden.net/media/upload/7/74/XYTrainerKit_Bisharp_Wigglytuff.jpg | 0 / 61 | bulbapedia |
+| Pokémon | XY Trainer Kit: Latias & Latios | https://archives.bulbagarden.net/media/upload/c/c1/XYTrainerKit_Latias_Latios.jpg | 0 / 61 | bulbapedia |
+| Pokémon | XY Trainer Kit: Pikachu Libre & Suicune | https://archives.bulbagarden.net/media/upload/6/66/XYTrainerKit_PikachuLibre_Suicune.jpg | 59 / 61 | bulbapedia |
+| Pokémon | XY Trainer Kit: Sylveon & Noivern | https://archives.bulbagarden.net/media/upload/9/92/XYTrainerKit.jpg | 0 / 61 | bulbapedia |
 | Pokémon | e-Reader Sample Cards |  | 1 / 1 | — |
 
-### Pokémon Japan（455 个系列，177 个有 logo）
+### Pokémon Japan（455 个系列，224 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
 | Pokémon Japan | 10th Movie Commemoration Set |  | 11 / 11 | — |
 | Pokémon Japan | 11th Movie Commemoration Set |  | 9 / 9 | — |
 | Pokémon Japan | 64 Mario Stadium Best Photo Contest |  | 5 / 5 | — |
-| Pokémon Japan | ADV Expansion Pack |  | 55 / 55 | — |
+| Pokémon Japan | ADV Expansion Pack | https://archives.bulbagarden.net/media/upload/f/f1/ADV1_Expansion_Pack_pack.jpg | 55 / 55 | bulbapedia-article |
 | Pokémon Japan | ADV-P Promotional cards |  | 63 / 63 | — |
 | Pokémon Japan | Aqua Deck Kit |  | 33 / 33 | — |
 | Pokémon Japan | Arceus LV.X Deck: Grass & Fire |  | 0 / 17 | — |
@@ -261,9 +261,9 @@
 | Pokémon Japan | BK: Terrakion Battle Strength Deck |  | 17 / 17 | — |
 | Pokémon Japan | BK: Virizion Battle Strength Deck |  | 17 / 17 | — |
 | Pokémon Japan | BKB: Black Kyurem-EX Battle Strength Deck |  | 18 / 18 | — |
-| Pokémon Japan | BKR: Reshiram-EX Battle Strength Deck |  | 18 / 18 | — |
+| Pokémon Japan | BKR: Reshiram-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/4/4d/BattleStrengthDeckReshiramEX.jpg | 18 / 18 | bulbapedia-article |
 | Pokémon Japan | BKW: White Kyurem-EX Battle Strength Deck |  | 18 / 18 | — |
-| Pokémon Japan | BKZ: Zekrom-EX Battle Strength Deck |  | 18 / 18 | — |
+| Pokémon Japan | BKZ: Zekrom-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/a/a6/BattleStrengthDeckZekromEX.jpg | 18 / 18 | bulbapedia-article |
 | Pokémon Japan | BREAK Starter Pack | https://archives.bulbagarden.net/media/upload/8/8b/20th_Anniversary_logo.png | 77 / 77 | bulbapedia |
 | Pokémon Japan | BW-P Promotional cards |  | 250 / 250 | — |
 | Pokémon Japan | BW1: Black Collection | https://archives.bulbagarden.net/media/upload/1/1e/BW1_Black_Collection_Box.jpg | 56 / 56 | bulbapedia |
@@ -285,13 +285,13 @@
 | Pokémon Japan | Bastiodon the Defender Half Deck | https://archives.bulbagarden.net/media/upload/1/1c/DP2_Logo_EN.png | 14 / 14 | bulbapedia |
 | Pokémon Japan | Battle Academy | https://archives.bulbagarden.net/media/upload/thumb/7/76/Pokemon_TCG_Battle_Academy_Logo.png/600px-Pokemon_TCG_Battle_Academy_Logo.png | 74 / 74 | bulbapedia |
 | Pokémon Japan | Battle Gift Set: Thundurus vs Tornadus |  | 20 / 20 | — |
-| Pokémon Japan | Battle Road |  | 22 / 22 | — |
+| Pokémon Japan | Battle Road | https://archives.bulbagarden.net/media/upload/c/cb/Battle_Roads_Autumn_logo.png | 22 / 22 | bulbapedia-article |
 | Pokémon Japan | Battle Starter Deck (Blastoise) |  | 0 / 10 | — |
 | Pokémon Japan | Battle Starter Deck (Magmortar) |  | 0 / 9 | — |
 | Pokémon Japan | Battle Starter Deck (Raichu) |  | 0 / 11 | — |
 | Pokémon Japan | Battle Starter Deck (Torterra) |  | 0 / 10 | — |
 | Pokémon Japan | Battle Theme Deck: Victini |  | 21 / 21 | — |
-| Pokémon Japan | Black Deck Kit |  | 20 / 20 | — |
+| Pokémon Japan | Black Deck Kit | https://archives.bulbagarden.net/media/upload/9/90/Team_Rocket_Strikes_Back_-_Black_Deck_Kit.jpg | 20 / 20 | bulbapedia-article |
 | Pokémon Japan | Blastoise + Kyurem-EX Combo Deck |  | 0 / 18 | — |
 | Pokémon Japan | CP1: Magma Gang vs Aqua Gang: Double Crisis | https://archives.bulbagarden.net/media/upload/f/f0/CP1_Logo.png | 34 / 34 | bulbapedia |
 | Pokémon Japan | CP2: Legendary Shine Collection | https://archives.bulbagarden.net/media/upload/d/d6/CP2_Legendary_Shine_Collection_pack_1.jpg | 27 / 27 | bulbapedia |
@@ -302,7 +302,7 @@
 | Pokémon Japan | CS1: Journey Partners Collection Sheet | https://archives.bulbagarden.net/media/upload/7/79/CS1.5_logo.png | 9 / 9 | bulbapedia |
 | Pokémon Japan | Challenge from the Darkness |  | 99 / 99 | — |
 | Pokémon Japan | Champion Road |  | 2 / 6 | — |
-| Pokémon Japan | City Gym Decks |  | 124 / 124 | — |
+| Pokémon Japan | City Gym Decks | https://archives.bulbagarden.net/media/upload/8/81/Brock_Pewter_City_Gym_Trainer_Battle_Deck.jpg | 124 / 124 | bulbapedia-article |
 | Pokémon Japan | Clash of the Blue Sky |  | 82 / 82 | — |
 | Pokémon Japan | CoroCoro Promotional Cards |  | 51 / 51 | — |
 | Pokémon Japan | Crossing the Ruins... |  | 0 / 57 | — |
@@ -321,7 +321,7 @@
 | Pokémon Japan | DPt-P Promotional cards |  | 51 / 51 | — |
 | Pokémon Japan | Darkness, and to Light... |  | 0 / 113 | — |
 | Pokémon Japan | Deoxys Constructed Starter Deck |  | 16 / 16 | — |
-| Pokémon Japan | Dialga LV.X Constructed Standard Deck |  | 0 / 18 | — |
+| Pokémon Japan | Dialga LV.X Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/e/e6/DialgaLV.XConstructedStandardDeck.jpg | 0 / 18 | bulbapedia-article |
 | Pokémon Japan | Dragon Selection | https://archives.bulbagarden.net/media/upload/b/b6/DS_Dragon_Selection_pack.jpg | 20 / 20 | bulbapedia |
 | Pokémon Japan | EX Battle Boost | https://archives.bulbagarden.net/media/upload/b/b2/EBB_EX_Battle_Boost_Box.jpg | 186 / 187 | bulbapedia |
 | Pokémon Japan | Earth's Groudon ex Constructed Starter Deck |  | 0 / 16 | — |
@@ -336,16 +336,16 @@
 | Pokémon Japan | Everyone's Exciting Battle |  | 0 / 47 | — |
 | Pokémon Japan | Expansion Pack |  | 93 / 102 | — |
 | Pokémon Japan | Expansion Pack (No Rarity) |  | 1 / 96 | — |
-| Pokémon Japan | Feraligatr Constructed Starter Deck |  | 16 / 16 | — |
+| Pokémon Japan | Feraligatr Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/e/e7/Golden_Sky_Silvery_Ocean_-_Feraligatr_Deck.jpg | 16 / 16 | bulbapedia-article |
 | Pokémon Japan | Fighting Quick Construction Pack |  | 15 / 15 | — |
 | Pokémon Japan | Fire Quick Construction Pack |  | 15 / 15 | — |
 | Pokémon Japan | Flight of Legends |  | 82 / 82 | — |
-| Pokémon Japan | Flygon Constructed Starter Deck |  | 20 / 20 | — |
+| Pokémon Japan | Flygon Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/9/95/ADV3_Flygon_Deck.jpg | 20 / 20 | bulbapedia-article |
 | Pokémon Japan | Garchomp Half Deck |  | 15 / 15 | — |
 | Pokémon Japan | Garchomp vs Charizard SP Deck Kit (Charizard) |  | 16 / 16 | — |
 | Pokémon Japan | Garchomp vs Charizard SP Deck Kit (Garchomp) |  | 13 / 13 | — |
-| Pokémon Japan | Gift Box (Latias) |  | 0 / 18 | — |
-| Pokémon Japan | Gift Box (Latios) |  | 0 / 18 | — |
+| Pokémon Japan | Gift Box (Latias) | https://archives.bulbagarden.net/media/upload/d/d6/CSF_Dragon_Resurgence_Advanced_Gift_Box_Fierce.jpg | 0 / 18 | bulbapedia-article |
+| Pokémon Japan | Gift Box (Latios) | https://archives.bulbagarden.net/media/upload/3/37/Latias_%26_Latios_Gift_Set_-_Box_front.jpg | 0 / 18 | bulbapedia-article |
 | Pokémon Japan | Gift Box Mew - Lucario (Crawdaunt Quarter Deck) |  | 0 / 15 | — |
 | Pokémon Japan | Gift Box Mew - Lucario (Lucario Quarter Deck) |  | 0 / 15 | — |
 | Pokémon Japan | Gift Box Mew - Lucario (Mew Quarter Deck) |  | 0 / 15 | — |
@@ -368,12 +368,12 @@
 | Pokémon Japan | Holon Research Tower Water Quarter Deck |  | 15 / 15 | — |
 | Pokémon Japan | How I Became a Pokemon Card |  | 6 / 6 | — |
 | Pokémon Japan | Hydreigon Half Deck |  | 15 / 15 | — |
-| Pokémon Japan | Imprison! Gardevoir ex Constructed Standard Deck |  | 0 / 24 | — |
+| Pokémon Japan | Imprison! Gardevoir ex Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/3/36/ImprisonGardevoirexConstructedDeck.jpg | 0 / 24 | bulbapedia-article |
 | Pokémon Japan | Infernape vs Gallade SP Deck Kit (Gallade) |  | 12 / 12 | — |
 | Pokémon Japan | Infernape vs Gallade SP Deck Kit (Infernape) |  | 18 / 18 | — |
 | Pokémon Japan | Intense Fight in the Destroyed Sky |  | 42 / 92 | — |
-| Pokémon Japan | Intro Pack (Bulbasaur) |  | 0 / 41 | — |
-| Pokémon Japan | Intro Pack (Squirtle) |  | 0 / 41 | — |
+| Pokémon Japan | Intro Pack (Bulbasaur) | https://archives.bulbagarden.net/media/upload/4/4f/IntroPack.jpg | 0 / 41 | bulbapedia-merch |
+| Pokémon Japan | Intro Pack (Squirtle) | https://archives.bulbagarden.net/media/upload/4/4f/IntroPack.jpg | 0 / 41 | bulbapedia-article |
 | Pokémon Japan | Intro Pack Neo (Chikorita) |  | 0 / 40 | — |
 | Pokémon Japan | Intro Pack Neo (Totodile) |  | 0 / 40 | — |
 | Pokémon Japan | J Promotional cards |  | 2 / 2 | — |
@@ -404,28 +404,28 @@
 | Pokémon Japan | M6a: MEGA Expansion 30th Celebration |  | 0 / 176 | — |
 | Pokémon Japan | MBD: MEGA Starter Set Mega Diancie ex | https://archives.bulbagarden.net/media/upload/9/91/MEGA_Starter_Set_Mega_Diancie_ex_box.jpg | 22 / 22 | bulbapedia |
 | Pokémon Japan | MBG: MEGA Starter Set Mega Gengar ex | https://archives.bulbagarden.net/media/upload/f/f6/MEGA_Starter_Set_Mega_Gengar_ex_box.jpg | 22 / 22 | bulbapedia |
-| Pokémon Japan | MEE: Starter Set ex Eevee ex |  | 20 / 20 | — |
-| Pokémon Japan | MEM: Starter Set ex Meowscarada ex |  | 18 / 18 | — |
-| Pokémon Japan | MEZ: Starter Set ex Zoroark ex |  | 20 / 20 | — |
+| Pokémon Japan | MEE: Starter Set ex Eevee ex | https://archives.bulbagarden.net/media/upload/0/00/Ex_Starter_Set_Eevee_ex.png | 20 / 20 | bulbapedia-merch |
+| Pokémon Japan | MEM: Starter Set ex Meowscarada ex | https://archives.bulbagarden.net/media/upload/1/15/Ex_Starter_Set_Sprigatito_Meowscarada_ex.png | 18 / 18 | bulbapedia-merch |
+| Pokémon Japan | MEZ: Starter Set ex Zoroark ex | https://archives.bulbagarden.net/media/upload/6/62/Ex_Starter_Set_Zorua_Zoroark_ex.png | 20 / 20 | bulbapedia-article |
 | Pokémon Japan | MF: 30th CELEBRATION Premium Deck Set Espeon & Umbreon |  | 0 / 49 | — |
 | Pokémon Japan | MP1: Start Deck 100 Battle Collection CoroCiao Version |  | 23 / 23 | — |
 | Pokémon Japan | Magma Deck Kit |  | 33 / 33 | — |
 | Pokémon Japan | Magma VS Aqua: Two Ambitions |  | 80 / 80 | — |
 | Pokémon Japan | Magmortar vs Electivire Deck Kit | https://archives.bulbagarden.net/media/upload/c/cc/DP4_Logo_EN.png | 26 / 26 | bulbapedia |
 | Pokémon Japan | Master Deck Build Box EX | https://archives.bulbagarden.net/media/upload/thumb/a/a9/MasterDeckBuildBoxEX.jpg/600px-MasterDeckBuildBoxEX.jpg | 46 / 46 | bulbapedia |
-| Pokémon Japan | Master Kit (Bulbasaur) |  | 0 / 9 | — |
-| Pokémon Japan | Master Kit (Side Deck) |  | 0 / 10 | — |
-| Pokémon Japan | Master Kit (Torchic) |  | 0 / 11 | — |
+| Pokémon Japan | Master Kit (Bulbasaur) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | 0 / 9 | bulbapedia-article |
+| Pokémon Japan | Master Kit (Side Deck) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | 0 / 10 | bulbapedia-merch |
+| Pokémon Japan | Master Kit (Torchic) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | 0 / 11 | bulbapedia-article |
 | Pokémon Japan | McDonald's Pokémon-e Minimum Pack |  | 0 / 24 | — |
 | Pokémon Japan | Mega Evolution Era Unnumbered Energies |  | 0 / 4 | — |
-| Pokémon Japan | Meganium Constructed Starter Deck |  | 16 / 16 | — |
+| Pokémon Japan | Meganium Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/2/2c/Golden_Sky_Silvery_Ocean_-_Meganium_Deck.jpg | 16 / 16 | bulbapedia-article |
 | Pokémon Japan | Melee! Pokemon Scramble |  | 0 / 19 | — |
-| Pokémon Japan | Metagross Constructed Starter Deck |  | 19 / 19 | — |
+| Pokémon Japan | Metagross Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/2/2e/ADV4_Metagross_Deck.jpg | 19 / 19 | bulbapedia-article |
 | Pokémon Japan | Mewtwo vs Genesect Deck Kit (Genesect) |  | 16 / 16 | — |
 | Pokémon Japan | Mewtwo vs Genesect Deck Kit (Mewtwo) |  | 16 / 16 | — |
 | Pokémon Japan | Miracle Crystal |  | 75 / 75 | — |
 | Pokémon Japan | Miracle of the Desert |  | 53 / 53 | — |
-| Pokémon Japan | Mirage Forest |  | 86 / 86 | — |
+| Pokémon Japan | Mirage Forest | https://archives.bulbagarden.net/media/upload/9/96/PCG5_Mirage_Forest_pack.jpg | 86 / 86 | bulbapedia-article |
 | Pokémon Japan | Mirage's Mew Constructed Starter Deck |  | 0 / 17 | — |
 | Pokémon Japan | Movie Commemoration Random Pack |  | 22 / 22 | — |
 | Pokémon Japan | Movie Commemoration VS Pack | https://archives.bulbagarden.net/media/upload/4/49/Lucario_Movie_Commemoration_VS_Pack.jpg | 11 / 19 | bulbapedia |
@@ -439,12 +439,12 @@
 | Pokémon Japan | Neo Premium File 2 |  | 9 / 9 | — |
 | Pokémon Japan | Neo Premium File 3 |  | 9 / 9 | — |
 | Pokémon Japan | Ocean's Kyogre ex Constructed Starter Deck |  | 0 / 16 | — |
-| Pokémon Japan | Offense and Defense of the Furthest Ends |  | 68 / 68 | — |
+| Pokémon Japan | Offense and Defense of the Furthest Ends | https://archives.bulbagarden.net/media/upload/d/dd/PCG9_Offense_Defense_Furthest_Ends_pack.jpg | 68 / 68 | bulbapedia-article |
 | Pokémon Japan | P Promotional cards |  | 1 / 47 | — |
 | Pokémon Japan | PCG-P Promotional cards |  | 155 / 155 | — |
 | Pokémon Japan | PLAY Promotional cards |  | 32 / 32 | — |
 | Pokémon Japan | PPP Promotional cards |  | 7 / 7 | — |
-| Pokémon Japan | Palkia LV.X Constructed Standard Deck |  | 0 / 19 | — |
+| Pokémon Japan | Palkia LV.X Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/f/f0/PalkiaLV.XConstructedStandardDeck.jpg | 0 / 19 | bulbapedia-article |
 | Pokémon Japan | Player Placement Trainer Promos |  | 2 / 2 | — |
 | Pokémon Japan | PokePark Blue |  | 9 / 9 | — |
 | Pokémon Japan | PokePark Forest |  | 9 / 9 | — |
@@ -576,16 +576,16 @@
 | Pokémon Japan | SV9: Battle Partners | https://archives.bulbagarden.net/media/upload/7/7b/SV9_Battle_Partners_pack.png | 132 / 132 | bulbapedia |
 | Pokémon Japan | SV9a: Heat Wave Arena | https://archives.bulbagarden.net/media/upload/a/a6/SV9a_Hot_Wind_Arena_Logo.png | 92 / 92 | bulbapedia |
 | Pokémon Japan | SV: Ancient Koraidon ex Starter Deck & Build Set |  | 0 / 53 | — |
-| Pokémon Japan | SV: Ceruledge ex Stellar Tera Type Starter Set |  | 21 / 21 | — |
-| Pokémon Japan | SV: Chien-Pao ex Battle Master Deck |  | 19 / 19 | — |
+| Pokémon Japan | SV: Ceruledge ex Stellar Tera Type Starter Set | https://archives.bulbagarden.net/media/upload/8/80/Stellar_Tera_Type_Starter_Set_Ceruledge_ex.jpg | 21 / 21 | bulbapedia-merch |
+| Pokémon Japan | SV: Chien-Pao ex Battle Master Deck | https://archives.bulbagarden.net/media/upload/5/55/Battle_Master_Deck_Chien-Pao_ex_Contents.png | 19 / 19 | bulbapedia-article |
 | Pokémon Japan | SV: Future Miraidon ex Starter Deck & Build Set |  | 0 / 51 | — |
-| Pokémon Japan | SV: Mewtwo ex Terastal Starter Set |  | 20 / 20 | — |
+| Pokémon Japan | SV: Mewtwo ex Terastal Starter Set | https://archives.bulbagarden.net/media/upload/2/2f/Terastal_Starter_Set_Mewtwo_ex_Contents.png | 20 / 20 | bulbapedia-article |
 | Pokémon Japan | SV: Premium Trainer Box ex | https://archives.bulbagarden.net/media/upload/thumb/4/4c/Premium_Trainer_Box_ex.jpg/600px-Premium_Trainer_Box_ex.jpg | 28 / 28 | bulbapedia |
 | Pokémon Japan | SV: Ruler of the Black Flame Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/6/6f/Ruler_of_the_Black_Flame_Deck_Build_Box.jpg/600px-Ruler_of_the_Black_Flame_Deck_Build_Box.jpg | 38 / 38 | bulbapedia |
-| Pokémon Japan | SV: Skeledirge ex Terastal Starter Set |  | 20 / 20 | — |
+| Pokémon Japan | SV: Skeledirge ex Terastal Starter Set | https://archives.bulbagarden.net/media/upload/4/49/Terastal_Starter_Set_Skeledirge_ex_Contents.png | 20 / 20 | bulbapedia-article |
 | Pokémon Japan | SV: Stellar Miracle Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/4/42/Stellar_Miracle_Deck_Build_Box.png/600px-Stellar_Miracle_Deck_Build_Box.png | 45 / 45 | bulbapedia |
-| Pokémon Japan | SV: Sylveon ex Stellar Tera Type Starter Set |  | 22 / 22 | — |
-| Pokémon Japan | SV: Terastal Charizard ex Battle Master Deck |  | 21 / 21 | — |
+| Pokémon Japan | SV: Sylveon ex Stellar Tera Type Starter Set | https://archives.bulbagarden.net/media/upload/c/c3/Stellar_Tera_Type_Starter_Set_Sylveon_ex.jpg | 22 / 22 | bulbapedia-merch |
+| Pokémon Japan | SV: Terastal Charizard ex Battle Master Deck | https://archives.bulbagarden.net/media/upload/5/5e/Battle_Master_Deck_Terastal_Charizard_ex_Contents.png | 21 / 21 | bulbapedia-merch |
 | Pokémon Japan | SV: Venusaur, Charizard & Blastoise Special Deck Set |  | 0 / 52 | — |
 | Pokémon Japan | SV: ex Special Set |  | 7 / 7 | — |
 | Pokémon Japan | SV: ex Start Decks |  | 138 / 139 | — |
@@ -597,11 +597,11 @@
 | Pokémon Japan | SV: ex Starter Set Steven's Beldum & Metagross ex | https://archives.bulbagarden.net/media/upload/thumb/0/08/Ex_Starter_Set_Steven_Beldum_Metagross_ex_box.jpg/600px-Ex_Starter_Set_Steven_Beldum_Metagross_ex_box.jpg | 0 / 19 | bulbapedia |
 | Pokémon Japan | SVM: Generations Start Decks | https://archives.bulbagarden.net/media/upload/f/ff/SVM_Generations_Start_Decks_logo.png | 175 / 175 | bulbapedia |
 | Pokémon Japan | SVN: Battle Partners Deck Build Box | https://archives.bulbagarden.net/media/upload/thumb/e/e4/Battle_Partners_Deck_Build_Box_Contents.jpg/600px-Battle_Partners_Deck_Build_Box_Contents.jpg | 45 / 45 | bulbapedia |
-| Pokémon Japan | Salamence Constructed Starter Deck |  | 20 / 20 | — |
+| Pokémon Japan | Salamence Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/0/03/ADV3_Salamence_Deck.jpg | 20 / 20 | bulbapedia-article |
 | Pokémon Japan | Scarlet & Violet Era Unnumbered Energies |  | 0 / 16 | — |
 | Pokémon Japan | Shiny Collection | https://archives.bulbagarden.net/media/upload/8/80/SC_Shiny_Collection_pack.jpg | 25 / 25 | bulbapedia |
-| Pokémon Japan | Shockwave! Tyranitar ex Constructed Standard Deck |  | 0 / 24 | — |
-| Pokémon Japan | Silver Deck Kit |  | 20 / 20 | — |
+| Pokémon Japan | Shockwave! Tyranitar ex Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/8/8e/ShockwaveTyranitarexConstructedDeck.jpg | 0 / 24 | bulbapedia-article |
+| Pokémon Japan | Silver Deck Kit | https://archives.bulbagarden.net/media/upload/5/5c/Team_Rocket_Strikes_Back_-_Silver_Deck_Kit.jpg | 20 / 20 | bulbapedia-article |
 | Pokémon Japan | Southern Island | https://archives.bulbagarden.net/media/upload/thumb/c/c4/SouthernIslandsLogo.png/600px-SouthernIslandsLogo.png | 18 / 18 | bulbapedia |
 | Pokémon Japan | Split Earth |  | 91 / 91 | — |
 | Pokémon Japan | Start Deck 100 Battle Collection |  | 850 / 916 | — |
@@ -609,13 +609,13 @@
 | Pokémon Japan | Sword & Shield Era Unnumbered Energies |  | 0 / 17 | — |
 | Pokémon Japan | T Promotional cards |  | 24 / 24 | — |
 | Pokémon Japan | Team Plasma Battle Gift Set |  | 16 / 16 | — |
-| Pokémon Japan | Team Plasma's Powered Half Deck |  | 0 / 17 | — |
-| Pokémon Japan | The Town on No Map |  | 92 / 92 | — |
+| Pokémon Japan | Team Plasma's Powered Half Deck | https://archives.bulbagarden.net/media/upload/f/f9/Expansion_Pack_Team_Plasma_Set.jpg | 0 / 17 | bulbapedia-merch |
+| Pokémon Japan | The Town on No Map | https://archives.bulbagarden.net/media/upload/a/ab/E2_The_Town_on_No_Map_pack.jpg | 92 / 92 | bulbapedia-article |
 | Pokémon Japan | Theater Limited VS Pack |  | 18 / 18 | — |
 | Pokémon Japan | Torchic Constructed Starter Deck |  | 20 / 20 | — |
 | Pokémon Japan | Trainer Prize Cards |  | 3 / 3 | — |
 | Pokémon Japan | Treecko Constructed Starter Deck |  | 20 / 20 | — |
-| Pokémon Japan | Typhlosion Constructed Starter Deck |  | 16 / 16 | — |
+| Pokémon Japan | Typhlosion Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/9/9f/Golden_Sky_Silvery_Ocean_-_Typhlosion_Deck.jpg | 16 / 16 | bulbapedia-article |
 | Pokémon Japan | Undone Seal |  | 83 / 83 | — |
 | Pokémon Japan | Unnumbered Promotional cards |  | 81 / 81 | — |
 | Pokémon Japan | Unnumbered World Championships |  | 6 / 6 | — |
@@ -649,7 +649,7 @@
 | Pokémon Japan | XYB: Dialga-EX + Aegislash-EX Hyper Metal Chain Deck |  | 0 / 20 | — |
 | Pokémon Japan | XYC: Super Legend Set: Xerneas-EX & Yveltal-EX | https://archives.bulbagarden.net/media/upload/d/da/XYC_Legend_Battle_Deck_Logo_KO.png | 0 / 23 | bulbapedia |
 | Pokémon Japan | XYD: M Rayquaza-EX Mega Battle Deck |  | 18 / 18 | — |
-| Pokémon Japan | XYE: Emboar-EX vs Togekiss-EX Deck Kit |  | 22 / 22 | — |
+| Pokémon Japan | XYE: Emboar-EX vs Togekiss-EX Deck Kit | https://archives.bulbagarden.net/media/upload/9/93/EmboarEX_vs_TogekissEX_Deck_Kit.jpg | 22 / 22 | bulbapedia-article |
 | Pokémon Japan | XYF: Golduck BREAK + Palkia-EX Combo Deck |  | 0 / 17 | — |
 | Pokémon Japan | XYG: Zygarde-EX Perfect Battle Deck |  | 19 / 19 | — |
 | Pokémon Japan | XYH: M Audino-EX Mega Battle Deck |  | 26 / 26 | — |
@@ -660,18 +660,18 @@
 | Pokémon Japan | s0: Charizard VSTAR vs Rayquaza VMAX Special Deck Set |  | 30 / 30 | — |
 | Pokémon Japan | s8a-G: 25th Anniversary Golden Box |  | 16 / 16 | — |
 | Pokémon Japan | s8a-P: Promo Card Pack 25th Anniversary Edition | https://archives.bulbagarden.net/media/upload/e/eb/S8a-P_Promo_Card_Pack_25th_Anniversary_Edition.jpg | 25 / 25 | bulbapedia |
-| Pokémon Japan | sA: Fighting Starter Set V |  | 46 / 46 | — |
-| Pokémon Japan | sA: Fire Starter Set V |  | 45 / 45 | — |
-| Pokémon Japan | sA: Grass Starter Set V |  | 45 / 45 | — |
-| Pokémon Japan | sA: Lightning Starter Set V |  | 46 / 46 | — |
-| Pokémon Japan | sA: Water Starter Set V |  | 45 / 45 | — |
+| Pokémon Japan | sA: Fighting Starter Set V | https://archives.bulbagarden.net/media/upload/2/20/V_Starter_Set_Fighting.jpg | 46 / 46 | bulbapedia-merch |
+| Pokémon Japan | sA: Fire Starter Set V | https://archives.bulbagarden.net/media/upload/5/53/V_Starter_Set_Fire.jpg | 45 / 45 | bulbapedia-merch |
+| Pokémon Japan | sA: Grass Starter Set V | https://archives.bulbagarden.net/media/upload/3/3a/V_Starter_Set_Grass.jpg | 45 / 45 | bulbapedia-merch |
+| Pokémon Japan | sA: Lightning Starter Set V | https://archives.bulbagarden.net/media/upload/d/de/V_Starter_Set_Lightning.jpg | 46 / 46 | bulbapedia-merch |
+| Pokémon Japan | sA: Water Starter Set V | https://archives.bulbagarden.net/media/upload/6/69/V_Starter_Set_Water.jpg | 45 / 45 | bulbapedia-merch |
 | Pokémon Japan | sB: Sword & Shield Premium Trainer Box | https://archives.bulbagarden.net/media/upload/thumb/7/7b/Sword_Shield_Premium_Trainer_Box.jpg/600px-Sword_Shield_Premium_Trainer_Box.jpg | 0 / 24 | bulbapedia |
 | Pokémon Japan | sC2: Charizard Starter Set VMAX 2 |  | 21 / 21 | — |
-| Pokémon Japan | sC: Charizard Starter Set VMAX |  | 21 / 21 | — |
-| Pokémon Japan | sC: Grimmsnarl Starter Set VMAX |  | 20 / 20 | — |
+| Pokémon Japan | sC: Charizard Starter Set VMAX | https://archives.bulbagarden.net/media/upload/3/36/Charizard_VMAX_Starter_Set.jpg | 21 / 21 | bulbapedia-merch |
+| Pokémon Japan | sC: Grimmsnarl Starter Set VMAX | https://archives.bulbagarden.net/media/upload/d/d0/Grimmsnarl_VMAX_Starter_Set.jpg | 20 / 20 | bulbapedia-merch |
 | Pokémon Japan | sD: V Starter Decks |  | 127 / 127 | — |
-| Pokémon Japan | sEF: Venusaur Starter Set VMAX |  | 21 / 21 | — |
-| Pokémon Japan | sEK: Blastoise Starter Set VMAX |  | 20 / 20 | — |
+| Pokémon Japan | sEF: Venusaur Starter Set VMAX | https://archives.bulbagarden.net/media/upload/1/1e/Venusaur_VMAX_Starter_Set.jpg | 21 / 21 | bulbapedia-merch |
+| Pokémon Japan | sEK: Blastoise Starter Set VMAX | https://archives.bulbagarden.net/media/upload/e/e8/Blastoise_VMAX_Starter_Set.jpg | 20 / 20 | bulbapedia-merch |
 | Pokémon Japan | sF: Single Strike & Rapid Strike Premium Trainer Boxes | https://archives.bulbagarden.net/media/upload/thumb/1/14/Single_Strike_Rapid_Strike_Premium_Trainer_Boxes.jpg/600px-Single_Strike_Rapid_Strike_Premium_Trainer_Boxes.jpg | 0 / 33 | bulbapedia |
 | Pokémon Japan | sH: Sword & Shield Family Pokemon Card Game |  | 0 / 78 | — |
 | Pokémon Japan | sJ: Zacian & Zamazenta vs Eternatus Special Deck Set |  | 0 / 30 | — |
@@ -704,18 +704,18 @@
 | Pokémon Japan | sp5: V-UNION Special Card Sets |  | 13 / 13 | — |
 | Pokémon Japan | sp6: VSTAR Special Set |  | 6 / 6 | — |
 
-### Magic: The Gathering（445 个系列，421 个有 logo）
+### Magic: The Gathering（445 个系列，431 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
 | Magic: The Gathering | 10th Edition | https://svgs.scryfall.io/sets/10e.svg?1791172800 | 388 / 389 | scryfall |
 | Magic: The Gathering | 30th Anniversary Edition | https://svgs.scryfall.io/sets/30a.svg?1791172800 | 579 / 610 | scryfall |
-| Magic: The Gathering | 30th Anniversary Promos |  | 43 / 43 | — |
+| Magic: The Gathering | 30th Anniversary Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 43 / 43 | scryfall |
 | Magic: The Gathering | 7th Edition | https://svgs.scryfall.io/sets/7ed.svg?1791172800 | 347 / 350 | scryfall |
 | Magic: The Gathering | 8th Edition | https://svgs.scryfall.io/sets/8ed.svg?1791172800 | 357 / 357 | scryfall |
 | Magic: The Gathering | 9th Edition | https://svgs.scryfall.io/sets/9ed.svg?1791172800 | 356 / 359 | scryfall |
-| Magic: The Gathering | AFR Ampersand Promos |  | 80 / 80 | — |
-| Magic: The Gathering | APAC Lands |  | 15 / 15 | — |
+| Magic: The Gathering | AFR Ampersand Promos | https://svgs.scryfall.io/sets/afr.svg?1791172800 | 80 / 80 | scryfall |
+| Magic: The Gathering | APAC Lands | https://svgs.scryfall.io/sets/papac.svg?1791172800 | 15 / 15 | scryfall |
 | Magic: The Gathering | Adventures in the Forgotten Realms | https://svgs.scryfall.io/sets/afr.svg?1791172800 | 460 / 464 | scryfall |
 | Magic: The Gathering | Aether Revolt | https://svgs.scryfall.io/sets/aer.svg?1791172800 | 199 / 199 | scryfall |
 | Magic: The Gathering | Aetherdrift | https://svgs.scryfall.io/sets/dft.svg?1791172800 | 404 / 558 | scryfall |
@@ -728,7 +728,7 @@
 | Magic: The Gathering | Apocalypse | https://svgs.scryfall.io/sets/apc.svg?1791172800 | 143 / 143 | scryfall |
 | Magic: The Gathering | Arabian Nights | https://svgs.scryfall.io/sets/arn.svg?1791172800 | 89 / 89 | scryfall |
 | Magic: The Gathering | Archenemy | https://svgs.scryfall.io/sets/arc.svg?1791172800 | 56 / 150 | scryfall |
-| Magic: The Gathering | Archenemy: Duskmourn |  | 40 / 40 | — |
+| Magic: The Gathering | Archenemy: Duskmourn | https://svgs.scryfall.io/sets/dsc.svg?1791172800 | 40 / 40 | scryfall |
 | Magic: The Gathering | Archenemy: Nicol Bolas | https://svgs.scryfall.io/sets/e01.svg?1791172800 | 110 / 110 | scryfall |
 | Magic: The Gathering | Arena Promos | https://svgs.scryfall.io/sets/mtga.svg?1791172800 | 86 / 86 | scryfall |
 | Magic: The Gathering | Art Series: Adventures in the Forgotten Realms | https://svgs.scryfall.io/sets/afr.svg?1791172800 | 162 / 162 | scryfall |
@@ -789,7 +789,7 @@
 | Magic: The Gathering | Coldsnap | https://svgs.scryfall.io/sets/csp.svg?1791172800 | 147 / 155 | scryfall |
 | Magic: The Gathering | Coldsnap Theme Deck Reprints | https://svgs.scryfall.io/sets/csp.svg?1791172800 ※ | 62 / 62 | scryfall（继承父系列） |
 | Magic: The Gathering | Collector's Edition | https://svgs.scryfall.io/sets/ced.svg?1791172800 | 0 / 301 | scryfall |
-| Magic: The Gathering | Commander |  | 0 / 318 | — |
+| Magic: The Gathering | Commander | https://svgs.scryfall.io/sets/cmd.svg?1791172800 | 0 / 318 | scryfall |
 | Magic: The Gathering | Commander 2013 | https://svgs.scryfall.io/sets/c13.svg?1791172800 | 356 / 356 | scryfall |
 | Magic: The Gathering | Commander 2014 | https://svgs.scryfall.io/sets/c14.svg?1791172800 | 361 / 361 | scryfall |
 | Magic: The Gathering | Commander 2015 | https://svgs.scryfall.io/sets/c15.svg?1791172800 | 368 / 368 | scryfall |
@@ -929,7 +929,7 @@
 | Magic: The Gathering | Innistrad: Crimson Vow | https://svgs.scryfall.io/sets/vow.svg?1791172800 | 484 / 487 | scryfall |
 | Magic: The Gathering | Innistrad: Double Feature | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 534 / 534 | scryfall |
 | Magic: The Gathering | Innistrad: Midnight Hunt | https://svgs.scryfall.io/sets/mid.svg?1791172800 | 463 / 472 | scryfall |
-| Magic: The Gathering | International Edition |  | 248 / 301 | — |
+| Magic: The Gathering | International Edition | https://svgs.scryfall.io/sets/cei.svg?1791172800 | 248 / 301 | scryfall |
 | Magic: The Gathering | Introductory Two-Player Set | https://svgs.scryfall.io/sets/x2ps.svg?1791172800 | 67 / 67 | scryfall |
 | Magic: The Gathering | Invasion | https://svgs.scryfall.io/sets/inv.svg?1791172800 | 350 / 350 | scryfall |
 | Magic: The Gathering | Ixalan | https://svgs.scryfall.io/sets/xln.svg?1791172800 | 281 / 303 | scryfall |
@@ -1011,10 +1011,10 @@
 | Magic: The Gathering | Planechase | https://svgs.scryfall.io/sets/hop.svg?1791172800 | 51 / 169 | scryfall |
 | Magic: The Gathering | Planechase 2012 | https://svgs.scryfall.io/sets/pc2.svg?1791172800 | 156 / 156 | scryfall |
 | Magic: The Gathering | Planechase Anthology | https://svgs.scryfall.io/sets/pca.svg?1791172800 | 170 / 170 | scryfall |
-| Magic: The Gathering | Planechase: March of the Machine |  | 50 / 50 | — |
-| Magic: The Gathering | Planechase: Universes Beyond: Doctor Who |  | 40 / 40 | — |
+| Magic: The Gathering | Planechase: March of the Machine | https://svgs.scryfall.io/sets/moc.svg?1791172800 | 50 / 50 | scryfall |
+| Magic: The Gathering | Planechase: Universes Beyond: Doctor Who | https://svgs.scryfall.io/sets/who.svg?1791172800 | 40 / 40 | scryfall |
 | Magic: The Gathering | Planeshift | https://svgs.scryfall.io/sets/pls.svg?1791172800 | 96 / 146 | scryfall |
-| Magic: The Gathering | Planeswalker Event Promos |  | 44 / 48 | — |
+| Magic: The Gathering | Planeswalker Event Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 44 / 48 | scryfall |
 | Magic: The Gathering | Play Promos |  | 11 / 11 | — |
 | Magic: The Gathering | Ponies: The Galloping | https://svgs.scryfall.io/sets/ptg.svg?1791172800 | 3 / 3 | scryfall |
 | Magic: The Gathering | Portal | https://svgs.scryfall.io/sets/por.svg?1791172800 | 145 / 257 | scryfall |
@@ -1075,7 +1075,7 @@
 | Magic: The Gathering | Secret Lair Drop Series | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 3119 / 3356 | scryfall |
 | Magic: The Gathering | Secret Lair Series | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 16 / 16 | scryfall |
 | Magic: The Gathering | Secret Lair Showdown | https://svgs.scryfall.io/sets/star.svg?1791172800 ⚠ | 52 / 53 | scryfall |
-| Magic: The Gathering | Secret Lair x MSCHF: The Zeta Set |  | 0 / 362 | — |
+| Magic: The Gathering | Secret Lair x MSCHF: The Zeta Set | https://svgs.scryfall.io/sets/slz.svg?1791172800 | 0 / 362 | scryfall |
 | Magic: The Gathering | Secrets of Strixhaven | https://svgs.scryfall.io/sets/sos.svg?1791172800 | 150 / 380 | scryfall |
 | Magic: The Gathering | Secrets of Strixhaven: Mystical Archive | https://svgs.scryfall.io/sets/soa.svg?1791172800 | 195 / 195 | scryfall |
 | Magic: The Gathering | Shadowmoor | https://svgs.scryfall.io/sets/shm.svg?1791172800 | 313 / 313 | scryfall |
@@ -1154,14 +1154,14 @@
 | Magic: The Gathering | Zendikar Rising | https://svgs.scryfall.io/sets/znr.svg?1791172800 | 443 / 446 | scryfall |
 | Magic: The Gathering | Zendikar Rising Expeditions | https://svgs.scryfall.io/sets/zne.svg?1791172800 | 30 / 30 | scryfall |
 
-### Yu-Gi-Oh!（613 个系列，514 个有 logo）
+### Yu-Gi-Oh!（613 个系列，570 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
 | Yu-Gi-Oh! | 2-Player Starter Set |  | 88 / 88 | — |
-| Yu-Gi-Oh! | 2002 Collectors Tin |  | 6 / 6 | — |
-| Yu-Gi-Oh! | 2003 Collectors Tin |  | 6 / 6 | — |
-| Yu-Gi-Oh! | 2004 Collectors Tin |  | 6 / 6 | — |
+| Yu-Gi-Oh! | 2002 Collectors Tin | https://ms.yugipedia.com/e/e4/BPT-PromoEN-2002.png | 6 / 6 | yugipedia |
+| Yu-Gi-Oh! | 2003 Collectors Tin | https://ms.yugipedia.com/3/3a/BPT-PromoEN-2003.png | 6 / 6 | yugipedia |
+| Yu-Gi-Oh! | 2004 Collectors Tin | https://ms.yugipedia.com/e/e4/CT1-PromoEN.jpg | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | 2005 Collectors Tin | https://images.ygoprodeck.com/images/sets/CT2.jpg | 6 / 6 | ygoprodeck |
 | Yu-Gi-Oh! | 2006 Collectors Tin | https://images.ygoprodeck.com/images/sets/CT03.jpg | 6 / 6 | ygoprodeck |
 | Yu-Gi-Oh! | 2007 Collectors Tin | https://images.ygoprodeck.com/images/sets/CT04.jpg | 6 / 6 | ygoprodeck |
@@ -1170,7 +1170,7 @@
 | Yu-Gi-Oh! | 2010 Collectors Tins | https://images.ygoprodeck.com/images/sets/CT07.jpg | 25 / 25 | ygoprodeck |
 | Yu-Gi-Oh! | 2010 Duelist Pack Collection Tin | https://images.ygoprodeck.com/images/sets/DPCT.jpg | 10 / 10 | ygoprodeck |
 | Yu-Gi-Oh! | 2011 Collectors Tins | https://images.ygoprodeck.com/images/sets/CT08.jpg | 18 / 18 | ygoprodeck |
-| Yu-Gi-Oh! | 2011 Duelist Pack Tin |  | 4 / 4 | — |
+| Yu-Gi-Oh! | 2011 Duelist Pack Tin | https://ms.yugipedia.com/e/ed/DPC5-PromoEN.jpg | 4 / 4 | yugipedia |
 | Yu-Gi-Oh! | 2012 Collectors Tin | https://images.ygoprodeck.com/images/sets/CT09.jpg | 23 / 23 | ygoprodeck |
 | Yu-Gi-Oh! | 2012 Premium Collection Tin | https://images.ygoprodeck.com/images/sets/PRC1.jpg | 25 / 25 | ygoprodeck |
 | Yu-Gi-Oh! | 2013 Collectors Tins | https://images.ygoprodeck.com/images/sets/CT10.jpg | 18 / 18 | ygoprodeck |
@@ -1195,15 +1195,15 @@
 | Yu-Gi-Oh! | 25th Anniversary Rarity Collection II | https://images.ygoprodeck.com/images/sets/RA02.jpg | 467 / 567 | ygoprodeck |
 | Yu-Gi-Oh! | 25th Anniversary Tin: Dueling Heroes | https://images.ygoprodeck.com/images/sets/TN23.jpg | 2 / 16 | ygoprodeck |
 | Yu-Gi-Oh! | 25th Anniversary Tin: Dueling Heroes Mega Pack | https://images.ygoprodeck.com/images/sets/MP23.jpg | 283 / 283 | ygoprodeck |
-| Yu-Gi-Oh! | 25th Anniversary Tin: Dueling Mirrors |  | 400 / 400 | — |
+| Yu-Gi-Oh! | 25th Anniversary Tin: Dueling Mirrors | https://ms.yugipedia.com/6/6c/MP24-PromoEN.png | 400 / 400 | yugipedia |
 | Yu-Gi-Oh! | 25th Anniversary Ultimate Kaiba Set | https://holodex-prod-bucket.b-cdn.net/sets/ygo_23366/logo.webp | 63 / 63 | holodex |
 | Yu-Gi-Oh! | 5D's 2008 Starter Deck | https://images.ygoprodeck.com/images/sets/5DS1.jpg | 46 / 46 | ygoprodeck |
 | Yu-Gi-Oh! | 5D's Starter Deck 2009 | https://images.ygoprodeck.com/images/sets/5DS2.jpg | 43 / 43 | ygoprodeck |
 | Yu-Gi-Oh! | Absolute Powerforce | https://images.ygoprodeck.com/images/sets/ABPF.jpg | 115 / 115 | ygoprodeck |
 | Yu-Gi-Oh! | Abyss Rising | https://images.ygoprodeck.com/images/sets/ABYR.jpg | 114 / 114 | ygoprodeck |
 | Yu-Gi-Oh! | Advanced Demo Deck Extra Pack | https://images.ygoprodeck.com/images/sets/DEM4.jpg | 10 / 10 | ygoprodeck |
-| Yu-Gi-Oh! | Advent Calendar 2011 (Adventskalender) |  | 24 / 24 | — |
-| Yu-Gi-Oh! | Advent Calendar 2014 (Adventskalender ZEXAL-Edition) |  | 24 / 24 | — |
+| Yu-Gi-Oh! | Advent Calendar 2011 (Adventskalender) | https://ms.yugipedia.com/b/b7/AC11-PromoDE.png | 24 / 24 | yugipedia |
+| Yu-Gi-Oh! | Advent Calendar 2014 (Adventskalender ZEXAL-Edition) | https://ms.yugipedia.com/9/92/AC14-PromoDE.png | 24 / 24 | yugipedia |
 | Yu-Gi-Oh! | Advent Calendar 2018 | https://images.ygoprodeck.com/images/sets/AC18.jpg | 24 / 24 | ygoprodeck |
 | Yu-Gi-Oh! | Advent Calendar 2019 | https://images.ygoprodeck.com/images/sets/AC19.jpg | 24 / 24 | ygoprodeck |
 | Yu-Gi-Oh! | Age of Overlord | https://images.ygoprodeck.com/images/sets/AGOV.jpg | 126 / 126 | ygoprodeck |
@@ -1264,7 +1264,7 @@
 | Yu-Gi-Oh! | Cosmo Blazer SE | https://images.ygoprodeck.com/images/sets/CBLZ.jpg ※ | 2 / 2 | ygoprodeck（继承父系列） |
 | Yu-Gi-Oh! | Crimson Crisis | https://images.ygoprodeck.com/images/sets/CRMS.jpg | 113 / 113 | ygoprodeck |
 | Yu-Gi-Oh! | Crossed Souls | https://images.ygoprodeck.com/images/sets/CROS.jpg | 107 / 107 | ygoprodeck |
-| Yu-Gi-Oh! | Crossed Souls: Advanced Edition |  | 4 / 4 | — |
+| Yu-Gi-Oh! | Crossed Souls: Advanced Edition | https://ms.yugipedia.com/e/e8/CROS-PromoNA.png | 4 / 4 | yugipedia |
 | Yu-Gi-Oh! | Crossover Breakers | https://images.ygoprodeck.com/images/sets/CRBR.jpg | 105 / 105 | ygoprodeck |
 | Yu-Gi-Oh! | Crossroads of Chaos | https://images.ygoprodeck.com/images/sets/CSOC.jpg | 114 / 114 | ygoprodeck |
 | Yu-Gi-Oh! | Cyberdark Impact | https://images.ygoprodeck.com/images/sets/CDIP.jpg | 85 / 85 | ygoprodeck |
@@ -1302,8 +1302,8 @@
 | Yu-Gi-Oh! | Duel Master's Guide | https://images.ygoprodeck.com/images/sets/DMG.jpg | 1 / 1 | ygoprodeck |
 | Yu-Gi-Oh! | Duel Overload | https://images.ygoprodeck.com/images/sets/DUOV.jpg | 106 / 106 | ygoprodeck |
 | Yu-Gi-Oh! | Duel Power | https://images.ygoprodeck.com/images/sets/DUPO.jpg | 106 / 106 | ygoprodeck |
-| Yu-Gi-Oh! | Duel Terminal - Preview |  | 31 / 31 | — |
-| Yu-Gi-Oh! | Duel Terminal 1 |  | 100 / 100 | — |
+| Yu-Gi-Oh! | Duel Terminal - Preview | https://ms.yugipedia.com/5/59/DuelTerminal.png | 31 / 31 | yugipedia |
+| Yu-Gi-Oh! | Duel Terminal 1 | https://ms.yugipedia.com/5/59/DuelTerminal.png | 100 / 100 | yugipedia |
 | Yu-Gi-Oh! | Duel Terminal 2 | https://images.ygoprodeck.com/images/sets/DT02.jpg | 100 / 100 | ygoprodeck |
 | Yu-Gi-Oh! | Duel Terminal 3 | https://images.ygoprodeck.com/images/sets/DT03.jpg | 100 / 100 | ygoprodeck |
 | Yu-Gi-Oh! | Duel Terminal 4 | https://images.ygoprodeck.com/images/sets/DT04.jpg | 100 / 100 | ygoprodeck |
@@ -1313,7 +1313,7 @@
 | Yu-Gi-Oh! | Duelist Alliance | https://images.ygoprodeck.com/images/sets/DUEA.jpg | 107 / 107 | ygoprodeck |
 | Yu-Gi-Oh! | Duelist Alliance: Deluxe Edition | https://images.ygoprodeck.com/images/sets/DUEA.jpg | 7 / 7 | ygoprodeck |
 | Yu-Gi-Oh! | Duelist League Demo 2010 | https://images.ygoprodeck.com/images/sets/DLDI.jpg | 5 / 5 | ygoprodeck |
-| Yu-Gi-Oh! | Duelist League Promo |  | 726 / 732 | — |
+| Yu-Gi-Oh! | Duelist League Promo | https://ms.yugipedia.com/4/40/DL-PromoEN-Konami.png | 726 / 732 | yugipedia |
 | Yu-Gi-Oh! | Duelist Nexus | https://images.ygoprodeck.com/images/sets/DUNE.jpg | 125 / 125 | ygoprodeck |
 | Yu-Gi-Oh! | Duelist Pack 10: Yusei 3 | https://images.ygoprodeck.com/images/sets/DP10.jpg | 30 / 30 | ygoprodeck |
 | Yu-Gi-Oh! | Duelist Pack 11: Crow | https://images.ygoprodeck.com/images/sets/DP11.jpg | 30 / 30 | ygoprodeck |
@@ -1341,8 +1341,8 @@
 | Yu-Gi-Oh! | Egyptian God Deck: Obelisk the Tormentor | https://images.ygoprodeck.com/images/sets/EGO1.jpg | 35 / 35 | ygoprodeck |
 | Yu-Gi-Oh! | Egyptian God Deck: Slifer the Sky Dragon | https://images.ygoprodeck.com/images/sets/EGS1.jpg | 38 / 38 | ygoprodeck |
 | Yu-Gi-Oh! | Elemental Energy | https://images.ygoprodeck.com/images/sets/EEN.jpg | 90 / 90 | ygoprodeck |
-| Yu-Gi-Oh! | Elemental Hero Collection 1 |  | 4 / 4 | — |
-| Yu-Gi-Oh! | Elemental Hero Collection 2 |  | 4 / 4 | — |
+| Yu-Gi-Oh! | Elemental Hero Collection 1 | https://ms.yugipedia.com/e/e1/EHC-PromoEN.jpg | 4 / 4 | yugipedia |
+| Yu-Gi-Oh! | Elemental Hero Collection 2 | https://ms.yugipedia.com/e/e1/EHC-PromoEN.jpg | 4 / 4 | yugipedia |
 | Yu-Gi-Oh! | Enemy of Justice | https://images.ygoprodeck.com/images/sets/EOJ.jpg | 85 / 85 | ygoprodeck |
 | Yu-Gi-Oh! | Eternal Duelist Soul |  | 3 / 3 | — |
 | Yu-Gi-Oh! | Eternity Code | https://images.ygoprodeck.com/images/sets/ETCO.jpg | 106 / 106 | ygoprodeck |
@@ -1353,14 +1353,14 @@
 | Yu-Gi-Oh! | Fists of the Gadgets | https://images.ygoprodeck.com/images/sets/FIGA.jpg | 60 / 60 | ygoprodeck |
 | Yu-Gi-Oh! | Flames of Destruction | https://images.ygoprodeck.com/images/sets/FLOD.jpg | 105 / 105 | ygoprodeck |
 | Yu-Gi-Oh! | Flaming Eternity | https://images.ygoprodeck.com/images/sets/FET.jpg | 85 / 85 | ygoprodeck |
-| Yu-Gi-Oh! | Forbidden Legacy |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Forbidden Legacy | https://ms.yugipedia.com/1/1d/FL-PromoEN.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Force of the Breaker | https://images.ygoprodeck.com/images/sets/FOTB.jpg | 96 / 96 | ygoprodeck |
 | Yu-Gi-Oh! | Fusion Enforcers | https://images.ygoprodeck.com/images/sets/FUEN.jpg | 60 / 60 | ygoprodeck |
 | Yu-Gi-Oh! | GX Duel Academy GBA Promo |  | 3 / 3 | — |
 | Yu-Gi-Oh! | GX Next Generation Blister Pack Promo | https://images.ygoprodeck.com/images/sets/GXNG.jpg | 1 / 1 | ygoprodeck |
 | Yu-Gi-Oh! | GX Spirit Caller Promo |  | 3 / 3 | — |
 | Yu-Gi-Oh! | GX Tag Force Promo |  | 3 / 3 | — |
-| Yu-Gi-Oh! | GX Ultimate Beginner's Pack 1 |  | 5 / 5 | — |
+| Yu-Gi-Oh! | GX Ultimate Beginner's Pack 1 | https://ms.yugipedia.com/e/eb/UBP1-PromoEN.jpg | 5 / 5 | yugipedia |
 | Yu-Gi-Oh! | Galactic Overlord | https://images.ygoprodeck.com/images/sets/GAOV.jpg | 112 / 112 | ygoprodeck |
 | Yu-Gi-Oh! | Generation Force | https://images.ygoprodeck.com/images/sets/GENF.jpg | 114 / 114 | ygoprodeck |
 | Yu-Gi-Oh! | Genesis Impact | https://images.ygoprodeck.com/images/sets/GEIM.jpg | 75 / 75 | ygoprodeck |
@@ -1383,23 +1383,23 @@
 | Yu-Gi-Oh! | Hidden Arsenal: Chapter 1 | https://images.ygoprodeck.com/images/sets/HAC1.jpg | 316 / 317 | ygoprodeck |
 | Yu-Gi-Oh! | Hidden Summoners | https://images.ygoprodeck.com/images/sets/HISU.jpg | 60 / 60 | ygoprodeck |
 | Yu-Gi-Oh! | High-Speed Riders | https://images.ygoprodeck.com/images/sets/HSRD.jpg | 60 / 60 | ygoprodeck |
-| Yu-Gi-Oh! | Hobby League 1 |  | 6 / 6 | — |
-| Yu-Gi-Oh! | Hobby League 2 |  | 6 / 6 | — |
-| Yu-Gi-Oh! | Hobby League 3 |  | 7 / 7 | — |
-| Yu-Gi-Oh! | Hobby League 4 |  | 6 / 6 | — |
-| Yu-Gi-Oh! | Hobby League 5 |  | 6 / 6 | — |
-| Yu-Gi-Oh! | Hobby League 6 |  | 6 / 6 | — |
-| Yu-Gi-Oh! | Hobby League 7 |  | 6 / 6 | — |
+| Yu-Gi-Oh! | Hobby League 1 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | 6 / 6 | yugipedia |
+| Yu-Gi-Oh! | Hobby League 2 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | 6 / 6 | yugipedia |
+| Yu-Gi-Oh! | Hobby League 3 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | 7 / 7 | yugipedia |
+| Yu-Gi-Oh! | Hobby League 4 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | 6 / 6 | yugipedia |
+| Yu-Gi-Oh! | Hobby League 5 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | 6 / 6 | yugipedia |
+| Yu-Gi-Oh! | Hobby League 6 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | 6 / 6 | yugipedia |
+| Yu-Gi-Oh! | Hobby League 7 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | Ignition Assault | https://images.ygoprodeck.com/images/sets/IGAS.jpg | 109 / 109 | ygoprodeck |
 | Yu-Gi-Oh! | Invasion of Chaos | https://images.ygoprodeck.com/images/sets/IOC.jpg | 106 / 116 | ygoprodeck |
 | Yu-Gi-Oh! | Invasion of Chaos (25th Anniversary Edition) | https://images.ygoprodeck.com/images/sets/IOC.jpg ※ | 112 / 112 | ygoprodeck（继承父系列） |
 | Yu-Gi-Oh! | Invasion of Chaos (Worldwide English) | https://images.ygoprodeck.com/images/sets/IOC.jpg ※ | 8 / 112 | ygoprodeck（继承父系列） |
 | Yu-Gi-Oh! | Invasion: Vengeance | https://images.ygoprodeck.com/images/sets/INOV.jpg | 105 / 105 | ygoprodeck |
-| Yu-Gi-Oh! | Judge Promotional Cards |  | 24 / 25 | — |
+| Yu-Gi-Oh! | Judge Promotional Cards | https://ms.yugipedia.com/1/1b/KonamiJudgeLogo-EN.png | 24 / 25 | yugipedia |
 | Yu-Gi-Oh! | Judgment of the Light | https://images.ygoprodeck.com/images/sets/JOTL.jpg | 111 / 111 | ygoprodeck |
 | Yu-Gi-Oh! | Justice Hunters | https://images.ygoprodeck.com/images/sets/JUSH.jpg | 103 / 103 | ygoprodeck |
-| Yu-Gi-Oh! | King of Games: Yugi's Legendary Decks |  | 133 / 133 | — |
-| Yu-Gi-Oh! | King of Games: Yugi's Legendary Decks (2020 Date Reprint) |  | 133 / 133 | — |
+| Yu-Gi-Oh! | King of Games: Yugi's Legendary Decks | https://ms.yugipedia.com/1/17/Cover_YGLD-DeckEN.png | 133 / 133 | yugipedia |
+| Yu-Gi-Oh! | King of Games: Yugi's Legendary Decks (2020 Date Reprint) | https://ms.yugipedia.com/1/17/Cover_YGLD-DeckEN.png | 133 / 133 | yugipedia |
 | Yu-Gi-Oh! | King's Court | https://images.ygoprodeck.com/images/sets/KICO.jpg | 83 / 83 | ygoprodeck |
 | Yu-Gi-Oh! | Labyrinth of Nightmare | https://images.ygoprodeck.com/images/sets/LON.jpg | 105 / 105 | ygoprodeck |
 | Yu-Gi-Oh! | Labyrinth of Nightmare (Worldwide English) | https://images.ygoprodeck.com/images/sets/LON.jpg ※ | 105 / 105 | ygoprodeck（继承父系列） |
@@ -1411,7 +1411,7 @@
 | Yu-Gi-Oh! | Legend of Blue Eyes White Dragon (Worldwide English) | https://images.ygoprodeck.com/images/sets/LOB.jpg ※ | 51 / 126 | ygoprodeck（继承父系列） |
 | Yu-Gi-Oh! | Legendary 5D's Decks |  | 118 / 118 | — |
 | Yu-Gi-Oh! | Legendary Arc-V Decks | https://images.ygoprodeck.com/images/sets/LAVD.jpg | 108 / 158 | ygoprodeck |
-| Yu-Gi-Oh! | Legendary Collection 1 |  | 6 / 6 | — |
+| Yu-Gi-Oh! | Legendary Collection 1 | https://ms.yugipedia.com/f/ff/LC01-PromoEN.png | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | Legendary Collection 2 | https://images.ygoprodeck.com/images/sets/LC02.jpg | 279 / 279 | ygoprodeck |
 | Yu-Gi-Oh! | Legendary Collection 3: Yugi's World | https://images.ygoprodeck.com/images/sets/LC03.jpg | 313 / 313 | ygoprodeck |
 | Yu-Gi-Oh! | Legendary Collection 4: Joey's World | https://images.ygoprodeck.com/images/sets/LC04.jpg | 305 / 307 | ygoprodeck |
@@ -1438,7 +1438,7 @@
 | Yu-Gi-Oh! | Legendary Duelists: White Dragon Abyss | https://images.ygoprodeck.com/images/sets/LED3.jpg | 56 / 56 | ygoprodeck |
 | Yu-Gi-Oh! | Legendary Hero Decks | https://images.ygoprodeck.com/images/sets/LEHD.jpg | 120 / 120 | ygoprodeck |
 | Yu-Gi-Oh! | Legendary Modern Decks 2026 | https://images.ygoprodeck.com/images/sets/L26D.jpg | 154 / 154 | ygoprodeck |
-| Yu-Gi-Oh! | Light and Darkness Power Pack |  | 1 / 1 | — |
+| Yu-Gi-Oh! | Light and Darkness Power Pack | https://ms.yugipedia.com/7/72/LDPP-PromoEN.jpg | 1 / 1 | yugipedia |
 | Yu-Gi-Oh! | Light of Destruction | https://images.ygoprodeck.com/images/sets/LODT.jpg | 89 / 114 | ygoprodeck |
 | Yu-Gi-Oh! | Light of Destruction (2020 Date Reprint) | https://images.ygoprodeck.com/images/sets/LODT.jpg ※ | 61 / 113 | ygoprodeck（继承父系列） |
 | Yu-Gi-Oh! | Lightning Overdrive | https://images.ygoprodeck.com/images/sets/LIOV.jpg | 106 / 106 | ygoprodeck |
@@ -1449,11 +1449,11 @@
 | Yu-Gi-Oh! | Magician's Force | https://images.ygoprodeck.com/images/sets/MFC.jpg | 109 / 109 | ygoprodeck |
 | Yu-Gi-Oh! | Magnificent Mavens | https://images.ygoprodeck.com/images/sets/MAMA.jpg | 139 / 139 | ygoprodeck |
 | Yu-Gi-Oh! | Magnificent Monsters | https://images.ygoprodeck.com/images/sets/MAMO.jpg | 0 / 228 | ygoprodeck |
-| Yu-Gi-Oh! | Master Collection Volume 1 |  | 6 / 6 | — |
-| Yu-Gi-Oh! | Master Collection Volume 2 |  | 6 / 6 | — |
-| Yu-Gi-Oh! | Mattel Action Figure Promos: Series 1 |  | 1 / 1 | — |
+| Yu-Gi-Oh! | Master Collection Volume 1 | https://ms.yugipedia.com/5/5a/MC1-PromoEN.jpg | 6 / 6 | yugipedia |
+| Yu-Gi-Oh! | Master Collection Volume 2 | https://ms.yugipedia.com/1/18/MC2-PromoEN.jpg | 6 / 6 | yugipedia |
+| Yu-Gi-Oh! | Mattel Action Figure Promos: Series 1 | https://ms.yugipedia.com/5/5d/MF01-PromoEN.jpg | 1 / 1 | yugipedia |
 | Yu-Gi-Oh! | Mattel Action Figure Promos: Series 2 |  | 4 / 4 | — |
-| Yu-Gi-Oh! | Mattel Action Figure Promos: Series 3 |  | 11 / 11 | — |
+| Yu-Gi-Oh! | Mattel Action Figure Promos: Series 3 | https://ms.yugipedia.com/1/16/MF03-PromoEN.jpg | 11 / 11 | yugipedia |
 | Yu-Gi-Oh! | Maximum Crisis | https://images.ygoprodeck.com/images/sets/MACR.jpg | 105 / 105 | ygoprodeck |
 | Yu-Gi-Oh! | Maximum Gold | https://images.ygoprodeck.com/images/sets/MAGO.jpg | 170 / 171 | ygoprodeck |
 | Yu-Gi-Oh! | Maximum Gold: El Dorado | https://images.ygoprodeck.com/images/sets/MGED.jpg | 161 / 161 | ygoprodeck |
@@ -1509,7 +1509,7 @@
 | Yu-Gi-Oh! | Phantom Nightmare | https://images.ygoprodeck.com/images/sets/PHNI.jpg | 126 / 126 | ygoprodeck |
 | Yu-Gi-Oh! | Phantom Rage | https://images.ygoprodeck.com/images/sets/PHRA.jpg | 106 / 106 | ygoprodeck |
 | Yu-Gi-Oh! | Phantom Revenge | https://images.ygoprodeck.com/images/sets/PHRE.jpg | 104 / 104 | ygoprodeck |
-| Yu-Gi-Oh! | Pharaoh Tour Promos |  | 6 / 6 | — |
+| Yu-Gi-Oh! | Pharaoh Tour Promos | https://ms.yugipedia.com/5/5a/PharaohTour2007-MedalCase.png | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | Pharaoh's Servant | https://images.ygoprodeck.com/images/sets/PSV.jpg | 42 / 105 | ygoprodeck |
 | Yu-Gi-Oh! | Pharaoh's Servant (25th Anniversary Edition) | https://images.ygoprodeck.com/images/sets/PSV.jpg | 105 / 105 | ygoprodeck |
 | Yu-Gi-Oh! | Pharaoh's Servant (Worldwide English) | https://images.ygoprodeck.com/images/sets/PSV.jpg ※ | 50 / 105 | ygoprodeck（继承父系列） |
@@ -1546,7 +1546,7 @@
 | Yu-Gi-Oh! | Rise of Destiny Special Edition | https://images.ygoprodeck.com/images/sets/RDS.jpg | 4 / 4 | ygoprodeck |
 | Yu-Gi-Oh! | Rise of the Duelist | https://images.ygoprodeck.com/images/sets/ROTD.jpg | 106 / 106 | ygoprodeck |
 | Yu-Gi-Oh! | Rising Rampage | https://images.ygoprodeck.com/images/sets/RIRA.jpg | 109 / 109 | ygoprodeck |
-| Yu-Gi-Oh! | Samurai Assault |  | 1 / 1 | — |
+| Yu-Gi-Oh! | Samurai Assault | https://ms.yugipedia.com/4/4e/SAAS-PromoEN.png | 1 / 1 | yugipedia |
 | Yu-Gi-Oh! | Savage Strike | https://images.ygoprodeck.com/images/sets/SAST.jpg | 105 / 105 | ygoprodeck |
 | Yu-Gi-Oh! | Secret Slayers | https://images.ygoprodeck.com/images/sets/SESL.jpg | 60 / 60 | ygoprodeck |
 | Yu-Gi-Oh! | Secrets of Eternity | https://images.ygoprodeck.com/images/sets/SECE.jpg | 121 / 121 | ygoprodeck |
@@ -1555,8 +1555,8 @@
 | Yu-Gi-Oh! | Shadows in Valhalla | https://images.ygoprodeck.com/images/sets/SHVA.jpg | 60 / 60 | ygoprodeck |
 | Yu-Gi-Oh! | Shining Victories | https://images.ygoprodeck.com/images/sets/SHVI.jpg | 105 / 105 | ygoprodeck |
 | Yu-Gi-Oh! | Shonen Jump Championship Series Prize Cards | https://images.ygoprodeck.com/images/sets/SJCS.jpg | 2 / 2 | ygoprodeck |
-| Yu-Gi-Oh! | Shonen Jump Championship Series Promos |  | 5 / 5 | — |
-| Yu-Gi-Oh! | Shonen Jump Magazine Promos |  | 100 / 100 | — |
+| Yu-Gi-Oh! | Shonen Jump Championship Series Promos | https://ms.yugipedia.com/e/e3/SJCS-PromoEN.png | 5 / 5 | yugipedia |
+| Yu-Gi-Oh! | Shonen Jump Magazine Promos | https://ms.yugipedia.com/0/00/JUMP-PromoEN.jpg | 100 / 100 | yugipedia |
 | Yu-Gi-Oh! | Sneak Preview Series 1 |  | 4 / 4 | — |
 | Yu-Gi-Oh! | Sneak Preview Series 2 |  | 4 / 4 | — |
 | Yu-Gi-Oh! | Sneak Preview Series 3 |  | 4 / 4 | — |
@@ -1569,11 +1569,11 @@
 | Yu-Gi-Oh! | Speed Duel Decks: Match of the Millennium | https://images.ygoprodeck.com/images/sets/SS04.jpg | 67 / 67 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel Decks: Twisted Nightmares | https://images.ygoprodeck.com/images/sets/SS05.jpg | 66 / 66 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel Decks: Ultimate Predators | https://images.ygoprodeck.com/images/sets/SS03.jpg | 63 / 63 | ygoprodeck |
-| Yu-Gi-Oh! | Speed Duel Demo Deck |  | 11 / 11 | — |
+| Yu-Gi-Oh! | Speed Duel Demo Deck | https://ms.yugipedia.com/7/77/DEM5-Poster-EN.png | 11 / 11 | yugipedia |
 | Yu-Gi-Oh! | Speed Duel Demo Deck 2020 |  | 21 / 21 | — |
 | Yu-Gi-Oh! | Speed Duel GX: Duel Academy Box | https://images.ygoprodeck.com/images/sets/SGX1.jpg | 242 / 242 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel GX: Duelists of Shadows | https://images.ygoprodeck.com/images/sets/SGX3.jpg | 242 / 242 | ygoprodeck |
-| Yu-Gi-Oh! | Speed Duel GX: Midterm Destruction |  | 132 / 132 | — |
+| Yu-Gi-Oh! | Speed Duel GX: Midterm Destruction | https://ms.yugipedia.com/a/ad/SGX4-BoxEN.png | 132 / 132 | yugipedia |
 | Yu-Gi-Oh! | Speed Duel GX: Midterm Paradox | https://images.ygoprodeck.com/images/sets/SGX2.jpg | 122 / 122 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Arena of Lost Souls | https://images.ygoprodeck.com/images/sets/SBLS.jpg | 50 / 50 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Attack from the Deep | https://images.ygoprodeck.com/images/sets/SBAD.jpg | 50 / 50 | ygoprodeck |
@@ -1581,13 +1581,13 @@
 | Yu-Gi-Oh! | Speed Duel: Battle City Finals |  | 250 / 250 | — |
 | Yu-Gi-Oh! | Speed Duel: Scars of Battle | https://images.ygoprodeck.com/images/sets/SBSC.jpg | 50 / 50 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Streets of Battle City | https://images.ygoprodeck.com/images/sets/SBC1.jpg | 187 / 237 | ygoprodeck |
-| Yu-Gi-Oh! | Speed Duel: Tournament Pack 1 |  | 18 / 18 | — |
+| Yu-Gi-Oh! | Speed Duel: Tournament Pack 1 | https://ms.yugipedia.com/3/3e/STP1-BoosterEN.png | 18 / 18 | yugipedia |
 | Yu-Gi-Oh! | Speed Duel: Tournament Pack 2 | https://images.ygoprodeck.com/images/sets/STP2.jpg | 18 / 18 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Tournament Pack 3 | https://images.ygoprodeck.com/images/sets/STP3.jpg | 35 / 35 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Tournament Pack 4 | https://images.ygoprodeck.com/images/sets/STP4.jpg | 35 / 35 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Tournament Pack 5 | https://images.ygoprodeck.com/images/sets/STP5.jpg | 35 / 35 | ygoprodeck |
 | Yu-Gi-Oh! | Speed Duel: Tournament Pack 6 | https://images.ygoprodeck.com/images/sets/STP6.jpg | 35 / 35 | ygoprodeck |
-| Yu-Gi-Oh! | Speed Duel: Tournament Pack 7 |  | 35 / 35 | — |
+| Yu-Gi-Oh! | Speed Duel: Tournament Pack 7 | https://ms.yugipedia.com/b/bb/STP7-BoosterEN.png | 35 / 35 | yugipedia |
 | Yu-Gi-Oh! | Speed Duel: Trials of the Kingdom | https://images.ygoprodeck.com/images/sets/SBTK.jpg | 61 / 61 | ygoprodeck |
 | Yu-Gi-Oh! | Spell Ruler | https://images.ygoprodeck.com/images/sets/SRL.jpg | 104 / 104 | ygoprodeck |
 | Yu-Gi-Oh! | Spell Ruler (25th Anniversary Edition) | https://images.ygoprodeck.com/images/sets/SRL.jpg | 104 / 104 | ygoprodeck |
@@ -1686,9 +1686,9 @@
 | Yu-Gi-Oh! | Structure Deck: Zombie Madness | https://images.ygoprodeck.com/images/sets/SD2.jpg | 28 / 28 | ygoprodeck |
 | Yu-Gi-Oh! | Structure Deck: Zombie World | https://images.ygoprodeck.com/images/sets/SDZW.jpg | 37 / 37 | ygoprodeck |
 | Yu-Gi-Oh! | Super Starter: Space-Time Showdown | https://images.ygoprodeck.com/images/sets/YS14.jpg | 40 / 40 | ygoprodeck |
-| Yu-Gi-Oh! | Super Starter: Space-Time Showdown Power-Up Pack |  | 15 / 15 | — |
+| Yu-Gi-Oh! | Super Starter: Space-Time Showdown Power-Up Pack | https://ms.yugipedia.com/7/7e/YS14-PowerUpPackV1.png | 15 / 15 | yugipedia |
 | Yu-Gi-Oh! | Super Starter: V for Victory | https://images.ygoprodeck.com/images/sets/YS13.jpg | 42 / 42 | ygoprodeck |
-| Yu-Gi-Oh! | Super Starter: V for Victory Power-Up Pack |  | 15 / 15 | — |
+| Yu-Gi-Oh! | Super Starter: V for Victory Power-Up Pack | https://ms.yugipedia.com/3/38/YS13-PromoEU.png | 15 / 15 | yugipedia |
 | Yu-Gi-Oh! | Supreme Darkness | https://images.ygoprodeck.com/images/sets/SUDA.jpg | 131 / 131 | ygoprodeck |
 | Yu-Gi-Oh! | THE CHRONICLES DECK: Spirit Charmers (All-Foil Edition) | https://images.ygoprodeck.com/images/sets/CH02.jpg | 0 / 62 | ygoprodeck |
 | Yu-Gi-Oh! | THE CHRONICLES DECK: The Fallen & The Virtuous (All-Foil Edition) | https://images.ygoprodeck.com/images/sets/CH01.jpg | 0 / 62 | ygoprodeck |
@@ -1697,9 +1697,9 @@
 | Yu-Gi-Oh! | Tactical Masters | https://images.ygoprodeck.com/images/sets/TAMA.jpg | 75 / 75 | ygoprodeck |
 | Yu-Gi-Oh! | The Dark Illusion | https://images.ygoprodeck.com/images/sets/TDIL.jpg | 105 / 105 | ygoprodeck |
 | Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack | https://images.ygoprodeck.com/images/sets/MVP1.jpg | 57 / 57 | ygoprodeck |
-| Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack: Gold Edition |  | 63 / 63 | — |
-| Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack: Secret Edition |  | 63 / 63 | — |
-| Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack: Special Edition |  | 4 / 4 | — |
+| Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack: Gold Edition | https://ms.yugipedia.com/7/74/MVP1-PromoNA.png | 63 / 63 | yugipedia |
+| Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack: Secret Edition | https://ms.yugipedia.com/3/30/MVP1-PromoNA-SecretEdition.png | 63 / 63 | yugipedia |
+| Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack: Special Edition | https://ms.yugipedia.com/7/7b/MVP1-PromoNA-SpecialEdition.png | 4 / 4 | yugipedia |
 | Yu-Gi-Oh! | The Duelist Genesis | https://images.ygoprodeck.com/images/sets/TDGS.jpg | 114 / 114 | ygoprodeck |
 | Yu-Gi-Oh! | The Falsebound Kingdom | https://images.ygoprodeck.com/images/sets/TFK.jpg | 8 / 8 | ygoprodeck |
 | Yu-Gi-Oh! | The Grand Creators | https://images.ygoprodeck.com/images/sets/GRCR.jpg | 75 / 75 | ygoprodeck |
@@ -1712,7 +1712,7 @@
 | Yu-Gi-Oh! | The Pot Collection | https://images.ygoprodeck.com/images/sets/TBC1.jpg | 15 / 15 | ygoprodeck |
 | Yu-Gi-Oh! | The Secret Forces | https://images.ygoprodeck.com/images/sets/THSF.jpg | 60 / 60 | ygoprodeck |
 | Yu-Gi-Oh! | The Shining Darkness | https://images.ygoprodeck.com/images/sets/TSHD.jpg | 112 / 112 | ygoprodeck |
-| Yu-Gi-Oh! | The Valuable Book Volume 5 |  | 1 / 1 | — |
+| Yu-Gi-Oh! | The Valuable Book Volume 5 | https://ms.yugipedia.com/f/f3/VB5-PromoJP-Ver2.jpg | 1 / 1 | yugipedia |
 | Yu-Gi-Oh! | Toon Chaos | https://images.ygoprodeck.com/images/sets/TOCH.jpg | 75 / 75 | ygoprodeck |
 | Yu-Gi-Oh! | Tournament Pack 1 | https://images.ygoprodeck.com/images/sets/TP1.jpg | 30 / 30 | ygoprodeck |
 | Yu-Gi-Oh! | Tournament Pack 2 | https://images.ygoprodeck.com/images/sets/TP2.jpg | 18 / 30 | ygoprodeck |
@@ -1722,7 +1722,7 @@
 | Yu-Gi-Oh! | Tournament Pack 6 | https://images.ygoprodeck.com/images/sets/TP6.jpg | 14 / 20 | ygoprodeck |
 | Yu-Gi-Oh! | Tournament Pack 7 | https://images.ygoprodeck.com/images/sets/TP7.jpg | 13 / 20 | ygoprodeck |
 | Yu-Gi-Oh! | Tournament Pack 8 | https://images.ygoprodeck.com/images/sets/TP8.jpg | 20 / 20 | ygoprodeck |
-| Yu-Gi-Oh! | Toys "R" Us Throwdown Promo |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Toys "R" Us Throwdown Promo | https://ms.yugipedia.com/e/e6/TKN2-PromoEN.png | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Turbo Pack Booster One Pack | https://images.ygoprodeck.com/images/sets/TU01.jpg | 21 / 21 | ygoprodeck |
 | Yu-Gi-Oh! | Turbo Pack: Booster Eight | https://images.ygoprodeck.com/images/sets/TU08.jpg | 21 / 21 | ygoprodeck |
 | Yu-Gi-Oh! | Turbo Pack: Booster Five | https://images.ygoprodeck.com/images/sets/TU05.jpg | 21 / 21 | ygoprodeck |
@@ -1731,8 +1731,8 @@
 | Yu-Gi-Oh! | Turbo Pack: Booster Six | https://images.ygoprodeck.com/images/sets/TU06.jpg | 21 / 21 | ygoprodeck |
 | Yu-Gi-Oh! | Turbo Pack: Booster Three | https://images.ygoprodeck.com/images/sets/TU03.jpg | 21 / 21 | ygoprodeck |
 | Yu-Gi-Oh! | Turbo Pack: Booster Two | https://images.ygoprodeck.com/images/sets/TU02.jpg | 21 / 21 | ygoprodeck |
-| Yu-Gi-Oh! | Twilight Edition |  | 1 / 1 | — |
-| Yu-Gi-Oh! | Ultimate Edition 2 |  | 1 / 1 | — |
+| Yu-Gi-Oh! | Twilight Edition | https://ms.yugipedia.com/4/4f/TWED-PromoEN.jpg | 1 / 1 | yugipedia |
+| Yu-Gi-Oh! | Ultimate Edition 2 | https://ms.yugipedia.com/3/31/UE02-PromoEN.jpg | 1 / 1 | yugipedia |
 | Yu-Gi-Oh! | Ultimate Tournament Pack 1 | https://images.ygoprodeck.com/images/sets/UP01.jpg | 50 / 50 | ygoprodeck |
 | Yu-Gi-Oh! | Valiant Smashers | https://images.ygoprodeck.com/images/sets/VASM.jpg | 78 / 78 | ygoprodeck |
 | Yu-Gi-Oh! | Wild Survivors | https://images.ygoprodeck.com/images/sets/WISU.jpg | 75 / 75 | ygoprodeck |
@@ -1748,31 +1748,31 @@
 | Yu-Gi-Oh! | World Championship JPP Cards |  | 8 / 10 | — |
 | Yu-Gi-Oh! | World Championship Series |  | 8 / 10 | — |
 | Yu-Gi-Oh! | World Superstars | https://images.ygoprodeck.com/images/sets/WSUP.jpg | 52 / 52 | ygoprodeck |
-| Yu-Gi-Oh! | X-Saber Power-Up |  | 1 / 1 | — |
+| Yu-Gi-Oh! | X-Saber Power-Up | https://ms.yugipedia.com/f/f4/XSPU-PromoEN.jpg | 1 / 1 | yugipedia |
 | Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Manga Promotional Cards |  | 9 / 9 | — |
 | Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Over the Nexus Promo Cards |  | 3 / 3 | — |
-| Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Tag Force Promotional Cards |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Tag Force Promotional Cards | https://ms.yugipedia.com/9/99/TF05-VideoGameNA.jpg | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Wheelie Breakers Promotional Cards |  | 3 / 3 | — |
 | Yu-Gi-Oh! | Yu-Gi-Oh! ARC-V Promo Cards | https://images.ygoprodeck.com/images/sets/YA01.jpg | 7 / 7 | ygoprodeck |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Championship Series 2025 Prize Cards |  | 13 / 13 | — |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Championship Series Prize Cards | https://images.ygoprodeck.com/images/sets/YCSW.jpg | 30 / 30 | ygoprodeck |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Day Promos | https://images.ygoprodeck.com/images/sets/YDPR.jpg | 5 / 5 | ygoprodeck |
-| Yu-Gi-Oh! | Yu-Gi-Oh! Duel Monsters International: Worldwide Edition |  | 6 / 6 | — |
+| Yu-Gi-Oh! | Yu-Gi-Oh! Duel Monsters International: Worldwide Edition | https://ms.yugipedia.com/f/fa/GBI-Box-AE.png | 6 / 6 | yugipedia |
 | Yu-Gi-Oh! | Yu-Gi-Oh! GX Manga Promotional Cards |  | 8 / 8 | — |
 | Yu-Gi-Oh! | Yu-Gi-Oh! GX Tag Force Evolution Promo |  | 2 / 2 | — |
 | Yu-Gi-Oh! | Yu-Gi-Oh! GX Tag Force Promotional Cards |  | 3 / 3 | — |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Movie Exclusive Pack | https://images.ygoprodeck.com/images/sets/EP1.jpg | 9 / 9 | ygoprodeck |
 | Yu-Gi-Oh! | Yu-Gi-Oh! R Manga Promo |  | 4 / 4 | — |
-| Yu-Gi-Oh! | Yu-Gi-Oh! The Movie Ani-Manga Promo |  | 1 / 1 | — |
-| Yu-Gi-Oh! | Yu-Gi-Oh! The Movie Promo Set |  | 4 / 4 | — |
-| Yu-Gi-Oh! | Yu-Gi-Oh! Tokens |  | 129 / 131 | — |
+| Yu-Gi-Oh! | Yu-Gi-Oh! The Movie Ani-Manga Promo | https://ms.yugipedia.com/2/2e/YMA-PromoEN.png | 1 / 1 | yugipedia |
+| Yu-Gi-Oh! | Yu-Gi-Oh! The Movie Promo Set | https://ms.yugipedia.com/9/9e/MOV-BoosterEN.png | 4 / 4 | yugipedia |
+| Yu-Gi-Oh! | Yu-Gi-Oh! Tokens | https://ms.yugipedia.com/8/80/TKN3-PromoEN.jpg | 129 / 131 | yugipedia |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Value Boxes |  | 4 / 4 | — |
 | Yu-Gi-Oh! | Yu-Gi-Oh! Video Game Promotional Cards |  | 40 / 40 | — |
-| Yu-Gi-Oh! | Yu-Gi-Oh! ZEXAL Manga Promotional Cards |  | 9 / 9 | — |
-| Yu-Gi-Oh! | Yu-Gi-Oh! ZEXAL World Duel Carnival Promos |  | 3 / 3 | — |
+| Yu-Gi-Oh! | Yu-Gi-Oh! ZEXAL Manga Promotional Cards | https://ms.yugipedia.com/d/df/YZ01-PromoEN.png | 9 / 9 | yugipedia |
+| Yu-Gi-Oh! | Yu-Gi-Oh! ZEXAL World Duel Carnival Promos | https://ms.yugipedia.com/3/30/ZDC1-VideoGameEU.png | 3 / 3 | yugipedia |
 | Yu-Gi-Oh! | eFootball Collaboration Promos | https://images.ygoprodeck.com/images/sets/EFC1.jpg | 2 / 2 | ygoprodeck |
 
-### One Piece Card Game（85 个系列，42 个有 logo）
+### One Piece Card Game（85 个系列，82 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
@@ -1783,18 +1783,18 @@
 | One Piece Card Game | Adventure on Kami's Island | https://holodex-prod-bucket.b-cdn.net/sets/op_24637/logo.webp | 207 / 207 | holodex |
 | One Piece Card Game | Adventure on Kami's Island Release Event Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_24637/logo.webp ※ | 90 / 90 | holodex（继承父系列） |
 | One Piece Card Game | Awakening of the New Era | https://holodex-prod-bucket.b-cdn.net/sets/op_23213/logo.webp | 157 / 157 | holodex |
-| One Piece Card Game | Awakening of the New Era: 1st Anniversary Tournament Cards |  | 75 / 75 | — |
+| One Piece Card Game | Awakening of the New Era: 1st Anniversary Tournament Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_23213/logo.webp | 75 / 75 | inherit |
 | One Piece Card Game | Carrying On His Will | https://holodex-prod-bucket.b-cdn.net/sets/op_24303/logo.webp | 177 / 177 | holodex |
-| One Piece Card Game | Carrying On His Will: 3rd Anniversary Tournament Cards |  | 79 / 79 | — |
+| One Piece Card Game | Carrying On His Will: 3rd Anniversary Tournament Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_24303/logo.webp | 79 / 79 | inherit |
 | One Piece Card Game | Emperors in the New World | https://holodex-prod-bucket.b-cdn.net/sets/op_23589/logo.webp | 162 / 162 | holodex |
-| One Piece Card Game | Emperors in the New World: 2nd Anniversary Tournament Cards |  | 75 / 75 | — |
+| One Piece Card Game | Emperors in the New World: 2nd Anniversary Tournament Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_23589/logo.webp | 75 / 75 | inherit |
 | One Piece Card Game | Extra Booster: Anime 25th Collection | https://holodex-prod-bucket.b-cdn.net/sets/op_23834/logo.webp | 50 / 105 | holodex |
 | One Piece Card Game | Extra Booster: Memorial Collection | https://holodex-prod-bucket.b-cdn.net/sets/op_23333/logo.webp | 0 / 80 | holodex |
 | One Piece Card Game | Extra Booster: One Piece Heroines Edition | https://holodex-prod-bucket.b-cdn.net/sets/op_24545/logo.webp | 102 / 104 | holodex |
-| One Piece Card Game | Extra Booster: One Piece Heroines Edition Vol. 2 |  | 0 / 66 | — |
+| One Piece Card Game | Extra Booster: One Piece Heroines Edition Vol. 2 | https://en.onepiece-cardgame.com/onepiececg/bccard/en/product/2026/09/28/bTvjcxYUnftEwGFZ/logo_product.webp | 0 / 66 | onepiece-official |
 | One Piece Card Game | Kingdoms of Intrigue | https://holodex-prod-bucket.b-cdn.net/sets/op_23024/logo.webp | 50 / 158 | holodex |
 | One Piece Card Game | Kingdoms of Intrigue Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_23024/logo.webp ※ | 75 / 75 | holodex（继承父系列） |
-| One Piece Card Game | Learn Together Deck Set |  | 51 / 51 | — |
+| One Piece Card Game | Learn Together Deck Set | https://en.onepiece-cardgame.com/renewal/images/products/decks/ld01/img_item01.webp | 51 / 51 | onepiece-official |
 | One Piece Card Game | Legacy of the Master | https://holodex-prod-bucket.b-cdn.net/sets/op_24302/logo.webp | 158 / 158 | holodex |
 | One Piece Card Game | Legacy of the Master Release Event Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_24302/logo.webp ※ | 75 / 75 | holodex（继承父系列） |
 | One Piece Card Game | One Piece Demo Deck Cards |  | 26 / 26 | — |
@@ -1809,32 +1809,32 @@
 | One Piece Card Game | Romance Dawn | https://holodex-prod-bucket.b-cdn.net/sets/op_3188/logo.webp | 156 / 156 | holodex |
 | One Piece Card Game | Royal Blood | https://holodex-prod-bucket.b-cdn.net/sets/op_23766/logo.webp | 152 / 152 | holodex |
 | One Piece Card Game | Royal Blood Release Event Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_23766/logo.webp ※ | 75 / 75 | holodex（继承父系列） |
-| One Piece Card Game | ST-01: Starter Deck 1 Straw Hat Crew |  | 0 / 18 | — |
-| One Piece Card Game | ST-01: Starter Deck 1 Straw Hat Crew (Super Pre-Release Edition) |  | 0 / 18 | — |
-| One Piece Card Game | ST-02: Starter Deck 2 Worst Generation |  | 0 / 17 | — |
-| One Piece Card Game | ST-02: Starter Deck 2 Worst Generation (Super Pre-Release Edition) |  | 0 / 17 | — |
-| One Piece Card Game | ST-03: Starter Deck 3 The Seven Warlords of The Sea |  | 0 / 17 | — |
-| One Piece Card Game | ST-03: Starter Deck 3 The Seven Warlords of The Sea (Super Pre-Release Edition) |  | 0 / 17 | — |
-| One Piece Card Game | ST-04: Starter Deck 4 Animal Kingdom Pirates |  | 0 / 17 | — |
-| One Piece Card Game | ST-04: Starter Deck 4 Animal Kingdom Pirates (Super Pre-Release Edition) |  | 0 / 17 | — |
-| One Piece Card Game | ST-05: Starter Deck 5 Film Edition |  | 0 / 17 | — |
-| One Piece Card Game | ST-06: Starter Deck 6 Absolute Justice |  | 0 / 17 | — |
-| One Piece Card Game | ST-07: Starter Deck 7 Big Mom Pirates |  | 0 / 17 | — |
-| One Piece Card Game | ST-08: Starter Deck 8 Monkey.D.Luffy |  | 0 / 15 | — |
-| One Piece Card Game | ST-09: Starter Deck 9 Yamato |  | 0 / 15 | — |
-| One Piece Card Game | ST-10: Ultra Deck The Three Captains |  | 0 / 18 | — |
-| One Piece Card Game | ST-11: Starter Deck 11 Uta |  | 0 / 5 | — |
-| One Piece Card Game | ST-12: Starter Deck 12 Zoro and Sanji |  | 0 / 17 | — |
-| One Piece Card Game | ST-13: Ultra Deck The Three Brothers |  | 0 / 35 | — |
-| One Piece Card Game | ST-14: Starter Deck 14 3D2Y |  | 0 / 17 | — |
-| One Piece Card Game | ST-15: Starter Deck 15 RED Edward.Newgate |  | 0 / 13 | — |
-| One Piece Card Game | ST-16: Starter Deck 16 GREEN Uta |  | 0 / 15 | — |
-| One Piece Card Game | ST-17: Starter Deck 17 BLUE Donquixote Doflamingo |  | 0 / 10 | — |
-| One Piece Card Game | ST-18: Starter Deck 18 PURPLE Monkey.D.Luffy |  | 0 / 15 | — |
-| One Piece Card Game | ST-19: Starter Deck 19 BLACK Smoker |  | 0 / 14 | — |
-| One Piece Card Game | ST-20: Starter Deck 20 YELLOW Charlotte Katakuri |  | 0 / 11 | — |
-| One Piece Card Game | ST-21: Starter Deck 21 EX Gear 5 |  | 0 / 33 | — |
-| One Piece Card Game | ST-22: Starter Deck 22 Ace & Newgate |  | 0 / 31 | — |
+| One Piece Card Game | ST-01: Starter Deck 1 Straw Hat Crew | https://en.onepiece-cardgame.com/renewal/images/products/decks/st01/img_item01.webp | 0 / 18 | onepiece-official |
+| One Piece Card Game | ST-01: Starter Deck 1 Straw Hat Crew (Super Pre-Release Edition) | https://en.onepiece-cardgame.com/renewal/images/products/decks/st01_pre/img_item01.webp | 0 / 18 | onepiece-official |
+| One Piece Card Game | ST-02: Starter Deck 2 Worst Generation | https://en.onepiece-cardgame.com/renewal/images/products/decks/st02/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-02: Starter Deck 2 Worst Generation (Super Pre-Release Edition) | https://en.onepiece-cardgame.com/renewal/images/products/decks/st02_pre/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-03: Starter Deck 3 The Seven Warlords of The Sea | https://en.onepiece-cardgame.com/renewal/images/products/decks/st03/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-03: Starter Deck 3 The Seven Warlords of The Sea (Super Pre-Release Edition) | https://en.onepiece-cardgame.com/renewal/images/products/decks/st03_pre/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-04: Starter Deck 4 Animal Kingdom Pirates | https://en.onepiece-cardgame.com/renewal/images/products/decks/st04/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-04: Starter Deck 4 Animal Kingdom Pirates (Super Pre-Release Edition) | https://en.onepiece-cardgame.com/renewal/images/products/decks/st04_pre/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-05: Starter Deck 5 Film Edition | https://en.onepiece-cardgame.com/renewal/images/products/decks/st05/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-06: Starter Deck 6 Absolute Justice | https://en.onepiece-cardgame.com/renewal/images/products/decks/st06/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-07: Starter Deck 7 Big Mom Pirates | https://en.onepiece-cardgame.com/renewal/images/products/decks/st07/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-08: Starter Deck 8 Monkey.D.Luffy | https://en.onepiece-cardgame.com/renewal/images/products/decks/st08/img_item01.webp | 0 / 15 | onepiece-official |
+| One Piece Card Game | ST-09: Starter Deck 9 Yamato | https://en.onepiece-cardgame.com/renewal/images/products/decks/st09/img_item01.webp | 0 / 15 | onepiece-official |
+| One Piece Card Game | ST-10: Ultra Deck The Three Captains | https://en.onepiece-cardgame.com/renewal/images/products/decks/st10/img_item01.webp | 0 / 18 | onepiece-official |
+| One Piece Card Game | ST-11: Starter Deck 11 Uta | https://en.onepiece-cardgame.com/renewal/images/products/decks/st11/img_item01.webp | 0 / 5 | onepiece-official |
+| One Piece Card Game | ST-12: Starter Deck 12 Zoro and Sanji | https://en.onepiece-cardgame.com/renewal/images/products/decks/st12/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-13: Ultra Deck The Three Brothers | https://en.onepiece-cardgame.com/renewal/images/products/decks/st13/img_item01.webp | 0 / 35 | onepiece-official |
+| One Piece Card Game | ST-14: Starter Deck 14 3D2Y | https://en.onepiece-cardgame.com/renewal/images/products/decks/st14/img_item01.webp | 0 / 17 | onepiece-official |
+| One Piece Card Game | ST-15: Starter Deck 15 RED Edward.Newgate | https://en.onepiece-cardgame.com/renewal/images/products/decks/st15/img_item01.webp | 0 / 13 | onepiece-official |
+| One Piece Card Game | ST-16: Starter Deck 16 GREEN Uta | https://en.onepiece-cardgame.com/renewal/images/products/decks/st16/img_item01.webp | 0 / 15 | onepiece-official |
+| One Piece Card Game | ST-17: Starter Deck 17 BLUE Donquixote Doflamingo | https://en.onepiece-cardgame.com/renewal/images/products/decks/st17/img_item01.webp | 0 / 10 | onepiece-official |
+| One Piece Card Game | ST-18: Starter Deck 18 PURPLE Monkey.D.Luffy | https://en.onepiece-cardgame.com/renewal/images/products/decks/st18/img_item01.webp | 0 / 15 | onepiece-official |
+| One Piece Card Game | ST-19: Starter Deck 19 BLACK Smoker | https://en.onepiece-cardgame.com/renewal/images/products/decks/st19/img_item01.webp | 0 / 14 | onepiece-official |
+| One Piece Card Game | ST-20: Starter Deck 20 YELLOW Charlotte Katakuri | https://en.onepiece-cardgame.com/renewal/images/products/decks/st20/img_item01.webp | 0 / 11 | onepiece-official |
+| One Piece Card Game | ST-21: Starter Deck 21 EX Gear 5 | https://en.onepiece-cardgame.com/renewal/images/products/decks/st21/img_item01.webp | 0 / 33 | onepiece-official |
+| One Piece Card Game | ST-22: Starter Deck 22 Ace & Newgate | https://en.onepiece-cardgame.com/renewal/images/products/decks/st22/img_item01.webp | 0 / 31 | onepiece-official |
 | One Piece Card Game | ST-23: Starter Deck 23 RED Shanks | https://en.onepiece-cardgame.com/renewal/images/products/decks/st23/logo.webp | 0 / 15 | onepiece-official |
 | One Piece Card Game | ST-24: Starter Deck 24 GREEN Jewelry Bonney | https://en.onepiece-cardgame.com/renewal/images/products/decks/st24/logo.webp | 0 / 15 | onepiece-official |
 | One Piece Card Game | ST-25: Starter Deck 25 BLUE Buggy | https://en.onepiece-cardgame.com/renewal/images/products/decks/st25/logo.webp | 0 / 15 | onepiece-official |
@@ -1842,17 +1842,17 @@
 | One Piece Card Game | ST-27: Starter Deck 27 BLACK Marshall.D.Teach | https://en.onepiece-cardgame.com/renewal/images/products/decks/st27/logo.webp | 0 / 15 | onepiece-official |
 | One Piece Card Game | ST-28: Starter Deck 28 GREEN/YELLOW Yamato | https://en.onepiece-cardgame.com/renewal/images/products/decks/st28/logo.webp | 0 / 15 | onepiece-official |
 | One Piece Card Game | ST-29: Starter Deck 29 Egghead | https://en.onepiece-cardgame.com/renewal/images/products/decks/st29/logo.webp | 0 / 31 | onepiece-official |
-| One Piece Card Game | ST-30: Starter Deck 30 EX Luffy & Ace |  | 0 / 34 | — |
-| One Piece Card Game | ST-31: Starter Deck 31 RED Monkey.D.Luffy |  | 0 / 10 | — |
-| One Piece Card Game | ST-32: Starter Deck 32 GREEN Roronoa Zoro |  | 0 / 9 | — |
-| One Piece Card Game | ST-33: Starter Deck 33 BLUE Kuzan |  | 0 / 9 | — |
-| One Piece Card Game | ST-34: Starter Deck 34 PURPLE Charlotte Katakuri |  | 0 / 10 | — |
-| One Piece Card Game | ST-35: Starter Deck 35 RED/BLACK Sabo |  | 0 / 9 | — |
-| One Piece Card Game | ST-36: Starter Deck 36 YELLOW Eustass"Captain"Kid |  | 0 / 11 | — |
-| One Piece Card Game | Set Sail Deck Set |  | 0 / 30 | — |
+| One Piece Card Game | ST-30: Starter Deck 30 EX Luffy & Ace | https://en.onepiece-cardgame.com/onepiececg/bccard/en/product/2026/05/19/ACokwI6ZmNuQ6VvQ/logo.webp | 0 / 34 | onepiece-official |
+| One Piece Card Game | ST-31: Starter Deck 31 RED Monkey.D.Luffy | https://en.onepiece-cardgame.com/onepiececg/bccard/en/product/2026/07/08/InLBFwLaInGpv9HA/logo.webp | 0 / 10 | onepiece-official |
+| One Piece Card Game | ST-32: Starter Deck 32 GREEN Roronoa Zoro | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/07/08/5R8wBKVP7hLLIUhp/logo.webp | 0 / 9 | onepiece-official |
+| One Piece Card Game | ST-33: Starter Deck 33 BLUE Kuzan | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/07/08/6FGCBi9se6w9hBiy/logo.webp | 0 / 9 | onepiece-official |
+| One Piece Card Game | ST-34: Starter Deck 34 PURPLE Charlotte Katakuri | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/07/08/oRSVrIfpu77Fbv9Y/logo.webp | 0 / 10 | onepiece-official |
+| One Piece Card Game | ST-35: Starter Deck 35 RED/BLACK Sabo | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/07/08/2kibnkbrawTWtCqj/logo.webp | 0 / 9 | onepiece-official |
+| One Piece Card Game | ST-36: Starter Deck 36 YELLOW Eustass"Captain"Kid | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/07/08/StFKH3nRcLZQbOiH/logo.webp | 0 / 11 | onepiece-official |
+| One Piece Card Game | Set Sail Deck Set | https://en.onepiece-cardgame.com/onepiececg/bccard/en/product/2026/08/20/Xn03frg9xHS0R6YX/img_item01.webp | 0 / 30 | onepiece-official |
 | One Piece Card Game | The Azure Sea's Seven | https://holodex-prod-bucket.b-cdn.net/sets/op_24537/logo.webp | 150 / 211 | holodex |
 | One Piece Card Game | The Azure Sea's Seven Release Event Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_24537/logo.webp ※ | 89 / 89 | holodex（继承父系列） |
-| One Piece Card Game | The Dominance of God |  | 6 / 27 | — |
+| One Piece Card Game | The Dominance of God | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/09/18/68g26pmHJowl0k6G/logo_product.webp | 6 / 27 | onepiece-official |
 | One Piece Card Game | The Time of Battle | https://holodex-prod-bucket.b-cdn.net/sets/op_24664/logo.webp | 159 / 159 | holodex |
 | One Piece Card Game | The Time of Battle Release Event Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_24664/logo.webp ※ | 75 / 75 | holodex（继承父系列） |
 | One Piece Card Game | The World's Strongest Warriors | https://holodex-prod-bucket.b-cdn.net/sets/op_1724736/logo.webp | 177 / 179 | holodex |
@@ -1887,7 +1887,7 @@
 | Disney Lorcana | Wilds Unknown | https://holodex-prod-bucket.b-cdn.net/sets/dl_24617/logo.webp | 200 / 267 | holodex |
 | Disney Lorcana | Winterspell | https://holodex-prod-bucket.b-cdn.net/sets/dl_24500/logo.webp | 266 / 266 | holodex |
 
-### Flesh and Blood TCG（105 个系列，88 个有 logo）
+### Flesh and Blood TCG（105 个系列，104 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
@@ -1902,7 +1902,7 @@
 | Flesh and Blood TCG | Armory Deck: Dr. Mortimer | https://cdn.fabtcg.com/uploads/2026/08/mortimer_name.png | 4 / 4 | fab-official |
 | Flesh and Blood TCG | Armory Deck: Gravy Bones | https://cdn.fabtcg.com/uploads/2025/12/gravy_ad_cover-scaled.jpg | 49 / 49 | fab-official |
 | Flesh and Blood TCG | Armory Deck: Ira | https://cdn.fabtcg.com/uploads/2025/07/ad_ira_dropshadow.webp | 27 / 27 | fab-official |
-| Flesh and Blood TCG | Armory Deck: Jarl Vetreidi |  | 27 / 27 | — |
+| Flesh and Blood TCG | Armory Deck: Jarl Vetreidi | https://cdn.fabtcg.com/uploads/2025/12/jarl_logo.png | 27 / 27 | fab-official |
 | Flesh and Blood TCG | Armory Deck: Kayo | https://cdn.fabtcg.com/uploads/2025/07/ad_kayo_dropshadow.webp | 28 / 28 | fab-official |
 | Flesh and Blood TCG | Armory Deck: Legends Prism | https://cdn.fabtcg.com/uploads/2025/07/ad_legends_product_dropshadow.webp ※ | 27 / 27 | fab-official（继承父系列） |
 | Flesh and Blood TCG | Armory Deck: Legends Viserai | https://cdn.fabtcg.com/uploads/2025/07/ad_legends_product_dropshadow.webp ※ | 30 / 30 | fab-official（继承父系列） |
@@ -1947,23 +1947,23 @@
 | Flesh and Blood TCG | Bright Lights | https://cdn.fabtcg.com/uploads/2025/08/en_evo_mock_boosterbox.width-992.format-webp.webp | 200 / 261 | fab-official |
 | Flesh and Blood TCG | Classic Battles: Rhinar vs Dorinthea | https://cdn.fabtcg.com/uploads/2025/12/cb_logo_1.png | 54 / 55 | fab-official |
 | Flesh and Blood TCG | Compendium of Rathe | https://cdn.fabtcg.com/uploads/2026/01/pen-logo-2026.png | 368 / 368 | fab-official |
-| Flesh and Blood TCG | Compendium of Rathe - Antiquity Pack |  | 65 / 65 | — |
+| Flesh and Blood TCG | Compendium of Rathe - Antiquity Pack | https://cdn.fabtcg.com/uploads/2025/12/pen_antiquity.png | 65 / 65 | fab-official |
 | Flesh and Blood TCG | Crucible of War | https://cdn.fabtcg.com/uploads/2025/12/cru_logo_stacked.png | 100 / 199 | fab-official |
 | Flesh and Blood TCG | Dusk till Dawn | https://cdn.fabtcg.com/uploads/2025/07/dtd_booster_box.width-992.format-webp.webp | 100 / 252 | fab-official |
 | Flesh and Blood TCG | Dynasty | https://cdn.fabtcg.com/uploads/2025/07/dyn_mock_booster_box.width-992.format-webp.webp | 100 / 265 | fab-official |
 | Flesh and Blood TCG | Everfest | https://cdn.fabtcg.com/uploads/2025/07/evr_paper_booster_dropshadow.webp | 220 / 221 | fab-official |
 | Flesh and Blood TCG | Flesh and Blood: Promo Cards |  | 50 / 1233 | — |
-| Flesh and Blood TCG | GEM Pack 1 |  | 50 / 50 | — |
-| Flesh and Blood TCG | GEM Pack 2 |  | 54 / 54 | — |
-| Flesh and Blood TCG | GEM Pack 3 |  | 54 / 54 | — |
-| Flesh and Blood TCG | GEM Pack 4 |  | 54 / 54 | — |
-| Flesh and Blood TCG | GEM Pack 6 |  | 2 / 35 | — |
-| Flesh and Blood TCG | Gem Pack 5 |  | 61 / 61 | — |
+| Flesh and Blood TCG | GEM Pack 1 | https://cdn.fabtcg.com/uploads/2025/06/gem_pack_1_cover.jpg | 50 / 50 | fab-official |
+| Flesh and Blood TCG | GEM Pack 2 | https://cdn.fabtcg.com/uploads/2025/07/25_05_GEMPACK_2_CAROUSEL3.jpg | 54 / 54 | fab-official |
+| Flesh and Blood TCG | GEM Pack 3 | https://cdn.fabtcg.com/uploads/2025/09/Gempack_3.min-400x350.format-webp.webp | 54 / 54 | fab-official |
+| Flesh and Blood TCG | GEM Pack 4 | https://cdn.fabtcg.com/uploads/2026/01/GEM-PACK-4-PACKS-1-1024x768.png | 54 / 54 | fab-official |
+| Flesh and Blood TCG | GEM Pack 6 | https://cdn.fabtcg.com/uploads/2026/09/gem-pack-6-cover-1024x768.png | 2 / 35 | fab-official |
+| Flesh and Blood TCG | Gem Pack 5 | https://cdn.fabtcg.com/uploads/2026/05/GEM-PACK-5-PACKS_-1-1024x768.png | 61 / 61 | fab-official |
 | Flesh and Blood TCG | Heavy Hitters | https://cdn.fabtcg.com/uploads/2025/08/en_heavy_hitters_booster_display.width-1200.format-webp.webp | 239 / 262 | fab-official |
-| Flesh and Blood TCG | Hero Deck: Bravo |  | 29 / 29 | — |
-| Flesh and Blood TCG | Hero Deck: Dorinthea |  | 30 / 30 | — |
-| Flesh and Blood TCG | Hero Deck: Katsu |  | 30 / 30 | — |
-| Flesh and Blood TCG | Hero Deck: Rhinar |  | 31 / 31 | — |
+| Flesh and Blood TCG | Hero Deck: Bravo | https://cdn.fabtcg.com/uploads/2025/12/assembly_deck_hero_trim.jpg | 29 / 29 | fab-official |
+| Flesh and Blood TCG | Hero Deck: Dorinthea | https://cdn.fabtcg.com/uploads/2025/12/assembly_deck_hero_trim.jpg | 30 / 30 | fab-official |
+| Flesh and Blood TCG | Hero Deck: Katsu | https://cdn.fabtcg.com/uploads/2025/12/assembly_deck_hero_trim.jpg | 30 / 30 | fab-official |
+| Flesh and Blood TCG | Hero Deck: Rhinar | https://cdn.fabtcg.com/uploads/2025/12/assembly_deck_hero_trim.jpg | 31 / 31 | fab-official |
 | Flesh and Blood TCG | High Seas | https://cdn.fabtcg.com/uploads/2025/07/en_sea_display_gravybones.width-1200.format-webp-1.webp | 369 / 375 | fab-official |
 | Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Bravo | https://cdn.fabtcg.com/uploads/2025/09/hp1_blitz_dropshadow.webp ※ | 27 / 27 | fab-official（继承父系列） |
 | Flesh and Blood TCG | Historic Pack 1 Blitz Deck: Dash | https://cdn.fabtcg.com/uploads/2025/09/hp1_blitz_dropshadow.webp ※ | 28 / 28 | fab-official（继承父系列） |
@@ -1981,8 +1981,8 @@
 | Flesh and Blood TCG | Part the Mistveil | https://cdn.fabtcg.com/uploads/2025/07/mst_booster_dropshadow.webp | 0 / 265 | fab-official |
 | Flesh and Blood TCG | Rosetta | https://cdn.fabtcg.com/uploads/2025/09/rosetta_boosters_dropshadow.webp | 50 / 327 | fab-official |
 | Flesh and Blood TCG | Round the Table: TCCxLSS | https://cdn.fabtcg.com/uploads/2025/12/TCC_mkt_release_twtcover2.jpg | 110 / 110 | fab-official |
-| Flesh and Blood TCG | Silver Age Chapter 1 |  | 173 / 173 | — |
-| Flesh and Blood TCG | Silver Age Chapter 2 |  | 0 / 169 | — |
+| Flesh and Blood TCG | Silver Age Chapter 1 | https://cdn.fabtcg.com/uploads/2025/12/silver_age_logo.png | 173 / 173 | fab-official |
+| Flesh and Blood TCG | Silver Age Chapter 2 | https://cdn.fabtcg.com/uploads/2025/12/silver_age_logo.png | 0 / 169 | fab-official |
 | Flesh and Blood TCG | Silver Age Chapter 3 | https://cdn.fabtcg.com/uploads/2025/10/en_slv_display_ch2_LO-RES.png | 173 / 175 | fab-official |
 | Flesh and Blood TCG | Silver Age: Usurp the Shadow Throne | https://cdn.fabtcg.com/uploads/2025/12/silver_age_logo.png | 34 / 68 | fab-official |
 | Flesh and Blood TCG | Smash Palace | https://cdn.fabtcg.com/uploads/2026/04/AD_Olympia_Banner_Background.webp | 32 / 32 | fab-official |
@@ -1993,24 +1993,24 @@
 | Flesh and Blood TCG | Uprising | https://cdn.fabtcg.com/uploads/2025/08/upr_mock_booster_box_Fx5.width-992.format-webp.webp | 97 / 243 | fab-official |
 | Flesh and Blood TCG | Usurp the Shadow Throne | https://cdn.fabtcg.com/uploads/2026/07/usurp_the_shadow_throne_logo.png | 82 / 287 | fab-official |
 | Flesh and Blood TCG | Usurp the Shadow Throne Pre-release Cards | https://cdn.fabtcg.com/uploads/2026/07/usurp_the_shadow_throne_logo.png ※ | 4 / 5 | fab-official（继承父系列） |
-| Flesh and Blood TCG | Welcome Deck Bravo |  | 18 / 18 | — |
-| Flesh and Blood TCG | Welcome Deck: Ira |  | 12 / 12 | — |
+| Flesh and Blood TCG | Welcome Deck Bravo | https://cdn.fabtcg.com/uploads/2025/09/demo_deck_bravo_mockup_EN-1.webp | 18 / 18 | fab-official |
+| Flesh and Blood TCG | Welcome Deck: Ira | https://cdn.fabtcg.com/uploads/2025/09/ira_welcomedeck_dropshadow-1.webp | 12 / 12 | fab-official |
 | Flesh and Blood TCG | Welcome to Rathe | https://cdn.fabtcg.com/uploads/2025/09/wtr_alpha_booster_dropshadow-scaled.webp | 302 / 303 | fab-official |
 
-### Dragon Ball Super: Masters（100 个系列，59 个有 logo）
+### Dragon Ball Super: Masters（100 个系列，96 个有 logo）
 
 | 品类 | 系列 | 系列logo | 系列包含卡牌数量 | logo来源 |
 |------|------|----------|------------------|----------|
-| Dragon Ball Super: Masters | 5th Anniversary Set |  | 0 / 78 | — |
+| Dragon Ball Super: Masters | 5th Anniversary Set | https://www.dbs-cardgame.com/images/product/dbs-es21/img_item.png | 0 / 78 | dbs-cardgame.com |
 | Dragon Ball Super: Masters | Assault of the Saiyans | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2473/logo.webp | 0 / 160 | holodex |
 | Dragon Ball Super: Masters | Assault of the Saiyans Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2957/logo.webp | 0 / 108 | holodex |
 | Dragon Ball Super: Masters | Battle Evolution Booster | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2759/logo.webp | 0 / 125 | holodex |
 | Dragon Ball Super: Masters | Beyond Generations | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_23325/logo.webp | 0 / 249 | holodex |
 | Dragon Ball Super: Masters | Beyond Generations Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_23463/logo.webp | 0 / 59 | holodex |
 | Dragon Ball Super: Masters | Clash of Fates | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2367/logo.webp | 0 / 77 | holodex |
-| Dragon Ball Super: Masters | Collector's Selection Vol. 1 |  | 0 / 18 | — |
-| Dragon Ball Super: Masters | Collector's Selection Vol. 2 |  | 0 / 18 | — |
-| Dragon Ball Super: Masters | Collector's Selection Vol. 3 |  | 0 / 18 | — |
+| Dragon Ball Super: Masters | Collector's Selection Vol. 1 | https://tcgplayer-cdn.tcgplayer.com/product/243574_in_1000x1000.jpg | 0 / 18 | tcgplayer-cdn |
+| Dragon Ball Super: Masters | Collector's Selection Vol. 2 | https://tcgplayer-cdn.tcgplayer.com/product/265248_in_1000x1000.jpg | 0 / 18 | tcgplayer-cdn |
+| Dragon Ball Super: Masters | Collector's Selection Vol. 3 | https://tcgplayer-cdn.tcgplayer.com/product/475574_in_1000x1000.jpg | 0 / 18 | tcgplayer-cdn |
 | Dragon Ball Super: Masters | Colossal Warfare | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2218/logo.webp | 0 / 138 | holodex |
 | Dragon Ball Super: Masters | Critical Blow | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_23175/logo.webp | 0 / 163 | holodex |
 | Dragon Ball Super: Masters | Critical Blow Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_23176/logo.webp | 0 / 59 | holodex |
@@ -2024,66 +2024,66 @@
 | Dragon Ball Super: Masters | Draft Box 04 - Dragon Brawl | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2515/logo.webp | 0 / 122 | holodex |
 | Dragon Ball Super: Masters | Draft Box 05 - Divine Multiverse | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2618/logo.webp | 0 / 178 | holodex |
 | Dragon Ball Super: Masters | Draft Box 06 - Giant Force | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2720/logo.webp | 0 / 144 | holodex |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 01: Mighty Heroes |  | 0 / 14 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 02: Dark Demon's Villains |  | 0 / 14 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 03: Ultimate Box |  | 0 / 35 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 04: Unity of Saiyans |  | 0 / 4 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 05: Unity of Destruction |  | 0 / 4 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 07: Magnificent Collection - Fusion Hero |  | 0 / 27 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 08: Magnificent Collection - Forsaken Warrior |  | 0 / 25 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 09: Saiyan Surge |  | 0 / 6 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 10: Namekian Surge |  | 0 / 6 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 11: Universe 7 Unison |  | 0 / 7 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 12: Universe 11 Unison |  | 0 / 7 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 14: Battle Advanced |  | 0 / 5 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 15: Battle Enhanced |  | 0 / 5 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 16: Ultimate Deck |  | 0 / 10 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 17: Saiyan Boost |  | 0 / 5 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 18: Namekian Boost |  | 0 / 5 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 20: Ultimate Deck 2022 |  | 0 / 20 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 22: Ultimate Deck 2023 |  | 0 / 27 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 23: Premium Anniversary Box 2023 |  | 0 / 59 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 24: Premium 7th Anniversary Box 2024 |  | 0 / 55 | — |
-| Dragon Ball Super: Masters | Expansion Deck Box Set 25: Premium Anniversary Box 2025 |  | 0 / 70 | — |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 01: Mighty Heroes | https://www.dbs-cardgame.com/images/product/dbs-es01/img_expansion-set.png | 0 / 14 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 02: Dark Demon's Villains | https://www.dbs-cardgame.com/images/product/dbs-es02/img_expansion-set.png | 0 / 14 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 03: Ultimate Box | https://www.dbs-cardgame.com/images/product/dbs-es03/img_es03-box.png | 0 / 35 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 04: Unity of Saiyans | https://www.dbs-cardgame.com/images/product/dbs-es04/img_expansion-set.png | 0 / 4 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 05: Unity of Destruction | https://www.dbs-cardgame.com/images/product/dbs-es05/img_expansion-set.png | 0 / 4 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 07: Magnificent Collection - Fusion Hero | https://www.dbs-cardgame.com/images/product/dbs-es07/update01/img_box.png | 0 / 27 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 08: Magnificent Collection - Forsaken Warrior | https://www.dbs-cardgame.com/images/product/dbs-es08/update01/img_box.png | 0 / 25 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 09: Saiyan Surge | https://www.dbs-cardgame.com/images/product/dbs-es09/img_box.png | 0 / 6 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 10: Namekian Surge | https://www.dbs-cardgame.com/images/product/dbs-es10/img_box.png | 0 / 6 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 11: Universe 7 Unison | https://www.dbs-cardgame.com/images/product/dbs-es11/img_item.png | 0 / 7 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 12: Universe 11 Unison | https://www.dbs-cardgame.com/images/product/dbs-es12/img_item.png | 0 / 7 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 14: Battle Advanced | https://www.dbs-cardgame.com/images/product/dbs-es14/img_box.png | 0 / 5 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 15: Battle Enhanced | https://www.dbs-cardgame.com/images/product/dbs-es15/img_box.png | 0 / 5 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 16: Ultimate Deck | https://www.dbs-cardgame.com/images/product/dbs-es16/img_item.png | 0 / 10 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 17: Saiyan Boost | https://www.dbs-cardgame.com/images/product/dbs-es17/img_box.png | 0 / 5 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 18: Namekian Boost | https://www.dbs-cardgame.com/images/product/dbs-es18/img_box.png | 0 / 5 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 20: Ultimate Deck 2022 | https://www.dbs-cardgame.com/images/product/dbs-es20/img_item.png | 0 / 20 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 22: Ultimate Deck 2023 | https://www.dbs-cardgame.com/images/product/dbs-es22/img_item.png | 0 / 27 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 23: Premium Anniversary Box 2023 | https://www.dbs-cardgame.com/images/product/dbs-es23/img_item.png | 0 / 59 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 24: Premium 7th Anniversary Box 2024 | https://www.dbs-cardgame.com/images/product/dbs-es24/img_item.png | 0 / 55 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 25: Premium Anniversary Box 2025 | https://www.dbs-cardgame.com/images/product/dbs-es25/img_item.png | 0 / 70 | dbs-cardgame.com |
 | Dragon Ball Super: Masters | Fearsome Rivals | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24565/logo.webp | 0 / 198 | holodex |
-| Dragon Ball Super: Masters | Fearsome Rivals Release Event |  | 0 / 73 | — |
-| Dragon Ball Super: Masters | Fighter's Ambition |  | 0 / 164 | — |
+| Dragon Ball Super: Masters | Fearsome Rivals Release Event | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24566/logo.webp | 0 / 73 | holodex |
+| Dragon Ball Super: Masters | Fighter's Ambition | https://www.dbs-cardgame.com/images/product/dbs-b19/img_item.png | 0 / 164 | dbs-cardgame.com |
 | Dragon Ball Super: Masters | Galactic Battle | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_1962/logo.webp | 0 / 120 | holodex |
 | Dragon Ball Super: Masters | History of Z | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24166/logo.webp | 0 / 188 | holodex |
 | Dragon Ball Super: Masters | History of Z Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24188/logo.webp | 0 / 59 | holodex |
 | Dragon Ball Super: Masters | Impact Beyond Dimensions | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_ibd24670/logo.webp | 0 / 190 | holodex |
-| Dragon Ball Super: Masters | Impact Beyond Dimensions Release Event |  | 0 / 74 | — |
+| Dragon Ball Super: Masters | Impact Beyond Dimensions Release Event | https://tcgplayer-cdn.tcgplayer.com/product/702718_in_1000x1000.jpg | 0 / 74 | tcgplayer-cdn |
 | Dragon Ball Super: Masters | Judge Promotion Cards |  | 0 / 224 | — |
 | Dragon Ball Super: Masters | Legend of the Dragon Balls | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_23415/logo.webp | 0 / 172 | holodex |
 | Dragon Ball Super: Masters | Legend of the Dragon Balls Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_23530/logo.webp | 0 / 59 | holodex |
 | Dragon Ball Super: Masters | Malicious Machinations | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2536/logo.webp | 0 / 163 | holodex |
 | Dragon Ball Super: Masters | Malicious Machinations Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2956/logo.webp | 0 / 108 | holodex |
 | Dragon Ball Super: Masters | Miraculous Revival | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2285/logo.webp | 0 / 142 | holodex |
-| Dragon Ball Super: Masters | Mythic Booster |  | 0 / 126 | — |
+| Dragon Ball Super: Masters | Mythic Booster | https://www.dbs-cardgame.com/images/product/dbs-mb01/img_item.png | 0 / 126 | dbs-cardgame.com |
 | Dragon Ball Super: Masters | Oversized Cards |  | 0 / 13 | — |
 | Dragon Ball Super: Masters | Perfect Combination | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_23258/logo.webp | 0 / 155 | holodex |
 | Dragon Ball Super: Masters | Power Absorbed | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_17696/logo.webp | 0 / 261 | holodex |
 | Dragon Ball Super: Masters | Power Absorbed Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_17697/logo.webp | 0 / 68 | holodex |
 | Dragon Ball Super: Masters | Prismatic Clash | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24402/logo.webp | 0 / 197 | holodex |
-| Dragon Ball Super: Masters | Prismatic Clash Release Event |  | 0 / 74 | — |
+| Dragon Ball Super: Masters | Prismatic Clash Release Event | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24429/logo.webp | 0 / 74 | holodex |
 | Dragon Ball Super: Masters | Promotion Cards |  | 0 / 884 | — |
 | Dragon Ball Super: Masters | Realm of the Gods | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2986/logo.webp | 0 / 164 | holodex |
 | Dragon Ball Super: Masters | Realm of the Gods Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_3003/logo.webp | 0 / 68 | holodex |
-| Dragon Ball Super: Masters | Revision Pack 2020 |  | 0 / 30 | — |
+| Dragon Ball Super: Masters | Revision Pack 2020 | https://www.dbs-cardgame.com/images/event/prizes/pack/img_revision-pack2020_v02_en.png | 0 / 30 | dbs-cardgame.com |
 | Dragon Ball Super: Masters | Rise of the Unison Warrior | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2647/logo.webp | 0 / 182 | holodex |
 | Dragon Ball Super: Masters | Rise of the Unison Warrior (2nd Edition) | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2910/logo.webp | 0 / 182 | holodex |
 | Dragon Ball Super: Masters | Rise of the Unison Warrior Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2953/logo.webp | 0 / 68 | holodex |
 | Dragon Ball Super: Masters | Saiyan Showdown | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2913/logo.webp | 0 / 164 | holodex |
 | Dragon Ball Super: Masters | Saiyan Showdown Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2946/logo.webp | 0 / 68 | holodex |
-| Dragon Ball Super: Masters | Special Anniversary Set |  | 0 / 56 | — |
-| Dragon Ball Super: Masters | Special Anniversary Set 2020 |  | 0 / 56 | — |
-| Dragon Ball Super: Masters | Special Anniversary Set 2021 |  | 0 / 56 | — |
+| Dragon Ball Super: Masters | Special Anniversary Set | https://www.dbs-cardgame.com/images/product/dbs-es06/img_box.png | 0 / 56 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Special Anniversary Set 2020 | https://www.dbs-cardgame.com/images/product/dbs-es13/img_box.png | 0 / 56 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Special Anniversary Set 2021 | https://www.dbs-cardgame.com/images/product/dbs-es19/img_box.png | 0 / 56 | dbs-cardgame.com |
 | Dragon Ball Super: Masters | Supreme Rivalry | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2796/logo.webp | 0 / 164 | holodex |
 | Dragon Ball Super: Masters | Supreme Rivalry Pre-Release Cards | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2950/logo.webp | 0 / 68 | holodex |
-| Dragon Ball Super: Masters | Theme Selection: History of Son Goku |  | 0 / 15 | — |
-| Dragon Ball Super: Masters | Theme Selection: History of Vegeta |  | 0 / 15 | — |
+| Dragon Ball Super: Masters | Theme Selection: History of Son Goku | https://www.dbs-cardgame.com/images/product/dbs-ts01/img_item.png | 0 / 15 | dbs-cardgame.com |
+| Dragon Ball Super: Masters | Theme Selection: History of Vegeta | https://www.dbs-cardgame.com/images/product/dbs-ts02/img_item.png | 0 / 15 | dbs-cardgame.com |
 | Dragon Ball Super: Masters | Three Glorious Fighters | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24632/logo.webp | 0 / 199 | holodex |
-| Dragon Ball Super: Masters | Three Glorious Fighters Release Event |  | 0 / 74 | — |
+| Dragon Ball Super: Masters | Three Glorious Fighters Release Event | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24654/logo.webp | 0 / 74 | holodex |
 | Dragon Ball Super: Masters | Tournament Promotion Cards |  | 0 / 1315 | — |
 | Dragon Ball Super: Masters | Tournament of Power | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_2217/logo.webp | 0 / 101 | holodex |
 | Dragon Ball Super: Masters | Ultimate Advent | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_23646/logo.webp | 0 / 164 | holodex |
@@ -2115,9 +2115,9 @@
 | ygoprodeck | 官方**系列图**（JPG） | 1035 个 set | `db.ygoprodeck.com/api/v7/cardsets.php`，先按 `setCode`↔`set_code`，再按名 |
 | TCGdex | 系列 **logo**（webp/png） | 220 个 set，其中 156 个有 logo | `api.tcgdex.net/v2/en/sets/{id}`，按 `setCode`↔`abbreviation`，再按名 |
 | Holodex | 第三方 App 的系列 logo（webp） | 存量 12 个游戏 | `crawl/crawl/holodex_sets_organized.json`，按名 |
-| FAB 官方站 | 系列 logo / 产品封面（png/webp），88 条命中 | 275 个页面 | `fabtcg.com`（被 Cloudflare 挡，用 `curl_cffi` 伪装 TLS 指纹），sitemap + products/digital-assets 页 |
-| Bulbapedia 图库 | 日文系列 logo / 包装图，177 条命中 | 按代码前缀枚举 | `archives.bulbagarden.net/w/api.php` + `bulbapedia.bulbagarden.net/w/api.php`（opensearch 找条目），文件名形如 `S8b_VMAX_Climax_Logo.png` |
-| ONE PIECE 官方站 | 产品 logo（webp），7 条命中 | 187 个产品页 | `en.onepiece-cardgame.com/products/`，按产品代号 `ST-27` 之类 |
+| FAB 官方站 | 系列 logo / 产品封面（png/webp），104 条命中 | 275 个页面 | `fabtcg.com`（被 Cloudflare 挡，用 `curl_cffi` 伪装 TLS 指纹），sitemap + products/digital-assets 页 |
+| Bulbapedia 图库 | 日文系列 logo / 包装图，182 条命中 | 按代码前缀枚举 | `archives.bulbagarden.net/w/api.php` + `bulbapedia.bulbagarden.net/w/api.php`（opensearch 找条目），文件名形如 `S8b_VMAX_Climax_Logo.png` |
+| ONE PIECE 官方站 | 产品 logo（webp），44 条命中 | 187 个产品页 | `en.onepiece-cardgame.com/products/`，按产品代号 `ST-27` 之类 |
 
 **表内所有 logo URL 已逐个校验可访问**（`script_temp/verify_logo_urls.py`，HEAD 请求）。
 
@@ -2125,11 +2125,11 @@
 
 | 层级 | 含义 | 条数 |
 |------|------|------|
-| `symbol` | 系列专属符号 / logo（最可靠） | 1049 |
-| `artwork` | 官方包装图 / 产品封面（能标识系列，但不是 logo 本身） | 316 |
+| `symbol` | 系列专属符号 / logo（最可靠） | 1244 |
+| `artwork` | 官方包装图 / 产品封面（能标识系列，但不是 logo 本身） | 335 |
 | `inherit` | 继承自父系列的图（衍生子线共用一张） | 123 |
-| `generic` | Scryfall 通用占位图标（`default.svg` / `star.svg`） | 15 |
-| `none` | 没有 logo | 536 |
+| `generic` | Scryfall 通用占位图标（`default.svg` / `star.svg`） | 17 |
+| `none` | 没有 logo | 320 |
 
 注意两点：万智牌里有 4 个系列拿到的 Scryfall 图标是通用默认符号（`default.svg`），说明该系列在 Scryfall 没有专属符号；另有 123 条是衍生子线继承父系列 logo（表中标 `※`）、35 条是人工核对指定。
 
@@ -2139,73 +2139,283 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 
 ### 3.2 仍然没有 logo 的系列及原因
 
-- **Pokémon**：29 个未覆盖
+- **Pokémon**：19 个未覆盖
   - 缺的是 Trainer Kit、各类 Promo、World Championship Decks、Jumbo Cards 等子线，TCGdex / Holodex / Scryfall 三类源都不单独收录。
-  - 明细：BW Trainer Kit: Excadrill & Zoroark、Best of Promos、Blister Exclusives、Burger King Promos、Countdown Calendar Promos、DP Trainer Kit: Manaphy & Lucario、Deck Exclusives、EX Trainer Kit 1: Latias & Latios、EX Trainer Kit 2: Plusle & Minun、First Partner Collection 2026、First Partner Pack、HGSS Trainer Kit: Gyarados & Raichu …
-- **Pokémon Japan**：278 个未覆盖
+  - 明细：BW Trainer Kit: Excadrill & Zoroark、Blister Exclusives、Burger King Promos、Countdown Calendar Promos、DP Trainer Kit: Manaphy & Lucario、Deck Exclusives、First Partner Collection 2026、First Partner Pack、Jumbo Cards、Kids WB Promos、League & Championship Cards、Pikachu World Collection Promos …
+- **Pokémon Japan**：231 个未覆盖
   - 已有的 177 条来自 Bulbapedia 图库，按系列代码做前缀枚举命中（Bulbapedia 的 logo 文件名就是 `{代码}_{名称}_Logo.png`）。剩余的没命中，是因为 **TCGPlayer 有 153 个系列根本没给代码**（都是 1996–2009 的老扩展包与预组，如 `Pokemon VS`、`City Gym Decks`），另外 158 个有代码的里多数在 Bulbapedia 上只有卡图、没有包装图或 logo（如 `SM-P`、`XY-P` 这类促销线，前缀查询返回 0 个文件）。TCGdex 的日文 set 没有 logo 字段；官方 `pokemon-card.com` 只在最新产品页放 logo。
-  - 明细：10th Movie Commemoration Set、11th Movie Commemoration Set、64 Mario Stadium Best Photo Contest、ADV Expansion Pack、ADV-P Promotional cards、Aqua Deck Kit、Arceus LV.X Deck: Grass & Fire、Arceus LV.X Deck: Lightning & Psychic、Awakening Legends、BK: Cobalion Battle Strength Deck、BK: Terrakion Battle Strength Deck、BK: Virizion Battle Strength Deck …
-- **Magic: The Gathering**：24 个未覆盖
+  - 明细：10th Movie Commemoration Set、11th Movie Commemoration Set、64 Mario Stadium Best Photo Contest、ADV-P Promotional cards、Aqua Deck Kit、Arceus LV.X Deck: Grass & Fire、Arceus LV.X Deck: Lightning & Psychic、Awakening Legends、BK: Cobalion Battle Strength Deck、BK: Terrakion Battle Strength Deck、BK: Virizion Battle Strength Deck、BKB: Black Kyurem-EX Battle Strength Deck …
+- **Magic: The Gathering**：14 个未覆盖
   - 缺的是 TCGPlayer 独有的促销聚合线（`Oversize Cards`、`Prerelease Cards`、`Buy-A-Box Promos`、`WPN & Gateway Promos` 等），Scryfall 侧按年度拆开收录、没有与之对应的单一条目；可对应的 20 条已人工核对补上（见 3.3）。
-  - 明细：30th Anniversary Promos、AFR Ampersand Promos、APAC Lands、Archenemy: Duskmourn、Buy-A-Box Promos、Commander、Duel Decks: Anthology、Gift Boxes and Promos、International Edition、JingHe Age Token Cards、Junior Series Promos、Launch Party & Release Event Promos …
-- **Yu-Gi-Oh!**：99 个未覆盖
+  - 明细：Buy-A-Box Promos、Duel Decks: Anthology、Gift Boxes and Promos、JingHe Age Token Cards、Junior Series Promos、Launch Party & Release Event Promos、MagicFest Cards、Open House Promos、Oversize Cards、Play Promos、Prerelease Cards、Special Occasion …
+- **Yu-Gi-Oh!**：43 个未覆盖
   - 缺的是铁盒、收藏盒、活动场次卡等子线，ygoprodeck 对这批 set 只给名录不给图（1035 个 set 里有 125 个没有 `set_image` 字段，且用 `set_code` 拼 URL 也是 404）。
-  - 明细：2-Player Starter Set、2002 Collectors Tin、2003 Collectors Tin、2004 Collectors Tin、2011 Duelist Pack Tin、25th Anniversary Tin: Dueling Mirrors、Advent Calendar 2011 (Adventskalender)、Advent Calendar 2014 (Adventskalender ZEXAL-Edition)、Collector's Boxes、Crossed Souls: Advanced Edition、Dawn of Destiny Xbox、Destiny Board Traveler Promo …
-- **One Piece Card Game**：43 个未覆盖
+  - 明细：2-Player Starter Set、Collector's Boxes、Dawn of Destiny Xbox、Destiny Board Traveler Promo、Duelist Pack Collection Tin、Duelist Pack Special Edition、Duelist of the Roses、Early Days Collection Promotional Cards、Eternal Duelist Soul、GX Duel Academy GBA Promo、GX Spirit Caller Promo、GX Tag Force Promo …
+- **One Piece Card Game**：3 个未覆盖
   - 缺的绝大多数是 `ST-01`…`ST-20` 早期预组：官方站对应产品页（`decks/st05.php`、`st15-20.php`）只放了卡图，没有预组 logo 或包装图；`optcgapi.com` 只收录 22 个主系列。
-  - 明细：Awakening of the New Era: 1st Anniversary Tournament Cards、Carrying On His Will: 3rd Anniversary Tournament Cards、Emperors in the New World: 2nd Anniversary Tournament Cards、Extra Booster: One Piece Heroines Edition Vol. 2、Learn Together Deck Set、One Piece Demo Deck Cards、One Piece Promotion Cards、Revision Pack Cards、ST-01: Starter Deck 1 Straw Hat Crew、ST-01: Starter Deck 1 Straw Hat Crew (Super Pre-Release Edition)、ST-02: Starter Deck 2 Worst Generation、ST-02: Starter Deck 2 Worst Generation (Super Pre-Release Edition) …
+  - 明细：One Piece Demo Deck Cards、One Piece Promotion Cards、Revision Pack Cards
 - **Disney Lorcana**：5 个未覆盖
   - 缺的是铁盒、收藏盒、活动场次卡等子线，ygoprodeck 对这批 set 只给名录不给图（1035 个 set 里有 125 个没有 `set_image` 字段，且用 `set_code` 拼 URL 也是 404）。
   - 明细：Disney100 Promos、Hyperia City、Illumineer's Quest: Deep Trouble、Illumineer's Quest: Palace Heist、Illumineer's Quest: The Great Hunny Rescue
-- **Flesh and Blood TCG**：17 个未覆盖
+- **Flesh and Blood TCG**：1 个未覆盖
   - 已通过 `curl_cffi` 绕过 Cloudflare 抓到官方站 275 个页面的系列 logo 与封面图。剩余的是官方站**没有独立素材**的：单副 Blitz Deck（官网只按合集页出售，如 `Blitz Deck: Monarch - Boltyn` 只存在于 `monarch-blitz-decks` 合集里，已按父合集图继承）、`GEM Pack`、`Hero Deck`、`Welcome Deck` / `Flesh and Blood: Promo Cards`。
-  - 明细：Armory Deck: Jarl Vetreidi、Compendium of Rathe - Antiquity Pack、Flesh and Blood: Promo Cards、GEM Pack 1、GEM Pack 2、GEM Pack 3、GEM Pack 4、GEM Pack 6、Gem Pack 5、Hero Deck: Bravo、Hero Deck: Dorinthea、Hero Deck: Katsu …
-- **Dragon Ball Super: Masters**：41 个未覆盖
+  - 明细：Flesh and Blood: Promo Cards
+- **Dragon Ball Super: Masters**：4 个未覆盖
   - 缺的主要是 `Expansion Deck Box Set XX`、`Collector's Selection Vol.X` 这类非补充包产品，Holodex 不单独收录；官方站 `dbs-cardgame.com` 的产品页只展示当期产品，没有全量归档。
-  - 明细：5th Anniversary Set、Collector's Selection Vol. 1、Collector's Selection Vol. 2、Collector's Selection Vol. 3、Expansion Deck Box Set 01: Mighty Heroes、Expansion Deck Box Set 02: Dark Demon's Villains、Expansion Deck Box Set 03: Ultimate Box、Expansion Deck Box Set 04: Unity of Saiyans、Expansion Deck Box Set 05: Unity of Destruction、Expansion Deck Box Set 07: Magnificent Collection - Fusion Hero、Expansion Deck Box Set 08: Magnificent Collection - Forsaken Warrior、Expansion Deck Box Set 09: Saiyan Surge …
+  - 明细：Judge Promotion Cards、Oversized Cards、Promotion Cards、Tournament Promotion Cards
+
+### 3.3 本轮由子 agent 补齐的 216 条（逐条附依据，便于复核）
+
+| 品线 | 系列 | logo | 来源 | 判定依据 |
+|------|------|------|------|----------|
+| Pokémon | Best of Promos | https://den-media.pokellector.com/logos/Best-of-Game.logo.196.png | pokellector | 本地该 setName 下卡牌是 Electabuzz-1 / Hitmonchan-2 / Professor Elm-3 / Rocket's Scizor-4 … 等 Best of Game 促销卡(含 [Winner] 版本)，与 Pokellector "Best of Game" 系列完全同源(pokemontcg.io 的 bp)。 |
+| Pokémon | EX Trainer Kit 1: Latias & Latios | https://images.pokemontcg.io/tk1a/logo.png | pokemontcg.io | TCGplayer 的 EX Trainer Kit 1 = pokemontcg.io 的 tk1a(Latias)/tk1b(Latios) 两张半副套牌，四个 id(tk1a/tk1b/tk2a/tk2b) 的 logo 是同一张"EX TRAINER KIT"官方标志图，即该产品的品牌 logo。 |
+| Pokémon | EX Trainer Kit 2: Plusle & Minun | https://images.pokemontcg.io/tk2a/logo.png | pokemontcg.io | TCGplayer 的 EX Trainer Kit 2 = pokemontcg.io 的 tk2a(Plusle)/tk2b(Minun)，与 Kit 1 共用同一张"EX TRAINER KIT"官方标志图，属同一 Trainer Kit 产品线的 logo。 |
+| Pokémon | HGSS Trainer Kit: Gyarados & Raichu | https://archives.bulbagarden.net/media/upload/4/44/HSTrainerKit.jpg | bulbapedia | 来自 Bulbapedia 条目 "HS Trainer Kit (TCG)" 的条目配图 HSTrainerKit.jpg，该条目正文的套牌卡号(Gyarados/Raichu 半副)与 TCGplayer 该系列一致。 |
+| Pokémon | MEE: Mega Evolution Energies | https://den-media.pokellector.com/logos/Mega-Evolution-Energies.logo.436.png | pokellector | Pokellector 英文系列列表里有独立的 "Mega Evolution Energies" 系列(对应 TCGdex 的 mee)，且该系列 8 张基本能量卡与本地 setName 下卡牌一致。 |
+| Pokémon | SVE: Scarlet & Violet Energies | https://den-media.pokellector.com/logos/Scarlet-Violet-Energies.logo.404.png | pokellector | Pokellector 英文系列列表里有独立的 "Scarlet & Violet Energies" 系列(pokemontcg.io 的 set id 也是 sve)，文件名与系列完全对应。 |
+| Pokémon | XY Trainer Kit: Bisharp & Wigglytuff | https://archives.bulbagarden.net/media/upload/7/74/XYTrainerKit_Bisharp_Wigglytuff.jpg | bulbapedia | 来自 Bulbapedia 条目 "XY Trainer Kit: Bisharp & Wigglytuff (TCG)" 的主图，文件名与系列名逐字对应。 |
+| Pokémon | XY Trainer Kit: Latias & Latios | https://archives.bulbagarden.net/media/upload/c/c1/XYTrainerKit_Latias_Latios.jpg | bulbapedia | 来自 Bulbapedia 条目 "XY Trainer Kit: Latias & Latios (TCG)" 的主图，文件名与系列名逐字对应。 |
+| Pokémon | XY Trainer Kit: Pikachu Libre & Suicune | https://archives.bulbagarden.net/media/upload/6/66/XYTrainerKit_PikachuLibre_Suicune.jpg | bulbapedia | 来自 Bulbapedia 条目 "XY Trainer Kit: Pikachu Libre & Suicune (TCG)" 的主图，文件名与系列名逐字对应。 |
+| Pokémon | XY Trainer Kit: Sylveon & Noivern | https://archives.bulbagarden.net/media/upload/9/92/XYTrainerKit.jpg | bulbapedia | 来自 Bulbapedia 条目 "XY Trainer Kit (TCG)" 的主图 XYTrainerKit.jpg；该条目即 Sylveon & Noivern 套牌(条目图像含 SetSymbolSylveon/Noivern_Half_Deck)。 |
+| Pokémon Japan | ADV Expansion Pack | https://archives.bulbagarden.net/media/upload/f/f1/ADV1_Expansion_Pack_pack.jpg | bulbapedia-article | Bulbapedia 条目「ADV Expansion Pack (TCG)」图像 ADV1 Expansion Pack pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | BKR: Reshiram-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/4/4d/BattleStrengthDeckReshiramEX.jpg | bulbapedia-article | Bulbapedia 条目「Reshiram-EX Battle Strength Deck (TCG)」图像 BattleStrengthDeckReshiramEX.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | BKZ: Zekrom-EX Battle Strength Deck | https://archives.bulbagarden.net/media/upload/a/a6/BattleStrengthDeckZekromEX.jpg | bulbapedia-article | Bulbapedia 条目「Zekrom-EX Battle Strength Deck (TCG)」图像 BattleStrengthDeckZekromEX.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Battle Road | https://archives.bulbagarden.net/media/upload/c/cb/Battle_Roads_Autumn_logo.png | bulbapedia-article | Bulbapedia 条目「Battle Road」图像 Battle Roads Autumn logo.png（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Black Deck Kit | https://archives.bulbagarden.net/media/upload/9/90/Team_Rocket_Strikes_Back_-_Black_Deck_Kit.jpg | bulbapedia-article | Bulbapedia 条目「Black Deck Kit (TCG)」图像 Team Rocket Strikes Back - Black Deck Kit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | City Gym Decks | https://archives.bulbagarden.net/media/upload/8/81/Brock_Pewter_City_Gym_Trainer_Battle_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Trainer Battle Decks (TCG)」图像 Brock Pewter City Gym Trainer Battle Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Dialga LV.X Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/e/e6/DialgaLV.XConstructedStandardDeck.jpg | bulbapedia-article | Bulbapedia 条目「Dialga LV.X Constructed Standard Deck (TCG)」图像 DialgaLV.XConstructedStandardDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Feraligatr Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/e/e7/Golden_Sky_Silvery_Ocean_-_Feraligatr_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Feraligatr Constructed Starter Deck (TCG)」图像 Golden Sky Silvery Ocean - Feraligatr Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Flygon Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/9/95/ADV3_Flygon_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Flygon Constructed Starter Deck (TCG)」图像 ADV3 Flygon Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Gift Box (Latias) | https://archives.bulbagarden.net/media/upload/d/d6/CSF_Dragon_Resurgence_Advanced_Gift_Box_Fierce.jpg | bulbapedia-article | Bulbapedia 条目「Dragon Resurgence (ATCG)」图像 CSF Dragon Resurgence Advanced Gift Box Fierce.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Gift Box (Latios) | https://archives.bulbagarden.net/media/upload/3/37/Latias_%26_Latios_Gift_Set_-_Box_front.jpg | bulbapedia-article | Bulbapedia 条目「Gift Box (TCG)」图像 Latias & Latios Gift Set - Box front.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Imprison! Gardevoir ex Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/3/36/ImprisonGardevoirexConstructedDeck.jpg | bulbapedia-article | Bulbapedia 条目「Imprison! Gardevoir ex Constructed Standard Deck (TCG)」图像 ImprisonGardevoirexConstructedDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Intro Pack (Bulbasaur) | https://archives.bulbagarden.net/media/upload/4/4f/IntroPack.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 IntroPack.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Intro Pack (Squirtle) | https://archives.bulbagarden.net/media/upload/4/4f/IntroPack.jpg | bulbapedia-article | Bulbapedia 条目「Intro Pack (TCG)」图像 IntroPack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | MEE: Starter Set ex Eevee ex | https://archives.bulbagarden.net/media/upload/0/00/Ex_Starter_Set_Eevee_ex.png | bulbapedia-merch | Bulbapedia 时代周边页图像 Ex Starter Set Eevee ex.png（文件名含系列罗马字名） |
+| Pokémon Japan | MEM: Starter Set ex Meowscarada ex | https://archives.bulbagarden.net/media/upload/1/15/Ex_Starter_Set_Sprigatito_Meowscarada_ex.png | bulbapedia-merch | Bulbapedia 时代周边页图像 Ex Starter Set Sprigatito Meowscarada ex.png（文件名含系列罗马字名） |
+| Pokémon Japan | MEZ: Starter Set ex Zoroark ex | https://archives.bulbagarden.net/media/upload/6/62/Ex_Starter_Set_Zorua_Zoroark_ex.png | bulbapedia-article | Bulbapedia 条目「Ex Starter Sets 2026 (TCG)」图像 Ex Starter Set Zorua Zoroark ex.png（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Master Kit (Bulbasaur) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | bulbapedia-article | Bulbapedia 条目「Master Kit (TCG)」图像 MasterKit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Master Kit (Side Deck) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 MasterKit.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | Master Kit (Torchic) | https://archives.bulbagarden.net/media/upload/9/96/MasterKit.jpg | bulbapedia-article | Bulbapedia 条目「Master Kit (TCG)」图像 MasterKit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Meganium Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/2/2c/Golden_Sky_Silvery_Ocean_-_Meganium_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Meganium Constructed Starter Deck (TCG)」图像 Golden Sky Silvery Ocean - Meganium Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Metagross Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/2/2e/ADV4_Metagross_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Metagross Constructed Starter Deck (TCG)」图像 ADV4 Metagross Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Mirage Forest | https://archives.bulbagarden.net/media/upload/9/96/PCG5_Mirage_Forest_pack.jpg | bulbapedia-article | Bulbapedia 条目「Mirage Forest (TCG)」图像 PCG5 Mirage Forest pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Offense and Defense of the Furthest Ends | https://archives.bulbagarden.net/media/upload/d/dd/PCG9_Offense_Defense_Furthest_Ends_pack.jpg | bulbapedia-article | Bulbapedia 条目「Offense and Defense of the Furthest Ends (TCG)」图像 PCG9 Offense Defense Furthest Ends pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Palkia LV.X Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/f/f0/PalkiaLV.XConstructedStandardDeck.jpg | bulbapedia-article | Bulbapedia 条目「Palkia LV.X Constructed Standard Deck (TCG)」图像 PalkiaLV.XConstructedStandardDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SV: Ceruledge ex Stellar Tera Type Starter Set | https://archives.bulbagarden.net/media/upload/8/80/Stellar_Tera_Type_Starter_Set_Ceruledge_ex.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Stellar Tera Type Starter Set Ceruledge ex.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | SV: Chien-Pao ex Battle Master Deck | https://archives.bulbagarden.net/media/upload/5/55/Battle_Master_Deck_Chien-Pao_ex_Contents.png | bulbapedia-article | Bulbapedia 条目「Battle Master Decks (TCG)」图像 Battle Master Deck Chien-Pao ex Contents.png（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SV: Mewtwo ex Terastal Starter Set | https://archives.bulbagarden.net/media/upload/2/2f/Terastal_Starter_Set_Mewtwo_ex_Contents.png | bulbapedia-article | Bulbapedia 条目「Terastal Starter Sets (TCG)」图像 Terastal Starter Set Mewtwo ex Contents.png（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SV: Skeledirge ex Terastal Starter Set | https://archives.bulbagarden.net/media/upload/4/49/Terastal_Starter_Set_Skeledirge_ex_Contents.png | bulbapedia-article | Bulbapedia 条目「Terastal Starter Sets (TCG)」图像 Terastal Starter Set Skeledirge ex Contents.png（文件名内嵌系列罗马字名） |
+| Pokémon Japan | SV: Sylveon ex Stellar Tera Type Starter Set | https://archives.bulbagarden.net/media/upload/c/c3/Stellar_Tera_Type_Starter_Set_Sylveon_ex.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Stellar Tera Type Starter Set Sylveon ex.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | SV: Terastal Charizard ex Battle Master Deck | https://archives.bulbagarden.net/media/upload/5/5e/Battle_Master_Deck_Terastal_Charizard_ex_Contents.png | bulbapedia-merch | Bulbapedia 时代周边页图像 Battle Master Deck Terastal Charizard ex Contents.png（文件名含系列罗马字名） |
+| Pokémon Japan | Salamence Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/0/03/ADV3_Salamence_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Salamence Constructed Starter Deck (TCG)」图像 ADV3 Salamence Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Shockwave! Tyranitar ex Constructed Standard Deck | https://archives.bulbagarden.net/media/upload/8/8e/ShockwaveTyranitarexConstructedDeck.jpg | bulbapedia-article | Bulbapedia 条目「Shockwave! Tyranitar ex Constructed Standard Deck (TCG)」图像 ShockwaveTyranitarexConstructedDeck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Silver Deck Kit | https://archives.bulbagarden.net/media/upload/5/5c/Team_Rocket_Strikes_Back_-_Silver_Deck_Kit.jpg | bulbapedia-article | Bulbapedia 条目「Silver Deck Kit (TCG)」图像 Team Rocket Strikes Back - Silver Deck Kit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Team Plasma's Powered Half Deck | https://archives.bulbagarden.net/media/upload/f/f9/Expansion_Pack_Team_Plasma_Set.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Expansion Pack Team Plasma Set.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | The Town on No Map | https://archives.bulbagarden.net/media/upload/a/ab/E2_The_Town_on_No_Map_pack.jpg | bulbapedia-article | Bulbapedia 条目「The Town on No Map (TCG)」图像 E2 The Town on No Map pack.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | Typhlosion Constructed Starter Deck | https://archives.bulbagarden.net/media/upload/9/9f/Golden_Sky_Silvery_Ocean_-_Typhlosion_Deck.jpg | bulbapedia-article | Bulbapedia 条目「Typhlosion Constructed Starter Deck (TCG)」图像 Golden Sky Silvery Ocean - Typhlosion Deck.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | XYE: Emboar-EX vs Togekiss-EX Deck Kit | https://archives.bulbagarden.net/media/upload/9/93/EmboarEX_vs_TogekissEX_Deck_Kit.jpg | bulbapedia-article | Bulbapedia 条目「Emboar-EX vs Togekiss-EX Deck Kit (TCG)」图像 EmboarEX vs TogekissEX Deck Kit.jpg（文件名内嵌系列罗马字名） |
+| Pokémon Japan | sA: Fighting Starter Set V | https://archives.bulbagarden.net/media/upload/2/20/V_Starter_Set_Fighting.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 V Starter Set Fighting.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sA: Fire Starter Set V | https://archives.bulbagarden.net/media/upload/5/53/V_Starter_Set_Fire.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 V Starter Set Fire.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sA: Grass Starter Set V | https://archives.bulbagarden.net/media/upload/3/3a/V_Starter_Set_Grass.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 V Starter Set Grass.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sA: Lightning Starter Set V | https://archives.bulbagarden.net/media/upload/d/de/V_Starter_Set_Lightning.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 V Starter Set Lightning.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sA: Water Starter Set V | https://archives.bulbagarden.net/media/upload/6/69/V_Starter_Set_Water.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 V Starter Set Water.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sC: Charizard Starter Set VMAX | https://archives.bulbagarden.net/media/upload/3/36/Charizard_VMAX_Starter_Set.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Charizard VMAX Starter Set.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sC: Grimmsnarl Starter Set VMAX | https://archives.bulbagarden.net/media/upload/d/d0/Grimmsnarl_VMAX_Starter_Set.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Grimmsnarl VMAX Starter Set.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sEF: Venusaur Starter Set VMAX | https://archives.bulbagarden.net/media/upload/1/1e/Venusaur_VMAX_Starter_Set.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Venusaur VMAX Starter Set.jpg（文件名含系列罗马字名） |
+| Pokémon Japan | sEK: Blastoise Starter Set VMAX | https://archives.bulbagarden.net/media/upload/e/e8/Blastoise_VMAX_Starter_Set.jpg | bulbapedia-merch | Bulbapedia 时代周边页图像 Blastoise VMAX Starter Set.jpg（文件名含系列罗马字名） |
+| Magic: The Gathering | 30th Anniversary Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 | scryfall | TCGPlayer 该集合 = Scryfall 的 30A 促销子集 p30h/p30a/p30m/p30t（History/Play/Misc/Celebration Tokyo）合并，卡名一一对应（Serra Angel、Lord of Atlantis…Richard Garfield, Ph.D.），四者印在卡面上的符号都是同一枚 OP 星形符号 star.svg；已用 p30h 的 Llanowar Elves 卡图目视确认该星形符号。 |
+| Magic: The Gathering | AFR Ampersand Promos | https://svgs.scryfall.io/sets/afr.svg?1791172800 | scryfall | TCGPlayer 该集合 80 张全部包含于 Scryfall 的 pafr『Adventures in the Forgotten Realms Promos』（81 张，仅多出 Purple Worm），pafr 的 icon 即 AFR 主符号 afr.svg，也就是卡面上的 D&D 花体 & 符号。 |
+| Magic: The Gathering | APAC Lands | https://svgs.scryfall.io/sets/papac.svg?1791172800 | scryfall | 数量吻合：TCGPlayer『APAC Lands』15 张 = Scryfall palp『Asia Pacific Land Program』15 张；与已映射的『European Lands』→pelp 完全对称，符号 papac.svg 正是该土地促销系列印的图案。 |
+| Magic: The Gathering | Archenemy: Duskmourn | https://svgs.scryfall.io/sets/dsc.svg?1791172800 | scryfall | 该集合 40 张全是 Scheme 卡，与 Scryfall dsc『Duskmourn: House of Horror Commander』内的 40 张 Scheme 完全对应（如 Chaos Is My Plaything）；这些牌印的是 DSC 符号，故取 dsc.svg。 |
+| Magic: The Gathering | Commander | https://svgs.scryfall.io/sets/cmd.svg?1791172800 | scryfall | TCGPlayer『Commander』(缩写 CMD，发行 2011-06-17，318 张) = Scryfall cmd『Commander 2011』(318 张)；首张卡 Karador, Ghost Chieftain 即 CMD 卡，数量与发行日吻合。 |
+| Magic: The Gathering | International Edition | https://svgs.scryfall.io/sets/cei.svg?1791172800 | scryfall | TCGPlayer『International Edition』卡名一律带 (IE) 后缀、302 张，与 Scryfall cei『Intl. Collectors' Edition』(302) 对应；且与已映射的『Collector's Edition』(301)→ced(302) 结构完全对称，cei.svg 为该版印的符号。 |
+| Magic: The Gathering | Planechase: March of the Machine | https://svgs.scryfall.io/sets/moc.svg?1791172800 | scryfall | 该集合是 MOM 指挥官预组里的 Plane 卡；Scryfall 把这些 Plane 收在 moc『March of the Machine Commander』里，其符号为 moc.svg（与 Scryfall 对 Planechase 平面卡沿用母系列符号的做法一致）。 |
+| Magic: The Gathering | Planechase: Universes Beyond: Doctor Who | https://svgs.scryfall.io/sets/who.svg?1791172800 | scryfall | 该集合是 Doctor Who 指挥官预组里的 Plane 卡（Bad Wolf Bay、Aplan Mortarium…）；Scryfall 把这些 Plane 收在 who『Doctor Who』集合内，符号为 who.svg。 |
+| Magic: The Gathering | Planeswalker Event Promos | https://svgs.scryfall.io/sets/star.svg?1791172800 | scryfall | 卡名几乎完全命中 Scryfall pwcs『Planeswalker Championship Promos』(46 张)：Pteramander、Narset, Parter of Veils、Liliana, Dreadhorde General、Basri Ket…（TCGPlayer 只多出 1st Place/Top 8/Top 50 标注），故用 pwcs 的符号 star.svg。 |
+| Magic: The Gathering | Secret Lair x MSCHF: The Zeta Set | https://svgs.scryfall.io/sets/slz.svg?1791172800 | scryfall | 名称与数量吻合：TCGPlayer 362 张 ≈ Scryfall slz『The Zeta Set』(363 张，box，2026-09-02)，即 Secret Lair × MSCHF 联名的 Zeta Set，符号 slz.svg。 |
+| Yu-Gi-Oh! | 2002 Collectors Tin | https://ms.yugipedia.com/e/e4/BPT-PromoEN-2002.png | yugipedia | fandom《2002 Collectible Tin》fandom 页面主图，文件名含代码 BPT |
+| Yu-Gi-Oh! | 2003 Collectors Tin | https://ms.yugipedia.com/3/3a/BPT-PromoEN-2003.png | yugipedia | fandom《2003 Collector's Tins》fandom 页面主图，文件名含代码 BPT |
+| Yu-Gi-Oh! | 2004 Collectors Tin | https://ms.yugipedia.com/e/e4/CT1-PromoEN.jpg | yugipedia | fandom《Collectible Tins 2004》fandom 页面主图，文件名含代码 CT1 |
+| Yu-Gi-Oh! | 2011 Duelist Pack Tin | https://ms.yugipedia.com/e/ed/DPC5-PromoEN.jpg | yugipedia | fandom《Duelist Pack Collection Tin 2011》fandom 页面主图（相似度 0.8） |
+| Yu-Gi-Oh! | 25th Anniversary Tin: Dueling Mirrors | https://ms.yugipedia.com/6/6c/MP24-PromoEN.png | yugipedia | fandom《25th Anniversary Tin: Dueling Mirrors》fandom 页面主图，文件名含代码 MP24 |
+| Yu-Gi-Oh! | Advent Calendar 2011 (Adventskalender) | https://ms.yugipedia.com/b/b7/AC11-PromoDE.png | yugipedia | fandom《Yu-Gi-Oh! Advent Calendar》fandom 页面主图，文件名含代码 AC11 |
+| Yu-Gi-Oh! | Advent Calendar 2014 (Adventskalender ZEXAL-Edition) | https://ms.yugipedia.com/9/92/AC14-PromoDE.png | yugipedia | fandom《Yu-Gi-Oh! Advent Calendar ZEXAL Edition》fandom 页面主图，文件名含代码 AC14 |
+| Yu-Gi-Oh! | Crossed Souls: Advanced Edition | https://ms.yugipedia.com/e/e8/CROS-PromoNA.png | yugipedia | fandom《Crossed Souls Advance Edition》fandom 页面主图（相似度 0.75） |
+| Yu-Gi-Oh! | Duel Terminal - Preview | https://ms.yugipedia.com/5/59/DuelTerminal.png | yugipedia | fandom《Duel Terminal - Preview》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | Duel Terminal 1 | https://ms.yugipedia.com/5/59/DuelTerminal.png | yugipedia | fandom《Duel Terminal 1》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | Duelist League Promo | https://ms.yugipedia.com/4/40/DL-PromoEN-Konami.png | yugipedia | fandom《Duelist League 2010 participation cards》fandom 页面主图，文件名含代码 DL |
+| Yu-Gi-Oh! | Elemental Hero Collection 1 | https://ms.yugipedia.com/e/e1/EHC-PromoEN.jpg | yugipedia | fandom《Elemental Hero Collection 1》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | Elemental Hero Collection 2 | https://ms.yugipedia.com/e/e1/EHC-PromoEN.jpg | yugipedia | fandom《Elemental Hero Collection 2》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | Forbidden Legacy | https://ms.yugipedia.com/1/1d/FL-PromoEN.jpg | yugipedia | fandom《Forbidden Legacy》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | GX Ultimate Beginner's Pack 1 | https://ms.yugipedia.com/e/eb/UBP1-PromoEN.jpg | yugipedia | fandom《Yu-Gi-Oh! GX Ultimate Beginner's Pack》fandom 页面主图，文件名含代码 UBP1 |
+| Yu-Gi-Oh! | Hobby League 1 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | yugipedia | fandom《Hobby League》人工指定页面 |
+| Yu-Gi-Oh! | Hobby League 2 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | yugipedia | fandom《Hobby League》人工指定页面 |
+| Yu-Gi-Oh! | Hobby League 3 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | yugipedia | fandom《Hobby League》人工指定页面 |
+| Yu-Gi-Oh! | Hobby League 4 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | yugipedia | fandom《Hobby League》人工指定页面 |
+| Yu-Gi-Oh! | Hobby League 5 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | yugipedia | fandom《Hobby League》人工指定页面 |
+| Yu-Gi-Oh! | Hobby League 6 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | yugipedia | fandom《Hobby League》人工指定页面 |
+| Yu-Gi-Oh! | Hobby League 7 | https://ms.yugipedia.com/b/b2/HobbyLeague-Poster-EN.png | yugipedia | fandom《Hobby League》人工指定页面 |
+| Yu-Gi-Oh! | Judge Promotional Cards | https://ms.yugipedia.com/1/1b/KonamiJudgeLogo-EN.png | yugipedia | fandom《Judge promotional cards》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | King of Games: Yugi's Legendary Decks | https://ms.yugipedia.com/1/17/Cover_YGLD-DeckEN.png | yugipedia | fandom《Yugi's Legendary Decks》fandom 页面主图，文件名含代码 YGLD |
+| Yu-Gi-Oh! | King of Games: Yugi's Legendary Decks (2020 Date Reprint) | https://ms.yugipedia.com/1/17/Cover_YGLD-DeckEN.png | yugipedia | fandom《Yugi's Legendary Decks》fandom 页面主图，文件名含代码 YGLD |
+| Yu-Gi-Oh! | Legendary Collection 1 | https://ms.yugipedia.com/f/ff/LC01-PromoEN.png | yugipedia | fandom《Legendary Collection 1》fandom 页面主图，文件名含代码 LC01 |
+| Yu-Gi-Oh! | Light and Darkness Power Pack | https://ms.yugipedia.com/7/72/LDPP-PromoEN.jpg | yugipedia | fandom《Light and Darkness Power Pack》fandom 页面主图，文件名含代码 LDPP |
+| Yu-Gi-Oh! | Master Collection Volume 1 | https://ms.yugipedia.com/5/5a/MC1-PromoEN.jpg | yugipedia | fandom《Master Collection Volume 1》fandom 页面主图，文件名含代码 MC1 |
+| Yu-Gi-Oh! | Master Collection Volume 2 | https://ms.yugipedia.com/1/18/MC2-PromoEN.jpg | yugipedia | fandom《Master Collection Volume 2》fandom 页面主图，文件名含代码 MC2 |
+| Yu-Gi-Oh! | Mattel Action Figure Promos: Series 1 | https://ms.yugipedia.com/5/5d/MF01-PromoEN.jpg | yugipedia | fandom《Mattel Action Figure promotional cards: Series 1》fandom 页面主图，文件名含代码 MF01 |
+| Yu-Gi-Oh! | Mattel Action Figure Promos: Series 3 | https://ms.yugipedia.com/1/16/MF03-PromoEN.jpg | yugipedia | fandom《Mattel Action Figure promotional cards: Series 3》fandom 页面主图，文件名含代码 MF03 |
+| Yu-Gi-Oh! | Pharaoh Tour Promos | https://ms.yugipedia.com/5/5a/PharaohTour2007-MedalCase.png | yugipedia | fandom《Pharaoh Tour》fandom 页面主图（相似度 0.667） |
+| Yu-Gi-Oh! | Samurai Assault | https://ms.yugipedia.com/4/4e/SAAS-PromoEN.png | yugipedia | fandom《Samurai Assault》fandom 页面文件 SAAS-PromoEN.png（含代码 SAAS） |
+| Yu-Gi-Oh! | Shonen Jump Championship Series Promos | https://ms.yugipedia.com/e/e3/SJCS-PromoEN.png | yugipedia | fandom《Shonen Jump Championship Series Promos》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | Shonen Jump Magazine Promos | https://ms.yugipedia.com/0/00/JUMP-PromoEN.jpg | yugipedia | fandom《Shonen Jump Magazine Promos》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | Speed Duel Demo Deck | https://ms.yugipedia.com/7/77/DEM5-Poster-EN.png | yugipedia | fandom《Speed Duel Demo Deck》fandom 页面主图，文件名含代码 DEM5 |
+| Yu-Gi-Oh! | Speed Duel GX: Midterm Destruction | https://ms.yugipedia.com/a/ad/SGX4-BoxEN.png | yugipedia | fandom《Speed Duel GX: Midterm Destruction》fandom 页面主图，文件名含代码 SGX4 |
+| Yu-Gi-Oh! | Speed Duel: Tournament Pack 1 | https://ms.yugipedia.com/3/3e/STP1-BoosterEN.png | yugipedia | fandom《Speed Duel Tournament Pack 1》人工指定页面 |
+| Yu-Gi-Oh! | Speed Duel: Tournament Pack 7 | https://ms.yugipedia.com/b/bb/STP7-BoosterEN.png | yugipedia | fandom《Speed Duel Tournament Pack 7》fandom 页面主图，文件名含代码 STP7 |
+| Yu-Gi-Oh! | Super Starter: Space-Time Showdown Power-Up Pack | https://ms.yugipedia.com/7/7e/YS14-PowerUpPackV1.png | yugipedia | fandom《Space-Time Showdown Power-Up Pack》fandom 页面主图（相似度 0.75） |
+| Yu-Gi-Oh! | Super Starter: V for Victory Power-Up Pack | https://ms.yugipedia.com/3/38/YS13-PromoEU.png | yugipedia | fandom《Super Starter Power-Up Pack》fandom 页面主图，文件名含代码 YS13 |
+| Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack: Gold Edition | https://ms.yugipedia.com/7/74/MVP1-PromoNA.png | yugipedia | fandom《Yu-Gi-Oh! The Dark Side of Dimensions Movie Pack: Gold Edition》人工指定页面 |
+| Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack: Secret Edition | https://ms.yugipedia.com/3/30/MVP1-PromoNA-SecretEdition.png | yugipedia | fandom《Yu-Gi-Oh! The Dark Side of Dimensions Movie Pack Secret Edition》fandom 页面主图（相似度 0.75） |
+| Yu-Gi-Oh! | The Dark Side of Dimensions Movie Pack: Special Edition | https://ms.yugipedia.com/7/7b/MVP1-PromoNA-SpecialEdition.png | yugipedia | fandom《Yu-Gi-Oh! The Dark Side of Dimensions Movie Pack Special Edition》fandom 页面主图（相似度 0.75） |
+| Yu-Gi-Oh! | The Valuable Book Volume 5 | https://ms.yugipedia.com/f/f3/VB5-PromoJP-Ver2.jpg | yugipedia | fandom《The Valuable Book 5 promotional cards》fandom 页面主图，文件名含代码 VB5 |
+| Yu-Gi-Oh! | Toys "R" Us Throwdown Promo | https://ms.yugipedia.com/e/e6/TKN2-PromoEN.png | yugipedia | fandom《Toys "R" Us Throwdown promotional cards》fandom 页面主图，文件名含代码 TKN2 |
+| Yu-Gi-Oh! | Twilight Edition | https://ms.yugipedia.com/4/4f/TWED-PromoEN.jpg | yugipedia | fandom《Twilight Edition》fandom 页面主图，文件名含代码 TWED |
+| Yu-Gi-Oh! | Ultimate Edition 2 | https://ms.yugipedia.com/3/31/UE02-PromoEN.jpg | yugipedia | fandom《Ultimate Edition 2》fandom 页面主图（相似度 1.0） |
+| Yu-Gi-Oh! | X-Saber Power-Up | https://ms.yugipedia.com/f/f4/XSPU-PromoEN.jpg | yugipedia | fandom《X-Saber Power-Up》fandom 页面主图，文件名含代码 XSPU |
+| Yu-Gi-Oh! | Yu-Gi-Oh! 5D's Tag Force Promotional Cards | https://ms.yugipedia.com/9/99/TF05-VideoGameNA.jpg | yugipedia | fandom《Yu-Gi-Oh! 5D's Tag Force 5 promotional cards》人工指定页面 |
+| Yu-Gi-Oh! | Yu-Gi-Oh! Duel Monsters International: Worldwide Edition | https://ms.yugipedia.com/f/fa/GBI-Box-AE.png | yugipedia | fandom《Yu-Gi-Oh! Duel Monsters International: Worldwide Edition promotional cards》人工指定页面 |
+| Yu-Gi-Oh! | Yu-Gi-Oh! The Movie Ani-Manga Promo | https://ms.yugipedia.com/2/2e/YMA-PromoEN.png | yugipedia | fandom《Yu-Gi-Oh! The Movie Ani-Manga Promo》fandom 页面主图，文件名含代码 YMA |
+| Yu-Gi-Oh! | Yu-Gi-Oh! The Movie Promo Set | https://ms.yugipedia.com/9/9e/MOV-BoosterEN.png | yugipedia | fandom《Movie Pack》人工指定页面 |
+| Yu-Gi-Oh! | Yu-Gi-Oh! Tokens | https://ms.yugipedia.com/8/80/TKN3-PromoEN.jpg | yugipedia | fandom《Token Pack》人工指定页面 |
+| Yu-Gi-Oh! | Yu-Gi-Oh! ZEXAL Manga Promotional Cards | https://ms.yugipedia.com/d/df/YZ01-PromoEN.png | yugipedia | fandom《Yu-Gi-Oh! ZEXAL manga promotional cards》fandom 页面主图，文件名含代码 YZ0# |
+| Yu-Gi-Oh! | Yu-Gi-Oh! ZEXAL World Duel Carnival Promos | https://ms.yugipedia.com/3/30/ZDC1-VideoGameEU.png | yugipedia | fandom《Yu-Gi-Oh! ZEXAL World Duel Carnival》fandom 页面主图（相似度 0.875） |
+| One Piece Card Game | Awakening of the New Era: 1st Anniversary Tournament Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_23213/logo.webp | inherit | TCGPlayer 将本子系列归入父系列（setCode OP05 ANN），沿用父系列 Awakening of the New Era（2023-12-08 发售，正值游戏 1 周年）的 holodex logo |
+| One Piece Card Game | Carrying On His Will: 3rd Anniversary Tournament Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_24303/logo.webp | inherit | TCGPlayer 将本子系列归入父系列（setCode OP13 ANN），沿用父系列 Carrying On His Will（2025-11-07，3 周年）的 holodex logo |
+| One Piece Card Game | Emperors in the New World: 2nd Anniversary Tournament Cards | https://holodex-prod-bucket.b-cdn.net/sets/op_23589/logo.webp | inherit | TCGPlayer 将本子系列归入父系列（setCode OP09 ANN），沿用父系列 Emperors in the New World（2024-12-13，2 周年）的 holodex logo |
+| One Piece Card Game | Extra Booster: One Piece Heroines Edition Vol. 2 | https://en.onepiece-cardgame.com/onepiececg/bccard/en/product/2026/09/28/bTvjcxYUnftEwGFZ/logo_product.webp | onepiece-official | 官方产品页 products/eb05.html 标题 EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05] 的产品 wordmark logo |
+| One Piece Card Game | Learn Together Deck Set | https://en.onepiece-cardgame.com/renewal/images/products/decks/ld01/img_item01.webp | onepiece-official | 官方产品页 products/decks/ld01.php 标题 Learn Together Deck Set（TCGPlayer 代号 LT-01），图为其商品缩略图 |
+| One Piece Card Game | ST-01: Starter Deck 1 Straw Hat Crew | https://en.onepiece-cardgame.com/renewal/images/products/decks/st01/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st01-04.php 标注 [ST-01]，图取自官方商品缩略图 renewal/images/products/decks/st01/img_item01.webp |
+| One Piece Card Game | ST-01: Starter Deck 1 Straw Hat Crew (Super Pre-Release Edition) | https://en.onepiece-cardgame.com/renewal/images/products/decks/st01_pre/img_item01.webp | onepiece-official | 官方产品页 products/decks/st01-0X_pre.php 标注 [ST-01 PRE]，即 Super Pre-Release Edition（1st Edition 包装），与普通版 ST-01 同套卡、不同发售形式，官方为其单独出图 st01_pre/img_item01.webp |
+| One Piece Card Game | ST-02: Starter Deck 2 Worst Generation | https://en.onepiece-cardgame.com/renewal/images/products/decks/st02/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st01-04.php 标注 [ST-02]，图取自官方商品缩略图 renewal/images/products/decks/st02/img_item01.webp |
+| One Piece Card Game | ST-02: Starter Deck 2 Worst Generation (Super Pre-Release Edition) | https://en.onepiece-cardgame.com/renewal/images/products/decks/st02_pre/img_item01.webp | onepiece-official | 官方产品页 products/decks/st02-0X_pre.php 标注 [ST-02 PRE]，即 Super Pre-Release Edition（1st Edition 包装），与普通版 ST-02 同套卡、不同发售形式，官方为其单独出图 st02_pre/img_item01.webp |
+| One Piece Card Game | ST-03: Starter Deck 3 The Seven Warlords of The Sea | https://en.onepiece-cardgame.com/renewal/images/products/decks/st03/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st01-04.php 标注 [ST-03]，图取自官方商品缩略图 renewal/images/products/decks/st03/img_item01.webp |
+| One Piece Card Game | ST-03: Starter Deck 3 The Seven Warlords of The Sea (Super Pre-Release Edition) | https://en.onepiece-cardgame.com/renewal/images/products/decks/st03_pre/img_item01.webp | onepiece-official | 官方产品页 products/decks/st03-0X_pre.php 标注 [ST-03 PRE]，即 Super Pre-Release Edition（1st Edition 包装），与普通版 ST-03 同套卡、不同发售形式，官方为其单独出图 st03_pre/img_item01.webp |
+| One Piece Card Game | ST-04: Starter Deck 4 Animal Kingdom Pirates | https://en.onepiece-cardgame.com/renewal/images/products/decks/st04/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st01-04.php 标注 [ST-04]，图取自官方商品缩略图 renewal/images/products/decks/st04/img_item01.webp |
+| One Piece Card Game | ST-04: Starter Deck 4 Animal Kingdom Pirates (Super Pre-Release Edition) | https://en.onepiece-cardgame.com/renewal/images/products/decks/st04_pre/img_item01.webp | onepiece-official | 官方产品页 products/decks/st04-0X_pre.php 标注 [ST-04 PRE]，即 Super Pre-Release Edition（1st Edition 包装），与普通版 ST-04 同套卡、不同发售形式，官方为其单独出图 st04_pre/img_item01.webp |
+| One Piece Card Game | ST-05: Starter Deck 5 Film Edition | https://en.onepiece-cardgame.com/renewal/images/products/decks/st05/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st05.php 标注 [ST-05]，图取自官方商品缩略图 renewal/images/products/decks/st05/img_item01.webp |
+| One Piece Card Game | ST-06: Starter Deck 6 Absolute Justice | https://en.onepiece-cardgame.com/renewal/images/products/decks/st06/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st06.php 标注 [ST-06]，图取自官方商品缩略图 renewal/images/products/decks/st06/img_item01.webp |
+| One Piece Card Game | ST-07: Starter Deck 7 Big Mom Pirates | https://en.onepiece-cardgame.com/renewal/images/products/decks/st07/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st07.php 标注 [ST-07]，图取自官方商品缩略图 renewal/images/products/decks/st07/img_item01.webp |
+| One Piece Card Game | ST-08: Starter Deck 8 Monkey.D.Luffy | https://en.onepiece-cardgame.com/renewal/images/products/decks/st08/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st08.php 标注 [ST-08]，图取自官方商品缩略图 renewal/images/products/decks/st08/img_item01.webp |
+| One Piece Card Game | ST-09: Starter Deck 9 Yamato | https://en.onepiece-cardgame.com/renewal/images/products/decks/st09/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st09.php 标注 [ST-09]，图取自官方商品缩略图 renewal/images/products/decks/st09/img_item01.webp |
+| One Piece Card Game | ST-10: Ultra Deck The Three Captains | https://en.onepiece-cardgame.com/renewal/images/products/decks/st10/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st10.php 标注 [ST-10]，图取自官方商品缩略图 renewal/images/products/decks/st10/img_item01.webp |
+| One Piece Card Game | ST-11: Starter Deck 11 Uta | https://en.onepiece-cardgame.com/renewal/images/products/decks/st11/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st11.php 标注 [ST-11]，图取自官方商品缩略图 renewal/images/products/decks/st11/img_item01.webp |
+| One Piece Card Game | ST-12: Starter Deck 12 Zoro and Sanji | https://en.onepiece-cardgame.com/renewal/images/products/decks/st12/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st12.php 标注 [ST-12]，图取自官方商品缩略图 renewal/images/products/decks/st12/img_item01.webp |
+| One Piece Card Game | ST-13: Ultra Deck The Three Brothers | https://en.onepiece-cardgame.com/renewal/images/products/decks/st13/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st13.php 标注 [ST-13]，图取自官方商品缩略图 renewal/images/products/decks/st13/img_item01.webp |
+| One Piece Card Game | ST-14: Starter Deck 14 3D2Y | https://en.onepiece-cardgame.com/renewal/images/products/decks/st14/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st14.php 标注 [ST-14]，图取自官方商品缩略图 renewal/images/products/decks/st14/img_item01.webp |
+| One Piece Card Game | ST-15: Starter Deck 15 RED Edward.Newgate | https://en.onepiece-cardgame.com/renewal/images/products/decks/st15/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st15-20.php 标注 [ST-15]，图取自官方商品缩略图 renewal/images/products/decks/st15/img_item01.webp |
+| One Piece Card Game | ST-16: Starter Deck 16 GREEN Uta | https://en.onepiece-cardgame.com/renewal/images/products/decks/st16/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st15-20.php 标注 [ST-16]，图取自官方商品缩略图 renewal/images/products/decks/st16/img_item01.webp |
+| One Piece Card Game | ST-17: Starter Deck 17 BLUE Donquixote Doflamingo | https://en.onepiece-cardgame.com/renewal/images/products/decks/st17/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st15-20.php 标注 [ST-17]，图取自官方商品缩略图 renewal/images/products/decks/st17/img_item01.webp |
+| One Piece Card Game | ST-18: Starter Deck 18 PURPLE Monkey.D.Luffy | https://en.onepiece-cardgame.com/renewal/images/products/decks/st18/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st15-20.php 标注 [ST-18]，图取自官方商品缩略图 renewal/images/products/decks/st18/img_item01.webp |
+| One Piece Card Game | ST-19: Starter Deck 19 BLACK Smoker | https://en.onepiece-cardgame.com/renewal/images/products/decks/st19/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st15-20.php 标注 [ST-19]，图取自官方商品缩略图 renewal/images/products/decks/st19/img_item01.webp |
+| One Piece Card Game | ST-20: Starter Deck 20 YELLOW Charlotte Katakuri | https://en.onepiece-cardgame.com/renewal/images/products/decks/st20/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st15-20.php 标注 [ST-20]，图取自官方商品缩略图 renewal/images/products/decks/st20/img_item01.webp |
+| One Piece Card Game | ST-21: Starter Deck 21 EX Gear 5 | https://en.onepiece-cardgame.com/renewal/images/products/decks/st21/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st21.php 标注 [ST-21]，图取自官方商品缩略图 renewal/images/products/decks/st21/img_item01.webp |
+| One Piece Card Game | ST-22: Starter Deck 22 Ace & Newgate | https://en.onepiece-cardgame.com/renewal/images/products/decks/st22/img_item01.webp | onepiece-official | 官方商品列表/产品页 products/decks/st22.php 标注 [ST-22]，图取自官方商品缩略图 renewal/images/products/decks/st22/img_item01.webp |
+| One Piece Card Game | ST-30: Starter Deck 30 EX Luffy & Ace | https://en.onepiece-cardgame.com/onepiececg/bccard/en/product/2026/05/19/ACokwI6ZmNuQ6VvQ/logo.webp | onepiece-official | 官方产品页 products/st30.html 内的产品 wordmark logo.webp，页标题标注 [ST-30] |
+| One Piece Card Game | ST-31: Starter Deck 31 RED Monkey.D.Luffy | https://en.onepiece-cardgame.com/onepiececg/bccard/en/product/2026/07/08/InLBFwLaInGpv9HA/logo.webp | onepiece-official | 官方产品页 products/st31.html 内的产品 wordmark logo.webp，页标题标注 [ST-31] |
+| One Piece Card Game | ST-32: Starter Deck 32 GREEN Roronoa Zoro | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/07/08/5R8wBKVP7hLLIUhp/logo.webp | onepiece-official | 官方产品页 products/st32.html 内的产品 wordmark logo.webp，页标题标注 [ST-32] |
+| One Piece Card Game | ST-33: Starter Deck 33 BLUE Kuzan | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/07/08/6FGCBi9se6w9hBiy/logo.webp | onepiece-official | 官方产品页 products/st33.html 内的产品 wordmark logo.webp，页标题标注 [ST-33] |
+| One Piece Card Game | ST-34: Starter Deck 34 PURPLE Charlotte Katakuri | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/07/08/oRSVrIfpu77Fbv9Y/logo.webp | onepiece-official | 官方产品页 products/st34.html 内的产品 wordmark logo.webp，页标题标注 [ST-34] |
+| One Piece Card Game | ST-35: Starter Deck 35 RED/BLACK Sabo | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/07/08/2kibnkbrawTWtCqj/logo.webp | onepiece-official | 官方产品页 products/st35.html 内的产品 wordmark logo.webp，页标题标注 [ST-35] |
+| One Piece Card Game | ST-36: Starter Deck 36 YELLOW Eustass"Captain"Kid | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/07/08/StFKH3nRcLZQbOiH/logo.webp | onepiece-official | 官方产品页 products/st36.html 内的产品 wordmark logo.webp，页标题标注 [ST-36] |
+| One Piece Card Game | Set Sail Deck Set | https://en.onepiece-cardgame.com/onepiececg/bccard/en/product/2026/08/20/Xn03frg9xHS0R6YX/img_item01.webp | onepiece-official | 官方产品页 products/sd01.html 标题 Set Sail Deck Set [SD-01]，图为其商品主图 |
+| One Piece Card Game | The Dominance of God | https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/09/18/68g26pmHJowl0k6G/logo_product.webp | onepiece-official | 官方产品页 products/op18.html 标题 BOOSTER PACK -THE DOMINANCE OF GOD- [OP-18] 的产品 wordmark logo |
+| Flesh and Blood TCG | Armory Deck: Jarl Vetreidi | https://cdn.fabtcg.com/uploads/2025/12/jarl_logo.png | fab-official | 官网产品为『Armory Deck Origins: Jarl Vetreiđi』(digital-assets/armory-deck-origins-jarl-vetreidi/)，jarl_logo.png 正是『ARMORY DECK ORIGINS + JARL VETREIDI』盾徽 logo；TCGPlayer 略去 Origins 字样，为同一副 Jarl 甲胄套牌。 |
+| Flesh and Blood TCG | Compendium of Rathe - Antiquity Pack | https://cdn.fabtcg.com/uploads/2025/12/pen_antiquity.png | fab-official | 官网(compendium-of-rathe)中 Antiquity Pack 即 Compendium of Rathe 内含的烫金补充包，pen_antiquity.png/jp_pen_antiquity_booster.png 就是该包实物图，为官网唯一对应 Antiquity Pack 的素材。 |
+| Flesh and Blood TCG | GEM Pack 1 | https://cdn.fabtcg.com/uploads/2025/06/gem_pack_1_cover.jpg | fab-official | 官网 gem-pack-1 文章的封面图，即印有 GEM / PACK 1 的官方促销包实物（GEM Pack 官方无独立系列 logo，此为每期专属素材）。 |
+| Flesh and Blood TCG | GEM Pack 2 | https://cdn.fabtcg.com/uploads/2025/07/25_05_GEMPACK_2_CAROUSEL3.jpg | fab-official | 官网 gem-pack-2 文章的官方宣传图，实物包印有 GEM / PACK 2。 |
+| Flesh and Blood TCG | GEM Pack 3 | https://cdn.fabtcg.com/uploads/2025/09/Gempack_3.min-400x350.format-webp.webp | fab-official | 官网 gem-pack-3 文章的官方 og:image，实物包印有 GEM / PACK 3。 |
+| Flesh and Blood TCG | GEM Pack 4 | https://cdn.fabtcg.com/uploads/2026/01/GEM-PACK-4-PACKS-1-1024x768.png | fab-official | 官网 gem-pack-4 文章的官方产品图，实物包印有 GEM / PACK 4。 |
+| Flesh and Blood TCG | GEM Pack 6 | https://cdn.fabtcg.com/uploads/2026/09/gem-pack-6-cover-1024x768.png | fab-official | 官网 gem-pack-6 文章的官方封面图，实物包印有 GEM / PACK 6。 |
+| Flesh and Blood TCG | Gem Pack 5 | https://cdn.fabtcg.com/uploads/2026/05/GEM-PACK-5-PACKS_-1-1024x768.png | fab-official | 官网 gem-pack-5 文章的官方产品图，实物包印有 GEM / PACK 5。 |
+| Flesh and Blood TCG | Hero Deck: Bravo | https://cdn.fabtcg.com/uploads/2025/12/assembly_deck_hero_trim.jpg | fab-official | 官网 Welcome to Rathe 素材 assembly_deck_hero_trim.jpg 展示 4 副『… Hero Deck』(Bravo/Dorinthea/Katsu/Rhinar)；TCGPlayer『Hero Deck: X』即『Hero Decks: Welcome to Rathe - X [1st Edition]』，四副共用该合集产品图。 |
+| Flesh and Blood TCG | Hero Deck: Dorinthea | https://cdn.fabtcg.com/uploads/2025/12/assembly_deck_hero_trim.jpg | fab-official | 同 Hero Deck: Bravo，官网 Welcome to Rathe 的 4 副 Hero Deck 合集产品图，含 Dorinthea Hero Deck。 |
+| Flesh and Blood TCG | Hero Deck: Katsu | https://cdn.fabtcg.com/uploads/2025/12/assembly_deck_hero_trim.jpg | fab-official | 同 Hero Deck: Bravo，官网 Welcome to Rathe 的 4 副 Hero Deck 合集产品图，含 Katsu Hero Deck。 |
+| Flesh and Blood TCG | Hero Deck: Rhinar | https://cdn.fabtcg.com/uploads/2025/12/assembly_deck_hero_trim.jpg | fab-official | 同 Hero Deck: Bravo，官网 Welcome to Rathe 的 4 副 Hero Deck 合集产品图，含 Rhinar Hero Deck。 |
+| Flesh and Blood TCG | Silver Age Chapter 1 | https://cdn.fabtcg.com/uploads/2025/12/silver_age_logo.png | fab-official | 官网『Silver Age Chapter 1 and 2 Marketing Assets』(digital-assets/silver-age/) 的系列 logo，即『SILVER AGE』字标；Chapter 1 属于该子系列。 |
+| Flesh and Blood TCG | Silver Age Chapter 2 | https://cdn.fabtcg.com/uploads/2025/12/silver_age_logo.png | fab-official | 同上，官网 Silver Age 系列 logo『SILVER AGE』字标，Chapter 2 与 Chapter 1 共用同一子系列标识。 |
+| Flesh and Blood TCG | Welcome Deck Bravo | https://cdn.fabtcg.com/uploads/2025/09/demo_deck_bravo_mockup_EN-1.webp | fab-official | 官网 bravo-demo-deck 产品图，画面为 Bravo, Flattering Showman + Macho Grande，与 TCGPlayer『Welcome Deck Bravo』卡表一致（官网称 Demo Deck）。 |
+| Flesh and Blood TCG | Welcome Deck: Ira | https://cdn.fabtcg.com/uploads/2025/09/ira_welcomedeck_dropshadow-1.webp | fab-official | 官网 ira-welcome-deck 产品页的 og:image，即 Ira, Crimson Haze 新手套牌；与 TCGPlayer 卡表(Ira, Crimson Haze / Edge of Autumn / Scar for a Scar…)吻合。 |
+| Dragon Ball Super: Masters | 5th Anniversary Set | https://www.dbs-cardgame.com/images/product/dbs-es21/img_item.png | dbs-cardgame.com | 官方商品页 dbs-es21（alt='5th Anniversary Set [DBS-BE21]'）产品渲染图，与 TCGPlayer setId 3109/setCode DBS-BE21 一致 |
+| Dragon Ball Super: Masters | Collector's Selection Vol. 1 | https://tcgplayer-cdn.tcgplayer.com/product/243574_in_1000x1000.jpg | tcgplayer-cdn | TCGPlayer 密封产品 243574 'Collector's Selection Vol. 1'（该 setName 唯一商品），图上印有 Collector's Selection Vol.1 标题 |
+| Dragon Ball Super: Masters | Collector's Selection Vol. 2 | https://tcgplayer-cdn.tcgplayer.com/product/265248_in_1000x1000.jpg | tcgplayer-cdn | TCGPlayer 密封产品 265248 'Collector's Selection Vol. 2'（该 setName 唯一商品） |
+| Dragon Ball Super: Masters | Collector's Selection Vol. 3 | https://tcgplayer-cdn.tcgplayer.com/product/475574_in_1000x1000.jpg | tcgplayer-cdn | TCGPlayer 密封产品 475574 'Collector's Selection Vol. 3'（该 setName 唯一商品） |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 01: Mighty Heroes | https://www.dbs-cardgame.com/images/product/dbs-es01/img_expansion-set.png | dbs-cardgame.com | 官方商品页 dbs-es01 产品渲染图，alt='...EXPANSION DECK BOX SET 01-Mighty Heroes-'(DBS-BE01) |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 02: Dark Demon's Villains | https://www.dbs-cardgame.com/images/product/dbs-es02/img_expansion-set.png | dbs-cardgame.com | 官方商品页 dbs-es02 产品渲染图，alt='...EXPANSION DECK BOX SET 02-Dark Demon's Villains-'(DBS-BE02) |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 03: Ultimate Box | https://www.dbs-cardgame.com/images/product/dbs-es03/img_es03-box.png | dbs-cardgame.com | 官方商品页 dbs-es03 产品渲染图，alt='...ULTIMATE BOX【DBS-BE03】' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 04: Unity of Saiyans | https://www.dbs-cardgame.com/images/product/dbs-es04/img_expansion-set.png | dbs-cardgame.com | 官方商品页 dbs-es04 产品渲染图，alt='EXPANSION SET04 -Unity of Saiyans-【DBS-BE04】' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 05: Unity of Destruction | https://www.dbs-cardgame.com/images/product/dbs-es05/img_expansion-set.png | dbs-cardgame.com | 官方商品页 dbs-es05 产品渲染图，alt='EXPANSION SET05 -Unity of Destruction-【DBS-BE05】' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 07: Magnificent Collection - Fusion Hero | https://www.dbs-cardgame.com/images/product/dbs-es07/update01/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es07 产品渲染图，alt='...Magnificent Collection -Fusion Hero- [DBS-BE07]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 08: Magnificent Collection - Forsaken Warrior | https://www.dbs-cardgame.com/images/product/dbs-es08/update01/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es08 产品渲染图，alt='...Magnificent Collection -Forsaken Warrior- [DBS-BE08]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 09: Saiyan Surge | https://www.dbs-cardgame.com/images/product/dbs-es09/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es09 产品渲染图，alt='...Expansion Set 09 -Saiyan Surge- [DBS-BE09]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 10: Namekian Surge | https://www.dbs-cardgame.com/images/product/dbs-es10/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es10 产品渲染图，alt='...Expansion Set 10 -Namekian Surge- [DBS-BE10]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 11: Universe 7 Unison | https://www.dbs-cardgame.com/images/product/dbs-es11/img_item.png | dbs-cardgame.com | 官方商品页 dbs-es11 产品渲染图，alt='...Expansion Set 11 -Universe 7 Unison- [DBS-BE11]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 12: Universe 11 Unison | https://www.dbs-cardgame.com/images/product/dbs-es12/img_item.png | dbs-cardgame.com | 官方商品页 dbs-es12 产品渲染图，alt='...Expansion Set 12 -Universe 11 Unison- [DBS-BE12]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 14: Battle Advanced | https://www.dbs-cardgame.com/images/product/dbs-es14/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es14 产品渲染图，alt='Expansion Set 14 -Battle Advanced- [DBS-BE14]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 15: Battle Enhanced | https://www.dbs-cardgame.com/images/product/dbs-es15/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es15 产品渲染图，alt='Expansion Set 15 -Battle Enhanced- [DBS-BE15]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 16: Ultimate Deck | https://www.dbs-cardgame.com/images/product/dbs-es16/img_item.png | dbs-cardgame.com | 官方商品页 dbs-es16 产品渲染图，alt='Ultimate Deck [DBS-BE16]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 17: Saiyan Boost | https://www.dbs-cardgame.com/images/product/dbs-es17/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es17 产品渲染图，alt='Expansion Set 17 -Saiyan Boost- [DBS-BE17]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 18: Namekian Boost | https://www.dbs-cardgame.com/images/product/dbs-es18/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es18 产品渲染图，alt='Expansion Set 18 -Namekian Boost- [DBS-BE18]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 20: Ultimate Deck 2022 | https://www.dbs-cardgame.com/images/product/dbs-es20/img_item.png | dbs-cardgame.com | 官方商品页 dbs-es20 产品渲染图，alt='Ultimate Deck 2022 [DBS-BE20]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 22: Ultimate Deck 2023 | https://www.dbs-cardgame.com/images/product/dbs-es22/img_item.png | dbs-cardgame.com | 官方商品页 dbs-es22 产品渲染图，alt='Ultimate Deck 2023 [DBS-BE22]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 23: Premium Anniversary Box 2023 | https://www.dbs-cardgame.com/images/product/dbs-es23/img_item.png | dbs-cardgame.com | 官方商品页 dbs-es23 产品渲染图，alt='Premium Anniversary Box 2023 [DBS-BE23]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 24: Premium 7th Anniversary Box 2024 | https://www.dbs-cardgame.com/images/product/dbs-es24/img_item.png | dbs-cardgame.com | 官方商品页 dbs-es24 产品渲染图，alt='Premium Anniversary Box 2024 [DBS-BE24]' |
+| Dragon Ball Super: Masters | Expansion Deck Box Set 25: Premium Anniversary Box 2025 | https://www.dbs-cardgame.com/images/product/dbs-es25/img_item.png | dbs-cardgame.com | 官方商品页 dbs-es25 产品渲染图，alt='Premium Anniversary Box 2025 [DBS-BE25]' |
+| Dragon Ball Super: Masters | Fearsome Rivals Release Event | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24566/logo.webp | holodex | Holodex setId 24566 与该系列 TCGPlayer setId 一致（BT29_PR） |
+| Dragon Ball Super: Masters | Fighter's Ambition | https://www.dbs-cardgame.com/images/product/dbs-b19/img_item.png | dbs-cardgame.com | 官方商品页 dbs-b19 产品渲染图，alt="ZENKAI Series Set 02 FIGHTER'S AMBITION [DBS-B19]" |
+| Dragon Ball Super: Masters | Impact Beyond Dimensions Release Event | https://tcgplayer-cdn.tcgplayer.com/product/702718_in_1000x1000.jpg | tcgplayer-cdn | TCGPlayer 密封产品 702718 'Impact Beyond Dimensions Release Event Pack'（该 setName 唯一商品） |
+| Dragon Ball Super: Masters | Mythic Booster | https://www.dbs-cardgame.com/images/product/dbs-mb01/img_item.png | dbs-cardgame.com | 官方商品页 dbs-mb01 产品渲染图，alt='Mythic Booster [MB-01]' |
+| Dragon Ball Super: Masters | Prismatic Clash Release Event | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24429/logo.webp | holodex | Holodex setId 24429 与该系列 TCGPlayer setId 一致（BT28_PR） |
+| Dragon Ball Super: Masters | Revision Pack 2020 | https://www.dbs-cardgame.com/images/event/prizes/pack/img_revision-pack2020_v02_en.png | dbs-cardgame.com | 官方站点 prizes/pack 下的 'Revision Pack 2020' 宣传图，标题即 Revision Pack 2020（TCGPlayer setId 2753/setCode RP20） |
+| Dragon Ball Super: Masters | Special Anniversary Set | https://www.dbs-cardgame.com/images/product/dbs-es06/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es06 产品渲染图，alt='...Special Anniversary Box【DBS-BE06】'；对应 TCGPlayer 'Special Anniversary Set'(setId 2433) |
+| Dragon Ball Super: Masters | Special Anniversary Set 2020 | https://www.dbs-cardgame.com/images/product/dbs-es13/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es13 产品渲染图，alt='...Special Anniversary Box 2020 [DBS-BE13]' |
+| Dragon Ball Super: Masters | Special Anniversary Set 2021 | https://www.dbs-cardgame.com/images/product/dbs-es19/img_box.png | dbs-cardgame.com | 官方商品页 dbs-es19 产品渲染图，alt='...Special Anniversary Box 2021 [DBS-BE19]' |
+| Dragon Ball Super: Masters | Theme Selection: History of Son Goku | https://www.dbs-cardgame.com/images/product/dbs-ts01/img_item.png | dbs-cardgame.com | 官方商品页 dbs-ts01 产品渲染图，alt='-History of Son Goku- Theme Selection [TS01]' |
+| Dragon Ball Super: Masters | Theme Selection: History of Vegeta | https://www.dbs-cardgame.com/images/product/dbs-ts02/img_item.png | dbs-cardgame.com | 官方商品页 dbs-ts02 产品渲染图，alt='-History of Vegeta- Theme Selection [TS02]' |
+| Dragon Ball Super: Masters | Three Glorious Fighters Release Event | https://holodex-prod-bucket.b-cdn.net/sets/dbsc_24654/logo.webp | holodex | Holodex setId 24654 与该系列 TCGPlayer setId 一致（BT30_PR） |
 
 ## 四、待补系列完整清单
 
-下面是没有 logo 的全部 536 个系列，按品线分组，用于后续逐个补齐。
+下面是没有 logo 的全部 320 个系列，按品线分组，用于后续逐个补齐。
 
-**Pokémon**（29 个）
+**Pokémon**（19 个）
 
 - BW Trainer Kit: Excadrill & Zoroark
-- Best of Promos
 - Blister Exclusives
 - Burger King Promos
 - Countdown Calendar Promos
 - DP Trainer Kit: Manaphy & Lucario
 - Deck Exclusives
-- EX Trainer Kit 1: Latias & Latios
-- EX Trainer Kit 2: Plusle & Minun
 - First Partner Collection 2026
 - First Partner Pack
-- HGSS Trainer Kit: Gyarados & Raichu
 - Jumbo Cards
 - Kids WB Promos
 - League & Championship Cards
-- MEE: Mega Evolution Energies
 - Pikachu World Collection Promos
 - Player Placement Trainer Promos
 - Professor Program Promos
 - SM Trainer Kit: Alolan Sandslash & Alolan Ninetales
 - SM Trainer Kit: Lycanroc & Alolan Raichu
-- SVE: Scarlet & Violet Energies
 - Southeast Asia Exclusives
 - World Championship Decks
-- XY Trainer Kit: Bisharp & Wigglytuff
-- XY Trainer Kit: Latias & Latios
-- XY Trainer Kit: Pikachu Libre & Suicune
-- XY Trainer Kit: Sylveon & Noivern
 - e-Reader Sample Cards
 
-**Pokémon Japan**（278 个）
+**Pokémon Japan**（231 个）
 
 - 10th Movie Commemoration Set
 - 11th Movie Commemoration Set
 - 64 Mario Stadium Best Photo Contest
-- ADV Expansion Pack
 - ADV-P Promotional cards
 - Aqua Deck Kit
 - Arceus LV.X Deck: Grass & Fire
@@ -2215,23 +2425,18 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - BK: Terrakion Battle Strength Deck
 - BK: Virizion Battle Strength Deck
 - BKB: Black Kyurem-EX Battle Strength Deck
-- BKR: Reshiram-EX Battle Strength Deck
 - BKW: White Kyurem-EX Battle Strength Deck
-- BKZ: Zekrom-EX Battle Strength Deck
 - BW-P Promotional cards
 - Base Expansion Pack
 - Battle Gift Set: Thundurus vs Tornadus
-- Battle Road
 - Battle Starter Deck (Blastoise)
 - Battle Starter Deck (Magmortar)
 - Battle Starter Deck (Raichu)
 - Battle Starter Deck (Torterra)
 - Battle Theme Deck: Victini
-- Black Deck Kit
 - Blastoise + Kyurem-EX Combo Deck
 - Challenge from the Darkness
 - Champion Road
-- City Gym Decks
 - Clash of the Blue Sky
 - CoroCoro Promotional Cards
 - Crossing the Ruins...
@@ -2243,7 +2448,6 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - DPt-P Promotional cards
 - Darkness, and to Light...
 - Deoxys Constructed Starter Deck
-- Dialga LV.X Constructed Standard Deck
 - Earth's Groudon ex Constructed Starter Deck
 - Elementary School Competition
 - Emerald Gift Box (Deoxys)
@@ -2254,16 +2458,12 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - Everyone's Exciting Battle
 - Expansion Pack
 - Expansion Pack (No Rarity)
-- Feraligatr Constructed Starter Deck
 - Fighting Quick Construction Pack
 - Fire Quick Construction Pack
 - Flight of Legends
-- Flygon Constructed Starter Deck
 - Garchomp Half Deck
 - Garchomp vs Charizard SP Deck Kit (Charizard)
 - Garchomp vs Charizard SP Deck Kit (Garchomp)
-- Gift Box (Latias)
-- Gift Box (Latios)
 - Gift Box Mew - Lucario (Crawdaunt Quarter Deck)
 - Gift Box Mew - Lucario (Lucario Quarter Deck)
 - Gift Box Mew - Lucario (Mew Quarter Deck)
@@ -2284,12 +2484,9 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - Holon Research Tower Water Quarter Deck
 - How I Became a Pokemon Card
 - Hydreigon Half Deck
-- Imprison! Gardevoir ex Constructed Standard Deck
 - Infernape vs Gallade SP Deck Kit (Gallade)
 - Infernape vs Gallade SP Deck Kit (Infernape)
 - Intense Fight in the Destroyed Sky
-- Intro Pack (Bulbasaur)
-- Intro Pack (Squirtle)
 - Intro Pack Neo (Chikorita)
 - Intro Pack Neo (Totodile)
 - J Promotional cards
@@ -2303,26 +2500,17 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - Lightning Quick Construction Pack
 - M-P Promotional Cards
 - M6a: MEGA Expansion 30th Celebration
-- MEE: Starter Set ex Eevee ex
-- MEM: Starter Set ex Meowscarada ex
-- MEZ: Starter Set ex Zoroark ex
 - MF: 30th CELEBRATION Premium Deck Set Espeon & Umbreon
 - MP1: Start Deck 100 Battle Collection CoroCiao Version
 - Magma Deck Kit
 - Magma VS Aqua: Two Ambitions
-- Master Kit (Bulbasaur)
-- Master Kit (Side Deck)
-- Master Kit (Torchic)
 - McDonald's Pokémon-e Minimum Pack
 - Mega Evolution Era Unnumbered Energies
-- Meganium Constructed Starter Deck
 - Melee! Pokemon Scramble
-- Metagross Constructed Starter Deck
 - Mewtwo vs Genesect Deck Kit (Genesect)
 - Mewtwo vs Genesect Deck Kit (Mewtwo)
 - Miracle Crystal
 - Miracle of the Desert
-- Mirage Forest
 - Mirage's Mew Constructed Starter Deck
 - Movie Commemoration Random Pack
 - Mudkip Constructed Starter Deck
@@ -2332,12 +2520,10 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - Neo Premium File 2
 - Neo Premium File 3
 - Ocean's Kyogre ex Constructed Starter Deck
-- Offense and Defense of the Furthest Ends
 - P Promotional cards
 - PCG-P Promotional cards
 - PLAY Promotional cards
 - PPP Promotional cards
-- Palkia LV.X Constructed Standard Deck
 - Player Placement Trainer Promos
 - PokePark Blue
 - PokePark Forest
@@ -2381,13 +2567,7 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - SS: Inteleon VMAX High-Class Deck
 - SV-P Promotional Cards
 - SV: Ancient Koraidon ex Starter Deck & Build Set
-- SV: Ceruledge ex Stellar Tera Type Starter Set
-- SV: Chien-Pao ex Battle Master Deck
 - SV: Future Miraidon ex Starter Deck & Build Set
-- SV: Mewtwo ex Terastal Starter Set
-- SV: Skeledirge ex Terastal Starter Set
-- SV: Sylveon ex Stellar Tera Type Starter Set
-- SV: Terastal Charizard ex Battle Master Deck
 - SV: Venusaur, Charizard & Blastoise Special Deck Set
 - SV: ex Special Set
 - SV: ex Start Decks
@@ -2395,23 +2575,17 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - SV: ex Starter Set Pikachu ex & Pawmot
 - SV: ex Starter Set Quaxly & Mimikyu ex
 - SV: ex Starter Set Sprigatito & Lucario ex
-- Salamence Constructed Starter Deck
 - Scarlet & Violet Era Unnumbered Energies
-- Shockwave! Tyranitar ex Constructed Standard Deck
-- Silver Deck Kit
 - Split Earth
 - Start Deck 100 Battle Collection
 - Sun & Moon Era Unnumbered Energies
 - Sword & Shield Era Unnumbered Energies
 - T Promotional cards
 - Team Plasma Battle Gift Set
-- Team Plasma's Powered Half Deck
-- The Town on No Map
 - Theater Limited VS Pack
 - Torchic Constructed Starter Deck
 - Trainer Prize Cards
 - Treecko Constructed Starter Deck
-- Typhlosion Constructed Starter Deck
 - Undone Seal
 - Unnumbered Promotional cards
 - Unnumbered World Championships
@@ -2436,7 +2610,6 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - XYA: M Charizard-EX Mega Battle Deck
 - XYB: Dialga-EX + Aegislash-EX Hyper Metal Chain Deck
 - XYD: M Rayquaza-EX Mega Battle Deck
-- XYE: Emboar-EX vs Togekiss-EX Deck Kit
 - XYF: Golduck BREAK + Palkia-EX Combo Deck
 - XYG: Zygarde-EX Perfect Battle Deck
 - XYH: M Audino-EX Mega Battle Deck
@@ -2446,17 +2619,8 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - m1S: Mega Symphonia
 - s0: Charizard VSTAR vs Rayquaza VMAX Special Deck Set
 - s8a-G: 25th Anniversary Golden Box
-- sA: Fighting Starter Set V
-- sA: Fire Starter Set V
-- sA: Grass Starter Set V
-- sA: Lightning Starter Set V
-- sA: Water Starter Set V
 - sC2: Charizard Starter Set VMAX 2
-- sC: Charizard Starter Set VMAX
-- sC: Grimmsnarl Starter Set VMAX
 - sD: V Starter Decks
-- sEF: Venusaur Starter Set VMAX
-- sEK: Blastoise Starter Set VMAX
 - sH: Sword & Shield Family Pokemon Card Game
 - sJ: Zacian & Zamazenta vs Eternatus Special Deck Set
 - sLD: Darkrai Starter Set VSTAR
@@ -2481,180 +2645,74 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - sp5: V-UNION Special Card Sets
 - sp6: VSTAR Special Set
 
-**Magic: The Gathering**（24 个）
+**Magic: The Gathering**（14 个）
 
-- 30th Anniversary Promos
-- AFR Ampersand Promos
-- APAC Lands
-- Archenemy: Duskmourn
 - Buy-A-Box Promos
-- Commander
 - Duel Decks: Anthology
 - Gift Boxes and Promos
-- International Edition
 - JingHe Age Token Cards
 - Junior Series Promos
 - Launch Party & Release Event Promos
 - MagicFest Cards
 - Open House Promos
 - Oversize Cards
-- Planechase: March of the Machine
-- Planechase: Universes Beyond: Doctor Who
-- Planeswalker Event Promos
 - Play Promos
 - Prerelease Cards
-- Secret Lair x MSCHF: The Zeta Set
 - Special Occasion
 - Unique and Miscellaneous Promos
 - WPN & Gateway Promos
 
-**Yu-Gi-Oh!**（99 个）
+**Yu-Gi-Oh!**（43 个）
 
 - 2-Player Starter Set
-- 2002 Collectors Tin
-- 2003 Collectors Tin
-- 2004 Collectors Tin
-- 2011 Duelist Pack Tin
-- 25th Anniversary Tin: Dueling Mirrors
-- Advent Calendar 2011 (Adventskalender)
-- Advent Calendar 2014 (Adventskalender ZEXAL-Edition)
 - Collector's Boxes
-- Crossed Souls: Advanced Edition
 - Dawn of Destiny Xbox
 - Destiny Board Traveler Promo
-- Duel Terminal - Preview
-- Duel Terminal 1
-- Duelist League Promo
 - Duelist Pack Collection Tin
 - Duelist Pack Special Edition
 - Duelist of the Roses
 - Early Days Collection Promotional Cards
-- Elemental Hero Collection 1
-- Elemental Hero Collection 2
 - Eternal Duelist Soul
-- Forbidden Legacy
 - GX Duel Academy GBA Promo
 - GX Spirit Caller Promo
 - GX Tag Force Promo
-- GX Ultimate Beginner's Pack 1
-- Hobby League 1
-- Hobby League 2
-- Hobby League 3
-- Hobby League 4
-- Hobby League 5
-- Hobby League 6
-- Hobby League 7
-- Judge Promotional Cards
-- King of Games: Yugi's Legendary Decks
-- King of Games: Yugi's Legendary Decks (2020 Date Reprint)
 - Legendary 5D's Decks
-- Legendary Collection 1
-- Light and Darkness Power Pack
-- Master Collection Volume 1
-- Master Collection Volume 2
-- Mattel Action Figure Promos: Series 1
 - Mattel Action Figure Promos: Series 2
-- Mattel Action Figure Promos: Series 3
 - Miscellaneous Promotional Cards
 - Nintendo DS Nightmare of Troubadour
-- Pharaoh Tour Promos
 - Redemption Replacement
 - Reshef of Destruction
-- Samurai Assault
-- Shonen Jump Championship Series Promos
-- Shonen Jump Magazine Promos
 - Sneak Preview Series 1
 - Sneak Preview Series 2
 - Sneak Preview Series 3
 - Sneak Preview Series 4
 - Sneak Preview Series 5
-- Speed Duel Demo Deck
 - Speed Duel Demo Deck 2020
-- Speed Duel GX: Midterm Destruction
 - Speed Duel: Battle City Finals
-- Speed Duel: Tournament Pack 1
-- Speed Duel: Tournament Pack 7
 - Stairway to the Destined Duel
 - Stardust Accelerator Promos
-- Super Starter: Space-Time Showdown Power-Up Pack
-- Super Starter: V for Victory Power-Up Pack
-- The Dark Side of Dimensions Movie Pack: Gold Edition
-- The Dark Side of Dimensions Movie Pack: Secret Edition
-- The Dark Side of Dimensions Movie Pack: Special Edition
-- The Valuable Book Volume 5
-- Toys "R" Us Throwdown Promo
-- Twilight Edition
-- Ultimate Edition 2
 - World Championship 2004: GBA Promo
 - World Championship 2005: 7 Trials to Glory
 - World Championship 2007
 - World Championship 2008
 - World Championship JPP Cards
 - World Championship Series
-- X-Saber Power-Up
 - Yu-Gi-Oh! 5D's Manga Promotional Cards
 - Yu-Gi-Oh! 5D's Over the Nexus Promo Cards
-- Yu-Gi-Oh! 5D's Tag Force Promotional Cards
 - Yu-Gi-Oh! 5D's Wheelie Breakers Promotional Cards
 - Yu-Gi-Oh! Championship Series 2025 Prize Cards
-- Yu-Gi-Oh! Duel Monsters International: Worldwide Edition
 - Yu-Gi-Oh! GX Manga Promotional Cards
 - Yu-Gi-Oh! GX Tag Force Evolution Promo
 - Yu-Gi-Oh! GX Tag Force Promotional Cards
 - Yu-Gi-Oh! R Manga Promo
-- Yu-Gi-Oh! The Movie Ani-Manga Promo
-- Yu-Gi-Oh! The Movie Promo Set
-- Yu-Gi-Oh! Tokens
 - Yu-Gi-Oh! Value Boxes
 - Yu-Gi-Oh! Video Game Promotional Cards
-- Yu-Gi-Oh! ZEXAL Manga Promotional Cards
-- Yu-Gi-Oh! ZEXAL World Duel Carnival Promos
 
-**One Piece Card Game**（43 个）
+**One Piece Card Game**（3 个）
 
-- Awakening of the New Era: 1st Anniversary Tournament Cards
-- Carrying On His Will: 3rd Anniversary Tournament Cards
-- Emperors in the New World: 2nd Anniversary Tournament Cards
-- Extra Booster: One Piece Heroines Edition Vol. 2
-- Learn Together Deck Set
 - One Piece Demo Deck Cards
 - One Piece Promotion Cards
 - Revision Pack Cards
-- ST-01: Starter Deck 1 Straw Hat Crew
-- ST-01: Starter Deck 1 Straw Hat Crew (Super Pre-Release Edition)
-- ST-02: Starter Deck 2 Worst Generation
-- ST-02: Starter Deck 2 Worst Generation (Super Pre-Release Edition)
-- ST-03: Starter Deck 3 The Seven Warlords of The Sea
-- ST-03: Starter Deck 3 The Seven Warlords of The Sea (Super Pre-Release Edition)
-- ST-04: Starter Deck 4 Animal Kingdom Pirates
-- ST-04: Starter Deck 4 Animal Kingdom Pirates (Super Pre-Release Edition)
-- ST-05: Starter Deck 5 Film Edition
-- ST-06: Starter Deck 6 Absolute Justice
-- ST-07: Starter Deck 7 Big Mom Pirates
-- ST-08: Starter Deck 8 Monkey.D.Luffy
-- ST-09: Starter Deck 9 Yamato
-- ST-10: Ultra Deck The Three Captains
-- ST-11: Starter Deck 11 Uta
-- ST-12: Starter Deck 12 Zoro and Sanji
-- ST-13: Ultra Deck The Three Brothers
-- ST-14: Starter Deck 14 3D2Y
-- ST-15: Starter Deck 15 RED Edward.Newgate
-- ST-16: Starter Deck 16 GREEN Uta
-- ST-17: Starter Deck 17 BLUE Donquixote Doflamingo
-- ST-18: Starter Deck 18 PURPLE Monkey.D.Luffy
-- ST-19: Starter Deck 19 BLACK Smoker
-- ST-20: Starter Deck 20 YELLOW Charlotte Katakuri
-- ST-21: Starter Deck 21 EX Gear 5
-- ST-22: Starter Deck 22 Ace & Newgate
-- ST-30: Starter Deck 30 EX Luffy & Ace
-- ST-31: Starter Deck 31 RED Monkey.D.Luffy
-- ST-32: Starter Deck 32 GREEN Roronoa Zoro
-- ST-33: Starter Deck 33 BLUE Kuzan
-- ST-34: Starter Deck 34 PURPLE Charlotte Katakuri
-- ST-35: Starter Deck 35 RED/BLACK Sabo
-- ST-36: Starter Deck 36 YELLOW Eustass"Captain"Kid
-- Set Sail Deck Set
-- The Dominance of God
 
 **Disney Lorcana**（5 个）
 
@@ -2664,67 +2722,14 @@ ygoprodeck 的一个已知局限：它用 `set_code` 拼图片地址，而它自
 - Illumineer's Quest: Palace Heist
 - Illumineer's Quest: The Great Hunny Rescue
 
-**Flesh and Blood TCG**（17 个）
+**Flesh and Blood TCG**（1 个）
 
-- Armory Deck: Jarl Vetreidi
-- Compendium of Rathe - Antiquity Pack
 - Flesh and Blood: Promo Cards
-- GEM Pack 1
-- GEM Pack 2
-- GEM Pack 3
-- GEM Pack 4
-- GEM Pack 6
-- Gem Pack 5
-- Hero Deck: Bravo
-- Hero Deck: Dorinthea
-- Hero Deck: Katsu
-- Hero Deck: Rhinar
-- Silver Age Chapter 1
-- Silver Age Chapter 2
-- Welcome Deck Bravo
-- Welcome Deck: Ira
 
-**Dragon Ball Super: Masters**（41 个）
+**Dragon Ball Super: Masters**（4 个）
 
-- 5th Anniversary Set
-- Collector's Selection Vol. 1
-- Collector's Selection Vol. 2
-- Collector's Selection Vol. 3
-- Expansion Deck Box Set 01: Mighty Heroes
-- Expansion Deck Box Set 02: Dark Demon's Villains
-- Expansion Deck Box Set 03: Ultimate Box
-- Expansion Deck Box Set 04: Unity of Saiyans
-- Expansion Deck Box Set 05: Unity of Destruction
-- Expansion Deck Box Set 07: Magnificent Collection - Fusion Hero
-- Expansion Deck Box Set 08: Magnificent Collection - Forsaken Warrior
-- Expansion Deck Box Set 09: Saiyan Surge
-- Expansion Deck Box Set 10: Namekian Surge
-- Expansion Deck Box Set 11: Universe 7 Unison
-- Expansion Deck Box Set 12: Universe 11 Unison
-- Expansion Deck Box Set 14: Battle Advanced
-- Expansion Deck Box Set 15: Battle Enhanced
-- Expansion Deck Box Set 16: Ultimate Deck
-- Expansion Deck Box Set 17: Saiyan Boost
-- Expansion Deck Box Set 18: Namekian Boost
-- Expansion Deck Box Set 20: Ultimate Deck 2022
-- Expansion Deck Box Set 22: Ultimate Deck 2023
-- Expansion Deck Box Set 23: Premium Anniversary Box 2023
-- Expansion Deck Box Set 24: Premium 7th Anniversary Box 2024
-- Expansion Deck Box Set 25: Premium Anniversary Box 2025
-- Fearsome Rivals Release Event
-- Fighter's Ambition
-- Impact Beyond Dimensions Release Event
 - Judge Promotion Cards
-- Mythic Booster
 - Oversized Cards
-- Prismatic Clash Release Event
 - Promotion Cards
-- Revision Pack 2020
-- Special Anniversary Set
-- Special Anniversary Set 2020
-- Special Anniversary Set 2021
-- Theme Selection: History of Son Goku
-- Theme Selection: History of Vegeta
-- Three Glorious Fighters Release Event
 - Tournament Promotion Cards
 
