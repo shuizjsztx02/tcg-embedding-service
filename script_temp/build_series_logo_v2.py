@@ -638,6 +638,10 @@ def main() -> None:
         f.write("\n".join(L) + "\n")
     with open(os.path.join(OUT, "series_logo_rows.json"), "w", encoding="utf-8") as f:
         json.dump(rows_by_line, f, ensure_ascii=False, indent=1)
+    # 品线全量系列名单（与 logo 有无无关），供 merge_gapfix.py 做归属校验的稳定基线
+    with open(os.path.join(OUT, "series_all_names.json"), "w", encoding="utf-8") as f:
+        json.dump({line: [r["setName"] for r in rs] for line, rs in rows_by_line.items()},
+                  f, ensure_ascii=False, indent=1)
     print(f"已生成 {MD}")
     for line in LINE_ORDER:
         rows = rows_by_line.get(line) or []

@@ -40,11 +40,32 @@ def check(url: str) -> tuple[int, str]:
 
 
 def main() -> None:
-    rows = json.load(open(os.path.join(OUT, "series_logo_rows.json"), encoding="utf-8"))
-    gaps = {line: {r["setName"] for r in rs if not r["logo"]} for line, rs in rows.items()}
+    rows = json.load(open(os.path.join(OUT, "series_all_names.json"), encoding="utf-8"))
+    gaps = {line: {r["setName"] for r in rs if not r["logo"]}
+            for line, rs in json.load(open(os.path.join(OUT, "series_logo_rows.json"),
+                                           encoding="utf-8")).items()}
     all_gaps = {n for s in gaps.values() for n in s}
+    # 归属校验用「品线全量系列名单」而非「当前待补清单」——否则补过一轮重建后，
+    # 已补上的条目会被误判成"不在待补清单里"
+    lines_of: dict[str, list[str]] = {}
+    for line, names in rows.items():
+        for n in names:
+            lines_of.setdefault(n, []).append(line)
+    ambiguous = {n for n, ls in lines_of.items() if len(ls) > 1}
+    known = set(lines_of)
+    # 真正会出问题的是「在多个品线里都还没 logo」的同名系列——builder 按名兜底会同时套到两行；
+    # 只在一个品线缺的（另一个品线已有 logo）不会串，靠优先级自然处理
+    gap_lines: dict[str, list[str]] = {}
+    for line, s in gaps.items():
+        for n in s:
+            gap_lines.setdefault(n, []).append(line)
+    ambiguous = {n for n, ls in gap_lines.items() if len(ls) > 1}
+    if ambiguous:
+        print(f"注意：{len(ambiguous)} 个系列名在多个品线里都缺 logo，将拒绝其归属不明的产出："
+              f"{'、'.join(sorted(ambiguous))}")
 
-    files = sorted(glob.glob(os.path.join(OUT, "gapfix_*.json")))
+    files = [f for f in sorted(glob.glob(os.path.join(OUT, "gapfix_*.json")))
+             if os.path.basename(f) not in ("gapfix_merged.json", "gapfix_rejected.json")]
     print(f"发现 {len(files)} 个 gapfix 文件")
     entries, rejected = [], []
     for f in files:
@@ -53,12 +74,18 @@ def main() -> None:
         except Exception as e:
             print(f"  !! {os.path.basename(f)} 解析失败：{e}")
             continue
+        if not isinstance(data, list):
+            print(f"  !! {os.path.basename(f)} 不是数组（{type(data).__name__}），跳过")
+            continue
         for e in data:
             e["_file"] = os.path.basename(f)
             if not e.get("setName") or not e.get("logo"):
                 rejected.append({**e, "_why": "缺 setName 或 logo"})
-            elif e["setName"] not in all_gaps:
-                rejected.append({**e, "_why": "setName 不在待补清单里（拼错或已有 logo）"})
+            elif e["setName"] not in known:
+                rejected.append({**e, "_why": "setName 不属于这 8 个品线的任何系列（拼错）"})
+            elif e["setName"] in ambiguous:
+                rejected.append({**e, "_why": f"同名跨品线（{'/'.join(lines_of[e['setName']])}），"
+                                              "无法确定归属，需人工指定"})
             else:
                 entries.append(e)
     print(f"候选 {len(entries)} 条，格式/归属被拒 {len(rejected)} 条")
